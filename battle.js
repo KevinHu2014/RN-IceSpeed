@@ -35,8 +35,8 @@ var battle = React.createClass({
   },
   onPressOut_L: function() {
     this.setState({press_L: false});
-    this.refs.bottom.wobble(700);
-    this.refs.top.swing(700);
+    this.refs.bottom.wobble(1000);
+    this.refs.top.swing(1000);
   },
   onPressIn_M: function() {
     this.setState({press_M: true});
@@ -44,7 +44,7 @@ var battle = React.createClass({
   },
   onPressOut_M: function() {
     this.setState({press_M: false});
-    this.refs.bottom.jello(700);
+    this.refs.bottom.jello(1000);
     
   },
   onPressIn_R: function() {
@@ -52,13 +52,16 @@ var battle = React.createClass({
   },
   onPressOut_R: function() {
     this.setState({press_R: false});
+    this.state.top_progress=0.9;
+    this.state.bottom_progress=0.6;
+    this.state.top_color='#00DB00';
   },
   render() {
     return (
     	<View style={styles.container}>
     		<View style={styles.status}>
           <View style={styles.status_img}>
-            <Image source={require('./green.png')} 
+            <Image source={require('./c.png')} 
               style={{width:50,height:50 }}/>
           </View>
           <Animatable.View animation="pulse" iterationCount="infinite"
@@ -70,7 +73,7 @@ var battle = React.createClass({
         </View>
         <View style={styles.main}>
           <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./green.png')} 
+            <Animatable.Image ref="top" source={require('./c.png')} 
               style={{marginLeft: 10,width:140,height:140 }}/>
           </View>
           <View style={styles.main_bottom}>
