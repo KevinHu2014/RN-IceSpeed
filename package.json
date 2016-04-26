@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react": "^0.14.5",
+    "react-native": "^0.24.0",
+    "react-native-animatable": "^0.5.2",
+    "react-native-audioplayer": "^0.2.0",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-mapbox-gl": "^4.1.0",
+    "react-native-progress": "^2.2.2",
+    "react-native-scrollable-tab-view": "^0.4.1",
+    "react-native-sound": "^0.8.1"
+  }
+}

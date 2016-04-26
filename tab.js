@@ -11,6 +11,7 @@ var  Item = require('./Item');
 var  Pet = require('./Pet');
 var  Library = require('./Library');
 var  Setting = require('./Setting');
+var  MapExample = require('./MapExample');
 
 var tab = React.createClass({
   render() {
@@ -22,6 +23,7 @@ var tab = React.createClass({
       tabBarActiveTextColor="white"
       tabBarUnderlineColor="red"
       >
+        
       	<Item tabLabel="道具" />
         <Pet tabLabel="寵物" />
         <Library tabLabel="圖鑑" />

@@ -74,12 +74,19 @@ var battle = React.createClass({
         <View style={styles.main}>
           <View style={styles.main_top}>
             <Animatable.Image ref="top" source={require('./c.png')} 
-              style={{marginLeft: 10,width:140,height:140 }}/>
+              style={{marginLeft: 10,width:140,height:140 }}>
+              <Text style={styles.welcome_2}>
+                    {this.state.press_L ? '👊' : ''}
+              </Text>
+            </Animatable.Image>
           </View>
           <View style={styles.main_bottom}>
             <Animatable.Image   ref="bottom" source={require('./b.png')} 
-              style={{marginRight: 10,width:140,height:140 }}
-              animated={true}/>
+              style={{marginRight: 10,width:140,height:140 }}>
+              <Text style={styles.welcome_2}>
+                    {this.state.press_M ? '✨' : ''}
+              </Text>
+             </Animatable.Image> 
           </View>
         </View>
         <View style={styles.status}>
@@ -209,6 +216,13 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
     color: '#FFFFFF'
+  },
+  welcome_2: {
+    fontSize: 50,
+    fontWeight: "bold",
+    textAlign: 'center',
+    marginTop: 40,
+    color: '#000000',
   },
  });
 module.exports = battle;
