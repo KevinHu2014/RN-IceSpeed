@@ -12,6 +12,8 @@ var {
 var Animatable = require('react-native-animatable');
 var Progress = require('react-native-progress');
 
+import MapExample from './MapExample';
+
 var battle = React.createClass({
   getInitialState: function() {
     return {
@@ -52,9 +54,14 @@ var battle = React.createClass({
   },
   onPressOut_R: function() {
     this.setState({press_R: false});
-    this.state.top_progress=0.9;
-    this.state.bottom_progress=0.6;
-    this.state.top_color='#00DB00';
+    //this.state.top_progress=0.9;
+    //this.state.bottom_progress=0.6;
+    //this.state.top_color='#00DB00';
+    const { navigator } = this.props;
+        if(navigator) {
+            //返回mapexample
+            navigator.pop();
+        }
   },
   render() {
     return (

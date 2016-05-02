@@ -7,11 +7,12 @@ var {
   StyleSheet,
   View,
   ListView,
-  Text
+  Text,
+  TouchableOpacity
 } = React;
 var mapRef = 'map';
 
-
+import battle from './battle';
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
@@ -54,14 +55,29 @@ var MapExample = React.createClass({
   onOpenAnnotation(annotation) {
     console.log(annotation);
   },
+  _pressButton() {
+        const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'battle',
+                component: battle,
+            })
+        }
+  },
   render() {
     return (
       <View style={styles.container}>
        
        
         <View style={styles.status}>
-          <View style={styles.status_L}></View>
-          <View style={styles.status_R}></View>
+          <View style={styles.status_L}>
+            <Text style={styles.welcome_L}>火</Text>
+          </View>
+          <View style={styles.status_R}>
+            <TouchableOpacity onPress={this._pressButton}>
+                <Text style={styles.welcome_R}>冰櫃神速</Text>
+            </TouchableOpacity>
+          </View>
         </View> 
         <Mapbox
           annotations={this.state.annotations}
@@ -103,13 +119,25 @@ var styles = StyleSheet.create({
   status_L: {
     flex: 1,
     backgroundColor: '#EA0000',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcome_L: {
+    fontSize: 30,
+    color: '#000000',
   },
   status_R:{
     flex: 4,
     backgroundColor: '#8E8E8E',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcome_R: {
+    fontSize: 30,
+    color: '#FFFFFF',
   },
   map: {
-    flex: 7,
+    flex: 8,
   }
 });
 module.exports = MapExample;
