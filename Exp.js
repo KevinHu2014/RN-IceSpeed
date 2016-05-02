@@ -72,7 +72,7 @@ var Exp = React.createClass({
         </View>
         <View style={styles.third}>
           <Text style={styles.text}>
-            木屬經驗值 : 
+             木屬經驗值 : 
             {this.state.value3 && +this.state.value3.toFixed(1)}
             
           </Text>
