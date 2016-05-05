@@ -4,4 +4,5 @@ var {AppRegistry} = React;
 //var test = require('./battle');
 var test = require('./SampleComponent');
 //var test = require('./Exp');
+//var test = require('./MapExample');
 AppRegistry.registerComponent('test', () => test);
