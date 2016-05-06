@@ -18,6 +18,9 @@ var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
   getInitialState() {
     return {
+      i: 5,
+      newLat: 25.035770510088796,
+      newLon: 121.43201887607574,
       center: {
         latitude: 25.03569,
         longitude: 121.43289
@@ -29,13 +32,43 @@ var MapExample = React.createClass({
         title: 'Important!',
         subtitle: 'Neat, this is a custom annotation image'
       }]
+      
     }
   },
   onUserLocationChange(location) {
     console.log(location);
+    this.state.newLat = location.src.latitude; 
+    this.state.newLon = location.src.longitude;
+    this.addAnnotations(mapRef, [{
+          coordinates: [this.state.newLat,this.state.newLon],
+          type: 'point',
+          title: 'This is a new marker',
+          id: 'foo'
+        },]);
   },
   onLongPress(location) {
     console.log(location);
+    this.addAnnotations(mapRef, [{
+          coordinates: [this.state.newLat,this.state.newLon],
+          type: 'point',
+          title: 'This is a new marker',
+          id: 'foo'
+        },]);
+  },
+  onRegionChange(location) {
+    console.log(location);
+    // this.state.newLat = location.src.latitude; 
+    // this.state.newLon = location.src.longitude;
+    // this.state.i+=1;
+    /*if(this.state.i%25==0){
+      this.addAnnotations(mapRef, [{
+          coordinates: [this.state.newLat,this.state.newLon],
+          type: 'point',
+          title: 'This is a new marker',
+          id: 'foo'
+        },]);
+    }*/
+    
   },
   onOpenAnnotation(annotation) {
     console.log(annotation);
@@ -70,7 +103,7 @@ var MapExample = React.createClass({
           accessToken={'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ'}
           centerCoordinate={this.state.center}
           debugActive={false}
-          direction={10}
+          direction={60}
           ref={mapRef}
           onRegionChange={this.onRegionChange}
           rotateEnabled={true}
@@ -80,7 +113,7 @@ var MapExample = React.createClass({
           styleURL={this.mapStyles.streets}
           userTrackingMode={this.userTrackingMode.none}
           zoomEnabled={true}
-          zoomLevel={14}
+          zoomLevel={17}
           compassIsHidden={true}
           onUserLocationChange={this.onUserLocationChange}
           onLongPress={this.onLongPress}
