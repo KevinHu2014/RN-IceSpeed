@@ -8,15 +8,21 @@ var {
 } = React;
 
 var Animatable = require('react-native-animatable');
-//MyCustomComponent = Animatable.createAnimatableComponent(MyCustomComponent);
-
+var Statusbar = require('./Statusbar');
 var Item = React.createClass({
   render() {
     return (
     	<View style={styles.container}>
-    		 <Animatable.Text animation="slideInDown" iterationCount="infinite" direction="alternate" style={{fontSize: 40,}}>我是道具</Animatable.Text>
-			   <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ fontSize: 40,textAlign: 'center' }}>❤️</Animatable.Text>
-         
+         <View style={{flex:1}}>
+           <Statusbar></Statusbar>
+         </View>
+         <View style={{flex:7,justifyContent: 'center',
+          alignItems: 'center',}}>
+          <Animatable.Text animation="slideInDown" iterationCount="infinite" direction="alternate" style={{fontSize: 40,}}>我是道具</Animatable.Text>
+          <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={{ fontSize: 40,textAlign: 'center' }}>❤️</Animatable.Text>
+         </View>
+        
+    		 
     	</View>
       
     );
@@ -26,9 +32,8 @@ var Item = React.createClass({
 var styles = StyleSheet.create({
  	container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   	backgroundColor: '#A9A9A9',
+    flexDirection: 'column',
 	}
  });
 module.exports = Item;
