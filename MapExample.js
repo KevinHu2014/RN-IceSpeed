@@ -8,7 +8,8 @@ var {
   View,
   ListView,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight
 } = React;
 var mapRef = 'map';
 
@@ -18,7 +19,10 @@ var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
   getInitialState() {
     return {
+      press: false,
       i: 5,
+      UserLat: 25.035770510088796,
+      UserLon: 121.43201887607574,
       newLat: 25.035770510088796,
       newLon: 121.43201887607574,
       center: {
@@ -37,14 +41,16 @@ var MapExample = React.createClass({
   },
   onUserLocationChange(location) {
     console.log(location);
-    this.state.newLat = location.src.latitude; 
-    this.state.newLon = location.src.longitude;
-    this.addAnnotations(mapRef, [{
+    this.state.UserLat = location.src.latitude; 
+    this.state.UserLon = location.src.longitude;
+    /*this.addAnnotations(mapRef, [{
           coordinates: [this.state.newLat,this.state.newLon],
           type: 'point',
           title: 'This is a new marker',
           id: 'foo'
-        },]);
+        },]);*/
+
+    this.setCenterCoordinateZoomLevelAnimated(mapRef, this.state.UserLat, this.state.UserLon,17);
   },
   onLongPress(location) {
     console.log(location);
@@ -57,18 +63,7 @@ var MapExample = React.createClass({
   },
   onRegionChange(location) {
     console.log(location);
-    // this.state.newLat = location.src.latitude; 
-    // this.state.newLon = location.src.longitude;
-    // this.state.i+=1;
-    /*if(this.state.i%25==0){
-      this.addAnnotations(mapRef, [{
-          coordinates: [this.state.newLat,this.state.newLon],
-          type: 'point',
-          title: 'This is a new marker',
-          id: 'foo'
-        },]);
-    }*/
-    
+   
   },
   onOpenAnnotation(annotation) {
     console.log(annotation);
@@ -82,6 +77,30 @@ var MapExample = React.createClass({
   },
   _pressButton() {
         
+  },
+  onPressIn() {
+    this.setState({press_Back: true});
+    //this.removeAllAnnotations(mapRef);
+  },
+  onPressOut() {
+    this.setState({press_Back: false});
+    for(this.state.i=0;this.state.i<5;this.state.i++){
+      let distance = 0.0001;
+      let x = Math.floor(Math.random() * 9 + 1);//1~10
+      let y = Math.floor(Math.random() * 9 + 1);//1~10
+      this.state.newLat = this.state.UserLat + x*distance;
+      this.state.newLon = this.state.UserLon + y*distance;
+      console.log(x);
+      console.log(y);
+      console.log(this.state.newLat);
+      console.log(this.state.newLon);
+      this.addAnnotations(mapRef, [{
+          coordinates: [this.state.newLat,this.state.newLon],
+          type: 'point',
+          title: 'This is a new marker',
+          id: 'foo'
+        },]);
+    }
   },
   render() {
     return (
@@ -121,6 +140,21 @@ var MapExample = React.createClass({
           attributionButtonIsHidden={true}
           onOpenAnnotation={this.onOpenAnnotation}
         />
+        <View style={styles.explore}>
+          <View style={{flex: 4,}}></View>
+          <View style={styles.explore_R}>
+            <TouchableHighlight
+              onPressIn={this.onPressIn}
+              onPressOut={this.onPressOut}
+              style={{borderRadius: 100}}>
+                <View style={styles.button_S}>
+                  <Text style={styles.welcome_S}>
+                    {this.state.press ? '探索' : '探索'}
+                  </Text>
+                </View>
+            </TouchableHighlight>
+          </View>
+        </View>
       </View>
     );
   }
@@ -156,7 +190,32 @@ var styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   map: {
-    flex: 8,
-  }
+    flex: 7,
+  },
+  explore: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  explore_R: {
+    flex:1,
+    margin: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button_S: {
+    backgroundColor: '#8600FF',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    borderWidth: 3,
+    borderColor: '#FFFFFF',
+    justifyContent: 'center'
+  },
+  welcome_S: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#FFFFFF'
+  },
+
 });
 module.exports = MapExample;
