@@ -22,30 +22,30 @@ var Item = React.createClass({
             <BarChart
               dataSets={[
                 { 
-                  fillColor: '#46b3f7', 
+                  fillColor: '#FF0000', 
                   data: [
-                    { value: 15 },
-                    { value: 10 },
-                    { value: 12 },
-                    { value: 11 },
+                    { value: 500 },
                   ]
                 },
                 { 
-                  fillColor: '#3386b9', 
+                  fillColor: '#0080FF', 
                   data: [
-                    { value: 14 },
-                    { value: 11 },
-                    { value: 14 },
-                    { value: 13 },
+                    { value: 100 },
+                  ]
+                },
+                { 
+                  fillColor: '#00EC00', 
+                  data: [
+                    { value: 300 },
                   ]
                 },
               ]}
-              graduation={1}
+              graduation={50}
               horizontal={true}
               showGrid={true}
               barSpacing={5}
               style={{
-                height: 300,
+                height: 250,
                 margin: 15,
               }}/>
          </View>
