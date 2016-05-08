@@ -40,11 +40,11 @@ var MapExample = React.createClass({
     }
   },
   onUserLocationChange(location) {
-    console.log(location);
+    //console.log(location);
     this.state.UserLat = location.src.latitude; 
     this.state.UserLon = location.src.longitude;
     /*this.addAnnotations(mapRef, [{
-          coordinates: [this.state.newLat,this.state.newLon],
+          coordinates: [this.state.UserLat,this.state.UserLon],
           type: 'point',
           title: 'This is a new marker',
           id: 'foo'
@@ -53,7 +53,7 @@ var MapExample = React.createClass({
     this.setCenterCoordinateZoomLevelAnimated(mapRef, this.state.UserLat, this.state.UserLon,17);
   },
   onLongPress(location) {
-    console.log(location);
+    //console.log(location);
     this.addAnnotations(mapRef, [{
           coordinates: [this.state.newLat,this.state.newLon],
           type: 'point',
@@ -62,11 +62,11 @@ var MapExample = React.createClass({
         },]);
   },
   onRegionChange(location) {
-    console.log(location);
+    //console.log(location);
    
   },
   onOpenAnnotation(annotation) {
-    console.log(annotation);
+    //console.log(annotation);
     const { navigator } = this.props;
         if(navigator) {
             navigator.push({
@@ -80,14 +80,14 @@ var MapExample = React.createClass({
   },
   onPressIn() {
     this.setState({press_Back: true});
-    //this.removeAllAnnotations(mapRef);
+    this.removeAllAnnotations(mapRef);
   },
   onPressOut() {
     this.setState({press_Back: false});
-    for(this.state.i=0;this.state.i<5;this.state.i++){
-      let distance = 0.0001;
-      let x = Math.floor(Math.random() * 9 + 1);//1~10
-      let y = Math.floor(Math.random() * 9 + 1);//1~10
+    for(this.state.i=0;this.state.i<10;this.state.i++){
+      let distance = 0.00003;
+      let x = Math.floor(Math.random() * 20 - 10);//-10~10
+      let y = Math.floor(Math.random() * 20 - 10);//-10~10
       this.state.newLat = this.state.UserLat + x*distance;
       this.state.newLon = this.state.UserLon + y*distance;
       console.log(x);
@@ -208,7 +208,7 @@ var styles = StyleSheet.create({
     height: 60,
     width: 60,
     borderWidth: 3,
-    borderColor: '#FFFFFF',
+    borderColor: '#5B00AE',
     justifyContent: 'center'
   },
   welcome_S: {
