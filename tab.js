@@ -22,6 +22,7 @@ var tab = React.createClass({
       tabBarBackgroundColor="#FFD306"
       tabBarActiveTextColor="white"
       tabBarUnderlineColor="red"
+      locked={true}
       >
         <SampleComponent tabLabel="地圖" />
       	<Item tabLabel="道具" />

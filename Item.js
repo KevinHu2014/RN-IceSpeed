@@ -18,8 +18,20 @@ var Item = React.createClass({
          <View style={{flex:1}}>
            <Statusbar></Statusbar>
          </View>
-         <View style={{flex:7,}}>
-            <BarChart
+         <View style={{flex:3.5,flexDirection:'row'}}>
+            <View style={{flex:1,justifyContent: 'space-around',
+              alignItems: 'flex-end',
+            }}>
+              <Text> </Text>
+              <Text style={styles.welcome}>500</Text>
+              <Text> </Text>
+              <Text style={styles.welcome}>100</Text>
+              <Text> </Text>
+              <Text style={styles.welcome}>300</Text>
+              <Text> </Text>
+            </View>
+            <View style={{flex:10}}>
+              <BarChart
               dataSets={[
                 { 
                   fillColor: '#FF0000', 
@@ -47,9 +59,12 @@ var Item = React.createClass({
               style={{
                 height: 250,
                 margin: 15,
+                marginLeft:5,
               }}/>
+            </View>
+            
          </View>
-        
+        <View style={{flex:3.5}}></View>
     		 
     	</View>
       
@@ -62,6 +77,11 @@ var styles = StyleSheet.create({
     flex: 1,
   	backgroundColor: '#A9A9A9',
     flexDirection: 'column',
-	}
+	},
+  welcome: {
+    fontFamily: 'Avenir',
+    fontSize: 12,
+    color: '#ccc'
+  },
  });
 module.exports = Item;
