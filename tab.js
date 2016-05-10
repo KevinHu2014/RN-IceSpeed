@@ -9,7 +9,8 @@ var {
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 var  Item = require('./Item');
 var  Pet = require('./Pet');
-var  Library = require('./Library');
+//var  Library = require('./Library');
+var  Library = require('./NavBox');
 var  Setting = require('./Setting');
 var  SampleComponent = require('./SampleComponent');
 
