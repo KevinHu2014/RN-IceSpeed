@@ -109,7 +109,7 @@ var Pet = React.createClass({
               style={{borderRadius: 0}}>
                 <View style={styles.R2_button_S}>
                   <Text style={styles.back_welcome_S}>
-                    {this.state.press_R2 ? '💪' : '神化'}
+                    {this.state.press_R2 ? '💪' : '進化'}
                   </Text>
                 </View>
               </TouchableHighlight>

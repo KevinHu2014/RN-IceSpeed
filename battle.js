@@ -66,21 +66,22 @@ var battle = React.createClass({
   render() {
     return (
     	<View style={styles.container}>
-    		<View style={styles.status}>
-          <View style={styles.status_img}>
-            <Image source={require('./c.png')} 
-              style={{width:50,height:50 }}/>
-          </View>
-          <Animatable.View animation="pulse" iterationCount="infinite"
-            style={styles.status_bar}>
-            <Text>HP </Text>
-            <Progress.Bar progress={this.state.top_progress} width={200} height={10}
-               color={this.state.top_color} borderColor={'#3C3C3C'}/>
-          </Animatable.View>
+    		<View style={styles.status_Top}>
+            <View style={styles.status_img_Top}>
+                <Image source={require('./d.png')} 
+                  style={{width:65,height:65}}/>
+            </View>
+            <Animatable.View animation="pulse" iterationCount="infinite"
+              style={styles.status_bar}>
+                <Text style={styles.welcome_3}>HP </Text>
+                <Progress.Bar progress={this.state.top_progress} width={200} height={10}
+                   color={this.state.top_color} unfilledColor={'#FFFFFF'} borderWidth={5}
+                   borderColor={'#7B7B7B'} />
+            </Animatable.View>
         </View>
         <View style={styles.main}>
           <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./c.png')} 
+            <Animatable.Image ref="top" source={require('./d.png')} 
               style={{marginLeft: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_L ? '👊' : ''}
@@ -88,7 +89,7 @@ var battle = React.createClass({
             </Animatable.Image>
           </View>
           <View style={styles.main_bottom}>
-            <Animatable.Image   ref="bottom" source={require('./b.png')} 
+            <Animatable.Image   ref="bottom" source={require('./e.png')} 
               style={{marginRight: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_M ? '✨' : ''}
@@ -96,17 +97,17 @@ var battle = React.createClass({
              </Animatable.Image> 
           </View>
         </View>
-        <View style={styles.status}>
-          <View style={styles.status_img}>
-            <Image source={require('./b.png')} 
-              style={{width:50,height:50 }}/>
+        <View style={styles.status_Bottom}>
+          <View style={styles.status_img_Bottom}>
+            <Image source={require('./e.png')} 
+              style={{width:65,height:65 }}/>
           </View>
           <Animatable.View animation="pulse" iterationCount="infinite"
             style={styles.status_bar}>
-            <Text>HP </Text>
+            <Text style={styles.welcome_3}>HP </Text>
             <Progress.Bar progress={this.state.bottom_progress} width={200} height={10}
-               color={'#00DB00'} borderColor={'#3C3C3C'} 
-               animated={true}/>
+               color={'#00DB00'} unfilledColor={'#FFFFFF'} borderWidth={5}
+               borderColor={'#7B7B7B'} />
           </Animatable.View>
         </View>
         <View style={styles.skills}>
@@ -150,19 +151,36 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
 	},
-  status: {
+  status_Top: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FF8000',
     flexDirection: 'row',
   },
-  status_img: {
+  status_Bottom: {
     flex: 1,
-    backgroundColor: '#0080FF',
+    backgroundColor: '#2894FF',
+    flexDirection: 'row',
+  },
+  status_img_Top: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderColor: '#FFDC35',
+    borderRadius: 15,
+    borderWidth: 10,
+  },
+  status_img_Bottom: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: '#FFDC35',
+    borderRadius: 15,
+    borderWidth: 10,
   },
   status_bar: {
-    flex: 3,
+    flex: 4,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
@@ -178,14 +196,14 @@ var styles = StyleSheet.create({
   main_top: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#EAC100',
+    backgroundColor: '#d0d0d0',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   main_bottom: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#AE8F00',
+    backgroundColor: '#8E8E8E',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
@@ -230,6 +248,11 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 40,
     color: '#000000',
+  },
+  welcome_3: {
+    color: '#FFFFFF',
+    fontSize:15,
+    fontWeight: "bold",
   },
  });
 module.exports = battle;
