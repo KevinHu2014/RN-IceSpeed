@@ -180,7 +180,7 @@ var styles = StyleSheet.create({
     borderWidth: 10,
   },
   status_bar: {
-    flex: 4,
+    flex: 4.5,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
