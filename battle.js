@@ -13,6 +13,7 @@ var Animatable = require('react-native-animatable');
 var Progress = require('react-native-progress');
 
 import MapExample from './MapExample';
+import LinearGradient from 'react-native-linear-gradient';
 
 var battle = React.createClass({
   getInitialState: function() {
@@ -80,7 +81,9 @@ var battle = React.createClass({
             </Animatable.View>
         </View>
         <View style={styles.main}>
-          <View style={styles.main_top}>
+          <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
+
+            <View style={styles.main_top}>
             <Animatable.Image ref="top" source={require('./d.png')} 
               style={{marginLeft: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
@@ -96,6 +99,8 @@ var battle = React.createClass({
               </Text>
              </Animatable.Image> 
           </View>
+          
+          </LinearGradient>
         </View>
         <View style={styles.status_Bottom}>
           <View style={styles.status_img_Bottom}>
@@ -192,18 +197,20 @@ var styles = StyleSheet.create({
     borderWidth: 5,
     borderLeftWidth: 0,
     borderRightWidth: 0,
+    //justifyContent: 'center',
+    //alignItems: 'center',
   },
   main_top: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#d0d0d0',
+    //backgroundColor: '#d0d0d0',
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
   main_bottom: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: '#8E8E8E',
+    //backgroundColor: '#8E8E8E',
     justifyContent: 'flex-end',
     alignItems: 'center',
   },

@@ -126,4 +126,5 @@ dependencies {
     compile project(':react-native-camera')
     compile project(':RNSound')
     compile project(':reactnativemapboxgl')
+    compile project(':react-native-linear-gradient')
 }
