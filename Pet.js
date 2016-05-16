@@ -135,7 +135,7 @@ var Pet = React.createClass({
               <View style={{flex:5,justifyContent:'flex-start'}}>
                 <Animatable.Image 
                 animation="pulse" iterationCount="infinite"
-                source={require('./c.png')} 
+                source={require('./Img/c.png')} 
                 style={{width:180,height:180 }}>
               </Animatable.Image>
               </View>

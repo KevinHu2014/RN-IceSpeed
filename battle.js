@@ -69,7 +69,7 @@ var battle = React.createClass({
     	<View style={styles.container}>
     		<View style={styles.status_Top}>
             <View style={styles.status_img_Top}>
-                <Image source={require('./d.png')} 
+                <Image source={require('./Img/d.png')} 
                   style={{width:65,height:65}}/>
             </View>
             <Animatable.View animation="pulse" iterationCount="infinite"
@@ -84,7 +84,7 @@ var battle = React.createClass({
           <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
 
             <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./d.png')} 
+            <Animatable.Image ref="top" source={require('./Img/d.png')} 
               style={{marginLeft: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_L ? '👊' : ''}
@@ -92,7 +92,7 @@ var battle = React.createClass({
             </Animatable.Image>
           </View>
           <View style={styles.main_bottom}>
-            <Animatable.Image   ref="bottom" source={require('./e.png')} 
+            <Animatable.Image   ref="bottom" source={require('./Img/e.png')} 
               style={{marginRight: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_M ? '✨' : ''}
@@ -104,7 +104,7 @@ var battle = React.createClass({
         </View>
         <View style={styles.status_Bottom}>
           <View style={styles.status_img_Bottom}>
-            <Image source={require('./e.png')} 
+            <Image source={require('./Img/e.png')} 
               style={{width:65,height:65 }}/>
           </View>
           <Animatable.View animation="pulse" iterationCount="infinite"
