@@ -48,7 +48,7 @@ var battle = React.createClass({
   onPressOut_M: function() {
     this.setState({press_M: false});
     this.refs.bottom.jello(1000);
-    
+
   },
   onPressIn_R: function() {
     this.setState({press_R: true});
@@ -69,7 +69,7 @@ var battle = React.createClass({
     	<View style={styles.container}>
     		<View style={styles.status_Top}>
             <View style={styles.status_img_Top}>
-                <Image source={require('./Img/d.png')} 
+                <Image source={require('./Img/d.png')}
                   style={{width:65,height:65}}/>
             </View>
             <Animatable.View animation="pulse" iterationCount="infinite"
@@ -84,7 +84,7 @@ var battle = React.createClass({
           <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
 
             <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./Img/d.png')} 
+            <Animatable.Image ref="top" source={require('./Img/d.png')}
               style={{marginLeft: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_L ? '👊' : ''}
@@ -92,19 +92,19 @@ var battle = React.createClass({
             </Animatable.Image>
           </View>
           <View style={styles.main_bottom}>
-            <Animatable.Image   ref="bottom" source={require('./Img/e.png')} 
+            <Animatable.Image   ref="bottom" source={require('./Img/e.png')}
               style={{marginRight: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_M ? '✨' : ''}
               </Text>
-             </Animatable.Image> 
+             </Animatable.Image>
           </View>
-          
+
           </LinearGradient>
         </View>
         <View style={styles.status_Bottom}>
           <View style={styles.status_img_Bottom}>
-            <Image source={require('./Img/e.png')} 
+            <Image source={require('./Img/e.png')}
               style={{width:65,height:65 }}/>
           </View>
           <Animatable.View animation="pulse" iterationCount="infinite"
@@ -189,7 +189,7 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-  },  
+  },
   main: {
     flex: 4,
     flexDirection: 'column',

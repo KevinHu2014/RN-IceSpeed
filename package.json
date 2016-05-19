@@ -15,8 +15,8 @@
     "react-native-charts": "^2.0.3",
     "react-native-lightbox": "^0.5.1",
     "react-native-mapbox-gl": "^4.1.0",
-    "react-native-progress": "^2.2.2",
-    "react-native-scrollable-tab-view": "^0.4.1",
+    "react-native-progress": "^3.0.0",
+    "react-native-scrollable-tab-view": "^0.4.3",
     "react-native-sound": "^0.8.1"
   }
 }
