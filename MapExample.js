@@ -3,7 +3,7 @@
 var React = require('react-native');
 var Mapbox = require('react-native-mapbox-gl');
 var {
-  AppRegistry,
+  Alert,
   StyleSheet,
   View,
   ListView,
@@ -31,16 +31,55 @@ var MapExample = React.createClass({
       },
       annotations: [
       {
-        coordinates: [ 25.035770510088796,121.43201887607574],
+        coordinates: [ 25.03561011686629,121.43148511648178],
         type: 'point',
-        title: 'Important!',
-        subtitle: 'Neat, this is a custom annotation image',
-         // annotationImage: {
-         //   url: 'http://i.imgur.com/To0jCIm.jpg',
-         //   //height: 30,
-         //   //width: 30,
-         // }//using annotationImages crashes application
-      }]
+        title: '寶貝中心',
+        subtitle: '聖言樓',
+
+      },
+      {
+        coordinates: [ 25.033375,121.433839],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '真善美聖',
+      },
+      {
+        coordinates: [ 25.035108,121.433324],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '小夜市',
+      },
+      {
+        coordinates: [ 25.038195824467437,121.43146634101866],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '中美堂',
+      },
+      {
+        coordinates: [ 25.038145, 121.429724],
+        type: 'point',
+        title: '商店',
+        subtitle: '小夜市',
+      },
+      {
+        coordinates: [ 25.03552505976925, 121.43098086118697],
+        type: 'point',
+        title: '商店',
+        subtitle: '理園',
+      },
+      {
+        coordinates: [ 25.034431463268053, 121.4339929819107],
+        type: 'point',
+        title: '商店',
+        subtitle: '輔園',
+      },
+      {
+        coordinates: [ 25.03708038022287, 121.43301397562027],
+        type: 'point',
+        title: '商店',
+        subtitle: '文園',
+      },
+      ]
       
     }
   },
@@ -71,14 +110,78 @@ var MapExample = React.createClass({
    
   },
   onOpenAnnotation(annotation) {
-    //console.log(annotation);
-    const { navigator } = this.props;
+    console.log(annotation.src.title);
+    this.addAnnotations(mapRef,[
+      {
+        coordinates: [ 25.03561011686629,121.43148511648178],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '聖言樓',
+
+      },
+      {
+        coordinates: [ 25.033375,121.433839],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '真善美聖',
+      },
+      {
+        coordinates: [ 25.035108,121.433324],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '小夜市',
+      },
+      {
+        coordinates: [ 25.038195824467437,121.43146634101866],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '中美堂',
+      },
+      {
+        coordinates: [ 25.038145, 121.429724],
+        type: 'point',
+        title: '商店',
+        subtitle: '小夜市',
+      },
+      {
+        coordinates: [ 25.03552505976925, 121.43098086118697],
+        type: 'point',
+        title: '商店',
+        subtitle: '理園',
+      },
+      {
+        coordinates: [ 25.034431463268053, 121.4339929819107],
+        type: 'point',
+        title: '商店',
+        subtitle: '輔園',
+      },
+      {
+        coordinates: [ 25.03708038022287, 121.43301397562027],
+        type: 'point',
+        title: '商店',
+        subtitle: '文園',
+      },
+      ]);
+    if(annotation.src.title=='寶貝中心'){
+      Alert.alert(
+        '歡迎來到寵物中心',
+        '你的寵物都已回復～',
+        [
+          
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
+    else{
+      const { navigator } = this.props;
         if(navigator) {
             navigator.push({
                 name: 'battle',
                 component: battle,
             })
         }
+    }
+    
   },
   _pressButton() {
         
