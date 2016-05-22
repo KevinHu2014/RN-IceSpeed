@@ -34,7 +34,12 @@ var MapExample = React.createClass({
         coordinates: [ 25.035770510088796,121.43201887607574],
         type: 'point',
         title: 'Important!',
-        subtitle: 'Neat, this is a custom annotation image'
+        subtitle: 'Neat, this is a custom annotation image',
+         // annotationImage: {
+         //   url: 'http://i.imgur.com/To0jCIm.jpg',
+         //   //height: 30,
+         //   //width: 30,
+         // }//using annotationImages crashes application
       }]
       
     }
