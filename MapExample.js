@@ -14,6 +14,7 @@ var {
 var mapRef = 'map';
 
 import battle from './battle';
+import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
@@ -250,18 +251,37 @@ var MapExample = React.createClass({
           onOpenAnnotation={this.onOpenAnnotation}
         />
         <View style={styles.explore}>
-          <View style={{flex: 4,}}></View>
-          <View style={styles.explore_R}>
-            <TouchableHighlight
-              onPressIn={this.onPressIn}
-              onPressOut={this.onPressOut}
-              style={{borderRadius: 100}}>
-                <View style={styles.button_S}>
-                  <Text style={styles.welcome_S}>
-                    {this.state.press ? '探索' : '探索'}
+          <View style={{flex: 4,}}>
+              <SwipeableViews style={styles.slideContainer}>
+                <View style={[styles.slide, styles.slide1]}>
+                  <Text style={styles.text}>
+                    slide n°1
                   </Text>
                 </View>
-            </TouchableHighlight>
+                <View style={[styles.slide, styles.slide2]}>
+                  <Text style={styles.text}>
+                    slide n°2
+                  </Text>
+                </View>
+                <View style={[styles.slide, styles.slide3]}>
+                  <Text style={styles.text}>
+                    slide n°3
+                  </Text>
+                </View>
+              </SwipeableViews>
+          </View>
+          <View style={styles.explore_R}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn}
+                onPressOut={this.onPressOut}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_S}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press ? '探索' : '探索'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            
           </View>
         </View>
       </View>
@@ -316,6 +336,7 @@ var styles = StyleSheet.create({
     borderRadius: 100,
     height: 60,
     width: 60,
+    margin:2,
     borderWidth: 3,
     borderColor: '#5B00AE',
     justifyContent: 'center'
@@ -325,6 +346,25 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF'
   },
-
+   slideContainer: {
+    height: 100,
+  },
+  slide: {
+    padding: 15,
+    height: 100,
+  },
+  slide1: {
+    backgroundColor: '#FEA900',
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A',
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 16,
+  },
 });
 module.exports = MapExample;
