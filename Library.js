@@ -1,13 +1,13 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import  {
   StyleSheet,
   Text,
   View,
   Image,
   ScrollView,
   TouchableHighlight,
-} = React;
+} from 'react-native';
 var Animatable = require('react-native-animatable');
 
 var Library = React.createClass({

@@ -1,11 +1,11 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
-} = React;
+} from 'react-native';
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 var  Item = require('./Item');
 var  Pet = require('./Pet');

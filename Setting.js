@@ -1,6 +1,6 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import  {
   Slider,
   Switch,	
   StyleSheet,
@@ -11,7 +11,7 @@ var {
   BackAndroid,
   AppState,
   ToastAndroid,
-} = React;
+} from 'react-native';
 
 var Sound = require('react-native-sound');
 var s = new Sound('demo.mp3', Sound.MAIN_BUNDLE, (e) => {

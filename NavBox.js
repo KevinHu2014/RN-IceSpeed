@@ -1,12 +1,12 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import  {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
   Navigator,
-} = React;
+} from 'react-native';
 import Box from './Box';
 var NavBox = React.createClass({
   renderScene: function(route, navigator) {

@@ -1,6 +1,5 @@
-'use strict';
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   View,
@@ -8,7 +7,7 @@ var {
   ScrollView,
   TouchableHighlight,
   TouchableNativeFeedback,
-} = React;
+} from 'react-native';
 var Animatable = require('react-native-animatable');
 var Progress = require('react-native-progress');
 

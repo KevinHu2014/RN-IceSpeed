@@ -1,12 +1,12 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
   TouchableOpacity
-} = React;
+} from 'react-native';
 
 
 var Statusbar = React.createClass({

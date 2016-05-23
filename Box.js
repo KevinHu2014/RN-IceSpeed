@@ -1,13 +1,13 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import  {
   Image,
   ListView,
   TouchableHighlight,
   StyleSheet,
   Text,
   View,
-} = React;
+} from 'react-native';
 var Lightbox = require('react-native-lightbox');
 var Box = React.createClass({
 

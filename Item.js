@@ -1,11 +1,11 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
-} = React;
+} from 'react-native';
 import { BarChart } from 'react-native-charts';
 
 //var Animatable = require('react-native-animatable');

@@ -1,17 +1,17 @@
 'use strict';
 
-var React = require('react-native');
+import React, { Component } from 'react';
 var Mapbox = require('react-native-mapbox-gl');
-var {
+var mapRef = 'map';
+import {
   Alert,
   StyleSheet,
-  View,
-  ListView,
   Text,
+  View,
+  TouchableHighlight,
   TouchableOpacity,
-  TouchableHighlight
-} = React;
-var mapRef = 'map';
+} from 'react-native';
+
 
 import battle from './battle';
 import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
