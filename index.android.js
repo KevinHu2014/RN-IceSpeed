@@ -6,5 +6,5 @@ var {AppRegistry} = React;
 var test = require('./SampleComponent');
 //var test = require('./NavBox');
 //var test = require('./MapExample');
-//var test = require('./testmap');
+//var test = require('./testAdmob');
 AppRegistry.registerComponent('test', () => test);
