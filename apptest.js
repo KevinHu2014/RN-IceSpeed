@@ -18,7 +18,7 @@ var apptest = React.createClass({
             <View style={styles.button_R}
               elevation={10}>
               <Text style={styles.welcome}>
-                OAQ
+                OAQ test
               </Text>
             </View>
           </View>
