@@ -116,7 +116,7 @@ var battle = React.createClass({
         </View>
         <View style={styles.skills}>
           <TouchableHighlight
-            style={{flex:1 }}
+            style={{flex:1,margin:5,borderRadius:5, }}
             onPressIn={this.onPressIn_L}
             onPressOut={this.onPressOut_L}>
               <View style={styles.button_L}>
@@ -126,7 +126,7 @@ var battle = React.createClass({
               </View>
           </TouchableHighlight>
           <TouchableHighlight
-            style={{flex:1 }}
+            style={{flex:1,margin:5,borderRadius:5, }}
             onPressIn={this.onPressIn_M}
             onPressOut={this.onPressOut_M}>
               <View style={styles.button_M}>
@@ -136,7 +136,7 @@ var battle = React.createClass({
               </View>
           </TouchableHighlight>
           <TouchableHighlight
-            style={{flex:1 }}
+            style={{flex:1,margin:5,borderRadius:5, }}
             onPressIn={this.onPressIn_R}
             onPressOut={this.onPressOut_R}>
               <View style={styles.button_R}>
@@ -215,31 +215,32 @@ var styles = StyleSheet.create({
   },
   skills: {
     flex: 1,
-    backgroundColor: '#A9A9A9',
-    borderColor: '#A9A9A9',
-    borderWidth: 10,
+    backgroundColor: '#FFFFFF',
     flexDirection: 'row',
   },
   button_L: {
     flex: 1,
-    backgroundColor: '#4F4F4F',
-    borderWidth: 5,
+    backgroundColor: '#317AE9',
+    //borderWidth: 5,
     borderColor: '#FFFFFF',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius:5,
   },
   button_M: {
     flex: 1,
-    backgroundColor: '#4F4F4F',
-    borderWidth: 5,
+    backgroundColor: '#317AE9',
+    //borderWidth: 5,
     borderColor: '#FFFFFF',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius:5,
   },
   button_R: {
     flex: 1,
-    backgroundColor: '#4F4F4F',
-    borderWidth: 5,
+    backgroundColor: '#317AE9',
+    //space-aroundborderWidth: 5,
     borderColor: '#FFFFFF',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius:5,
   },
   welcome: {
     fontSize: 30,
