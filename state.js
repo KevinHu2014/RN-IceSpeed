@@ -1,13 +1,13 @@
-'use strict';
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
   StyleSheet,
   Text,
   View,
   TouchableHighlight,
   AppState,
   ToastAndroid,
-} = React;
+} from 'react-native';
 
 
 var state = React.createClass({

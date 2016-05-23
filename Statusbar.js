@@ -61,8 +61,9 @@ var styles = StyleSheet.create({
     backgroundColor: '#d0d0d0',
     borderWidth: 10,
     borderColor: '#5B5B5B',
+    borderTopColor: '#A0A0A0',
     borderLeftColor: '#8E8E8E',
-    borderRightColor: '#8E8E8E',
+    borderRightColor: '#858585',
   },
   Top_welcome_R: {
     fontSize: 30,

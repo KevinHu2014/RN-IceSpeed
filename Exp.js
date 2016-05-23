@@ -1,6 +1,5 @@
-'use strict';
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   Slider,
   Switch,	
   StyleSheet,
@@ -9,7 +8,7 @@ var {
   TouchableHighlight,
   TouchableOpacity,
   ToastAndroid,
-} = React;
+} from 'react-native';
 
 var Exp = React.createClass({
   getDefaultProps() {

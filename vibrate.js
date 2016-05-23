@@ -1,13 +1,11 @@
-'use strict';
-
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   StyleSheet,
   View,
   Text,
   TouchableHighlight,
   Vibration,
-} = React;
+} from 'react-native';
 
 //exports.framework = 'React';
 //exports.title = 'Vibration';
