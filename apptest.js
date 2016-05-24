@@ -1,55 +1,124 @@
 import React, { Component } from 'react';
-var Mapbox = require('react-native-mapbox-gl');
-var mapRef = 'mapRef';
 import {
-  AppRegistry,
   StyleSheet,
   Text,
-  StatusBar,
-  View
+  View,
+  TouchableHighlight,
 } from 'react-native';
 
-var apptest = React.createClass({
-    render() {
-      return (
-        <View style={styles.container}>
-          <View style={{flex: 3,}}></View>
-          <View style={{flex: 1,}}>
-            <View style={styles.button_R}
-              elevation={10}>
-              <Text style={styles.welcome}>
-                OAQ test
-              </Text>
-            </View>
-          </View>
-          <View style={{flex: 3,}}></View>
-          
-        </View>
-      );
-    }
- 
-});
+import * as Animatable from 'react-native-animatable';
+import Collapsible from 'react-native-collapsible';
+import Accordion from 'react-native-collapsible/Accordion';
 
-var styles = StyleSheet.create({
+const BACON_IPSUM = 'Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs. Picanha beef prosciutto meatball turkey shoulder shank salami cupim doner jowl pork belly cow. Chicken shankle rump swine tail frankfurter meatloaf ground round flank ham hock tongue shank andouille boudin brisket. ';
+
+const CONTENT = [
+  {
+    title: 'First',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Second',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Third',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Fourth',
+    content: BACON_IPSUM,
+  },
+  {
+    title: 'Fifth',
+    content: BACON_IPSUM,
+  },
+];
+
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-  },
-  button_R: {
-    flex: 1,
-    backgroundColor: '#317AE9',
-    //space-aroundborderWidth: 5,
-    borderColor: '#FFFFFF',
     justifyContent: 'center',
-    borderRadius:5,
-    margin:10,
+    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 30,
-    fontWeight: "bold",
+  title: {
     textAlign: 'center',
-    margin: 10,
-    color: '#FFFFFF'
+    fontSize: 22,
+    fontWeight: '300',
+    marginBottom: 20,
   },
+  header: {
+    backgroundColor: '#F5FCFF',
+    padding: 10,
+  },
+  headerText: {
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: '500',
+  },
+  content: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: '#fff',
+  },
+  active: {
+    backgroundColor: 'rgba(255,255,255,1)',
+  },
+  inactive: {
+    backgroundColor: 'rgba(245,252,255,1)',
+  },
+});
+
+
+ var apptest = React.createClass({ 
+  
+  getInitialState: function() {
+    return {
+      collapsed: true,
+    }
+  },
+  _toggleExpanded() {
+    this.setState({ collapsed: !this.state.collapsed });
+  },
+
+  _renderHeader(section, i, isActive) {
+    return (
+      <Animatable.View duration={400} style={[styles.header, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
+        <Text style={styles.headerText}>{section.title}</Text>
+      </Animatable.View>
+    );
+  },
+
+  _renderContent(section, i, isActive) {
+    return (
+      <Animatable.View duration={400}  style={[styles.content, isActive ? styles.active : styles.inactive]} transition="backgroundColor">
+        <Animatable.Text animation={isActive ? 'bounceIn' : undefined}>{section.content}</Animatable.Text>
+      </Animatable.View>
+    );
+  },
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Accordion Example</Text>
+        <TouchableHighlight onPress={this._toggleExpanded}>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Single Collapsible</Text>
+          </View>
+        </TouchableHighlight>
+        <Collapsible collapsed={this.state.collapsed} align="center">
+          <View style={styles.content}>
+            <Text>Bacon ipsum dolor amet chuck turducken landjaeger tongue spare ribs</Text>
+          </View>
+        </Collapsible>
+        <Accordion
+          sections={CONTENT}
+          renderHeader={this._renderHeader}
+          renderContent={this._renderContent}
+          duration={400}
+        />
+      </View>
+    );
+  }
 });
 module.exports = apptest;
