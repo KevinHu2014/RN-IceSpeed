@@ -224,34 +224,36 @@ var MapExample = React.createClass({
                 <Text style={styles.welcome_R}>冰櫃神速</Text>
             </TouchableOpacity>
           </View>
-        </View> 
-        <Mapbox
-          annotations={this.state.annotations}
-          accessToken={'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ'}
-          centerCoordinate={this.state.center}
-          debugActive={false}
-          direction={60}
-          ref={mapRef}
-          onRegionChange={this.onRegionChange}
-          rotateEnabled={true}
-          scrollEnabled={true}
-          style={styles.map}
-          showsUserLocation={true}
-          styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
-          //styleURL={this.mapStyles.streets}
-          userTrackingMode={this.userTrackingMode.none}
-          zoomEnabled={true}
-          zoomLevel={17}
-          compassIsHidden={true}
-          onUserLocationChange={this.onUserLocationChange}
-          onLongPress={this.onLongPress}
-          logoIsHidden={true}
-          attributionButtonIsHidden={true}
-          onOpenAnnotation={this.onOpenAnnotation}
-        />
-        <View style={styles.explore}>
-          <View style={{flex: 4,}}></View>
-          <View style={styles.explore_R}>
+        </View>
+        <View style={{flexDirection: 'row',flex: 8,}}>
+          <View style={{flex: 5,}}>
+              <Mapbox
+                annotations={this.state.annotations}
+                accessToken={'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ'}
+                centerCoordinate={this.state.center}
+                debugActive={false}
+                direction={60}
+                ref={mapRef}
+                onRegionChange={this.onRegionChange}
+                rotateEnabled={true}
+                scrollEnabled={true}
+                style={styles.map}
+                showsUserLocation={true}
+                styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
+                //styleURL={this.mapStyles.streets}
+                userTrackingMode={this.userTrackingMode.none}
+                zoomEnabled={true}
+                zoomLevel={17}
+                compassIsHidden={true}
+                onUserLocationChange={this.onUserLocationChange}
+                onLongPress={this.onLongPress}
+                logoIsHidden={true}
+                attributionButtonIsHidden={true}
+                onOpenAnnotation={this.onOpenAnnotation}
+              />
+          </View>
+          <View style={{flex: 1,backgroundColor:'rgba(135,206,235, 0.4)',}}>
+            <View style={styles.explore_R}>
               <TouchableHighlight
                 onPressIn={this.onPressIn}
                 onPressOut={this.onPressOut}
@@ -262,9 +264,9 @@ var MapExample = React.createClass({
                     </Text>
                   </View>
               </TouchableHighlight>
-            
           </View>
-        </View>
+          </View>
+        </View> 
       </View>
     );
   }
