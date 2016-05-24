@@ -14,12 +14,14 @@ import {
 
 
 import battle from './battle';
+import Collapsible from 'react-native-collapsible';
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
   getInitialState() {
     return {
       press: false,
+      collapsed: true,
       i: 5,
       UserLat: 25.035770510088796,
       UserLon: 121.43201887607574,
@@ -83,6 +85,9 @@ var MapExample = React.createClass({
       
     }
   },
+  _toggleExpanded() {
+    this.setState({ collapsed: !this.state.collapsed });
+  },
   onUserLocationChange(location) {
     //console.log(location);
     this.state.UserLat = location.src.latitude; 
@@ -98,12 +103,7 @@ var MapExample = React.createClass({
   },
   onLongPress(location) {
     //console.log(location);
-    this.addAnnotations(mapRef, [{
-          coordinates: [this.state.newLat,this.state.newLon],
-          type: 'point',
-          title: 'This is a new marker',
-          id: 'foo'
-        },]);
+    this.setState({ collapsed: !this.state.collapsed });
   },
   onRegionChange(location) {
     //console.log(location);
@@ -252,8 +252,9 @@ var MapExample = React.createClass({
                 onOpenAnnotation={this.onOpenAnnotation}
               />
           </View>
-          <View style={{flex: 1,backgroundColor:'rgba(135,206,235, 0.4)',}}>
-            <View style={styles.explore_R}>
+          <Collapsible collapsed={this.state.collapsed} align="center">
+          <View style={{flex: 1,}}>
+            
               <TouchableHighlight
                 onPressIn={this.onPressIn}
                 onPressOut={this.onPressOut}
@@ -264,8 +265,9 @@ var MapExample = React.createClass({
                     </Text>
                   </View>
               </TouchableHighlight>
+            
           </View>
-          </View>
+          </Collapsible>
         </View> 
       </View>
     );
