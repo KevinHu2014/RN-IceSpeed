@@ -14,7 +14,6 @@ import {
 
 
 import battle from './battle';
-import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
@@ -112,6 +111,36 @@ var MapExample = React.createClass({
   },
   onOpenAnnotation(annotation) {
     console.log(annotation.src.title);
+    if(annotation.src.title=='寶貝中心'){
+      Alert.alert(
+        '歡迎來到寵物中心',
+        '你的寵物都已回復～',
+        [
+          
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
+    else{
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'battle',
+                component: battle,
+            })
+        }
+    }
+    
+  },
+  _pressButton() {
+        
+  },
+  onPressIn() {
+    this.setState({press_Back: true});
+    this.removeAllAnnotations(mapRef);
+  },
+  onPressOut() {
+    this.setState({press_Back: false});
     this.addAnnotations(mapRef,[
       {
         coordinates: [ 25.03561011686629,121.43148511648178],
@@ -163,36 +192,6 @@ var MapExample = React.createClass({
         subtitle: '文園',
       },
       ]);
-    if(annotation.src.title=='寶貝中心'){
-      Alert.alert(
-        '歡迎來到寵物中心',
-        '你的寵物都已回復～',
-        [
-          
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ]
-      )
-    }
-    else{
-      const { navigator } = this.props;
-        if(navigator) {
-            navigator.push({
-                name: 'battle',
-                component: battle,
-            })
-        }
-    }
-    
-  },
-  _pressButton() {
-        
-  },
-  onPressIn() {
-    this.setState({press_Back: true});
-    this.removeAllAnnotations(mapRef);
-  },
-  onPressOut() {
-    this.setState({press_Back: false});
     for(this.state.i=0;this.state.i<10;this.state.i++){
       let distance = 0.00003;
       let x = Math.floor(Math.random() * 20 - 10);//-10~10
@@ -251,25 +250,7 @@ var MapExample = React.createClass({
           onOpenAnnotation={this.onOpenAnnotation}
         />
         <View style={styles.explore}>
-          <View style={{flex: 4,}}>
-              <SwipeableViews style={styles.slideContainer}>
-                <View style={[styles.slide, styles.slide1]}>
-                  <Text style={styles.text}>
-                    slide n°1
-                  </Text>
-                </View>
-                <View style={[styles.slide, styles.slide2]}>
-                  <Text style={styles.text}>
-                    slide n°2
-                  </Text>
-                </View>
-                <View style={[styles.slide, styles.slide3]}>
-                  <Text style={styles.text}>
-                    slide n°3
-                  </Text>
-                </View>
-              </SwipeableViews>
-          </View>
+          <View style={{flex: 4,}}></View>
           <View style={styles.explore_R}>
               <TouchableHighlight
                 onPressIn={this.onPressIn}
