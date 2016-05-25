@@ -227,7 +227,7 @@ var MapExample = React.createClass({
       this.addAnnotations(mapRef, [{
           coordinates: [this.state.newLat,this.state.newLon],
           type: 'point',
-          title: 'This is a new marker',
+          title: '我是怪物',
           id: 'foo'
         },]);
     }

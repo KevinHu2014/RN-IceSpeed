@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Alert,
   StyleSheet,
   Text,
   View,
@@ -13,8 +14,10 @@ var Progress = require('react-native-progress');
 
 import MapExample from './MapExample';
 import LinearGradient from 'react-native-linear-gradient';
+import TimerMixin from 'react-timer-mixin';
 
 var battle = React.createClass({
+  mixins: [TimerMixin],
   getInitialState: function() {
     return {
       press_L: false,
@@ -23,45 +26,121 @@ var battle = React.createClass({
       top_progress: 0.9,
       top_color: '#00DB00',
       bottom_progress: 0.6,
+      bottom_color: '#00DB00',
       skill_1: 0.1,
-      skill_2: 0.1,
-
+      skill_2: 0.3,
+      enemy_skill: 0.1,
+    }
+  },
+  check_Hp_color: function(){
+    if(this.state.top_progress > 0.3){
+      this.state.top_color = '#00DB00';
+    }
+    else{
+      this.state.top_color = '#FF0000';
+    }
+    if(this.state.bottom_progress > 0.3){
+      this.state.bottom_color = '#00DB00';
+    }
+    else{
+      this.state.bottom_color = '#FF0000';
     }
   },
   onPressIn_L: function() {
     this.setState({press_L: true});
     this.state.top_progress = this.state.top_progress - this.state.skill_1;
-    if(this.state.top_progress <= 0.3){
-      this.state.top_color = '#FF0000';
+    this.check_Hp_color();
+    if(this.state.top_progress <= 0.1){
+        Alert.alert(
+        '勝利～',
+        '獲得經驗值：100\n獲得道具＊1',
+        [
+          
+          {text: 'OK', onPress: () => {
+            console.log('OK Pressed!');
+            const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
+          }},
+        ]
+        )
     }
   },
   onPressOut_L: function() {
     this.setState({press_L: false});
     this.refs.bottom.wobble(1000);
-    this.refs.top.swing(1000);
+    this.setTimeout(
+      () => {this.refs.top.swing(1000);
+        this.setTimeout(
+          () => {this.fight_back();},
+          500
+        );
+      },
+      1500
+    );
+    
+    
+  },
+  fight_back: function(){
+    //怪物反擊
+    /*Alert.alert(
+        '測試',
+        '測試',
+        [
+          
+          {text: 'OK', onPress: () => console.log('OK Pressed!')},
+        ]
+        )
+    */
+    
+    this.refs.top.wobble(1000);
+    
+    this.setTimeout(
+      () => {this.refs.bottom.swing(1000);},
+      1500
+    ); 
+    this.state.bottom_progress = this.state.bottom_progress - this.state.enemy_skill;
+    this.check_Hp_color();
+    if(this.state.bottom_progress <= 0){
+        Alert.alert(
+        '你已經死了～',
+        '靠北阿你玩得一塌糊塗\n跟你做任何事一樣\n...而且沒人愛你',
+        [
+          
+          {text: 'OK', onPress: () => {
+            console.log('OK Pressed!');
+            const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
+          }},
+        ]
+        )
+    }
+
   },
   onPressIn_M: function() {
     this.setState({press_M: true});
     this.state.bottom_progress = this.state.bottom_progress + this.state.skill_2;
+    this.check_Hp_color();
   },
   onPressOut_M: function() {
     this.setState({press_M: false});
     this.refs.bottom.jello(1000);
-
   },
   onPressIn_R: function() {
     this.setState({press_R: true});
   },
   onPressOut_R: function() {
     this.setState({press_R: false});
-    //this.state.top_progress=0.9;
-    //this.state.bottom_progress=0.6;
-    //this.state.top_color='#00DB00';
-    const { navigator } = this.props;
-        if(navigator) {
-            //返回mapexample
-            navigator.pop();
-        }
+    this.state.top_progress=0.9;
+    this.state.bottom_progress=0.6;
+    this.state.top_color='#00DB00';
+    this.check_Hp_color();
+    
   },
   render() {
     return (
@@ -71,13 +150,14 @@ var battle = React.createClass({
                 <Image source={require('./Img/d.png')}
                   style={{width:65,height:65}}/>
             </View>
-            <Animatable.View animation="pulse" iterationCount="infinite"
-              style={styles.status_bar}>
+            <View  style={styles.status_bar}>
                 <Text style={styles.welcome_3}>HP </Text>
-                <Progress.Bar progress={this.state.top_progress} width={200} height={10}
-                   color={this.state.top_color} unfilledColor={'#FFFFFF'} borderWidth={5}
+                <Progress.Bar progress={this.state.top_progress} 
+                   width={200} height={10}
+                   color={this.state.top_color} 
+                   unfilledColor={'#FFFFFF'} borderWidth={5}
                    borderColor={'#7B7B7B'} />
-            </Animatable.View>
+            </View>
         </View>
         <View style={styles.main}>
           <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
@@ -106,13 +186,14 @@ var battle = React.createClass({
             <Image source={require('./Img/e.png')}
               style={{width:65,height:65 }}/>
           </View>
-          <Animatable.View animation="pulse" iterationCount="infinite"
-            style={styles.status_bar}>
+          <View  style={styles.status_bar}>
             <Text style={styles.welcome_3}>HP </Text>
-            <Progress.Bar progress={this.state.bottom_progress} width={200} height={10}
-               color={'#00DB00'} unfilledColor={'#FFFFFF'} borderWidth={5}
+            <Progress.Bar progress={this.state.bottom_progress} 
+               width={200} height={10}
+               color={this.state.bottom_color}  unfilledColor={'#FFFFFF'} 
+               borderWidth={5}
                borderColor={'#7B7B7B'} />
-          </Animatable.View>
+          </View>
         </View>
         <View style={styles.skills}>
           <TouchableHighlight
