@@ -197,31 +197,31 @@ var battle = React.createClass({
         </View>
         <View style={styles.skills}>
           <TouchableHighlight
-            style={{flex:1,margin:5,borderRadius:5, }}
+            style={styles.touchable}
             onPressIn={this.onPressIn_L}
             onPressOut={this.onPressOut_L}>
               <View style={styles.button_L}>
                   <Text style={styles.welcome}>
-                    {this.state.press_L ? '衝撞' : 'skill 1'}
+                    {this.state.press_L ? '發動' : '衝撞'}
                   </Text>
               </View>
           </TouchableHighlight>
           <TouchableHighlight
-            style={{flex:1,margin:5,borderRadius:5, }}
+            style={styles.touchable}
             onPressIn={this.onPressIn_M}
             onPressOut={this.onPressOut_M}>
               <View style={styles.button_M}>
                   <Text style={styles.welcome}>
-                    {this.state.press_M ? '回復' : 'skill 2'}
+                    {this.state.press_M ? '發動' : '回復'}
                   </Text>
               </View>
           </TouchableHighlight>
           <TouchableHighlight
-            style={{flex:1,margin:5,borderRadius:5, }}
+            style={styles.touchable}
             onPressIn={this.onPressIn_R}
             onPressOut={this.onPressOut_R}>
               <View style={styles.button_R}>
-                  <Text style={styles.welcome}>
+                  <Text style={styles.welcome_R}>
                     {this.state.press_R ? '一' : 'back'}
                   </Text>
               </View>
@@ -243,7 +243,7 @@ var styles = StyleSheet.create({
   },
   status_Bottom: {
     flex: 1,
-    backgroundColor: '#2894FF',
+    backgroundColor: '#FF9D33',
     flexDirection: 'row',
   },
   status_img_Top: {
@@ -299,43 +299,58 @@ var styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
   },
+  touchable:{
+    flex:1,
+    margin:15,
+    borderRadius:2,
+    elevation:20 
+  },
   button_L: {
     flex: 1,
-    backgroundColor: '#317AE9',
+    backgroundColor: '#2881F0',
     //borderWidth: 5,
     borderColor: '#FFFFFF',
     justifyContent: 'center',
-    borderRadius:5,
+    borderRadius:2,
   },
   button_M: {
     flex: 1,
-    backgroundColor: '#317AE9',
+    backgroundColor: '#2881F0',
     //borderWidth: 5,
     borderColor: '#FFFFFF',
     justifyContent: 'center',
-    borderRadius:5,
+    borderRadius:2,
   },
   button_R: {
     flex: 1,
-    backgroundColor: '#317AE9',
+    backgroundColor: '#FFFFFF',
     //space-aroundborderWidth: 5,
     borderColor: '#FFFFFF',
     justifyContent: 'center',
-    borderRadius:5,
+    borderRadius:2,
   },
   welcome: {
-    fontSize: 30,
+    fontSize: 25,
     fontWeight: "bold",
     textAlign: 'center',
     margin: 10,
+    marginLeft: 15,
+    marginRight: 15,
     color: '#FFFFFF'
+  },
+  welcome_R: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: 'center',
+    margin: 10,
+    color: '#000000'
   },
   welcome_2: {
     fontSize: 50,
     fontWeight: "bold",
     textAlign: 'center',
     marginTop: 40,
-    color: '#000000',
+    color: '#343434',
   },
   welcome_3: {
     color: '#FFFFFF',
