@@ -21,7 +21,10 @@ var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
   getInitialState() {
     return {
-      press: false,
+      press_explore: false,
+      press_announcement: false,
+      press_monster: false,
+      press_mission: false,
       collapsed: true,
       i: 5,
       UserLat: 25.035770510088796,
@@ -136,12 +139,30 @@ var MapExample = React.createClass({
   _pressButton() {
         
   },
-  onPressIn() {
-    this.setState({press_Back: true});
+  onPressIn_monster() {
+    this.setState({press_: true});
+  },
+  onPressOut_monster() {
+    this.setState({press_: true});
+  },
+  onPressIn_announcement() {
+    this.setState({press_: true});
+  },
+  onPressOut_announcement() {
+    this.setState({press_: true});
+  },
+  onPressIn_mission() {
+    this.setState({press_: true});
+  },
+  onPressOut_mission() {
+    this.setState({press_: true});
+  },
+  onPressIn_explore() {
+    this.setState({press_explore: true});
     this.removeAllAnnotations(mapRef);
   },
-  onPressOut() {
-    this.setState({press_Back: false});
+  onPressOut_explore() {
+    this.setState({press_explore: false});
     this.addAnnotations(mapRef,[
       {
         coordinates: [ 25.03561011686629,121.43148511648178],
@@ -220,15 +241,51 @@ var MapExample = React.createClass({
           <Statusbar></Statusbar>
         </View>
         <Collapsible collapsed={this.state.collapsed} align="center">
-          <View style={{flex: 1,}}>
-            <View style={styles.explore_R}>
+          <View style={styles.explore}>
+            <View style={styles.explore_child}>
               <TouchableHighlight
-                onPressIn={this.onPressIn}
-                onPressOut={this.onPressOut}
+                onPressIn={this.onPressIn_monster}
+                onPressOut={this.onPressOut_monster}
                 style={{borderRadius: 100}}>
-                  <View style={styles.button_S}>
+                  <View style={styles.button_monster}>
                     <Text style={styles.welcome_S}>
-                      {this.state.press ? '探索' : '探索'}
+                      {this.state.press_monster ? '怪物' : '怪物'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_announcement}
+                onPressOut={this.onPressOut_announcement}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_announcement}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_announcement ? '公告' : '公告'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_mission}
+                onPressOut={this.onPressOut_mission}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_mission}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_mission ? '任務' : '任務'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_explore}
+                onPressOut={this.onPressOut_explore}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_explore}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_explore ? '探索' : '探索'}
                     </Text>
                   </View>
               </TouchableHighlight>
@@ -299,15 +356,46 @@ var styles = StyleSheet.create({
   },
   explore: {
     flex: 1,
-    flexDirection: 'row',
+    backgroundColor: '#5B5B5B',
+    flexDirection:'row'
   },
-  explore_R: {
+  explore_child: {
     flex:1,
     margin: 3,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  button_S: {
+  button_monster: {
+    backgroundColor: '#7FFF28',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#36BB14',
+    justifyContent: 'center'
+  },
+  button_announcement: {
+    backgroundColor: '#FFC919',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#C0740C',
+    justifyContent: 'center'
+  },
+  button_mission: {
+    backgroundColor: '#13B0FF',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#177DDB',
+    justifyContent: 'center'
+  },
+  button_explore: {
     backgroundColor: '#8600FF',
     borderRadius: 100,
     height: 60,
