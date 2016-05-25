@@ -20,9 +20,9 @@ var tab = React.createClass({
 
       <ScrollableTabView tabBarPosition="bottom"
       tabBarTextStyle={{fontFamily: 'AvenirNext-Medium', fontSize: 25}}
-      tabBarBackgroundColor="#FFD306"
-      tabBarActiveTextColor="white"
-      tabBarUnderlineColor="red"
+      tabBarBackgroundColor="white"
+      tabBarActiveTextColor="#146EFF"
+      tabBarUnderlineColor="#146EFF"
       locked={true}
       >
         <SampleComponent tabLabel="地圖" />
