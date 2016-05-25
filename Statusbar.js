@@ -37,7 +37,7 @@ var styles = StyleSheet.create({
   Top_status: {
     flex: 1,
     flexDirection: 'row',
-    backgroundColor: 'black',
+    backgroundColor: '#8E8E8E',
   },
   Top_status_L: {
     flex: 1,

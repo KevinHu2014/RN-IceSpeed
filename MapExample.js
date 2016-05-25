@@ -15,6 +15,7 @@ import {
 
 import battle from './battle';
 import Collapsible from 'react-native-collapsible';
+var Statusbar = require('./Statusbar');
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
@@ -216,45 +217,11 @@ var MapExample = React.createClass({
        
        
         <View style={styles.status}>
-          <View style={styles.status_L}>
-            <Text style={styles.welcome_L}>火</Text>
-          </View>
-          <View style={styles.status_R}>
-            <TouchableOpacity onPress={this._pressButton}>
-                <Text style={styles.welcome_R}>冰櫃神速</Text>
-            </TouchableOpacity>
-          </View>
+          <Statusbar></Statusbar>
         </View>
-        <View style={{flexDirection: 'row',flex: 8,}}>
-          <View style={{flex: 5,}}>
-              <Mapbox
-                annotations={this.state.annotations}
-                accessToken={'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ'}
-                centerCoordinate={this.state.center}
-                debugActive={false}
-                direction={60}
-                ref={mapRef}
-                onRegionChange={this.onRegionChange}
-                rotateEnabled={true}
-                scrollEnabled={true}
-                style={styles.map}
-                showsUserLocation={true}
-                styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
-                //styleURL={this.mapStyles.streets}
-                userTrackingMode={this.userTrackingMode.none}
-                zoomEnabled={true}
-                zoomLevel={17}
-                compassIsHidden={true}
-                onUserLocationChange={this.onUserLocationChange}
-                onLongPress={this.onLongPress}
-                logoIsHidden={true}
-                attributionButtonIsHidden={true}
-                onOpenAnnotation={this.onOpenAnnotation}
-              />
-          </View>
-          <Collapsible collapsed={this.state.collapsed} align="center">
+        <Collapsible collapsed={this.state.collapsed} align="center">
           <View style={{flex: 1,}}>
-            
+            <View style={styles.explore_R}>
               <TouchableHighlight
                 onPressIn={this.onPressIn}
                 onPressOut={this.onPressOut}
@@ -265,10 +232,34 @@ var MapExample = React.createClass({
                     </Text>
                   </View>
               </TouchableHighlight>
-            
+            </View>
           </View>
-          </Collapsible>
-        </View> 
+        </Collapsible>
+        <Mapbox
+          annotations={this.state.annotations}
+          accessToken={'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ'}
+          centerCoordinate={this.state.center}
+          debugActive={false}
+          direction={60}
+          ref={mapRef}
+          onRegionChange={this.onRegionChange}
+          rotateEnabled={true}
+          scrollEnabled={true}
+          style={styles.map}
+          showsUserLocation={true}
+          styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
+          //styleURL={this.mapStyles.streets}
+          userTrackingMode={this.userTrackingMode.none}
+          zoomEnabled={true}
+          zoomLevel={17}
+          compassIsHidden={true}
+          onUserLocationChange={this.onUserLocationChange}
+          onLongPress={this.onLongPress}
+          logoIsHidden={true}
+          attributionButtonIsHidden={true}
+          onOpenAnnotation={this.onOpenAnnotation}
+        />
+          
       </View>
     );
   }
