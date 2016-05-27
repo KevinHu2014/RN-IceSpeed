@@ -107,7 +107,7 @@ var MapExample = React.createClass({
   },
   onLongPress(location) {
     //console.log(location);
-    this.setState({ collapsed: !this.state.collapsed });
+    //this.setState({ collapsed: !this.state.collapsed });
   },
   onRegionChange(location) {
     //console.log(location);
@@ -137,7 +137,7 @@ var MapExample = React.createClass({
     
   },
   _pressButton() {
-        
+    this.setState({ collapsed: !this.state.collapsed });
   },
   onPressIn_monster() {
     this.setState({press_: true});
@@ -238,7 +238,20 @@ var MapExample = React.createClass({
        
        
         <View style={styles.status}>
-          <Statusbar></Statusbar>
+          <View style={styles.Top_status}>
+            <View style={styles.Top_status_L}>
+              <TouchableOpacity onPress={this._pressButton}>
+                <View style={styles.Top_status_Button_L}>
+                  <Text style={styles.Top_welcome_L}>三</Text>
+                </View> 
+              </TouchableOpacity>
+            </View>
+            <View style={styles.Top_status_R}>
+                
+                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
+                
+            </View>
+          </View>
         </View>
         <Collapsible collapsed={this.state.collapsed} align="center">
           <View style={styles.explore}>
@@ -326,6 +339,53 @@ var styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+  },
+  Top_status: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#8E8E8E',
+  },
+  Top_status_L: {
+    flex: 1,
+    //backgroundColor: '#EA0000',
+    //borderWidth: 5,
+    //borderColor: '#FFD306',
+    justifyContent: 'center',
+    alignItems: 'center',
+    //borderRadius: 100,
+    //borderTopRightRadius: 0,
+
+  },
+  Top_welcome_L: {
+    fontSize: 30,
+    color: '#FFFFFF',
+  },
+  Top_status_R:{
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    borderWidth: 10,
+    borderColor: '#5B5B5B',
+    borderTopColor: '#A0A0A0',
+    borderLeftColor: '#8E8E8E',
+    borderRightColor: '#858585',
+  },
+  Top_welcome_R: {
+    fontSize: 30,
+    color: 'black',
+  },
+  Top_status_Button_L:{
+    backgroundColor: '#2881F0',
+    borderRadius: 10,
+    height: 50,
+    width: 50,
+    margin:2,
+    //borderWidth: 3,
+    //borderColor: '#6F7469',
+    justifyContent: 'center',
+    alignItems: 'center',
+
   },
   status: {
     flex: 1,
