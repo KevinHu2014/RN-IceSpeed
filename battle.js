@@ -147,7 +147,7 @@ var battle = React.createClass({
     	<View style={styles.container}>
     		<View style={styles.status_Top}>
             <View style={styles.status_img_Top}>
-                <Image source={require('./Img/d.png')}
+                <Image source={require('./Img/f.png')}
                   style={{width:65,height:65}}/>
             </View>
             <View  style={styles.status_bar}>
@@ -163,7 +163,7 @@ var battle = React.createClass({
           <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
 
             <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./Img/d.png')}
+            <Animatable.Image ref="top" source={require('./Img/f.png')}
               style={{marginLeft: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_L ? '👊' : ''}
