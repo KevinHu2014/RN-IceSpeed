@@ -240,11 +240,9 @@ var MapExample = React.createClass({
         <View style={styles.status}>
           <View style={styles.Top_status}>
             <View style={styles.Top_status_L}>
-              <TouchableOpacity onPress={this._pressButton}>
-                <View style={styles.Top_status_Button_L}>
-                  <Text style={styles.Top_welcome_L}>三</Text>
-                </View> 
-              </TouchableOpacity>
+              
+                  <Text style={styles.Top_welcome_L} onPress={this._pressButton}>三</Text>
+                
             </View>
             <View style={styles.Top_status_R}>
                 
@@ -347,7 +345,7 @@ var styles = StyleSheet.create({
   },
   Top_status_L: {
     flex: 1,
-    //backgroundColor: '#EA0000',
+    backgroundColor: '#AFAFAF',
     //borderWidth: 5,
     //borderColor: '#FFD306',
     justifyContent: 'center',
