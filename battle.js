@@ -18,6 +18,7 @@ import TimerMixin from 'react-timer-mixin';
 
 var battle = React.createClass({
   mixins: [TimerMixin],
+  
   getInitialState: function() {
     return {
       press_L: false,
@@ -29,8 +30,15 @@ var battle = React.createClass({
       bottom_color: '#00DB00',
       skill_1: 0.1,
       skill_2: 0.3,
-      enemy_skill: 0.1,
+      enemy_skill: 0.9,
+      test: null,
     }
+  },
+  componentDidMount() {
+    //從這裡拿到MapExample膗過來的參數
+     this.setState({
+            test: this.props.test
+        });
   },
   check_Hp_color: function(){
     if(this.state.top_progress > 0.3){
@@ -47,6 +55,7 @@ var battle = React.createClass({
     }
   },
   onPressIn_L: function() {
+    console.log(this.state.test);
     this.setState({press_L: true});
     this.state.top_progress = this.state.top_progress - this.state.skill_1;
     this.check_Hp_color();
@@ -112,6 +121,10 @@ var battle = React.createClass({
           {text: 'OK', onPress: () => {
             console.log('OK Pressed!');
             const { navigator } = this.props;
+            if(this.props.getResult) {
+                let result = '成功回傳參數';
+                this.props.getResult(result);
+            }
             if(navigator) {
                 //返回mapexample
                 navigator.pop();
@@ -171,7 +184,7 @@ var battle = React.createClass({
             </Animatable.Image>
           </View>
           <View style={styles.main_bottom}>
-            <Animatable.Image   ref="bottom" source={require('./Img/e.png')}
+            <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
               style={{marginRight: 10,width:140,height:140 }}>
               <Text style={styles.welcome_2}>
                     {this.state.press_M ? '✨' : ''}
@@ -183,7 +196,7 @@ var battle = React.createClass({
         </View>
         <View style={styles.status_Bottom}>
           <View style={styles.status_img_Bottom}>
-            <Image source={require('./Img/e.png')}
+            <Image source={require('./Img/h.png')}
               style={{width:65,height:65 }}/>
           </View>
           <View  style={styles.status_bar}>

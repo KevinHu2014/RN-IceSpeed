@@ -26,6 +26,8 @@ var MapExample = React.createClass({
       press_monster: false,
       press_mission: false,
       collapsed: true,
+      test: '測試用的XDDDD',
+      result: '冰櫃神速',
       i: 5,
       UserLat: 25.035770510088796,
       UserLon: 121.43201887607574,
@@ -131,6 +133,12 @@ var MapExample = React.createClass({
             navigator.push({
                 name: 'battle',
                 component: battle,
+                params: {
+                    test: this.state.test,
+                    getResult:(result) => {
+                        this.setState({result: result})
+                    }
+                 }   
             })
         }
     }
@@ -246,7 +254,7 @@ var MapExample = React.createClass({
             </View>
             <View style={styles.Top_status_R}>
                 
-                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
+                  <Text style={styles.Top_welcome_R}>{this.state.result}</Text>
                 
             </View>
           </View>
@@ -260,7 +268,7 @@ var MapExample = React.createClass({
                 style={{borderRadius: 100}}>
                   <View style={styles.button_monster}>
                     <Text style={styles.welcome_S}>
-                      {this.state.press_monster ? '怪物' : '怪物'}
+                      {this.state.press_announcement ? '怪物' : '怪物'}
                     </Text>
                   </View>
               </TouchableHighlight>
