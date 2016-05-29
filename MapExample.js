@@ -26,6 +26,8 @@ var MapExample = React.createClass({
       press_monster: false,
       press_mission: false,
       collapsed: true,
+      test: '測試用的XDDDD',
+      result: '冰櫃神速',
       i: 5,
       UserLat: 25.035770510088796,
       UserLon: 121.43201887607574,
@@ -107,7 +109,7 @@ var MapExample = React.createClass({
   },
   onLongPress(location) {
     //console.log(location);
-    this.setState({ collapsed: !this.state.collapsed });
+    //this.setState({ collapsed: !this.state.collapsed });
   },
   onRegionChange(location) {
     //console.log(location);
@@ -131,13 +133,19 @@ var MapExample = React.createClass({
             navigator.push({
                 name: 'battle',
                 component: battle,
+                params: {
+                    test: this.state.test,
+                    getResult:(result) => {
+                        this.setState({result: result})
+                    }
+                 }   
             })
         }
     }
     
   },
   _pressButton() {
-        
+    this.setState({ collapsed: !this.state.collapsed });
   },
   onPressIn_monster() {
     this.setState({press_: true});
@@ -240,12 +248,16 @@ var MapExample = React.createClass({
         <View style={styles.status}>
           <View style={styles.Top_status}>
             <View style={styles.Top_status_L}>
-              <Text style={styles.Top_welcome_L}>火</Text>
+
+              
+                  <Text style={styles.Top_welcome_L} onPress={this._pressButton}>三</Text>
+                
             </View>
             <View style={styles.Top_status_R}>
-                <TouchableOpacity onPress={this._pressButton}>
+                
                   <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
-                </TouchableOpacity>
+                
+
             </View>
           </View>
         </View>
@@ -258,7 +270,7 @@ var MapExample = React.createClass({
                 style={{borderRadius: 100}}>
                   <View style={styles.button_monster}>
                     <Text style={styles.welcome_S}>
-                      {this.state.press_monster ? '怪物' : '怪物'}
+                      {this.state.press_announcement ? '怪物' : '怪物'}
                     </Text>
                   </View>
               </TouchableHighlight>
@@ -343,13 +355,13 @@ var styles = StyleSheet.create({
   },
   Top_status_L: {
     flex: 1,
-    backgroundColor: '#EA0000',
-    borderWidth: 5,
-    borderColor: '#FFD306',
+    backgroundColor: '#AFAFAF',
+    //borderWidth: 5,
+    //borderColor: '#FFD306',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100,
-    borderTopRightRadius: 0,
+    //borderRadius: 100,
+    //borderTopRightRadius: 0,
 
   },
   Top_welcome_L: {
@@ -371,6 +383,20 @@ var styles = StyleSheet.create({
     fontSize: 30,
     color: 'black',
   },
+
+  Top_status_Button_L:{
+    backgroundColor: '#2881F0',
+    borderRadius: 10,
+    height: 50,
+    width: 50,
+    margin:2,
+    //borderWidth: 3,
+    //borderColor: '#6F7469',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+
   status: {
     flex: 1,
     flexDirection: 'row',
