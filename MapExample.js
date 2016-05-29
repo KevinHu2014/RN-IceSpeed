@@ -254,7 +254,7 @@ var MapExample = React.createClass({
             </View>
             <View style={styles.Top_status_R}>
                 
-                  <Text style={styles.Top_welcome_R}>{this.state.result}</Text>
+                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
                 
             </View>
           </View>

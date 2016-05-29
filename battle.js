@@ -216,7 +216,7 @@ var battle = React.createClass({
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'flex-end'}}>
                     <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
-                        marginRight:10}}>{(this.state.bottom_progress)*(this.state.HP)}/{this.state.HP}</Text>
+                        marginRight:10}}>{Math.floor((this.state.bottom_progress)*(this.state.HP))}/{this.state.HP}</Text>
                   </View>
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10}}>
