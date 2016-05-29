@@ -30,7 +30,8 @@ var battle = React.createClass({
       bottom_color: '#00DB00',
       skill_1: 0.1,
       skill_2: 0.3,
-      enemy_skill: 0.9,
+      enemy_skill: 0.1,
+      HP: 100,
       test: null,
     }
   },
@@ -158,55 +159,88 @@ var battle = React.createClass({
   render() {
     return (
     	<View style={styles.container}>
-    		<View style={styles.status_Top}>
-            <View style={styles.status_img_Top}>
-                <Image source={require('./Img/f.png')}
-                  style={{width:65,height:65}}/>
-            </View>
-            <View  style={styles.status_bar}>
-                <Text style={styles.welcome_3}>HP </Text>
-                <Progress.Bar progress={this.state.top_progress} 
-                   width={200} height={10}
-                   color={this.state.top_color} 
-                   unfilledColor={'#FFFFFF'} borderWidth={5}
-                   borderColor={'#7B7B7B'} />
-            </View>
-        </View>
         <View style={styles.main}>
           <LinearGradient colors={[  '#84C1FF','#C4E1FF','#ECF5FF','#FFFF6F','#93FF93','#79FF79','#02C874','#02C874','#02C874']} style={{flex: 1,}}>
 
             <View style={styles.main_top}>
-            <Animatable.Image ref="top" source={require('./Img/f.png')}
-              style={{marginLeft: 10,width:140,height:140 }}>
-              <Text style={styles.welcome_2}>
-                    {this.state.press_L ? '👊' : ''}
-              </Text>
-            </Animatable.Image>
-          </View>
-          <View style={styles.main_bottom}>
-            <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
-              style={{marginRight: 10,width:140,height:140 }}>
-              <Text style={styles.welcome_2}>
-                    {this.state.press_M ? '✨' : ''}
-              </Text>
-             </Animatable.Image>
-          </View>
+              <View style={{flex: 1,}}>
+                <Animatable.Image ref="top" source={require('./Img/f.png')}
+                  style={{marginTop:50,width:140,height:140 }}>
+                  <Text style={styles.welcome_2}>
+                        {this.state.press_L ? '👊' : ''}
+                  </Text>
+                </Animatable.Image>
+              </View>
+              <View style={{flexDirection:'column',flex: 1.5,justifyContent: 'flex-start'}}>
+                <View style={{flex: 2,backgroundColor:'#9D9FAB',marginTop:10,
+                    borderTopLeftRadius: 10,borderBottomLeftRadius: 10,}}>
+                  <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
+                    justifyContent:'space-around'}}>
+                    <Text style={styles.welcome_4}>獨眼獸</Text>
+                    <Text style={styles.welcome_3}>Lv 10</Text>
+                  </View>
+                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                    justifyContent:'center',marginBottom:10,marginTop:10,}}>
+                    <Text style={styles.welcome_3}>HP </Text>
+                    <Progress.Bar progress={this.state.top_progress} 
+                       width={150} height={10}
+                       color={this.state.top_color} 
+                       unfilledColor={'#FFFFFF'} borderWidth={5}
+                       borderColor={'#7B7B7B'} />
+                  </View>
+                  
+                </View>
+                <View style={{flex: 3,}}></View>
+              </View>
+            </View>
+            <View style={{flex: 0.25,}}></View>
+            <View style={styles.main_bottom}>
+              <View style={{flexDirection:'column',flex: 1.5,justifyContent: 'flex-start'}}>
+                <View style={{flex: 0.5,}}></View>
+                <View style={{flex: 2,backgroundColor:'#9D9FAB',marginTop:10,
+                    borderTopRightRadius: 10,borderBottomRightRadius: 10,}}>
+                  <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
+                    justifyContent:'space-around'}}>
+                    <Text style={styles.welcome_4}>胡頭怪</Text>
+                    <Text style={styles.welcome_3}>Lv 10</Text>
+                  </View>
+                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                    justifyContent:'center',marginTop:10,}}>
+                    <Text style={styles.welcome_3}>HP </Text>
+                    <Progress.Bar progress={this.state.bottom_progress} 
+                       width={150} height={10}
+                       color={this.state.bottom_color} 
+                       unfilledColor={'#FFFFFF'} borderWidth={5}
+                       borderColor={'#7B7B7B'} />
+                  </View>
+                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                    justifyContent:'flex-end'}}>
+                    <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
+                        marginRight:10}}>{(this.state.bottom_progress)*(this.state.HP)}/{this.state.HP}</Text>
+                  </View>
+                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                    justifyContent:'center',marginBottom:10}}>
+                    <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
+                        }}>🌕🌕🌕🌑🌑</Text>
+                  </View>
+                </View>
+                <View style={{flex: 0.75,}}></View>
+              </View>
+              <View style={{flex: 1,}}> 
+                <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
+                  style={{marginTop: 10,width:140,height:140 }}>
+                  <Text style={styles.welcome_2}>
+                        {this.state.press_M ? '✨' : ''}
+                  </Text>
+                 </Animatable.Image>
+               </View>
+               
+            </View>
 
           </LinearGradient>
         </View>
-        <View style={styles.status_Bottom}>
-          <View style={styles.status_img_Bottom}>
-            <Image source={require('./Img/h.png')}
-              style={{width:65,height:65 }}/>
-          </View>
-          <View  style={styles.status_bar}>
-            <Text style={styles.welcome_3}>HP </Text>
-            <Progress.Bar progress={this.state.bottom_progress} 
-               width={200} height={10}
-               color={this.state.bottom_color}  unfilledColor={'#FFFFFF'} 
-               borderWidth={5}
-               borderColor={'#7B7B7B'} />
-          </View>
+        <View style={{flex: 1,borderWidth:5,borderColor:'#000000'}}>
+          <Text style={styles.welcome_5}>我是對話框哈哈哈</Text>
         </View>
         <View style={styles.skills}>
           <TouchableHighlight
@@ -249,16 +283,6 @@ var styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
 	},
-  status_Top: {
-    flex: 1,
-    backgroundColor: '#FF8000',
-    flexDirection: 'row',
-  },
-  status_Bottom: {
-    flex: 1,
-    backgroundColor: '#FF9D33',
-    flexDirection: 'row',
-  },
   status_img_Top: {
     flex: 1,
     backgroundColor: '#FFFFFF',
@@ -286,10 +310,10 @@ var styles = StyleSheet.create({
   main: {
     flex: 4,
     flexDirection: 'column',
-    borderColor: '#000000',
-    borderWidth: 5,
-    borderLeftWidth: 0,
-    borderRightWidth: 0,
+    //borderColor: '#000000',
+    //borderWidth: 5,
+    //borderLeftWidth: 0,
+    //borderRightWidth: 0,
     //justifyContent: 'center',
     //alignItems: 'center',
   },
@@ -298,14 +322,12 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     //backgroundColor: '#d0d0d0',
     justifyContent: 'flex-start',
-    alignItems: 'center',
   },
   main_bottom: {
     flex: 1,
     flexDirection: 'row',
     //backgroundColor: '#8E8E8E',
     justifyContent: 'flex-end',
-    alignItems: 'center',
   },
   skills: {
     flex: 1,
@@ -337,7 +359,7 @@ var styles = StyleSheet.create({
   button_R: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    //space-aroundborderWidth: 5,
+    //borderWidth: 5,
     borderColor: '#FFFFFF',
     justifyContent: 'center',
     borderRadius:2,
@@ -368,6 +390,16 @@ var styles = StyleSheet.create({
   welcome_3: {
     color: '#FFFFFF',
     fontSize:15,
+    fontWeight: "bold",
+  },
+  welcome_4: {
+    color: '#FFFFFF',
+    fontSize:30,
+    fontWeight: "bold",
+  },
+  welcome_5: {
+    color: '#000000',
+    fontSize:30,
     fontWeight: "bold",
   },
  });
