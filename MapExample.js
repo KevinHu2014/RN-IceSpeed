@@ -334,7 +334,7 @@ var MapExample = React.createClass({
           onUserLocationChange={this.onUserLocationChange}
           onLongPress={this.onLongPress}
           logoIsHidden={true}
-          attributionButtonIsHidden={true}
+          attributionButtonIsHidden={false}
           onOpenAnnotation={this.onOpenAnnotation}
         />
           
