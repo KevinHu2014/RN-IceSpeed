@@ -193,10 +193,10 @@ var battle = React.createClass({
                 <View style={{flex: 3,}}></View>
               </View>
             </View>
-            <View style={{flex: 0.25,}}></View>
+            <View style={{flex: 0.75,}}></View>
             <View style={styles.main_bottom}>
               <View style={{flexDirection:'column',flex: 1.5,justifyContent: 'flex-start'}}>
-                <View style={{flex: 0.5,}}></View>
+                <View style={{flex: 0.75,}}></View>
                 <View style={{flex: 2,backgroundColor:'#9D9FAB',marginTop:10,
                     borderTopRightRadius: 10,borderBottomRightRadius: 10,}}>
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
@@ -224,11 +224,11 @@ var battle = React.createClass({
                         }}>🌕🌕🌕🌑🌑</Text>
                   </View>
                 </View>
-                <View style={{flex: 0.75,}}></View>
+                <View style={{flex: 0.25,}}></View>
               </View>
               <View style={{flex: 1,}}> 
                 <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
-                  style={{marginTop: 10,width:140,height:140 }}>
+                  style={{marginBottom: 10,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_M ? '✨' : ''}
                   </Text>
