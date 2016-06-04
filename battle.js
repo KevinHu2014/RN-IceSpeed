@@ -27,6 +27,12 @@ var battle = React.createClass({
       press_Mp: false,
       press_skill_1: false,
       press_skill_2: false,
+      you: '胡頭犬',
+      text: '就決定是你了！\n',
+      Box: ' ',
+      Now: 1,
+      skill_1_name: '衝撞',
+      skill_2_name: '回復',
       top_progress: 0.9,
       top_color: '#00DB00',
       bottom_progress: 0.6,
@@ -42,6 +48,10 @@ var battle = React.createClass({
     //從這裡拿到MapExample膗過來的參數
      this.setState({
             test: this.props.test
+        });
+    let temp = this.state.text + this.state.you + '！';
+    this.setState({
+            Box: temp
         });
   },
   check_Hp_color: function(){
@@ -170,12 +180,24 @@ var battle = React.createClass({
     });
   },
   onPress_Next(){
+    let temp1;
+    switch(this.state.Now){
+      case 1:
+        temp1 = '想要'+this.state.you+'做什麼？';
+        break;
+
+      default:
+        break;  
+    }
+    this.setState({Box: temp1});
     this.handleChangeTabs(1);
   },
   onPress_Run(){
 
   },
   onPressIn_Hit(){
+    let temp2 = this.state.you+'使用\n普通攻擊！';
+    this.setState({Box: temp2});
     this.setState({press_Hit: true});
   },
   onPressOut_Hit(){
@@ -183,6 +205,8 @@ var battle = React.createClass({
     this.handleChangeTabs(0);
   },
   onPressIn_Mp(){
+    let temp2 = this.state.you+'使用\n蓄能！';
+    this.setState({Box: temp2});
     this.setState({press_Mp: true});
   },
   onPressOut_Mp(){
@@ -193,6 +217,8 @@ var battle = React.createClass({
     this.handleChangeTabs(2);
   },
   onPressIn_skill_1(){
+    let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
+    this.setState({Box: temp2});
     this.setState({press_skill_1: true});
   },
   onPressOut_skill_1(){
@@ -200,6 +226,8 @@ var battle = React.createClass({
     this.handleChangeTabs(0);
   },
   onPressIn_skill_2(){
+    let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
+    this.setState({Box: temp2});
     this.setState({press_skill_2: true});
   },
   onPressOut_skill_2(){
@@ -254,7 +282,7 @@ var battle = React.createClass({
                     borderTopRightRadius: 10,borderBottomRightRadius: 10,}}>
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
-                    <Text style={styles.welcome_4}>胡頭怪</Text>
+                    <Text style={styles.welcome_4}>{this.state.you}</Text>
                     <Text style={styles.welcome_3}>Lv 10</Text>
                   </View>
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
@@ -293,7 +321,7 @@ var battle = React.createClass({
           </LinearGradient>
         </View>
         <View style={{flex: 1,borderWidth:5,borderColor:'#000000'}}>
-          <Text style={styles.welcome_5}>我是對話框哈哈哈</Text>
+          <Text style={styles.welcome_5}>{this.state.Box}</Text>
         </View>
         <View style={{flex: 1,}}>
           <SwipeableViews index={this.state.index_value} 
@@ -336,7 +364,7 @@ var battle = React.createClass({
                 onPressOut={this.onPressOut_Mp}>
                   <View style={styles.button_White}>
                       <Text style={styles.welcome_R}>
-                        {this.state.press_Mp ? '發動' : '蓄力'}
+                        {this.state.press_Mp ? '發動' : '蓄能'}
                       </Text>
                   </View>
               </TouchableHighlight>
@@ -357,7 +385,7 @@ var battle = React.createClass({
                 onPressOut={this.onPressOut_skill_1 }>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome}>
-                        {this.state.press_skill_1 ? '發動' : '衝撞'}
+                        {this.state.press_skill_1 ? '發動' : this.state.skill_1_name}
                       </Text>
                   </View>
               </TouchableHighlight>
@@ -367,7 +395,7 @@ var battle = React.createClass({
                 onPressOut={this.onPressOut_skill_2}>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome}>
-                        {this.state.press_skill_2 ? '發動' : '回復'}
+                        {this.state.press_skill_2 ? '發動' : this.state.skill_2_name}
                       </Text>
                   </View>
               </TouchableHighlight>
