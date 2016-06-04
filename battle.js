@@ -181,23 +181,36 @@ var battle = React.createClass({
   },
   onPress_Next(){
     let temp1;
+    let temp_now = this.state.Now;
     switch(this.state.Now){
       case 1:
         temp1 = '想要'+this.state.you+'做什麼？';
+        break;
+      case 2:
+        temp1 = '效果群拔！';
+        break;
+      case 3:
+        temp1 = this.state.you + '\nmp增加！';
         break;
 
       default:
         break;  
     }
-    this.setState({Box: temp1});
-    this.handleChangeTabs(1);
+    this.setState({
+      Box: temp1,
+      Now: 1,
+    });
+    if (temp_now==1) {this.handleChangeTabs(1);}
   },
   onPress_Run(){
 
   },
   onPressIn_Hit(){
     let temp2 = this.state.you+'使用\n普通攻擊！';
-    this.setState({Box: temp2});
+    this.setState({
+      Box: temp2,
+      Now: 2,
+    });
     this.setState({press_Hit: true});
   },
   onPressOut_Hit(){
@@ -206,7 +219,10 @@ var battle = React.createClass({
   },
   onPressIn_Mp(){
     let temp2 = this.state.you+'使用\n蓄能！';
-    this.setState({Box: temp2});
+    this.setState({
+      Box: temp2,
+      Now: 3,
+    });
     this.setState({press_Mp: true});
   },
   onPressOut_Mp(){
@@ -218,7 +234,10 @@ var battle = React.createClass({
   },
   onPressIn_skill_1(){
     let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
-    this.setState({Box: temp2});
+    this.setState({
+      Box: temp2,
+      Now: 2,
+    });
     this.setState({press_skill_1: true});
   },
   onPressOut_skill_1(){
@@ -227,7 +246,10 @@ var battle = React.createClass({
   },
   onPressIn_skill_2(){
     let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
-    this.setState({Box: temp2});
+    this.setState({
+      Box: temp2,
+      Now: 2,
+    });
     this.setState({press_skill_2: true});
   },
   onPressOut_skill_2(){
