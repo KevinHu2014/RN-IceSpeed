@@ -15,15 +15,18 @@ var Progress = require('react-native-progress');
 import MapExample from './MapExample';
 import LinearGradient from 'react-native-linear-gradient';
 import TimerMixin from 'react-timer-mixin';
+import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
 
 var battle = React.createClass({
   mixins: [TimerMixin],
   
   getInitialState: function() {
     return {
-      press_L: false,
-      press_M: false,
-      press_R: false,
+      index_value: 0,
+      press_Hit: false,
+      press_Mp: false,
+      press_skill_1: false,
+      press_skill_2: false,
       top_progress: 0.9,
       top_color: '#00DB00',
       bottom_progress: 0.6,
@@ -156,6 +159,56 @@ var battle = React.createClass({
     this.check_Hp_color();
     
   },
+  handleChangeTabs(value){
+    this.setState({
+      index_value: value,
+    });
+  },
+  handleChangeIndex(index){
+    this.setState({
+      index_value: index,
+    });
+  },
+  onPress_Next(){
+    this.handleChangeTabs(1);
+  },
+  onPress_Run(){
+
+  },
+  onPressIn_Hit(){
+    this.setState({press_Hit: true});
+  },
+  onPressOut_Hit(){
+    this.setState({press_Hit: false});
+    this.handleChangeTabs(0);
+  },
+  onPressIn_Mp(){
+    this.setState({press_Mp: true});
+  },
+  onPressOut_Mp(){
+    this.setState({press_Mp: false});
+    this.handleChangeTabs(0);
+  },
+  onPress_Skill(){
+    this.handleChangeTabs(2);
+  },
+  onPressIn_skill_1(){
+    this.setState({press_skill_1: true});
+  },
+  onPressOut_skill_1(){
+    this.setState({press_skill_1: false});
+    this.handleChangeTabs(0);
+  },
+  onPressIn_skill_2(){
+    this.setState({press_skill_2: true});
+  },
+  onPressOut_skill_2(){
+    this.setState({press_skill_2: false});
+    this.handleChangeTabs(0);
+  },
+  onPress_Back(){
+    this.handleChangeTabs(1);
+  },
   render() {
     return (
     	<View style={styles.container}>
@@ -242,37 +295,94 @@ var battle = React.createClass({
         <View style={{flex: 1,borderWidth:5,borderColor:'#000000'}}>
           <Text style={styles.welcome_5}>我是對話框哈哈哈</Text>
         </View>
-        <View style={styles.skills}>
-          <TouchableHighlight
-            style={styles.touchable}
-            onPressIn={this.onPressIn_L}
-            onPressOut={this.onPressOut_L}>
-              <View style={styles.button_L}>
-                  <Text style={styles.welcome}>
-                    {this.state.press_L ? '發動' : '衝撞'}
-                  </Text>
-              </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.touchable}
-            onPressIn={this.onPressIn_M}
-            onPressOut={this.onPressOut_M}>
-              <View style={styles.button_M}>
-                  <Text style={styles.welcome}>
-                    {this.state.press_M ? '發動' : '回復'}
-                  </Text>
-              </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.touchable}
-            onPressIn={this.onPressIn_R}
-            onPressOut={this.onPressOut_R}>
-              <View style={styles.button_R}>
-                  <Text style={styles.welcome_R}>
-                    {this.state.press_R ? '一' : 'back'}
-                  </Text>
-              </View>
-          </TouchableHighlight>
+        <View style={{flex: 1,}}>
+          <SwipeableViews index={this.state.index_value} 
+            onChangeIndex={this.handleChangeIndex}
+            disabled={true}>
+            <View style={styles.skills}>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_Next}>
+                  <View style={styles.button_Blue}>
+                      <Text style={styles.welcome}>
+                        下一步
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_Run}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.welcome_R}>
+                        逃走
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.skills}>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPressIn={this.onPressIn_Hit}
+                onPressOut={this.onPressOut_Hit}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.welcome_R}>
+                        {this.state.press_Hit ? '發動' : '普攻'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPressIn={this.onPressIn_Mp}
+                onPressOut={this.onPressOut_Mp}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.welcome_R}>
+                        {this.state.press_Mp ? '發動' : '蓄力'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_Skill}>
+                  <View style={styles.button_Blue}>
+                      <Text style={styles.welcome} >
+                        技能
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.skills}>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPressIn={this.onPressIn_skill_1 }
+                onPressOut={this.onPressOut_skill_1 }>
+                  <View style={styles.button_Blue}>
+                      <Text style={styles.welcome}>
+                        {this.state.press_skill_1 ? '發動' : '衝撞'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPressIn={this.onPressIn_skill_2}
+                onPressOut={this.onPressOut_skill_2}>
+                  <View style={styles.button_Blue}>
+                      <Text style={styles.welcome}>
+                        {this.state.press_skill_2 ? '發動' : '回復'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_Back}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.welcome_R}>
+                        back
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+          </SwipeableViews>
+          
         </View>
     	</View>
     );
@@ -340,27 +450,15 @@ var styles = StyleSheet.create({
     borderRadius:2,
     elevation:20 
   },
-  button_L: {
-    flex: 1,
-    backgroundColor: '#2881F0',
-    //borderWidth: 5,
-    borderColor: '#FFFFFF',
-    justifyContent: 'center',
-    borderRadius:2,
-  },
-  button_M: {
-    flex: 1,
-    backgroundColor: '#2881F0',
-    //borderWidth: 5,
-    borderColor: '#FFFFFF',
-    justifyContent: 'center',
-    borderRadius:2,
-  },
-  button_R: {
+  button_White: {
     flex: 1,
     backgroundColor: '#FFFFFF',
-    //borderWidth: 5,
-    borderColor: '#FFFFFF',
+    justifyContent: 'center',
+    borderRadius:2,
+  },
+  button_Blue: {
+    flex: 1,
+    backgroundColor: '#2881F0',
     justifyContent: 'center',
     borderRadius:2,
   },
