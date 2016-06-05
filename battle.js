@@ -28,16 +28,17 @@ var battle = React.createClass({
       press_skill_1: false,
       press_skill_2: false,
       you: '胡頭犬',
-      text: '就決定是你了！\n',
+      enemy: '獨眼獸',
       Box: ' ',
-      Now: 1,
+      Now: 0,
       skill_1_name: '衝撞',
       skill_2_name: '回復',
       top_progress: 0.9,
       top_color: '#00DB00',
       bottom_progress: 0.6,
       bottom_color: '#00DB00',
-      skill_1: 0.1,
+      hit: 0.1,
+      skill_1: 0.2,
       skill_2: 0.3,
       enemy_skill: 0.1,
       HP: 100,
@@ -49,7 +50,7 @@ var battle = React.createClass({
      this.setState({
             test: this.props.test
         });
-    let temp = this.state.text + this.state.you + '！';
+    let temp = '野生的' + this.state.enemy + '跳了出來！';
     this.setState({
             Box: temp
         });
@@ -183,11 +184,17 @@ var battle = React.createClass({
     let temp1;
     let temp_now = this.state.Now;
     switch(this.state.Now){
+      case 0:
+        temp1 = '就決定是你了！\n' + this.state.you + '！';
+        break;
       case 1:
         temp1 = '想要'+this.state.you+'做什麼？';
         break;
       case 2:
         temp1 = '效果群拔！';
+        this.refs.top.swing(2000);
+        let temp3 = this.state.top_progress - this.state.hit;
+        this.setState({top_progress: temp3});
         break;
       case 3:
         temp1 = this.state.you + '\nmp增加！';
@@ -215,6 +222,7 @@ var battle = React.createClass({
   },
   onPressOut_Hit(){
     this.setState({press_Hit: false});
+    this.refs.bottom.wobble(2000);
     this.handleChangeTabs(0);
   },
   onPressIn_Mp(){
@@ -279,7 +287,7 @@ var battle = React.createClass({
                     borderTopLeftRadius: 10,borderBottomLeftRadius: 10,}}>
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
-                    <Text style={styles.welcome_4}>獨眼獸</Text>
+                    <Text style={styles.welcome_4}>{this.state.enemy}</Text>
                     <Text style={styles.welcome_3}>Lv 10</Text>
                   </View>
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
