@@ -40,7 +40,7 @@ var battle = React.createClass({
       bottom_progress: 0.6,
       bottom_color: '#00DB00',
       hit: 0.1,
-      skill_1: 0.2,
+      skill_1: 0.5,
       skill_2: -0.3,//如果是回復技，則數值是負的
       enemy_skill_1: 0.3,
       enemy_skill_2: 0.1,
@@ -192,6 +192,7 @@ var battle = React.createClass({
     let temp3;
     let temp_now = this.state.Now;
     let temp4 = 1;
+    
     switch(this.state.Now){
       case 0:
         temp1 = '就決定是你了！\n' + this.state.you + '！';
@@ -201,11 +202,19 @@ var battle = React.createClass({
         break;
       case 2:
         //普攻
-        temp1 = '效果拔群！';
+        temp1 = '效果一般！';
         this.refs.top.swing(2000);
         temp3 = this.state.top_progress - this.state.hit;
+        if (temp3 <= 0.3) {
+          this.state.top_color = '#FF0000';
+        }
         this.setState({top_progress: temp3});
-        temp4 = 10;
+        if (this.state.top_progress>0) {
+          temp4 = 10;//換野怪的回合
+        } 
+        else {
+          temp4 = 11;//野怪死了
+        }
         break;
       case 3:
         //蓄力
@@ -219,14 +228,29 @@ var battle = React.createClass({
           //如果技能一為攻擊技
           temp3 = this.state.top_progress - this.state.skill_1;
           this.refs.top.swing(2000);
+          if (temp3 <= 0.3) {
+            this.state.top_color = '#FF0000';
+          }
           this.setState({top_progress: temp3});
         }
         else {
           //如果技能一為回血技
           temp3 = this.state.bottom_progress - this.state.skill_1;
+          if (temp3 > 1){
+            temp3 = 1;
+          }
+          if (temp3 > 0.3) {
+            this.state.bottom_color = '#00DB00';
+          }
           this.setState({bottom_progress: temp3});
         }
-        temp4 = 10;
+        if (this.state.top_progress>0) {
+          temp4 = 10;//換野怪的回合
+        } 
+        else {
+          temp4 = 11;//野怪死了
+        }
+        
         break;
       case 5:
         //技能二
@@ -235,14 +259,28 @@ var battle = React.createClass({
           //如果技能二為攻擊技
           temp3 = this.state.top_progress - this.state.skill_2;
           this.refs.top.swing(2000);
+          if (temp3 <= 0.3) {
+            this.state.top_color = '#FF0000';
+          }
           this.setState({top_progress: temp3});
         } 
         else {
           //如果技能二為回血技
           temp3 = this.state.bottom_progress - this.state.skill_2;
+          if (temp3 > 1){
+            temp3 = 1;
+          }
+          if (temp3 > 0.3) {
+            this.state.bottom_color = '#00DB00';
+          }
           this.setState({bottom_progress: temp3});
         }
-        temp4 = 10;
+        if (this.state.top_progress>0) {
+          temp4 = 10;//換野怪的回合
+        } 
+        else {
+          temp4 = 11;//野怪死了
+        }
         break;
       case 6:
         //野怪第一招
@@ -255,7 +293,16 @@ var battle = React.createClass({
         temp1 = '效果拔群！';
         temp3 = this.state.bottom_progress - this.state.enemy_skill_1;
         this.refs.bottom.swing(2000);
+        if (temp3 < 0) {
+          temp3 = 0;
+        }
+        if (temp3 <= 0.3) {
+            this.state.bottom_color = '#FF0000';
+          }
         this.setState({bottom_progress: temp3});
+        if (this.state.bottom_progress<=0) {
+          temp4 = 14;//玩家死了
+        }
         break;
       case 8:
         //野怪第二招
@@ -268,7 +315,16 @@ var battle = React.createClass({
         temp1 = '效果拔群！';
         temp3 = this.state.bottom_progress - this.state.enemy_skill_2;
         this.refs.bottom.swing(2000);
+        if (temp3 < 0) {
+          temp3 = 0;
+        }
+        if (temp3 <= 0.3) {
+            this.state.bottom_color = '#FF0000';
+          }
         this.setState({bottom_progress: temp3});
+        if (this.state.bottom_progress<=0) {
+          temp4 = 14;//玩家死了
+        }
         break;
       case 10:
         //野怪的回合
@@ -281,6 +337,35 @@ var battle = React.createClass({
           temp4 = 8;
         }
         break;
+      case 11:
+         //野怪死惹
+         temp1 = '野生的'+this.state.enemy+'不行了！';
+         temp4 = 12;
+         break;
+      case 12:
+        //獲得獎勵
+        temp1 = this.state.you+'\n獲得100 經驗值！';
+        temp4 = 13;
+        break;
+      case 13:
+        //跳回地圖
+        const { navigator } = this.props;
+        if(navigator) {
+          //返回mapexample
+          navigator.pop();
+        }
+        break;  
+      case 14:
+        //玩家死了
+        temp1 = this.state.you+'不行了！';
+        temp4 = 15;
+        break;
+      case 15:
+        //玩家死了part2
+        temp1 = '你已經死了～';
+        temp4 = 13;
+        break;
+      
       default:
         break;  
     }
@@ -291,7 +376,22 @@ var battle = React.createClass({
     if (temp_now==1) {this.handleChangeTabs(1);}
   },
   onPress_Run(){
-
+    //玩家逃跑
+    let temp5 = this.state.you+'\n逃走成功';   
+    this.setState({
+      Box: temp5,
+      Now: 13,
+    });
+    
+  },
+  onPress_Hit(){
+    let temp2 = this.state.you+'使用\n普通攻擊！';
+    this.setState({
+      Box: temp2,
+      Now: 2,
+    });
+    this.refs.bottom.wobble(2000);
+    this.handleChangeTabs(0);
   },
   onPressIn_Hit(){
     let temp2 = this.state.you+'使用\n普通攻擊！';
@@ -306,6 +406,14 @@ var battle = React.createClass({
     this.refs.bottom.wobble(2000);
     this.handleChangeTabs(0);
   },
+  onPress_Mp(){
+    let temp2 = this.state.you+'使用\n蓄能！';
+    this.setState({
+      Box: temp2,
+      Now: 3,
+    });
+    this.handleChangeTabs(0);
+  },
   onPressIn_Mp(){
     let temp2 = this.state.you+'使用\n蓄能！';
     this.setState({
@@ -318,8 +426,22 @@ var battle = React.createClass({
     this.setState({press_Mp: false});
     this.handleChangeTabs(0);
   },
-  onPressIn_Skill(){
+  onPress_Skill(){
     this.handleChangeTabs(2);
+  },
+  onPress_skill_1(){
+    let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
+    this.setState({
+      Box: temp2,
+      Now: 4,
+    });
+    if (this.state.skill_1 > 0) {
+      this.refs.bottom.wobble(2000);
+    } 
+    else {
+      this.refs.bottom.pulse(2000);
+    }
+    this.handleChangeTabs(0);
   },
   onPressIn_skill_1(){
     let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
@@ -336,6 +458,20 @@ var battle = React.createClass({
     } 
     else {
       this.refs.bottom.pulse(2000);
+    }
+    this.handleChangeTabs(0);
+  },
+  onPress_skill_2(){
+    let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
+    this.setState({
+      Box: temp2,
+      Now: 5,
+    });
+    if (this.state.skill_2 > 0) {
+      this.refs.bottom.wobble(2000);
+    } 
+    else {
+      this.refs.bottom.flash(2000);
     }
     this.handleChangeTabs(0);
   },
@@ -357,7 +493,7 @@ var battle = React.createClass({
     }
     this.handleChangeTabs(0);
   },
-  onPressIn_Back(){
+  onPress_Back(){
     this.handleChangeTabs(1);
   },
   render() {
@@ -420,7 +556,7 @@ var battle = React.createClass({
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'flex-end'}}>
                     <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
-                        marginRight:10}}>{Math.floor((this.state.bottom_progress)*(this.state.HP))}/{this.state.HP}</Text>
+                        marginRight:10}}>{Math.ceil((this.state.bottom_progress)*(this.state.HP))}/{this.state.HP}</Text>
                   </View>
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10}}>
@@ -473,27 +609,29 @@ var battle = React.createClass({
             <View style={styles.skills}>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_Hit}
-                onPressOut={this.onPressOut_Hit}>
+                //onPressIn={this.onPressIn_Hit}
+                //onPressOut={this.onPressOut_Hit}
+                onPress={this.onPress_Hit}>
                   <View style={styles.button_White}>
                       <Text style={styles.welcome_R}>
-                        {this.state.press_Hit ? '發動' : '普攻'}
+                        普攻
                       </Text>
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_Mp}
-                onPressOut={this.onPressOut_Mp}>
+                //onPressIn={this.onPressIn_Mp}
+                //onPressOut={this.onPressOut_Mp}
+                onPress={this.onPress_Mp}>
                   <View style={styles.button_White}>
                       <Text style={styles.welcome_R}>
-                        {this.state.press_Mp ? '發動' : '蓄能'}
+                        蓄能
                       </Text>
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_Skill}>
+                onPress={this.onPress_Skill}>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome} >
                         技能
@@ -504,27 +642,29 @@ var battle = React.createClass({
             <View style={styles.skills}>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_skill_1 }
-                onPressOut={this.onPressOut_skill_1 }>
+                //onPressIn={this.onPressIn_skill_1 }
+                //onPressOut={this.onPressOut_skill_1 }
+                onPress={this.onPress_skill_1}>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome}>
-                        {this.state.press_skill_1 ? '發動' : this.state.skill_1_name}
+                        {this.state.skill_1_name}
                       </Text>
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_skill_2}
-                onPressOut={this.onPressOut_skill_2}>
+                //onPressIn={this.onPressIn_skill_2}
+                //onPressOut={this.onPressOut_skill_2}
+                onPress={this.onPress_skill_2}>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome}>
-                        {this.state.press_skill_2 ? '發動' : this.state.skill_2_name}
+                        {this.state.skill_2_name}
                       </Text>
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
                 style={styles.touchable}
-                onPressIn={this.onPressIn_Back}>
+                onPress={this.onPress_Back}>
                   <View style={styles.button_White}>
                       <Text style={styles.welcome_R}>
                         back
