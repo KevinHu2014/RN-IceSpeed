@@ -23,6 +23,7 @@ var battle = React.createClass({
   getInitialState: function() {
     return {
       index_value: 0,
+      Unclickable: false,
       press_Hit: false,
       press_Mp: false,
       press_skill_1: false,
@@ -372,6 +373,7 @@ var battle = React.createClass({
     this.setState({
       Box: temp1,
       Now: temp4,
+      Unclickable: false,
     });
     if (temp_now==1) {this.handleChangeTabs(1);}
   },
@@ -389,6 +391,7 @@ var battle = React.createClass({
     this.setState({
       Box: temp2,
       Now: 2,
+      Unclickable: true,
     });
     this.refs.bottom.wobble(2000);
     this.handleChangeTabs(0);
@@ -411,6 +414,7 @@ var battle = React.createClass({
     this.setState({
       Box: temp2,
       Now: 3,
+      Unclickable: true,
     });
     this.handleChangeTabs(0);
   },
@@ -434,6 +438,7 @@ var battle = React.createClass({
     this.setState({
       Box: temp2,
       Now: 4,
+      Unclickable: true,
     });
     if (this.state.skill_1 > 0) {
       this.refs.bottom.wobble(2000);
@@ -466,6 +471,7 @@ var battle = React.createClass({
     this.setState({
       Box: temp2,
       Now: 5,
+      Unclickable: true,
     });
     if (this.state.skill_2 > 0) {
       this.refs.bottom.wobble(2000);
@@ -608,6 +614,7 @@ var battle = React.createClass({
             </View>
             <View style={styles.skills}>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 //onPressIn={this.onPressIn_Hit}
                 //onPressOut={this.onPressOut_Hit}
@@ -619,6 +626,7 @@ var battle = React.createClass({
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 //onPressIn={this.onPressIn_Mp}
                 //onPressOut={this.onPressOut_Mp}
@@ -630,6 +638,7 @@ var battle = React.createClass({
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 onPress={this.onPress_Skill}>
                   <View style={styles.button_Blue}>
@@ -641,6 +650,7 @@ var battle = React.createClass({
             </View>
             <View style={styles.skills}>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 //onPressIn={this.onPressIn_skill_1 }
                 //onPressOut={this.onPressOut_skill_1 }
@@ -652,6 +662,7 @@ var battle = React.createClass({
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 //onPressIn={this.onPressIn_skill_2}
                 //onPressOut={this.onPressOut_skill_2}
@@ -663,6 +674,7 @@ var battle = React.createClass({
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
+                disabled={this.state.Unclickable}
                 style={styles.touchable}
                 onPress={this.onPress_Back}>
                   <View style={styles.button_White}>
