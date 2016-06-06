@@ -166,7 +166,9 @@ var MapExample = React.createClass({
     this.setState({press_: true});
   },
   onPressIn_explore() {
-    this.setState({press_explore: true});
+    this.setState({
+      press_explore: true,
+    });
     this.removeAllAnnotations(mapRef);
   },
   onPressOut_explore() {
@@ -239,11 +241,13 @@ var MapExample = React.createClass({
           id: 'foo'
         },]);
     }
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   },
   render() {
     return (
       <View style={styles.container}>
-       
        
         <View style={styles.status}>
           <View style={styles.Top_status}>
