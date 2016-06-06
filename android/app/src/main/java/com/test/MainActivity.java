@@ -1,5 +1,6 @@
 package com.test;
 
+import com.robinpowered.react.ScreenBrightness.ScreenBrightnessPackage;
 import com.sensormanager.SensorManagerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.mapbox.reactnativemapboxgl.ReactNativeMapboxGLPackage;
@@ -44,7 +45,8 @@ public class MainActivity extends ReactActivity {
             new RNSoundPackage(),
             new ReactNativeMapboxGLPackage(),
             new LinearGradientPackage(),
-            new SensorManagerPackage()
+            new SensorManagerPackage(),
+            new ScreenBrightnessPackage(this)
         );
     }
 }

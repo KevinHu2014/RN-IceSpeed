@@ -15,3 +15,6 @@ project(':react-native-linear-gradient').projectDir = new File(rootProject.proje
 
 include ':react-native-sensor-manager'
 project(':react-native-sensor-manager').projectDir = new File(settingsDir, '../node_modules/react-native-sensor-manager/android')
+
+include ':react-native-screen-brightness'
+project(':react-native-screen-brightness').projectDir = new File(settingsDir, '../node_modules/react-native-screen-brightness/android')
