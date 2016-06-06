@@ -1,5 +1,6 @@
 package com.test;
 
+import com.sensormanager.SensorManagerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.mapbox.reactnativemapboxgl.ReactNativeMapboxGLPackage;
 import com.zmxv.RNSound.RNSoundPackage;
@@ -42,7 +43,8 @@ public class MainActivity extends ReactActivity {
             new RCTCameraPackage(),
             new RNSoundPackage(),
             new ReactNativeMapboxGLPackage(),
-            new LinearGradientPackage()
+            new LinearGradientPackage(),
+            new SensorManagerPackage()
         );
     }
 }

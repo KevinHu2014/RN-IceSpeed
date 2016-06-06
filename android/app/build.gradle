@@ -127,4 +127,5 @@ dependencies {
     compile project(':RNSound')
     compile project(':reactnativemapboxgl')
     compile project(':react-native-linear-gradient')
+    compile project(':react-native-sensor-manager')
 }
