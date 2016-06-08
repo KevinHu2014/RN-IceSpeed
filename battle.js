@@ -36,6 +36,8 @@ var battle = React.createClass({
       skill_2_name: '回復',
       enemy_skill_1_name: '揮擊',
       enemy_skill_2_name: '衝撞',
+      mp: '🌑🌑🌑🌑🌑',
+      mp_value: 0,
       top_progress: 0.9,
       top_color: '#00DB00',
       bottom_progress: 0.6,
@@ -59,25 +61,11 @@ var battle = React.createClass({
             Box: temp
         });
   },
-  check_Hp_color: function(){
-    if(this.state.top_progress > 0.3){
-      this.state.top_color = '#00DB00';
-    }
-    else{
-      this.state.top_color = '#FF0000';
-    }
-    if(this.state.bottom_progress > 0.3){
-      this.state.bottom_color = '#00DB00';
-    }
-    else{
-      this.state.bottom_color = '#FF0000';
-    }
-  },
+  
   onPressIn_L: function() {
     console.log(this.state.test);
     this.setState({press_L: true});
     this.state.top_progress = this.state.top_progress - this.state.skill_1;
-    this.check_Hp_color();
     if(this.state.top_progress <= 0.1){
         Alert.alert(
         '勝利～',
@@ -111,69 +99,6 @@ var battle = React.createClass({
     
     
   },
-  fight: function(){
-    //怪物反擊
-    /*Alert.alert(
-        '測試',
-        '測試',
-        [
-          
-          {text: 'OK', onPress: () => console.log('OK Pressed!')},
-        ]
-        )
-    */
-    
-    this.refs.top.wobble(1000);
-    
-    this.setTimeout(
-      () => {this.refs.bottom.swing(1000);},
-      1500
-    ); 
-    this.state.bottom_progress = this.state.bottom_progress - this.state.enemy_skill;
-    this.check_Hp_color();
-    if(this.state.bottom_progress <= 0){
-        Alert.alert(
-        '你已經死了～',
-        '靠北阿你玩得一塌糊塗\n跟你做任何事一樣\n...而且沒人愛你',
-        [
-          
-          {text: 'OK', onPress: () => {
-            console.log('OK Pressed!');
-            const { navigator } = this.props;
-            if(this.props.getResult) {
-                let result = '成功回傳參數';
-                this.props.getResult(result);
-            }
-            if(navigator) {
-                //返回mapexample
-                navigator.pop();
-            }
-          }},
-        ]
-        )
-    }
-
-  },
-  onPressIn_M: function() {
-    this.setState({press_M: true});
-    this.state.bottom_progress = this.state.bottom_progress + this.state.skill_2;
-    this.check_Hp_color();
-  },
-  onPressOut_M: function() {
-    this.setState({press_M: false});
-    this.refs.bottom.jello(1000);
-  },
-  onPressIn_R: function() {
-    this.setState({press_R: true});
-  },
-  onPressOut_R: function() {
-    this.setState({press_R: false});
-    this.state.top_progress=0.9;
-    this.state.bottom_progress=0.6;
-    this.state.top_color='#00DB00';
-    this.check_Hp_color();
-    
-  },
   handleChangeTabs(value){
     this.setState({
       index_value: value,
@@ -184,15 +109,35 @@ var battle = React.createClass({
       index_value: index,
     });
   },
-  Fight_back(){
-    
-    this.setState({Now: 6});
+  check_mp(){
+    switch (this.state.mp_value){
+          case 0:
+            this.state.mp = '🌑🌑🌑🌑🌑';
+            break;
+          case 1:
+            this.state.mp = '🌕🌑🌑🌑🌑';
+            break;
+          case 2:
+            this.state.mp = '🌕🌕🌑🌑🌑';
+            break;
+          case 3:
+            this.state.mp = '🌕🌕🌕🌑🌑';
+            break;
+          case 4:
+            this.state.mp = '🌕🌕🌕🌕🌑';
+            break;
+          case 5:
+            this.state.mp = '🌕🌕🌕🌕🌕';
+            break;
+          default:
+            break;
+        }
   },
   onPress_Next(){
     let temp1;
     let temp3;
     let temp_now = this.state.Now;
-    let temp4 = 1;
+    let temp4 = 3;
     
     switch(this.state.Now){
       case 0:
@@ -218,10 +163,11 @@ var battle = React.createClass({
         }
         break;
       case 3:
-        //蓄力
-        temp1 = this.state.you + '\nmp增加！';
-        temp4 = 10;
-        break;
+        temp1 = this.state.you+'\n增加一個 mp';
+        this.state.mp_value++;
+        this.check_mp();
+        temp4 = 1;
+        break;  
       case 4:
         //技能一
         temp1 = '效果拔群！';
@@ -355,6 +301,7 @@ var battle = React.createClass({
           //返回mapexample
           navigator.pop();
         }
+        temp4 = 13;
         break;  
       case 14:
         //玩家死了
@@ -379,11 +326,29 @@ var battle = React.createClass({
   },
   onPress_Run(){
     //玩家逃跑
-    let temp5 = this.state.you+'\n逃走成功';   
-    this.setState({
-      Box: temp5,
-      Now: 13,
-    });
+    let temp5 = this.state.you+'\n逃走成功';
+    Alert.alert(
+        '警告',
+        '你確定要逃走嗎？',
+        [
+          
+          {text: 'OK', onPress: () => {
+            console.log('OK Pressed!');
+            const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
+            this.setState({
+              Box: temp5,
+              Now: 13,
+            });
+          }},
+          {text: 'Cancel', onPress: () => console.log('Cancel Pressed')},
+        ]
+        )
+       
+    
     
   },
   onPress_Hit(){
@@ -418,23 +383,13 @@ var battle = React.createClass({
     });
     this.handleChangeTabs(0);
   },
-  onPressIn_Mp(){
-    let temp2 = this.state.you+'使用\n蓄能！';
-    this.setState({
-      Box: temp2,
-      Now: 3,
-    });
-    this.setState({press_Mp: true});
-  },
-  onPressOut_Mp(){
-    this.setState({press_Mp: false});
-    this.handleChangeTabs(0);
-  },
   onPress_Skill(){
     this.handleChangeTabs(2);
   },
   onPress_skill_1(){
     let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
+    this.state.mp_value--;
+    this.check_mp();
     this.setState({
       Box: temp2,
       Now: 4,
@@ -468,6 +423,8 @@ var battle = React.createClass({
   },
   onPress_skill_2(){
     let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
+    this.state.mp_value--;
+    this.check_mp();
     this.setState({
       Box: temp2,
       Now: 5,
@@ -567,7 +524,7 @@ var battle = React.createClass({
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10}}>
                     <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
-                        }}>🌕🌕🌕🌑🌑</Text>
+                        }}>{this.state.mp}</Text>
                   </View>
                 </View>
                 <View style={{flex: 0.25,}}></View>
@@ -602,15 +559,6 @@ var battle = React.createClass({
                       </Text>
                   </View>
               </TouchableHighlight>
-              <TouchableHighlight
-                style={styles.touchable}
-                onPress={this.onPress_Run}>
-                  <View style={styles.button_White}>
-                      <Text style={styles.welcome_R}>
-                        逃走
-                      </Text>
-                  </View>
-              </TouchableHighlight>
             </View>
             <View style={styles.skills}>
               <TouchableHighlight
@@ -626,14 +574,11 @@ var battle = React.createClass({
                   </View>
               </TouchableHighlight>
               <TouchableHighlight
-                disabled={this.state.Unclickable}
                 style={styles.touchable}
-                //onPressIn={this.onPressIn_Mp}
-                //onPressOut={this.onPressOut_Mp}
-                onPress={this.onPress_Mp}>
+                onPress={this.onPress_Run}>
                   <View style={styles.button_White}>
                       <Text style={styles.welcome_R}>
-                        蓄能
+                        逃走
                       </Text>
                   </View>
               </TouchableHighlight>
@@ -795,7 +740,8 @@ var styles = StyleSheet.create({
   },
   welcome_4: {
     color: '#FFFFFF',
-    fontSize:30,
+    fontSize:25,
+    marginTop:3,
     fontWeight: "bold",
   },
   welcome_5: {
