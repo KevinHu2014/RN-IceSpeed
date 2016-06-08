@@ -496,7 +496,6 @@ var battle = React.createClass({
                 <View style={{flex: 3,}}></View>
               </View>
             </View>
-            <View style={{flex: 0.75,}}></View>
             <View style={styles.main_bottom}>
               <View style={{flexDirection:'column',flex: 1.5,justifyContent: 'flex-start'}}>
                 <View style={{flex: 0.75,}}></View>
@@ -531,7 +530,7 @@ var battle = React.createClass({
               </View>
               <View style={{flex: 1,}}> 
                 <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
-                  style={{marginBottom: 10,width:140,height:140 }}>
+                  style={{marginTop: 30,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_M ? '✨' : ''}
                   </Text>
@@ -740,14 +739,14 @@ var styles = StyleSheet.create({
   },
   welcome_4: {
     color: '#FFFFFF',
-    fontSize:25,
+    fontSize:30,
     marginTop:3,
     fontWeight: "bold",
   },
   welcome_5: {
     color: '#000000',
     fontSize:30,
-    fontWeight: "bold",
+    //fontWeight: "bold",
   },
  });
 module.exports = battle;
