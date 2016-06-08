@@ -552,7 +552,7 @@ var battle = React.createClass({
             <View style={styles.skills}>
               <TouchableHighlight
                 style={styles.touchable}
-                onPress={this.onPress_Next}>
+                onPressIn={this.onPress_Next}>
                   <View style={styles.button_Blue}>
                       <Text style={styles.welcome}>
                         下一步

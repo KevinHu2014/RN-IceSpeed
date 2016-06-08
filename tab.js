@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 var ScrollableTabView = require('react-native-scrollable-tab-view');
-var  Item = require('./Item');
+//var  Item = require('./Item');
+var  Item = require('./SensorTest');
 var  Pet = require('./Pet');
 //var  Library = require('./Library');
 var  Library = require('./NavBox');

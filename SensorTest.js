@@ -26,6 +26,15 @@ var SensorTest = React.createClass({
         this.setState({
           light: data.light,
         });
+        if(this.state.light >= 10000){
+          ScreenBrightness.setBrightness(1);
+        }
+        else if(this.state.light > 40){
+          ScreenBrightness.setBrightness(0.7);
+        }
+        else {
+          ScreenBrightness.setBrightness(0);
+        }
     }.bind(this));
     
   },
