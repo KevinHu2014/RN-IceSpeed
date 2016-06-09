@@ -10,7 +10,7 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
-import ProgressBar from 'react-native-progress/Bar';
+import * as Progress from 'react-native-progress';
 
 import MapExample from './MapExample';
 import LinearGradient from 'react-native-linear-gradient';
