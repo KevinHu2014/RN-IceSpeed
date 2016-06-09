@@ -9,8 +9,8 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
 } from 'react-native';
-var Animatable = require('react-native-animatable');
-var Progress = require('react-native-progress');
+import * as Animatable from 'react-native-animatable'
+import ProgressBar from 'react-native-progress/Bar';
 
 import MapExample from './MapExample';
 import LinearGradient from 'react-native-linear-gradient';

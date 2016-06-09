@@ -7,7 +7,7 @@ import  {
   TouchableHighlight,
   TouchableOpacity
 } from 'react-native';
-var Animatable = require('react-native-animatable');
+import * as Animatable from 'react-native-animatable'
 
 
 
