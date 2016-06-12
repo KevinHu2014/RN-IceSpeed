@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 //var  Item = require('./Item');
-var  Item = require('./SensorTest');
+var  Item = require('./object');
 var  Pet = require('./NavPet');
 //var  Library = require('./Library');
 var  Library = require('./NavBox');

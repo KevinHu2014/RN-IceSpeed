@@ -8,4 +8,5 @@ var test = require('./tab');
 //var test = require('./MapExample');
 //var test = require('./SensorTest');
 //var test = require('./NavPet');
+//var test = require('./object');
 AppRegistry.registerComponent('test', () => test);

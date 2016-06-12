@@ -29,7 +29,7 @@ var battle = React.createClass({
       press_skill_1: false,
       press_skill_2: false,
       you: '胡頭犬',
-      enemy: '獨眼獸',
+      enemy: '獨眼怪',
       Box: ' ',
       Now: 0,
       skill_1_name: '衝撞',
@@ -467,7 +467,7 @@ var battle = React.createClass({
 
             <View style={styles.main_top}>
               <View style={{flex: 1,}}>
-                <Animatable.Image ref="top" source={require('./Img/f.png')}
+                <Animatable.Image ref="top" source={require('./Img/TEST2.png')}
                   style={{marginTop:50,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_L ? '👊' : ''}
@@ -529,7 +529,7 @@ var battle = React.createClass({
                 <View style={{flex: 0.25,}}></View>
               </View>
               <View style={{flex: 1,}}> 
-                <Animatable.Image   ref="bottom" source={require('./Img/h.png')}
+                <Animatable.Image   ref="bottom" source={require('./Img/TEST.png')}
                   style={{marginTop: 30,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_M ? '✨' : ''}
