@@ -9,7 +9,7 @@ import {
 var ScrollableTabView = require('react-native-scrollable-tab-view');
 //var  Item = require('./Item');
 var  Item = require('./SensorTest');
-var  Pet = require('./Pet');
+var  Pet = require('./NavPet');
 //var  Library = require('./Library');
 var  Library = require('./NavBox');
 var  Setting = require('./Setting');

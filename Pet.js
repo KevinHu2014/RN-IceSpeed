@@ -8,8 +8,8 @@ import  {
   TouchableOpacity
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
-
-
+import PetBox from './PetBox';
+import Statusbar from './Statusbar';
 
 
 var Pet = React.createClass({
@@ -21,13 +21,25 @@ var Pet = React.createClass({
       press_R2: false,
       press_L: false,
       press_R: false,
+      test: null,
     }
+  },
+  componentDidMount() {
+    //從這裡拿到PetBox傳過來的參數
+     this.setState({
+            test: this.props.test
+        });
   },
   onPressIn_Back: function() {
     this.setState({press_Back: true});
   },
   onPressOut_Back: function() {
     this.setState({press_Back: false});
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
   },
   on_PressIn_R1: function() {
     this.setState({press_R1: true});
@@ -63,14 +75,7 @@ var Pet = React.createClass({
     return (
       <View style={styles.container}>
           <View style={styles.Top_status}>
-            <View style={styles.Top_status_L}>
-              <Text style={styles.Top_welcome_L}>火</Text>
-            </View>
-            <View style={styles.Top_status_R}>
-                <TouchableOpacity onPress={this._pressButton}>
-                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
-                </TouchableOpacity>
-            </View>
+            <Statusbar></Statusbar>
           </View>
           <View style={styles.status}>
             <View style={styles.No_status_L}>
@@ -87,7 +92,7 @@ var Pet = React.createClass({
             </View>
             <View style={styles.No_status_M}>
               <Text style={styles.No_welcome}>
-                No.2 妙蛙草
+                No.{this.state.test} 胡頭犬
               </Text>
             </View>
             <View style={styles.No_status_R1}>
@@ -135,7 +140,7 @@ var Pet = React.createClass({
               <View style={{flex:5,justifyContent:'flex-start'}}>
                 <Animatable.Image 
                 animation="pulse" iterationCount="infinite"
-                source={require('./Img/c.png')} 
+                source={require('./Img/h.png')} 
                 style={{width:180,height:180 }}>
               </Animatable.Image>
               </View>
