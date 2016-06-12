@@ -11,8 +11,11 @@ import  {
   BackAndroid,
   AppState,
   ToastAndroid,
+  DeviceEventEmitter,
+  NativeModules,
 } from 'react-native';
-
+var mSensorManager = require('NativeModules').SensorManager;
+var {ScreenBrightness} = NativeModules;
 var Sound = require('react-native-sound');
 var s = new Sound('demo.mp3', Sound.MAIN_BUNDLE, (e) => {
       
@@ -22,6 +25,7 @@ var s = new Sound('demo.mp3', Sound.MAIN_BUNDLE, (e) => {
 var Setting = React.createClass({
   getDefaultProps() {
     return {
+      light: null,
       value: 1,
     }
   },
@@ -40,6 +44,22 @@ var Setting = React.createClass({
   },
   componentDidMount() {
     AppState.addEventListener('change', this._handleAppStateChange);
+    mSensorManager.startLightSensor(100);
+    DeviceEventEmitter.addListener('LightSensor', function (data) {
+        //console.log(data.light);
+        this.setState({
+          light: data.light,
+        });
+        if(this.state.light >= 10000){
+          ScreenBrightness.setBrightness(1);
+        }
+        else if(this.state.light > 40){
+          ScreenBrightness.setBrightness(0.7);
+        }
+        else {
+          ScreenBrightness.setBrightness(0);
+        }
+    }.bind(this));
   },
   componentWillUnmount() {
     AppState.removeEventListener('change', this._handleAppStateChange);
@@ -66,6 +86,7 @@ var Setting = React.createClass({
           {...this.props}
           onValueChange={(value) => this._onValueChange(value)} />
         <View style={styles.the_switch}>
+          <Text style={styles.welcome}>{this.state.light}</Text>
         	<Switch
           		onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
           		style={{marginBottom: 10,}}
@@ -99,7 +120,6 @@ var styles = StyleSheet.create({
   text: {
     fontSize: 14,
     textAlign: 'center',
-    fontWeight: '500',
     margin: 10,
   },
   button: {
