@@ -9,19 +9,28 @@ import  {
   View,
 } from 'react-native';
 var Lightbox = require('react-native-lightbox');
+var Firebase = require('firebase');
+
 var Box = React.createClass({
 
   getInitialState: function() {
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    var myFirebaseRef = new Firebase('https://fiery-torch-9692.firebaseio.com');
+    this.itemsRef = myFirebaseRef.child('items');
+    this.items = [];
     return {
-      dataSource: ds.cloneWithRows(this._genRows({})),
+      todoSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2})
     };
   },
 
   _pressData: ({}: {[key: number]: boolean}),
 
   componentWillMount: function() {
-    this._pressData = {};
+    this.itemsRef.on('child_added', (dataSnapshot) => {
+    this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+    this.setState({
+      todoSource: this.state.todoSource.cloneWithRows(this.items)
+    });
+  });
   },
   renderCarousel() {
     return(
@@ -56,7 +65,7 @@ var Box = React.createClass({
       // ListView wraps ScrollView and so takes on its properties. 
       // With that in mind you can use the ScrollView's contentContainerStyle prop to style the items.
       <ListView contentContainerStyle={styles.list}
-        dataSource={this.state.dataSource}
+        dataSource={this.state.todoSource}
         renderRow={this._renderRow}
       />
     );
@@ -76,10 +85,10 @@ var Box = React.createClass({
               renderContent={this.renderCarousel}
               underlayColor='#FFFFFF'
               springConfig={ {tension: 40, friction: 30} }>
-              <Image style={styles.thumb}  source={imgSource} />
+          <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
             </Lightbox>
             <Text style={styles.text}>
-              {rowData}
+              {rowData.text.todo}
             </Text>
           </View>
         </View>

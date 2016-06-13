@@ -21,6 +21,7 @@
     "react-native-sensor-manager": "^0.1.6",
     "react-native-sound": "^0.8.1",
     "react-native-swipe-list-view": "^0.1.7",
-    "react-timer-mixin": "^0.13.3"
+    "react-timer-mixin": "^0.13.3",
+    "firebase": "^2.4.1"
   }
 }
