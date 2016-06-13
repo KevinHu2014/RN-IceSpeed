@@ -8,7 +8,7 @@ import  {
   Text,
   View,
 } from 'react-native';
-var Lightbox = require('react-native-lightbox');
+
 var Firebase = require('firebase');
 
 var Box = React.createClass({
@@ -32,34 +32,7 @@ var Box = React.createClass({
     });
   });
   },
-  renderCarousel() {
-    return(
-        <View style={{flex: 1,flexDirection:'column'}}>
-            <View style={{flex: 5,}}>
-              <Image
-                style={{flex: 1,}}
-                resizeMode="contain"
-                source={{uri: 'http://g-search1.alicdn.com/bao/uploaded/i2/T14pBWFuBnXXXXXXXX_!!2-item_pic.png'}}
-                />
-            </View>
-            <View style={{flex: 2,borderWidth: 1, borderRadius: 5,
-                borderColor: '#CCC',flexDirection:'column',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                }}>
-              <Text style={styles.welcome}>#245 水君</Text>
-              <Text style={styles.welcome}>HP： 900</Text>
-              <Text style={styles.welcome}>ATK： 500</Text>
-              <Text style={styles.welcome}>DEF： 500</Text>
-              <Text style={styles.welcome}>SPD： 100</Text>
-            </View>
-            <View style={{flex: 1,}}></View>
-        </View>
-        
-        
-      );
-    
-  },
+  
   render: function() {
     return (
       // ListView wraps ScrollView and so takes on its properties. 
@@ -81,12 +54,7 @@ var Box = React.createClass({
         <View>
           <View style={styles.row}>
             
-            <Lightbox navigator={this.props.navigator}
-              renderContent={this.renderCarousel}
-              underlayColor='#FFFFFF'
-              springConfig={ {tension: 40, friction: 30} }>
           <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
-            </Lightbox>
             <Text style={styles.text}>
               {rowData.text.todo}
             </Text>
@@ -106,10 +74,10 @@ var Box = React.createClass({
   },
 
   _pressRow: function(rowID: number) {
-    this._pressData[rowID] = !this._pressData[rowID];
+    /*this._pressData[rowID] = !this._pressData[rowID];
     this.setState({dataSource: this.state.dataSource.cloneWithRows(
       this._genRows(this._pressData)
-    )});
+    )});*/
   },
 });
 
