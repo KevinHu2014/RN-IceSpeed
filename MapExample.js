@@ -10,12 +10,14 @@ import {
   View,
   TouchableHighlight,
   TouchableOpacity,
+  Dimensions
 } from 'react-native';
 
 
 import battle from './battle';
 import Collapsible from 'react-native-collapsible';
 var Statusbar = require('./Statusbar');
+var {height, width} = Dimensions.get('window');
 
 var MapExample = React.createClass({
   mixins: [Mapbox.Mixin],
@@ -241,9 +243,9 @@ var MapExample = React.createClass({
           id: 'foo'
         },]);
     }
-    this.setState({
+    /*this.setState({
       collapsed: !this.state.collapsed
-    });
+    });*/
   },
   render() {
     return (
@@ -341,6 +343,16 @@ var MapExample = React.createClass({
           attributionButtonIsHidden={false}
           onOpenAnnotation={this.onOpenAnnotation}
         />
+        <TouchableHighlight
+                onPressIn={this.onPressIn_explore}
+                onPressOut={this.onPressOut_explore}
+                style={{borderRadius: 100,position: 'absolute',left: width-73,top: height-153}}>
+                  <View style={styles.button_explore}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_explore ? '探索' : '探索'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
           
       </View>
     );
