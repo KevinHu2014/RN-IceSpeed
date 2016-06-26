@@ -9,6 +9,7 @@ import  {
   View,
 } from 'react-native';
 
+import Firebase from 'firebase';
 import Statusbar from './Statusbar';
 import Pet from './Pet';
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,6 +17,22 @@ import LinearGradient from 'react-native-linear-gradient';
 var PetBox = React.createClass({
 
   getInitialState: function() {
+    var usersRef = new Firebase("https://project-5810968585068392276.firebaseio.com/users/314282187");
+    usersRef.set({
+      Pet: {
+        one: {
+          id: 1,
+          name: '胡頭犬',
+          Hp: 100
+        }
+      },
+      Item: {
+        one:{
+          id: 1,
+          name: '經驗卷'
+        }
+      }
+    });
 
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     return {
