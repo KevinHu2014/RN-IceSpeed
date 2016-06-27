@@ -10,7 +10,8 @@ import {
   View,
   TouchableHighlight,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Image
 } from 'react-native';
 
 
@@ -343,16 +344,13 @@ var MapExample = React.createClass({
           attributionButtonIsHidden={false}
           onOpenAnnotation={this.onOpenAnnotation}
         />
-        <TouchableHighlight
+        <TouchableOpacity
                 onPressIn={this.onPressIn_explore}
                 onPressOut={this.onPressOut_explore}
-                style={{borderRadius: 100,position: 'absolute',left: width-73,top: height-153}}>
-                  <View style={styles.button_explore}>
-                    <Text style={styles.welcome_S}>
-                      {this.state.press_explore ? '探索' : '探索'}
-                    </Text>
-                  </View>
-              </TouchableHighlight>
+                style={{borderRadius: 100,position: 'absolute',left: width-93,top: height-173}}>
+                    <Image source={require('./Img/explore.png')} 
+                         style={{width:83,height:83}}/>
+              </TouchableOpacity>
           
       </View>
     );
@@ -486,10 +484,9 @@ var styles = StyleSheet.create({
     borderRadius: 100,
     height: 60,
     width: 60,
-    margin:2,
     borderWidth: 3,
     borderColor: '#5B00AE',
-    justifyContent: 'center'
+    //justifyContent: 'center'
   },
   welcome_S: {
     fontSize: 20,
