@@ -22,6 +22,7 @@
     "react-native-sensor-manager": "^0.1.6",
     "react-native-sound": "^0.8.1",
     "react-native-speech-bubble": "^0.1.0",
+    "react-native-screen-brightness": "^0.1.0",
     "react-native-swipe-list-view": "^0.1.7",
     "react-timer-mixin": "^0.13.3"
   }
