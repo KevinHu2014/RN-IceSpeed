@@ -8,6 +8,6 @@ var test = require('./tab');
 //var test = require('./MapExample');
 //var test = require('./SensorTest');
 //var test = require('./NavPet');
-//var test = require('./Box');
+//var test = require('./object');
 //var test = require('./SpeechbubbleTest');
 AppRegistry.registerComponent('test', () => test);

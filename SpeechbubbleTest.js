@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import SpeechBubble from 'react-native-speech-bubble';
+import * as Progress from 'react-native-progress';
 
 var SpeechbubbleTest = React.createClass({
   render() {

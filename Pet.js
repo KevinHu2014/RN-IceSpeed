@@ -243,7 +243,7 @@ var styles = StyleSheet.create({
     color: '#FFFFFF'
   },
   No_status_L: {
-    flex: 1,
+    flex: 1.2,
     margin: 5,
     justifyContent: 'center',
     alignItems: 'center',

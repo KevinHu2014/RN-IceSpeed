@@ -8,7 +8,7 @@
   "dependencies": {
     "firebase": "^2.4.1",
     "react": "^15.1.0",
-    "react-native": "^0.27",
+    "react-native": "^0.28",
     "react-native-admob": "^1.0.0",
     "react-native-animatable": "^0.6.1",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",

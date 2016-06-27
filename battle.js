@@ -482,7 +482,7 @@ var battle = React.createClass({
                     <Text style={styles.welcome_4}>{this.state.enemy}</Text>
                     <Text style={styles.welcome_3}>Lv 10</Text>
                   </View>
-                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                  <View style={{flex: 2,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10,marginTop:10,}}>
                     <Text style={styles.welcome_3}>HP </Text>
                     <Progress.Bar progress={this.state.top_progress} 
@@ -491,7 +491,6 @@ var battle = React.createClass({
                        unfilledColor={'#FFFFFF'} borderWidth={5}
                        borderColor={'#7B7B7B'} />
                   </View>
-                  
                 </View>
                 <View style={{flex: 3,}}></View>
               </View>
@@ -506,7 +505,7 @@ var battle = React.createClass({
                     <Text style={styles.welcome_4}>{this.state.you}</Text>
                     <Text style={styles.welcome_3}>Lv 10</Text>
                   </View>
-                  <View style={{flex: 1,flexDirection:'row',alignItems:'center',
+                  <View style={{flex: 2,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginTop:10,}}>
                     <Text style={styles.welcome_3}>HP </Text>
                     <Progress.Bar progress={this.state.bottom_progress} 

@@ -34,7 +34,7 @@ var object = React.createClass({
            <Statusbar></Statusbar>
          </View>
          <View style={styles.main}>
-            <LinearGradient colors={[  '#FFB75E','#ED8F03']} style={{flex: 1,}}>
+            <LinearGradient colors={['#FFB75E','#ED8F03']} style={{flex: 1,}}>
                 <ListView contentContainerStyle={styles.list}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
@@ -103,14 +103,12 @@ var styles = StyleSheet.create({
   main:{
     flex: 7,
     flexDirection: 'row',
-    flexWrap: 'wrap',
 
   },
   list: {
     //flex: 1,
     justifyContent: 'center',
     flexDirection: 'column',
-    flexWrap: 'wrap',
 
   },
   outside:{
