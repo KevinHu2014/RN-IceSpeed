@@ -24,7 +24,6 @@
     "react-native-speech-bubble": "^0.1.0",
     "react-native-screen-brightness": "^0.1.0",
     "react-native-swipe-list-view": "^0.1.7",
-    "react-swipeable-views": "^0.6.2",
-    "react-timer-mixin": "^0.13.3"
+    "react-swipeable-views": "^0.6.2"
   }
 }
