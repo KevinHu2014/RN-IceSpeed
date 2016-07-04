@@ -22,12 +22,19 @@ var Pet = React.createClass({
       press_L: false,
       press_R: false,
       test: null,
+      id: null,
+      Hp: null,
+      name: null,
+      Img: null,
     }
   },
   componentDidMount() {
     //從這裡拿到PetBox傳過來的參數
      this.setState({
-            test: this.props.test
+            Hp: this.props.Hp,
+            Name: this.props.Name,
+            id: this.props.id,
+            Img: this.props.Img
         });
   },
   onPressIn_Back: function() {
@@ -92,7 +99,7 @@ var Pet = React.createClass({
             </View>
             <View style={styles.No_status_M}>
               <Text style={styles.No_welcome}>
-                No.{this.state.test} 胡頭犬
+                No.{this.state.id+' '+this.state.Name}
               </Text>
             </View>
             <View style={styles.No_status_R1}>
@@ -140,14 +147,14 @@ var Pet = React.createClass({
               <View style={{flex:5,justifyContent:'flex-start'}}>
                 <Animatable.Image 
                 animation="pulse" iterationCount="infinite"
-                source={require('./Img/h.png')} 
+                source={{uri: this.state.Img}} 
                 style={{width:180,height:180 }}>
               </Animatable.Image>
               </View>
             </View>
             <View style={styles.center_R}>
               <Text style={styles.center_welcome}>Lv 10</Text>
-              <Text style={styles.center_welcome}>HP  : 900</Text>
+              <Text style={styles.center_welcome}>{'HP : '+this.state.Hp}</Text>
               <Text style={styles.center_welcome}>ATK : 500</Text>
               <Text style={styles.center_welcome}>DEF : 500</Text>
               <Text style={styles.center_welcome}>SPD : 50</Text>

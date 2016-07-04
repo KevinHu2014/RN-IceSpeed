@@ -17,34 +17,67 @@ import LinearGradient from 'react-native-linear-gradient';
 var PetBox = React.createClass({
 
   getInitialState: function() {
-    var usersRef = new Firebase("https://project-5810968585068392276.firebaseio.com/users/314282187");
-    usersRef.set({
-      Pet: {
-        one: {
-          id: 1,
-          name: '胡頭犬',
-          Hp: 100
-        }
-      },
-      Item: {
-        one:{
-          id: 1,
-          name: '經驗卷'
-        }
-      }
-    });
+    var myFirebaseRef = new Firebase("https://project-5810968585068392276.firebaseio.com/users/314282187");
+    this.usersRef = myFirebaseRef.child('Pet');
+    this.items = [];
+    // myFirebaseRef.set({
+    //   Name:'冰櫃神速',
+    //   Pet: {
+    //     1: {
+    //       id: 7,
+    //       name: '胡頭犬',
+    //       Hp: 100,
+    //       Img: "http://s33.postimg.org/puos6zvy7/image.png"
+    //     },
+    //     2: {
+    //       id: 6,
+    //       name: '大眼怪',
+    //       Hp: 60,
+    //       Img: "http://s33.postimg.org/em1erq3cv/image.png",
+    //     },
+    //     3: {
+    //       id: 5,
+    //       name:'綜合菇',
+    //       Hp:70,
+    //       Img: "http://s33.postimg.org/wlhmbzvy7/502.png"
+    //     }
+    //   },
+    //   Item: {
+    //     1:{
+    //       quantity: 1,
+    //       name: '經驗卷'
+    //     },
+    //     2:{
+    //       quantity: 2,
+    //       name: '紅藥水'
+    //     },
+    //     3:{
+    //       quantity: 4,
+    //       name: '藍藥水'
+    //     }
+    //   }
+    // });
 
-    var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    
     return {
-      test: 0,
-      dataSource: ds.cloneWithRows(['胡頭犬','胡頭犬','胡頭犬','胡頭犬','胡頭犬','胡頭犬']),
+      id: null,
+      Hp: null,
+      name: null,
+      Img: null,
+      dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     };
   },
 
   
 
   componentWillMount: function() {
-    
+    this.usersRef.on('child_added', (dataSnapshot) => {
+      this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
+      //id是指第幾個,text是指文字
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(this.items)
+      });
+    });
   },
   
   render: function() {
@@ -65,16 +98,17 @@ var PetBox = React.createClass({
     );
   },
 
-  _renderRow: function(rowData: string, sectionID: number, rowID: number) {
-   
-    
+  _renderRow: function(rowData: string,rowID:number) {
+    console.log(rowData.text.Img);
+
     return (
-      <TouchableHighlight onPress={() => this._pressRow(rowID)} underlayColor='rgba(0,0,0,0)'>
+      <TouchableHighlight onPress={() => this._pressRow(rowData.text.Hp,
+        rowData.text.name,rowData.text.id,rowData.text.Img)} underlayColor='rgba(0,0,0,0)'>
         <View>
           <View style={styles.row}>
-            <Image style={styles.thumb}  source={require('./Img/h.png')} />
+            <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
             <Text style={styles.text}>
-              {rowData}
+              {rowData.id}
             </Text>
           </View>
         </View>
@@ -82,16 +116,22 @@ var PetBox = React.createClass({
     );
   },
 
-  _pressRow: function(rowID: number) {
-    console.log(rowID);
-    this.state.test = rowID;
+  _pressRow: function(Hp: number,Name: string,id: number,Img: string) {
+    
+    this.state.Hp = Hp;
+    this.state.Name = Name;
+    this.state.id = id;
+    this.state.Img = Img;
     const { navigator } = this.props;
         if(navigator) {
             navigator.push({
                 name: 'Pet',
                 component: Pet,
                 params: {
-                    test: this.state.test,
+                    Hp: this.state.Hp,
+                    Name: this.state.Name,
+                    id: this.state.id,
+                    Img: this.state.Img,
                  }   
             })
         }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {AppRegistry} from 'react-native';
 var test = require('./tab');
-//var test = require('./Pet');
+//var test = require('./NavPet');
 //var test = require('./battle');
 //var test = require('./SampleComponent');
 //var test = require('./NavBox');
