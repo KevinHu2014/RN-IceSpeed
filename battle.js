@@ -14,11 +14,9 @@ import * as Progress from 'react-native-progress';
 
 import MapExample from './MapExample';
 import LinearGradient from 'react-native-linear-gradient';
-import TimerMixin from 'react-timer-mixin';
 import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
 
 var battle = React.createClass({
-  mixins: [TimerMixin],
   
   getInitialState: function() {
     return {
@@ -60,44 +58,6 @@ var battle = React.createClass({
     this.setState({
             Box: temp
         });
-  },
-  
-  onPressIn_L: function() {
-    console.log(this.state.test);
-    this.setState({press_L: true});
-    this.state.top_progress = this.state.top_progress - this.state.skill_1;
-    if(this.state.top_progress <= 0.1){
-        Alert.alert(
-        '勝利～',
-        '獲得經驗值：100\n獲得道具＊1',
-        [
-          
-          {text: 'OK', onPress: () => {
-            console.log('OK Pressed!');
-            const { navigator } = this.props;
-            if(navigator) {
-                //返回mapexample
-                navigator.pop();
-            }
-          }},
-        ]
-        )
-    }
-  },
-  onPressOut_L: function() {
-    this.setState({press_L: false});
-    this.refs.bottom.wobble(1000);
-    this.setTimeout(
-      () => {this.refs.top.swing(1000);
-        this.setTimeout(
-          () => {this.fight_back();},
-          500
-        );
-      },
-      1500
-    );
-    
-    
   },
   handleChangeTabs(value){
     this.setState({
