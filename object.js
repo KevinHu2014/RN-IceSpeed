@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  Alert,
   AppRegistry,
   Image,
   ListView,
@@ -54,7 +55,7 @@ var object = React.createClass({
     );
   },
 
-  _renderRow: function(rowData: string, sectionID: number, rowID: number) {
+  _renderRow(rowData: string, sectionID: number, rowID: number) {
     return (
           <View style={styles.row}>
             <View style={{flex: 1,}}>
@@ -73,7 +74,8 @@ var object = React.createClass({
               </View>
             </View>
             <View style={{flex: 1,flexDirection:'column',}}>
-              <TouchableHighlight onPress={this._pressRow} style={styles.touchable}>
+              <TouchableHighlight onPress={() => this._pressRow(rowData.text.name,
+                rowData.text.quantity)} style={styles.touchable}>
                 <View style={styles.button_Blue}>
                   <Text style={{color: '#FFFFFF',textAlign: 'center'}}>
                     使用
@@ -86,20 +88,29 @@ var object = React.createClass({
           </View>
     );
   },
-
-  
-
-  _pressRow: function() {
-    // this.state.count = this.state.count + 1;
-    //  console.log(this.state.count);
-    //  this.setState({dataSource: this.state.dataSource.cloneWithRows(
-    //   this._genRows(this.state.count)
-    // )});
+  Used(){
+    console.log('ok');
+    Alert.alert(
+      '已使用',
+      '道具可維持4小時',
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]
+    );
+  },
+  _pressRow(name: number,quantity: number) {
+    Alert.alert(
+      '確定使用要'+name+' ?',
+      '數量: '+quantity,
+      [
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => this.Used()},
+      ]
+    );
   },
 
 });
 
-let temp = 0;
 
 
 var styles = StyleSheet.create({
