@@ -23,7 +23,11 @@ var Pet = React.createClass({
       press_R: false,
       test: null,
       id: null,
+      Lv: null,
       Hp: null,
+      Atk: null,
+      Def: null,
+      Spd: null,
       name: null,
       Img: null,
     }
@@ -31,7 +35,11 @@ var Pet = React.createClass({
   componentDidMount() {
     //從這裡拿到PetBox傳過來的參數
      this.setState({
+            Lv: this.props.Lv,
             Hp: this.props.Hp,
+            Atk: this.props.Atk,
+            Def: this.props.Def,
+            Spd: this.props.Spd,
             Name: this.props.Name,
             id: this.props.id,
             Img: this.props.Img
@@ -153,11 +161,11 @@ var Pet = React.createClass({
               </View>
             </View>
             <View style={styles.center_R}>
-              <Text style={styles.center_welcome}>Lv 10</Text>
+              <Text style={styles.center_welcome}>{'Lv '+this.state.Lv}</Text>
               <Text style={styles.center_welcome}>{'HP : '+this.state.Hp}</Text>
-              <Text style={styles.center_welcome}>ATK : 500</Text>
-              <Text style={styles.center_welcome}>DEF : 500</Text>
-              <Text style={styles.center_welcome}>SPD : 50</Text>
+              <Text style={styles.center_welcome}>{'ATK : '+this.state.Atk}</Text>
+              <Text style={styles.center_welcome}>{'Def : '+this.state.Def}</Text>
+              <Text style={styles.center_welcome}>{'Spd : '+this.state.Spd}</Text>
             </View>
           </View> 
           <View style={styles.skill}>

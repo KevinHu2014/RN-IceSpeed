@@ -26,34 +26,64 @@ var PetBox = React.createClass({
     //     1: {
     //       id: 7,
     //       name: '胡頭犬',
+    //       Lv: 10,
     //       Hp: 100,
+    //       Atk: 15,
+    //       Def: 5,
+    //       Spd: 20,
     //       Img: "http://s33.postimg.org/puos6zvy7/image.png"
     //     },
     //     2: {
     //       id: 6,
     //       name: '大眼怪',
+    //       Lv: 13,
     //       Hp: 60,
+    //       Atk: 10,
+    //       Def: 3,
+    //       Spd: 5,
     //       Img: "http://s33.postimg.org/em1erq3cv/image.png",
     //     },
     //     3: {
     //       id: 5,
     //       name:'綜合菇',
+    //       Lv: 12,
     //       Hp:70,
+    //       Atk: 12,
+    //       Def: 5,
+    //       Spd: 10,
     //       Img: "http://s33.postimg.org/wlhmbzvy7/502.png"
     //     }
     //   },
     //   Item: {
     //     1:{
     //       quantity: 1,
-    //       name: '經驗卷'
+    //       name: '紅藥水(小)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image003.jpg"
     //     },
     //     2:{
     //       quantity: 2,
-    //       name: '紅藥水'
+    //       name: '紅藥水(大)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image005.jpg"
     //     },
     //     3:{
     //       quantity: 4,
-    //       name: '藍藥水'
+    //       name: '藍藥水(小)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image008.jpg"
+    //     },
+    //     4:{
+    //       quantity: 4,
+    //       name: '藍藥水(大)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image011.jpg"
+    //     },
+    //     5:{
+    //       quantity: 4,
+    //       name: '紫藥水(小)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image014.jpg"
+    //     },
+    //     6:{
+    //       quantity: 4,
+    //       name: '紫藥水(大)',
+    //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image018.jpg"
     //     }
     //   }
     // });
@@ -61,7 +91,11 @@ var PetBox = React.createClass({
     
     return {
       id: null,
+      Lv: null,
       Hp: null,
+      Atk: null,
+      Def: null,
+      Spd: null,
       name: null,
       Img: null,
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
@@ -102,8 +136,10 @@ var PetBox = React.createClass({
     console.log(rowData.text.Img);
 
     return (
-      <TouchableHighlight onPress={() => this._pressRow(rowData.text.Hp,
-        rowData.text.name,rowData.text.id,rowData.text.Img)} underlayColor='rgba(0,0,0,0)'>
+      <TouchableHighlight onPress={() => this._pressRow(rowData.text.Lv,
+        rowData.text.Hp,rowData.text.Atk,rowData.text.Def,
+        rowData.text.Spd,rowData.text.name,rowData.text.id,
+        rowData.text.Img)} underlayColor='rgba(0,0,0,0)'>
         <View>
           <View style={styles.row}>
             <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
@@ -116,9 +152,13 @@ var PetBox = React.createClass({
     );
   },
 
-  _pressRow: function(Hp: number,Name: string,id: number,Img: string) {
-    
+  _pressRow: function(Lv: number,Hp: number,Atk: number,Def: number,
+    Spd: number,Name: string,id: number,Img: string) {
+    this.state.Lv = Lv;
     this.state.Hp = Hp;
+    this.state.Atk = Atk;
+    this.state.Def = Def;
+    this.state.Spd = Spd;
     this.state.Name = Name;
     this.state.id = id;
     this.state.Img = Img;
@@ -128,7 +168,11 @@ var PetBox = React.createClass({
                 name: 'Pet',
                 component: Pet,
                 params: {
+                    Lv: this.state.Lv,
                     Hp: this.state.Hp,
+                    Atk: this.state.Atk,
+                    Def: this.state.Def,
+                    Spd: this.state.Spd,
                     Name: this.state.Name,
                     id: this.state.id,
                     Img: this.state.Img,
