@@ -56,38 +56,43 @@ var PetBox = React.createClass({
     //   },
     //   Item: {
     //     1:{
-    //       quantity: 1,
+    //       quantity: 10,
     //       name: '紅藥水(小)',
+    //       description: '使用後會使HP一次恢復60的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image003.jpg"
     //     },
     //     2:{
-    //       quantity: 2,
+    //       quantity: 12,
     //       name: '紅藥水(大)',
+    //       description: '使用後會使HP一次恢復120的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image005.jpg"
     //     },
     //     3:{
     //       quantity: 4,
     //       name: '藍藥水(小)',
+    //       description: '使用後會使MP一次恢復60的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image008.jpg"
     //     },
     //     4:{
-    //       quantity: 4,
+    //       quantity: 1,
     //       name: '藍藥水(大)',
+    //       description: '使用後會使MP一次恢復120的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image011.jpg"
     //     },
     //     5:{
     //       quantity: 4,
     //       name: '紫藥水(小)',
+    //       description: '使用後會使HP和MP各自恢復60的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image014.jpg"
     //     },
     //     6:{
     //       quantity: 4,
     //       name: '紫藥水(大)',
+    //       description: '使用後會使HP和MP各自恢復120的特殊藥水。',
     //       Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image018.jpg"
     //     }
     //   }
     // });
-
     
     return {
       id: null,
