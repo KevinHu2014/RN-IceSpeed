@@ -60,20 +60,27 @@ var object = React.createClass({
             <View style={{flex: 1,}}>
               <Image style={styles.thumb} source={{uri: rowData.text.Img}}/>
             </View>
-            <View style={{flex: 3,backgroundColor: '#d0d0d0',marginLeft:10}}>
-              <Text style={styles.welcome}>
-                {rowData.text.name+'   x'+rowData.text.quantity}
-              </Text>
+            <View style={{flex: 3,marginLeft:10}}>
+              <View style={{flex: 1,}}>
+                <Text style={styles.welcome}>
+                  {rowData.text.name+'   x'+rowData.text.quantity}
+                </Text>
+              </View>
+              <View style={{flex: 2,justifyContent: 'center',}}>
+                <Text style={styles.welcome2}>
+                  {'  '+'經驗值上升1.5倍'}
+                </Text>
+              </View>
             </View>
             <View style={{flex: 1,flexDirection:'column',}}>
-                <TouchableHighlight onPress={this._pressRow} style={styles.touchable}>
-                  <View style={styles.button_Blue}>
-                    <Text style={{color: '#FFFFFF',textAlign: 'center'}}>
-                      使用
-                    </Text>
-                  </View>
-                </TouchableHighlight>
-                <View style={{flex: 1,}}></View>
+              <TouchableHighlight onPress={this._pressRow} style={styles.touchable}>
+                <View style={styles.button_Blue}>
+                  <Text style={{color: '#FFFFFF',textAlign: 'center'}}>
+                    使用
+                  </Text>
+                </View>
+              </TouchableHighlight>
+              <View style={{flex: 1,}}></View>
             </View>
             
           </View>
@@ -137,12 +144,17 @@ var styles = StyleSheet.create({
     height: 64,
   },
   welcome: {
-    justifyContent: 'center',
-    alignItems: 'center',
     fontSize:20,
-    textAlign:'center',
+    color: '#000000',
+    textAlign:'left',
     fontWeight: "bold",
     //fontStyle: 'italic',
+  },
+  welcome2: {
+    fontSize:15,
+    textAlign:'left',
+    fontWeight: "bold",
+    fontStyle: 'italic',
   },
   button_Blue: {
     flex: 1,
