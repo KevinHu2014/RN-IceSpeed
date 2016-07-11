@@ -15,7 +15,7 @@ import  {
   NativeModules,
 } from 'react-native';
 var mSensorManager = require('NativeModules').SensorManager;
-var {ScreenBrightness} = NativeModules;
+//var {ScreenBrightness} = NativeModules;//there is some issues on ScreenBrightness package, in the meantime it will be disabled
 var Sound = require('react-native-sound');
 var s = new Sound('demo.mp3', Sound.MAIN_BUNDLE, (e) => {
       
@@ -51,13 +51,13 @@ var Setting = React.createClass({
           light: data.light,
         });
         if(this.state.light >= 10000){
-          ScreenBrightness.setBrightness(1);
+          //ScreenBrightness.setBrightness(1);
         }
         else if(this.state.light > 40){
-          ScreenBrightness.setBrightness(0.7);
+          //ScreenBrightness.setBrightness(0.7);
         }
         else {
-          ScreenBrightness.setBrightness(0);
+          //ScreenBrightness.setBrightness(0);
         }
     }.bind(this));
   },
