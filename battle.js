@@ -507,7 +507,11 @@ var battle = React.createClass({
           <SwipeableViews index={this.state.index_value} 
             onChangeIndex={this.handleChangeIndex}
             disabled={true}>
-            <View style={styles.skills}>
+            <View style={{flex: 1,backgroundColor: '#FFFFFF',flexDirection: 'row',
+              justifyContent: 'center',}}>
+             <View style={{flex: 0.5,}}></View>
+             <Animatable.View animation="bounce" iterationCount="infinite" duration={3000} 
+              style={{flex: 1,}}>
               <TouchableHighlight
                 style={styles.touchable}
                 onPressIn={this.onPress_Next}>
@@ -517,6 +521,8 @@ var battle = React.createClass({
                       </Text>
                   </View>
               </TouchableHighlight>
+             </Animatable.View> 
+             <View style={{flex: 0.5,}}></View>
             </View>
             <View style={styles.skills}>
               <TouchableHighlight
@@ -654,7 +660,7 @@ var styles = StyleSheet.create({
     flex:1,
     margin:15,
     borderRadius:2,
-    elevation:20 
+    elevation:10 
   },
   button_White: {
     flex: 1,

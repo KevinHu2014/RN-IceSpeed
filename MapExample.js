@@ -450,23 +450,23 @@ var styles = StyleSheet.create({
     alignItems: 'center',
   },
   button_monster: {
-    backgroundColor: '#7FFF28',
+    backgroundColor: '#0DE106',
     borderRadius: 100,
     height: 60,
     width: 60,
     margin:2,
     borderWidth: 3,
-    borderColor: '#36BB14',
+    borderColor: '#C6CBD2',
     justifyContent: 'center'
   },
   button_announcement: {
-    backgroundColor: '#FFC919',
+    backgroundColor: '#E4B417',
     borderRadius: 100,
     height: 60,
     width: 60,
     margin:2,
     borderWidth: 3,
-    borderColor: '#C0740C',
+    borderColor: '#C6CBD2',
     justifyContent: 'center'
   },
   button_mission: {
@@ -476,7 +476,7 @@ var styles = StyleSheet.create({
     width: 60,
     margin:2,
     borderWidth: 3,
-    borderColor: '#177DDB',
+    borderColor: '#C6CBD2',
     justifyContent: 'center'
   },
   button_explore: {
@@ -484,9 +484,10 @@ var styles = StyleSheet.create({
     borderRadius: 100,
     height: 60,
     width: 60,
+    margin:2,
     borderWidth: 3,
-    borderColor: '#5B00AE',
-    //justifyContent: 'center'
+    borderColor: '#C6CBD2',
+    justifyContent: 'center'
   },
   welcome_S: {
     fontSize: 20,
