@@ -35,8 +35,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNSoundPackage(),
           new ReactNativeMapboxGLPackage(),
           new LinearGradientPackage(),
-          new SensorManagerPackage(),
-          new ScreenBrightnessPackage(this)
+          new SensorManagerPackage()
+          //new ScreenBrightnessPackage(this)//still some issue here
       );
     }
   };

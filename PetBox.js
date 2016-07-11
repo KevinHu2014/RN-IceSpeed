@@ -198,6 +198,7 @@ var styles = StyleSheet.create({
   },
   list: {
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap'
   },

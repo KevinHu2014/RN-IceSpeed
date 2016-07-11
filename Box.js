@@ -37,10 +37,12 @@ var Box = React.createClass({
     return (
       // ListView wraps ScrollView and so takes on its properties. 
       // With that in mind you can use the ScrollView's contentContainerStyle prop to style the items.
+      <View style={{flexDirection:'row',flex: 1,}}>
       <ListView contentContainerStyle={styles.list}
         dataSource={this.state.todoSource}
         renderRow={this._renderRow}
       />
+      </View>
     );
   },
 
@@ -49,6 +51,7 @@ var Box = React.createClass({
     var imgSource = {
       uri: THUMB_URLS[rowHash % THUMB_URLS.length],
     };
+    console.log(rowID);
     return (
       <TouchableHighlight onPress={() => this._pressRow(rowID)} underlayColor='rgba(0,0,0,0)'>
         <View>
@@ -95,6 +98,7 @@ var hashCode = function(str) {
 var styles = StyleSheet.create({
   list: {
     justifyContent: 'center',
+    alignItems: 'center',//不知道為何要這行，反正就這樣ＸＤＤＤ
     flexDirection: 'row',
     flexWrap: 'wrap'
   },
