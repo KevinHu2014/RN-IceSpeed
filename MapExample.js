@@ -16,6 +16,7 @@ import {
 
 
 import battle from './battle';
+import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 var Statusbar = require('./Statusbar');
 var {height, width} = Dimensions.get('window');
@@ -155,6 +156,14 @@ var MapExample = React.createClass({
   },
   onPressOut_monster() {
     this.setState({press_: true});
+    const { navigator } = this.props;
+    if(navigator) {
+            navigator.push({
+                name: 'FetchTest',
+                component: FetchTest,
+                
+            })
+        }
   },
   onPressIn_announcement() {
     this.setState({press_: true});
@@ -277,7 +286,7 @@ var MapExample = React.createClass({
                 style={{borderRadius: 100}}>
                   <View style={styles.button_monster}>
                     <Text style={styles.welcome_S}>
-                      {this.state.press_announcement ? '怪物' : '怪物'}
+                      {this.state.press_announcement ? '玩家' : '玩家'}
                     </Text>
                   </View>
               </TouchableHighlight>

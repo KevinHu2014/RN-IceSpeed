@@ -29,7 +29,7 @@ var FetchTest = React.createClass({
               method: "GET",
               headers: {
                 'X-DreamFactory-Api-Key': '36fda24fe5588fa4285ac6c6c2fdfbdb6b6bc9834699774c9bf777f706d05a88',
-                'X-DreamFactory-Session-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsInVzZXJfaWQiOjEsImVtYWlsIjoia2V2aW5odTgzMTIwOEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cHM6XC9cL2Z0LWtldmluaHU4MzEyMDgudnoyLmRyZWFtZmFjdG9yeS5jb21cL2FwaVwvdjJcL3N5c3RlbVwvYWRtaW5cL3Nlc3Npb24iLCJpYXQiOjE0NjgzMDY1MTUsImV4cCI6MTQ2ODMxMDExNSwibmJmIjoxNDY4MzA2NTE1LCJqdGkiOiI5ZTcwYTVmNmQ4NDFhMzc4NzQxNGQwMjNjZDYxOWMxNyJ9.SxDwy93ArOxyH5qN_2EQcBCq_ff8dpOq8VC75qagpzE',
+                'X-DreamFactory-Session-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsInVzZXJfaWQiOjEsImVtYWlsIjoia2V2aW5odTgzMTIwOEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cHM6XC9cL2Z0LWtldmluaHU4MzEyMDgudnoyLmRyZWFtZmFjdG9yeS5jb21cL2FwaVwvdjJcL3N5c3RlbVwvYWRtaW5cL3Nlc3Npb24iLCJpYXQiOjE0NjgzMjM3MzMsImV4cCI6MTQ2ODMyNzMzMywibmJmIjoxNDY4MzIzNzMzLCJqdGkiOiI3MTQxYjgzOTYwZTlkNzMzM2RiYjhlMWM3YWY3MTQzNiJ9.E4msJh2Bl-jBOdq8xbtUJkXyd-bwjXFeHQ6r_lLf5qE',
                 'Accept': 'application/json',
 
               }
@@ -56,6 +56,13 @@ var FetchTest = React.createClass({
           })
           .done();
   },
+  _pressButton(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
+  },
   render(){
     return (
       <View style={{flex: 1,justifyContent: 'center',alignItems: 'center',}}>
@@ -71,6 +78,7 @@ var FetchTest = React.createClass({
             indeterminate={this.state.indeterminate}
             direction="counter-clockwise"
           />
+          <Text onPress={this._pressButton}>返回</Text>
       </View>
     );
   }
