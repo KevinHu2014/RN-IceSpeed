@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {AppRegistry} from 'react-native';
-var test = require('./tab');
+//var test = require('./tab');
 //var test = require('./battle');
 //var test = require('./SampleComponent');
 //var test = require('./NavBox');
@@ -10,4 +10,5 @@ var test = require('./tab');
 //var test = require('./object');
 //var test = require('./NavPet');
 //var test = require('./SpeechbubbleTest');
+var test = require('./FetchTest');
 AppRegistry.registerComponent('test', () => test);
