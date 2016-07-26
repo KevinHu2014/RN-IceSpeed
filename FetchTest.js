@@ -29,7 +29,7 @@ var FetchTest = React.createClass({
               method: "GET",
               headers: {
                 'X-DreamFactory-Api-Key': '36fda24fe5588fa4285ac6c6c2fdfbdb6b6bc9834699774c9bf777f706d05a88',
-                'X-DreamFactory-Session-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsInVzZXJfaWQiOjEsImVtYWlsIjoia2V2aW5odTgzMTIwOEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cHM6XC9cL2Z0LWtldmluaHU4MzEyMDgudnoyLmRyZWFtZmFjdG9yeS5jb21cL2FwaVwvdjJcL3N5c3RlbVwvYWRtaW5cL3Nlc3Npb24iLCJpYXQiOjE0NjgzMjM3MzMsImV4cCI6MTQ2ODMyNzMzMywibmJmIjoxNDY4MzIzNzMzLCJqdGkiOiI3MTQxYjgzOTYwZTlkNzMzM2RiYjhlMWM3YWY3MTQzNiJ9.E4msJh2Bl-jBOdq8xbtUJkXyd-bwjXFeHQ6r_lLf5qE',
+                'X-DreamFactory-Session-Token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsInVzZXJfaWQiOjEsImVtYWlsIjoia2V2aW5odTgzMTIwOEBnbWFpbC5jb20iLCJmb3JldmVyIjpmYWxzZSwiaXNzIjoiaHR0cHM6XC9cL2Z0LWtldmluaHU4MzEyMDgudnoyLmRyZWFtZmFjdG9yeS5jb21cL2FwaVwvdjJcL3N5c3RlbVwvYWRtaW5cL3Nlc3Npb24iLCJpYXQiOjE0Njg0ODYwNDAsImV4cCI6MTQ2ODQ4OTY0MCwibmJmIjoxNDY4NDg2MDQwLCJqdGkiOiJiZmE5ZDEyMGVmMTIwNmY4MmU2ZTc5OTA2YjM5ZjY4MSJ9.0hcAX2oN8cNlbu6QJn6v5fK0mQLs1_IMOou5IUt7poA',
                 'Accept': 'application/json',
 
               }
