@@ -3,173 +3,266 @@
 
 import React, { Component } from 'react';
 import Mapbox, { MapView } from 'react-native-mapbox-gl';
+var mapRef = 'map';
 import {
-  AppRegistry,
+  Alert,
   StyleSheet,
   Text,
   StatusBar,
   View,
   ScrollView,
-  Image
+  Image,
+  TouchableHighlight,
+  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 const accessToken = 'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ';
 Mapbox.setAccessToken(accessToken);
 
-class NewMap extends Component {
-  state = {
-    center: {
-      latitude: 40.72052634,
-      longitude: -73.97686958312988
-    },
-    zoom: 11,
-    userTrackingMode: Mapbox.userTrackingMode.none,
-    annotations: [{
-      coordinates: [25.035108, 121.43148511648178],
-      type: 'point',
-      title: 'This is marker 1',
-      subtitle: 'It has a rightCalloutAccessory too',
-      rightCalloutAccessory: {
-        source: { uri: 'https://cldup.com/9Lp0EaBw5s.png' },
-        height: 25,
-        width: 25
+import battle from './battle';
+import FetchTest from './FetchTest';
+import Collapsible from 'react-native-collapsible';
+var Statusbar = require('./Statusbar');
+var {height, width} = Dimensions.get('window');
+
+var NewMap = React.createClass({
+  getInitialState() {
+    return {
+      center: {
+        latitude: 25.03569,
+        longitude: 121.43289
       },
-      annotationImage: {
-        source: { uri: 'https://cldup.com/CnRLZem9k9.png' },
-        height: 25,
-        width: 25
-      },
-      id: 'marker1'
-    }, {
-      coordinates: [40.714541341726175,-74.00579452514648],
-      type: 'point',
-      title: 'Important! ',
-      subtitle: 'Neat, this is a custom annotation image',
-      annotationImage: {
-        source: { uri: 'item'},
-        height: 25,
-        width: 25
-      },
-      id: 'marker2'
-    }, {
-      coordinates: [[40.76572150042782,-73.99429321289062],[40.743485405490695, -74.00218963623047],[40.728266950429735,-74.00218963623047],[40.728266950429735,-73.99154663085938],[40.73633186448861,-73.98983001708984],[40.74465591168391,-73.98914337158203],[40.749337730454826,-73.9870834350586]],
-      type: 'polyline',
-      strokeColor: '#00FB00',
-      strokeWidth: 4,
-      strokeAlpha: .5,
-      id: 'foobar'
-    }, {
-      coordinates: [[40.749857912194386, -73.96820068359375], [40.741924698522055,-73.9735221862793], [40.735681504432264,-73.97523880004883], [40.7315190495212,-73.97438049316406], [40.729177554196376,-73.97180557250975], [40.72345355209305,-73.97438049316406], [40.719290332250544,-73.97455215454102], [40.71369559554873,-73.97729873657227], [40.71200407096382,-73.97850036621094], [40.71031250340588,-73.98691177368163], [40.71031250340588,-73.99154663085938]],
-      type: 'polygon',
-      fillAlpha: 1,
-      strokeColor: '#ffffff',
-      fillColor: '#0000ff',
-      id: 'zap'
-    }]
-  };
-
-  onRegionDidChange = (location) => {
-    this.setState({ currentZoom: location.zoomLevel });
-    console.log('onRegionDidChange', location);
-  };
-  onRegionWillChange = (location) => {
-    console.log('onRegionWillChange', location);
-  };
-  onUpdateUserLocation = (location) => {
-    console.log('onUpdateUserLocation', location);
-  };
-  onOpenAnnotation = (annotation) => {
-    console.log('onOpenAnnotation', annotation);
-  };
-  onRightAnnotationTapped = (e) => {
-    console.log('onRightAnnotationTapped', e);
-  };
-  onLongPress = (location) => {
-    console.log('onLongPress', location);
-  };
-  onTap = (location) => {
-    console.log('onTap', location);
-  };
-  onChangeUserTrackingMode = (userTrackingMode) => {
-    this.setState({ userTrackingMode });
-    console.log('onChangeUserTrackingMode', userTrackingMode);
-  };
-
-  componentWillMount() {
-    this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
-      console.log('offline pack progress', progress);
-    });
-    this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
-      console.log('offline max allowed tiles', tiles);
-    });
-    this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
-      console.log('offline error', error);
-    });
-  }
-
-  componentWillUnmount() {
-    this._offlineProgressSubscription.remove();
-    this._offlineMaxTilesSubscription.remove();
-    this._offlineErrorSubscription.remove();
-  }
-
-  addNewMarkers = () => {
-    // Treat annotations as immutable and create a new one instead of using .push()
-    this.setState({
-      annotations: [ ...this.state.annotations, {
-        coordinates: [40.73312,-73.989],
-        annotationImage: {
-            source: { uri: 'https://cdn4.iconfinder.com/data/icons/peppyicons/512/660011-location-512.png' },
-            height: 25,
-            width: 25
-          },
+      zoom: 17,
+      userTrackingMode: Mapbox.userTrackingMode.followWithHeadings,
+      press_explore: false,
+      press_announcement: false,
+      press_monster: false,
+      press_mission: false,
+      collapsed: true,
+      test: '測試用的XDDDD',
+      result: '冰櫃神速',
+      i: 5,
+      UserLat: 25.035770510088796,
+      UserLon: 121.43201887607574,
+      newLat: 25.035770510088796,
+      newLon: 121.43201887607574,
+      annotations: [
+      {
+        coordinates: [ 25.03561011686629,121.43148511648178],
         type: 'point',
-        title: 'This is a new marker',
-        id: 'foo'
-      }, {
-        'coordinates': [[40.749857912194386, -73.96820068359375], [40.741924698522055,-73.9735221862793], [40.735681504432264,-73.97523880004883], [40.7315190495212,-73.97438049316406], [40.729177554196376,-73.97180557250975], [40.72345355209305,-73.97438049316406], [40.719290332250544,-73.97455215454102], [40.71369559554873,-73.97729873657227], [40.71200407096382,-73.97850036621094], [40.71031250340588,-73.98691177368163], [40.71031250340588,-73.99154663085938]],
-        'type': 'polygon',
-        'fillAlpha': 1,
-        'fillColor': '#000000',
-        'strokeAlpha': 1,
-        'id': 'new-black-polygon'
-      }]
-    });
-  };
+        title: '寶貝中心',
+        subtitle: '聖言樓',
+        id: '聖言樓'
 
-  updateMarker2 = () => {
-    // Treat annotations as immutable and use .map() instead of changing the array
-    this.setState({
-      annotations: this.state.annotations.map(annotation => {
-        if (annotation.id !== 'marker2') { return annotation; }
-        return {
-          coordinates: [40.714541341726175,-74.00579452514648],
-          'type': 'point',
-          title: 'New Title!',
-          subtitle: 'New Subtitle',
-          annotationImage: {
-            source: { uri: 'https://cdn4.iconfinder.com/data/icons/peppyicons/512/660011-location-512.png' },
-            height: 25,
-            width: 25
-          },
-          id: 'marker2'
-        };
-      })
-    });
-  };
+      },
+      {
+        coordinates: [ 25.033375,121.433839],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '真善美聖',
+        id: '真善美聖'
+      },
+      {
+        coordinates: [ 25.035108,121.433324],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '小夜市',
+        id: '小夜市'
+      },
+      {
+        coordinates: [ 25.038195824467437,121.43146634101866],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '中美堂',
+        id: '中美堂'
+      },
+      {
+        coordinates: [ 25.038145, 121.429724],
+        type: 'point',
+        title: '商店',
+        subtitle: '小夜市',
+        id: '小夜市'
+      },
+      {
+        coordinates: [ 25.03552505976925, 121.43098086118697],
+        type: 'point',
+        title: '商店',
+        subtitle: '理園',
+        id: '理園'
+      },
+      {
+        coordinates: [ 25.034431463268053, 121.4339929819107],
+        type: 'point',
+        title: '商店',
+        subtitle: '輔園',
+        id: '輔園'
+      },
+      {
+        coordinates: [ 25.03708038022287, 121.43301397562027],
+        type: 'point',
+        title: '商店',
+        subtitle: '文園',
+        id: '文園'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.0'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.1'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.2'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.3'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.4'
+      },
+      {
+        coordinates: [0,0],
+          type: 'point',
+          title: '我是怪物',
+          id: 'No.5'
+      },
+      ]
+      
+    }
+  },
+  onPressOut_explore() {
+    this.setState({press_explore: false});
 
-  removeMarker2 = () => {
-    this.setState({
-      annotations: this.state.annotations.filter(a => a.id !== 'marker2')
-    });
-  };
+    for(this.state.i=0;this.state.i<5;this.state.i++){
+      let distance = 0.00003;
+      let ID = 'No.'+ this.state.i;
+      let x = Math.floor(Math.random() * 20 - 10);//-10~10
+      let y = Math.floor(Math.random() * 20 - 10);//-10~10
+      this.state.newLat = this.state.UserLat + x*distance;
+      this.state.newLon = this.state.UserLon + y*distance;
+      console.log(x);
+      console.log(y);
+      console.log(this.state.newLat);
+      console.log(this.state.newLon);
+      // this.addAnnotations(mapRef, [{
+      //     coordinates: [this.state.newLat,this.state.newLon],
+      //     type: 'point',
+      //     title: '我是怪物',
+      //     id: 'foo'
+      //   },]);
+      this.setState({
+        annotations: this.state.annotations.map(annotation => {
+          if (annotation.id !== ID) { return annotation; }
+          return {
+            coordinates: [this.state.newLat,this.state.newLon],
+            'type': 'point',
+            title: '我是怪物',
+            subtitle: ID,
+            annotationImage: {
+              source: { uri: 'https://cldup.com/7NLZklp8zS.png' },
+              height: 25,
+              width: 25
+            },
+            id: ID
+          };
+        })
+      });
 
+    }
+    /*this.setState({
+      collapsed: !this.state.collapsed
+    });*/
+  },
   render() {
-    StatusBar.setHidden(true);
+   
     return (
-      <View style={styles.container}>
+        <View style={styles.container}>
+       
+        <View style={styles.status}>
+          <View style={styles.Top_status}>
+            <View style={styles.Top_status_L}>
+
+              
+                  <Text style={styles.Top_welcome_L} onPress={this._pressButton}>三</Text>
+                
+            </View>
+            <View style={styles.Top_status_R}>
+                
+                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
+                
+
+            </View>
+          </View>
+        </View>
+        <Collapsible collapsed={this.state.collapsed} align="center">
+          <View style={styles.explore}>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_monster}
+                onPressOut={this.onPressOut_monster}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_monster}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_announcement ? '玩家' : '玩家'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_announcement}
+                onPressOut={this.onPressOut_announcement}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_announcement}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_announcement ? '公告' : '公告'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_mission}
+                onPressOut={this.onPressOut_mission}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_mission}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_mission ? '任務' : '任務'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.explore_child}>
+              <TouchableHighlight
+                onPressIn={this.onPressIn_explore}
+                onPressOut={this.onPressOut_explore}
+                style={{borderRadius: 100}}>
+                  <View style={styles.button_explore}>
+                    <Text style={styles.welcome_S}>
+                      {this.state.press_explore ? '探索' : '探索'}
+                    </Text>
+                  </View>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Collapsible>
         <MapView
-          ref={map => { this._map = map; }}
+          ref={mapRef}
           style={styles.map}
           initialCenterCoordinate={this.state.center}
           initialZoomLevel={this.state.zoom}
@@ -178,7 +271,7 @@ class NewMap extends Component {
           scrollEnabled={true}
           zoomEnabled={true}
           showsUserLocation={false}
-          styleURL={Mapbox.mapStyles.dark}
+          styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
           userTrackingMode={this.state.userTrackingMode}
           annotations={this.state.annotations}
           annotationsAreImmutable
@@ -191,127 +284,181 @@ class NewMap extends Component {
           onLongPress={this.onLongPress}
           onTap={this.onTap}
         />
-      <ScrollView style={styles.scrollView}>
-        {this._renderButtons()}
-      </ScrollView>
+        <TouchableOpacity
+                onPressIn={this.onPressIn_explore}
+                onPressOut={this.onPressOut_explore}
+                style={{borderRadius: 100,position: 'absolute',left: width-93,top: height-173}}>
+                    <Image source={require('./Img/explore.png')} 
+                         style={{width:83,height:83}}/>
+              </TouchableOpacity>
+          
       </View>
+        
+     
     );
   }
 
-  _renderButtons() {
-    return (
-      <View>
-        <Text onPress={() => this._map && this._map.setDirection(0)}>
-          Set direction to 0
-        </Text>
-        <Text onPress={() => this._map && this._map.setZoomLevel(6)}>
-          Zoom out to zoom level 6
-        </Text>
-        <Text onPress={() => this._map && this._map.setCenterCoordinate(48.8589, 2.3447)}>
-          Go to Paris at current zoom level {parseInt(this.state.currentZoom)}
-        </Text>
-        <Text onPress={() => this._map && this._map.setCenterCoordinateZoomLevel(35.68829, 139.77492, 14)}>
-          Go to Tokyo at fixed zoom level 14
-        </Text>
-        <Text onPress={() => this._map && this._map.easeTo({ pitch: 30 })}>
-          Set pitch to 30 degrees
-        </Text>
-        <Text onPress={this.addNewMarkers}>
-          Add new marker
-        </Text>
-        <Text onPress={this.updateMarker2}>
-          Update marker2
-        </Text>
-        <Text onPress={() => this._map && this._map.selectAnnotation('marker1')}>
-          Open marker1 popup
-        </Text>
-        <Text onPress={this.removeMarker2}>
-          Remove marker2 annotation
-        </Text>
-        <Text onPress={() => this.setState({ annotations: [] })}>
-          Remove all annotations
-        </Text>
-        <Text onPress={() => this._map && this._map.setVisibleCoordinateBounds(40.712, -74.227, 40.774, -74.125, 100, 0, 0, 0)}>
-          Set visible bounds to 40.7, -74.2, 40.7, -74.1
-        </Text>
-        <Text onPress={() => this.setState({ userTrackingMode: Mapbox.userTrackingMode.followWithHeading })}>
-          Set userTrackingMode to followWithHeading
-        </Text>
-        <Text onPress={() => this._map && this._map.getCenterCoordinateZoomLevel((location)=> {
-            console.log(location);
-          })}>
-          Get location
-        </Text>
-        <Text onPress={() => this._map && this._map.getDirection((direction)=> {
-            console.log(direction);
-          })}>
-          Get direction
-        </Text>
-        <Text onPress={() => this._map && this._map.getBounds((bounds)=> {
-            console.log(bounds);
-          })}>
-          Get bounds
-        </Text>
-        <Text onPress={() => {
-            Mapbox.addOfflinePack({
-              name: 'test',
-              type: 'bbox',
-              bounds: [0, 0, 0, 0],
-              minZoomLevel: 0,
-              maxZoomLevel: 0,
-              metadata: { anyValue: 'you wish' },
-              styleURL: Mapbox.mapStyles.dark
-            }).then(() => {
-              console.log('Offline pack added');
-            }).catch(err => {
-              console.log(err);
-            });
-        }}>
-          Create offline pack
-        </Text>
-        <Text onPress={() => {
-            Mapbox.getOfflinePacks()
-              .then(packs => {
-                console.log(packs);
-              })
-              .catch(err => {
-                console.log(err);
-              });
-        }}>
-          Get offline packs
-        </Text>
-        <Text onPress={() => {
-            Mapbox.removeOfflinePack('test')
-              .then(info => {
-                if (info.deleted) {
-                  console.log('Deleted', info.deleted);
-                } else {
-                  console.log('No packs to delete');
-                }
-              })
-              .catch(err => {
-                console.log(err);
-              });
-        }}>
-          Remove pack with name 'test'
-        </Text>
-        <Text>User tracking mode is {this.state.userTrackingMode}</Text>
-      </View>
-    );
-  }
-}
+ 
+});
 
 const styles = StyleSheet.create({
+  
   container: {
     flex: 1,
-    alignItems: 'stretch'
+    flexDirection: 'column',
+  },
+  Top_status: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#8E8E8E',
+  },
+  Top_status_L: {
+    flex: 1,
+    backgroundColor: '#AFAFAF',
+    //borderWidth: 5,
+    //borderColor: '#FFD306',
+    justifyContent: 'center',
+    alignItems: 'center',
+    //borderRadius: 100,
+    //borderTopRightRadius: 0,
+
+  },
+  Top_welcome_L: {
+    fontSize: 30,
+    color: '#FFFFFF',
+  },
+  Top_status_R:{
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    borderWidth: 10,
+    borderColor: '#5B5B5B',
+    borderTopColor: '#A0A0A0',
+    borderLeftColor: '#8E8E8E',
+    borderRightColor: '#858585',
+  },
+  Top_welcome_R: {
+    fontSize: 30,
+    color: 'black',
+  },
+
+  Top_status_Button_L:{
+    backgroundColor: '#2881F0',
+    borderRadius: 10,
+    height: 50,
+    width: 50,
+    margin:2,
+    //borderWidth: 3,
+    //borderColor: '#6F7469',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+
+  status: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  status_L: {
+    flex: 1,
+    backgroundColor: '#EA0000',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcome_L: {
+    fontSize: 30,
+    color: '#000000',
+  },
+  status_R:{
+    flex: 4,
+    backgroundColor: '#8E8E8E',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  welcome_R: {
+    fontSize: 30,
+    color: '#FFFFFF',
   },
   map: {
-    flex: 1
+    flex: 7,
   },
-  scrollView: {
-    flex: 1
-  }
+  explore: {
+    flex: 1,
+    backgroundColor: '#5B5B5B',
+    flexDirection:'row'
+  },
+  explore_child: {
+    flex:1,
+    margin: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button_monster: {
+    backgroundColor: '#0DE106',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#C6CBD2',
+    justifyContent: 'center'
+  },
+  button_announcement: {
+    backgroundColor: '#E4B417',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#C6CBD2',
+    justifyContent: 'center'
+  },
+  button_mission: {
+    backgroundColor: '#13B0FF',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#C6CBD2',
+    justifyContent: 'center'
+  },
+  button_explore: {
+    backgroundColor: '#8600FF',
+    borderRadius: 100,
+    height: 60,
+    width: 60,
+    margin:2,
+    borderWidth: 3,
+    borderColor: '#C6CBD2',
+    justifyContent: 'center'
+  },
+  welcome_S: {
+    fontSize: 20,
+    textAlign: 'center',
+    color: '#FFFFFF'
+  },
+   slideContainer: {
+    height: 100,
+  },
+  slide: {
+    padding: 15,
+    height: 100,
+  },
+  slide1: {
+    backgroundColor: '#FEA900',
+  },
+  slide2: {
+    backgroundColor: '#B3DC4A',
+  },
+  slide3: {
+    backgroundColor: '#6AC0FF',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 16,
+  },
 });
 
 module.exports = NewMap;

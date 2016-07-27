@@ -47,6 +47,7 @@ var MapExample = React.createClass({
         type: 'point',
         title: '寶貝中心',
         subtitle: '聖言樓',
+        id: '聖言樓'
 
       },
       {
@@ -54,42 +55,49 @@ var MapExample = React.createClass({
         type: 'point',
         title: '寶貝中心',
         subtitle: '真善美聖',
+        id: '真善美聖'
       },
       {
         coordinates: [ 25.035108,121.433324],
         type: 'point',
         title: '寶貝中心',
         subtitle: '小夜市',
+        id: '小夜市'
       },
       {
         coordinates: [ 25.038195824467437,121.43146634101866],
         type: 'point',
         title: '寶貝中心',
         subtitle: '中美堂',
+        id: '中美堂'
       },
       {
         coordinates: [ 25.038145, 121.429724],
         type: 'point',
         title: '商店',
         subtitle: '小夜市',
+        id: '小夜市'
       },
       {
         coordinates: [ 25.03552505976925, 121.43098086118697],
         type: 'point',
         title: '商店',
         subtitle: '理園',
+        id: '理園'
       },
       {
         coordinates: [ 25.034431463268053, 121.4339929819107],
         type: 'point',
         title: '商店',
         subtitle: '輔園',
+        id: '輔園'
       },
       {
         coordinates: [ 25.03708038022287, 121.43301397562027],
         type: 'point',
         title: '商店',
         subtitle: '文園',
+        id: '文園'
       },
       ]
       
