@@ -16,7 +16,7 @@
     "react-native-collapsible": "^0.6.0",
     "react-native-lightbox": "^0.6.0",
     "react-native-linear-gradient": "^1.5.7",
-    "react-native-mapbox-gl": "^4.1.0",
+    "react-native-mapbox-gl": "^5.0.0",
     "react-native-progress": "^3.0.0",
     "react-native-scrollable-tab-view": "^0.4.4",
     "react-native-sensor-manager": "^0.1.6",
