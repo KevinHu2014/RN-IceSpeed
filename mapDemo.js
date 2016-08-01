@@ -94,23 +94,23 @@ class MapExample extends Component {
     console.log('onChangeUserTrackingMode', userTrackingMode);
   };
 
-  componentWillMount() {
-    this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
-      console.log('offline pack progress', progress);
-    });
-    this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
-      console.log('offline max allowed tiles', tiles);
-    });
-    this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
-      console.log('offline error', error);
-    });
-  }
+  // componentWillMount() {
+  //   this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
+  //     console.log('offline pack progress', progress);
+  //   });
+  //   this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
+  //     console.log('offline max allowed tiles', tiles);
+  //   });
+  //   this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
+  //     console.log('offline error', error);
+  //   });
+  // }
 
-  componentWillUnmount() {
-    this._offlineProgressSubscription.remove();
-    this._offlineMaxTilesSubscription.remove();
-    this._offlineErrorSubscription.remove();
-  }
+  // componentWillUnmount() {
+  //   this._offlineProgressSubscription.remove();
+  //   this._offlineMaxTilesSubscription.remove();
+  //   this._offlineErrorSubscription.remove();
+  // }
 
   addNewMarkers = () => {
     // Treat annotations as immutable and create a new one instead of using .push()
@@ -171,11 +171,11 @@ class MapExample extends Component {
           rotateEnabled={true}
           scrollEnabled={true}
           zoomEnabled={true}
-          showsUserLocation={false}
+          showsUserLocation={true}
           styleURL={Mapbox.mapStyles.dark}
           userTrackingMode={this.state.userTrackingMode}
           annotations={this.state.annotations}
-          annotationsAreImmutable
+          annotationsAreImmutable={true}
           onChangeUserTrackingMode={this.onChangeUserTrackingMode}
           onRegionDidChange={this.onRegionDidChange}
           onRegionWillChange={this.onRegionWillChange}

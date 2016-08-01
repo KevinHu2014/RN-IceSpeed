@@ -20,6 +20,27 @@ import {
 const accessToken = 'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ';
 Mapbox.setAccessToken(accessToken);
 
+Mapbox.addOfflinePackForRegion;
+Mapbox.addOfflinePack({
+    name: 'test', // required
+    type: 'bbox', // required, only type currently supported`
+    metadata: { // optional. You can put any information in here that may be useful to you
+        date: new Date(),
+        foo: 'bar'
+    },
+    bounds: [ // required. The corners of the bounded rectangle region being saved offline
+      25.032036, 121.426971, 25.041509, 121.437695
+    ],
+    minZoomLevel: 13, // required
+    maxZoomLevel: 17, // required
+    styleURL: 'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i' // required. Valid styleURL
+}).then(() => {
+  // Called after the pack has been added successfully
+  console.log('success')
+}).catch(err => {
+  console.error(err); // Handle error
+});
+
 import battle from './battle';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
@@ -34,7 +55,7 @@ var NewMap = React.createClass({
         longitude: 121.43289
       },
       zoom: 17,
-      userTrackingMode: Mapbox.userTrackingMode.followWithHeadings,
+      userTrackingMode: Mapbox.userTrackingMode.none,
       press_explore: false,
       press_announcement: false,
       press_monster: false,
@@ -327,11 +348,11 @@ var NewMap = React.createClass({
           rotateEnabled={true}
           scrollEnabled={true}
           zoomEnabled={true}
-          showsUserLocation={false}
+          showsUserLocation={true}
           styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
           userTrackingMode={this.state.userTrackingMode}
           annotations={this.state.annotations}
-          annotationsAreImmutable
+          annotationsAreImmutable={true}
           onChangeUserTrackingMode={this.onChangeUserTrackingMode}
           onRegionDidChange={this.onRegionDidChange}
           onRegionWillChange={this.onRegionWillChange}
