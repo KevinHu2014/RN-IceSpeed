@@ -16,7 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 var object = React.createClass({
   getInitialState: function() {
-    var myFirebaseRef = new Firebase("https://project-5810968585068392276.firebaseio.com/users/314282187");
+    var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/users/314282187");
     this.usersRef = myFirebaseRef.child('Item');
     //myFirebaseRef.child('Item/1/quantity').set(5);//用set比較不好
     //myFirebaseRef.child('Item/1').update({quantity: 1});//用update比較好

@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "firebase": "^2.4.1",
-    "react": "^15.2.1",
+    "react": "^15.2.0",
     "react-native": "^0.30",
     "react-native-admob": "^1.0.0",
     "react-native-animatable": "^0.6.1",
@@ -18,11 +18,11 @@
     "react-native-linear-gradient": "^1.5.7",
     "react-native-mapbox-gl": "^5.0.0",
     "react-native-progress": "^3.0.0",
+    "react-native-screen-brightness": "^0.1.0",
     "react-native-scrollable-tab-view": "^0.4.4",
     "react-native-sensor-manager": "^0.1.6",
     "react-native-sound": "^0.8.1",
     "react-native-speech-bubble": "^0.1.0",
-    "react-native-screen-brightness": "^0.1.0",
     "react-native-swipe-list-view": "^0.1.7",
     "react-swipeable-views": "^0.6.2"
   }
