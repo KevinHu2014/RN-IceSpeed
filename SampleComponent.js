@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 var Mapbox = require('react-native-mapbox-gl');
 //import FirstPageComponent from './FirstPageComponent';
-import MapExample from './MapExample';
+import NewMap from './NewMap';
 //初始頁的Component
 
 export default class SampleComponent extends React.Component {
     render() {
-        let defaultName = 'MapExample';
-        let defaultComponent = MapExample;
+        let defaultName = 'NewMap';
+        let defaultComponent = NewMap;
         return (
         <Navigator
           initialRoute={{ name: defaultName, component: defaultComponent }}

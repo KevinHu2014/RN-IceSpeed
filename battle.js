@@ -296,7 +296,7 @@ var battle = React.createClass({
             console.log('OK Pressed!');
             const { navigator } = this.props;
             if(navigator) {
-                //返回mapexample
+                //返回NewMap
                 navigator.pop();
             }
             this.setState({

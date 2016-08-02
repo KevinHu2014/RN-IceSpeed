@@ -42,6 +42,7 @@ Mapbox.addOfflinePack({
 });
 
 import battle from './battle';
+import swiper from './swiper';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 var Statusbar = require('./Statusbar');
@@ -390,6 +391,45 @@ var NewMap = React.createClass({
     this._offlineProgressSubscription.remove();
     this._offlineMaxTilesSubscription.remove();
     this._offlineErrorSubscription.remove();
+  },
+  onOpenAnnotation(annotation) {
+    console.log(annotation.title);
+    if(annotation.title=='寶貝中心'){
+      Alert.alert(
+        '歡迎來到寵物中心',
+        '你的寵物都已回復～',
+        [
+          
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
+    else if(annotation.id=='真善美聖道館'){
+      
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'swiper',
+                component: swiper,
+            })
+        }
+    }
+    else{
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'battle',
+                component: battle,
+                params: {
+                    test: this.state.test,
+                    getResult:(result) => {
+                        this.setState({result: result})
+                    }
+                 }   
+            })
+        }
+    }
+    
   },
   onPressOut_explore() {
     this.setState({press_explore: false});

@@ -8,6 +8,7 @@ import {
   Image
 } from 'react-native';
 
+import NewMap from './NewMap';
 
 var swiper = React.createClass({
   getInitialState(){
@@ -19,6 +20,13 @@ var swiper = React.createClass({
       gameIntro: '在這世界中的怪物精靈分為水、火、木三種屬性其中，水剋火、火剋木、木剋水這三種屬性產生的影響很單純，強屬性攻擊弱屬性時，可以獲得1.25倍的傷害加乘。相對的，如果是弱屬性攻擊強屬性時攻擊傷害則會變為0.75倍',
 
     }
+  },
+  onPress(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回mapexample
+                navigator.pop();
+            }
   },
   render: function() {
     return (
@@ -63,7 +71,7 @@ var swiper = React.createClass({
             <View style={{flex: 3,}}></View>
             <View style={{flex: 1,}}>
               <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                >
+                onPress={this.onPress}>
                 Done
               </Text>
             </View>
