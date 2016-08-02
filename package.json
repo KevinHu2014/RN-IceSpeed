@@ -24,6 +24,7 @@
     "react-native-sound": "^0.8.1",
     "react-native-speech-bubble": "^0.1.0",
     "react-native-swipe-list-view": "^0.1.7",
+    "react-native-swiper": "^1.4.8",
     "react-swipeable-views": "^0.6.2"
   }
 }

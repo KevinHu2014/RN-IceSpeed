@@ -348,7 +348,7 @@ var NewMap = React.createClass({
           rotateEnabled={true}
           scrollEnabled={true}
           zoomEnabled={true}
-          showsUserLocation={true}
+          showsUserLocation={false}
           styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
           userTrackingMode={this.state.userTrackingMode}
           annotations={this.state.annotations}
@@ -364,7 +364,7 @@ var NewMap = React.createClass({
         />
         <TouchableOpacity
                 onPressIn={this.onPressIn_explore}
-                onPressOut={this.onPressOut_explore}
+                //onPressOut={this.onPressOut_explore}
                 style={{borderRadius: 100,position: 'absolute',left: width-93,top: height-173}}>
                     <Image source={require('./Img/explore.png')} 
                          style={{width:83,height:83}}/>
