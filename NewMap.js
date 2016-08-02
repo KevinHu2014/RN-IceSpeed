@@ -83,7 +83,7 @@ var NewMap = React.createClass({
 
       },
       {
-        coordinates: [ 25.033375,121.433839],
+        coordinates: [ 25.033369450224267,121.43383204936981],
         type: 'point',
         title: '寶貝中心',
         subtitle: '真善美聖',
@@ -164,6 +164,174 @@ var NewMap = React.createClass({
             source: { uri: 'shop' },
             height: 25,
             width: 25
+          },
+      },
+      {
+        coordinates: [ 25.035051169149014, 121.43161654472351],
+        type: 'point',
+        title: '道館',
+        subtitle: '聖言樓',
+        id: '聖言樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.036018390111114, 121.43241047859192],
+        type: 'point',
+        title: '道館',
+        subtitle: '淨心堂',
+        id: '淨心堂道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.033335426771128, 121.43384546041487],
+        type: 'point',
+        title: '道館',
+        subtitle: '真善美聖',
+        id: '真善美聖道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.033335426771128, 121.43384546041487],
+        type: 'point',
+        title: '道館',
+        subtitle: '真善美聖',
+        id: '真善美聖道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.037836161636058, 121.4320108294487],
+        type: 'point',
+        title: '道館',
+        subtitle: '中美堂',
+        id: '中美堂道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03671099340075, 121.43473863601686],
+        type: 'point',
+        title: '道館',
+        subtitle: '于斌的墓',
+        id: '于斌的墓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03375828901878, 121.4333063364029],
+        type: 'point',
+        title: '道館',
+        subtitle: '耕莘樓',
+        id: '耕莘樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03323335635505, 121.43434435129166],
+        type: 'point',
+        title: '道館',
+        subtitle: '野聲樓和焯炤館',
+        id: '野聲樓和焯炤館道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03418844049941, 121.43413782119751],
+        type: 'point',
+        title: '道館',
+        subtitle: '輔園',
+        id: '輔園道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03633674509128, 121.43322587013245],
+        type: 'point',
+        title: '道館',
+        subtitle: '文華樓',
+        id: '文華樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03784102195161, 121.43238097429276],
+        type: 'point',
+        title: '道館',
+        subtitle: '積健樓',
+        id: '積健樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.03784102195161, 121.43238097429276],
+        type: 'point',
+        title: '道館',
+        subtitle: '進修部大樓',
+        id: '進修部大樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.037556693167364, 121.43070995807649],
+        type: 'point',
+        title: '道館',
+        subtitle: '進修部大樓',
+        id: '進修部大樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
+          },
+      },
+      {
+        coordinates: [ 25.035909031339482, 121.43050879240037],
+        type: 'point',
+        title: '道館',
+        subtitle: '濟時樓',
+        id: '濟時樓道館',
+        annotationImage: {
+            source: { uri: 'gym' },
+            height: 30,
+            width: 30
           },
       },
       {
