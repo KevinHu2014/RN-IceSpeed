@@ -334,44 +334,7 @@ var NewMap = React.createClass({
             height: 30,
             width: 30
           },
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.0'
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.1'
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.2'
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.3'
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.4'
-      },
-      {
-        coordinates: [0,0],
-          type: 'point',
-          title: '我是怪物',
-          id: 'No.5'
-      },
-      ]
+      }]
       
     }
   },
@@ -433,7 +396,8 @@ var NewMap = React.createClass({
   },
   onPressOut_explore() {
     this.setState({press_explore: false});
-
+    var MonsterLat = [];//Lat
+    var MonsterLon = [];//Lon
     for(this.state.i=0;this.state.i<5;this.state.i++){
       let distance = 0.00003;
       let ID = 'No.'+ this.state.i;
@@ -445,31 +409,65 @@ var NewMap = React.createClass({
       console.log(y);
       console.log(this.state.newLat);
       console.log(this.state.newLon);
-      // this.addAnnotations(mapRef, [{
-      //     coordinates: [this.state.newLat,this.state.newLon],
-      //     type: 'point',
-      //     title: '我是怪物',
-      //     id: 'foo'
-      //   },]);
-      this.setState({
-        annotations: this.state.annotations.map(annotation => {
-          if (annotation.id !== ID) { return annotation; }
-          return {
-            coordinates: [this.state.newLat,this.state.newLon],
-            'type': 'point',
-            title: '我是怪物',
-            subtitle: ID,
-            annotationImage: {
-              source: { uri: 'https://cldup.com/7NLZklp8zS.png' },
-              height: 25,
-              width: 25
-            },
-            id: ID
-          };
-        })
-      });
-
+      MonsterLat[this.state.i] = this.state.newLat;
+      MonsterLon[this.state.i] = this.state.newLon;
+      
     }
+    this.setState({
+      annotations: [ ...this.state.annotations, {
+        coordinates: [MonsterLat[0],MonsterLon[0]],
+        type: 'point',
+        title: '我是怪物',
+        annotationImage: {
+            source: { uri: 'green' },
+            height: 45,
+            width: 45
+          },
+        id: 'M0'
+      },{
+        coordinates: [MonsterLat[1],MonsterLon[1]],
+        type: 'point',
+        title: '我是怪物',
+        annotationImage: {
+            source: { uri: 'green' },
+            height: 45,
+            width: 45
+          },
+        id: 'M1'
+      },{
+        coordinates: [MonsterLat[2],MonsterLon[2]],
+        type: 'point',
+        title: '我是怪物',
+        annotationImage: {
+            source: { uri: 'yellow' },
+            height: 45,
+            width: 45
+          },
+        id: 'M2'
+      },{
+        coordinates: [MonsterLat[3],MonsterLon[3]],
+        type: 'point',
+        title: '我是怪物',
+        annotationImage: {
+            source: { uri: 'green' },
+            height: 45,
+            width: 45
+          },
+        id: 'M3'
+      },{
+        coordinates: [MonsterLat[4],MonsterLon[4]],
+        type: 'point',
+        title: '我是怪物',
+        annotationImage: {
+            source: { uri: 'red' },
+            height: 45,
+            width: 45
+          },
+        id: 'M4'
+      },
+
+      ]
+    });
     /*this.setState({
       collapsed: !this.state.collapsed
     });*/
@@ -572,7 +570,7 @@ var NewMap = React.createClass({
         />
         <TouchableOpacity
                 onPressIn={this.onPressIn_explore}
-                //onPressOut={this.onPressOut_explore}
+                onPressOut={this.onPressOut_explore}
                 style={{borderRadius: 100,position: 'absolute',left: width-93,top: height-173}}>
                     <Image source={require('./Img/explore.png')} 
                          style={{width:83,height:83}}/>
