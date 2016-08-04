@@ -84,11 +84,71 @@ var NewMap = React.createClass({
 
       },
       {
-        coordinates: [ 25.033369450224267,121.43383204936981],
+        coordinates: [  25.03293686561722,121.43520265817642],
         type: 'point',
         title: '寶貝中心',
-        subtitle: '真善美聖',
-        id: '真善美聖',
+        subtitle: '輔大捷運站',
+        id: '輔大捷運站',
+        annotationImage: {
+            source: { uri: 'pc' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [  25.03264523468432,121.43407076597214],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '校門口',
+        id: '校門口',
+        annotationImage: {
+            source: { uri: 'pc' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.034504370004758,121.43335729837416],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '一圓環',
+        id: '一圓環',
+        annotationImage: {
+            source: { uri: 'pc' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.038550625956937,121.43138855695723],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '國璽樓',
+        id: '國璽樓',
+        annotationImage: {
+            source: { uri: 'pc' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.037051218145784,121.43345922231674],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '文友樓',
+        id: '文友樓',
+        annotationImage: {
+            source: { uri: 'pc' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.03642909218283,121.43110424280165],
+        type: 'point',
+        title: '寶貝中心',
+        subtitle: '羅耀拉大樓',
+        id: '羅耀拉大樓',
         annotationImage: {
             source: { uri: 'pc' },
             height: 25,
@@ -99,8 +159,8 @@ var NewMap = React.createClass({
         coordinates: [ 25.035108,121.433324],
         type: 'point',
         title: '寶貝中心',
-        subtitle: '小夜市',
-        id: '小夜市',
+        subtitle: '朝橒樓',
+        id: '朝橒樓',
         annotationImage: {
             source: { uri: 'pc' },
             height: 25,
