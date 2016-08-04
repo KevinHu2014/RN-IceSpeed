@@ -120,11 +120,11 @@ var NewMap = React.createClass({
           },
       },
       {
-        coordinates: [ 25.038145, 121.429724],
+        coordinates: [ 25.035947914469467, 121.4315977692604],
         type: 'point',
         title: '商店',
-        subtitle: '小夜市',
-        id: '小夜市',
+        subtitle: '聖言樓',
+        id: '聖言樓商店',
         annotationImage: {
             source: { uri: 'shop' },
             height: 25,
@@ -161,6 +161,42 @@ var NewMap = React.createClass({
         title: '商店',
         subtitle: '文園',
         id: '文園',
+        annotationImage: {
+            source: { uri: 'shop' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.036834932524275, 121.42987847328186],
+        type: 'point',
+        title: '商店',
+        subtitle: '心園',
+        id: '心園',
+        annotationImage: {
+            source: { uri: 'shop' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.038159372201477, 121.43227636814116],
+        type: 'point',
+        title: '商店',
+        subtitle: '中美堂',
+        id: '中美堂商店',
+        annotationImage: {
+            source: { uri: 'shop' },
+            height: 25,
+            width: 25
+          },
+      },
+      {
+        coordinates: [ 25.034844600869846, 121.43378913402557],
+        type: 'point',
+        title: '商店',
+        subtitle: '宜美學范',
+        id: '宜美學范',
         annotationImage: {
             source: { uri: 'shop' },
             height: 25,
