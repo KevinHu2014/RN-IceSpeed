@@ -57,39 +57,51 @@ var object = React.createClass({
       Item: {
         1:{
           quantity: 10,
-          name: '紅藥水(小)',
-          description: '使用後會使HP一次恢復60的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image003.jpg"
+          name: '回復藥水',
+          description: '使用之後可以選擇一隻寵物夥伴回復滿HP',
+          Img: "https://s31.postimg.org/bzmcux10b/red_potion.png"
         },
         2:{
           quantity: 12,
-          name: '紅藥水(大)',
-          description: '使用後會使HP一次恢復120的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image005.jpg"
+          name: '稀有卷軸',
+          description: '使用之後1小時內將會遇到比較稀有的怪..!?',
+          Img: "https://s31.postimg.org/e02slosa3/RARE_SCROLL.png"
         },
         3:{
           quantity: 4,
-          name: '藍藥水(小)',
-          description: '使用後會使MP一次恢復60的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image008.jpg"
+          name: '經驗卷軸',
+          description: '使用之後1小時內經驗加倍。',
+          Img: "https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png"
         },
         4:{
           quantity: 1,
-          name: '藍藥水(大)',
-          description: '使用後會使MP一次恢復120的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image011.jpg"
+          name: '掉落卷軸',
+          description: '使用之後1小時內擊敗的怪物將會比較容易加入你的隊伍。',
+          Img: "https://s31.postimg.org/81v0ggxsr/DROP_SCROLL.png"
         },
         5:{
           quantity: 4,
-          name: '紫藥水(小)',
-          description: '使用後會使HP和MP各自恢復60的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image014.jpg"
+          name: '普通的錢袋',
+          description: '使用之後獲得1000G。',
+          Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
         },
         6:{
           quantity: 4,
-          name: '紫藥水(大)',
-          description: '使用後會使HP和MP各自恢復120的特殊藥水。',
-          Img: "http://game.yam.com/koongya/main_products/mall/mall_pic/m-liquid/image018.jpg"
+          name: '水之寶石袋',
+          description: '使用之後獲得500點水之力經驗值。',
+          Img: "https://s32.postimg.org/qezeok5ed/WATER_bag.png"
+        },
+        7:{
+          quantity: 4,
+          name: '木之寶石袋',
+          description: '使用之後獲得500點木之力經驗值。',
+          Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
+        },
+        8:{
+          quantity: 4,
+          name: '火之寶石袋',
+          description: '使用之後獲得500點火之力經驗值。',
+          Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
         }
       }
     });
@@ -248,7 +260,7 @@ var styles = StyleSheet.create({
   thumb: {
     alignSelf: 'center',
     borderWidth: 3,
-    borderColor:'#985813',
+    //borderColor:'#985813',
     width: 64,
     height: 64,
   },
