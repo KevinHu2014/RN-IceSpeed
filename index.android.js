@@ -11,6 +11,7 @@ import {AppRegistry} from 'react-native';
 //var test = require('./NavPet');
 //var test = require('./SpeechbubbleTest');
 //var test = require('./FetchTest');
-var test = require('./NewMap');
+//var test = require('./NewMap');
 //var test = require('./swiper');
+var test = require('./FireStore');
 AppRegistry.registerComponent('test', () => test);

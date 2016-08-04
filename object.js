@@ -18,6 +18,10 @@ var object = React.createClass({
   getInitialState: function() {
     var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/users/314282187");
     this.usersRef = myFirebaseRef.child('Item');
+    // this.testRef = myFirebaseRef.child('Item/');
+    // this.testRef.on("child_added", function(snapshot) {
+    //   console.log('id'+snapshot.key()+ ' 數量' + snapshot.val().quantity );
+    // });
     //myFirebaseRef.child('Item/1/quantity').set(5);//用set比較不好
     //myFirebaseRef.child('Item/1').update({quantity: 1});//用update比較好
     myFirebaseRef.set({
@@ -275,7 +279,7 @@ var styles = StyleSheet.create({
     fontSize:15,
     textAlign:'left',
     fontWeight: "bold",
-    fontStyle: 'italic',
+    //fontStyle: 'italic',
   },
   button_Blue: {
     flex: 1,
