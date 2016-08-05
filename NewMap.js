@@ -508,8 +508,8 @@ var NewMap = React.createClass({
       const { navigator } = this.props;
         if(navigator) {
             navigator.push({
-                name: 'WaterStore',
-                component: WaterStore,
+                name: 'AllStore',
+                component: AllStore,
             })
         }
     }
