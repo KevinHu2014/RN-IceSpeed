@@ -10,7 +10,6 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import Statusbar from './Statusbar';
 import Firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -23,53 +22,53 @@ var AllStore = React.createClass({
     
 
     //回覆資料庫
-    myFirebaseRef.set({
-      Item: {
-        1:{
-          name: '回復藥水',
-          description: '使用之後可以選擇一隻寵物夥伴回復滿HP',
-          Img: "https://s31.postimg.org/bzmcux10b/red_potion.png"
-        },
-        2:{
-          name: '稀有卷軸',
-          description: '使用之後1小時內將會遇到比較稀有的怪..!?',
-          Img: "https://s31.postimg.org/e02slosa3/RARE_SCROLL.png"
-        },
-        3:{
-          name: '經驗卷軸',
-          description: '使用之後1小時內經驗加倍。',
-          Img: "https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png"
-        },
-        4:{
-          name: '掉落卷軸',
-          description: '使用之後1小時內擊敗的怪物將會比較容易加入你的隊伍。',
-          Img: "https://s31.postimg.org/81v0ggxsr/DROP_SCROLL.png"
-        },
-        5:{
-          name: '普通的錢袋',
-          description: '使用之後獲得1000G。',
-          Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
-        },
-        6:{
-          quantity: 4,
-          name: '水之寶石袋',
-          description: '使用之後獲得500點水之力經驗值。',
-          Img: "https://s32.postimg.org/qezeok5ed/WATER_bag.png"
-        },
-        7:{
-          quantity: 4,
-          name: '木之寶石袋',
-          description: '使用之後獲得500點木之力經驗值。',
-          Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
-        },
-        8:{
-          quantity: 4,
-          name: '火之寶石袋',
-          description: '使用之後獲得500點火之力經驗值。',
-          Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
-        }
-      }
-    });
+    // myFirebaseRef.set({
+    //   Item: {
+    //     1:{
+    //       name: '回復藥水',
+    //       description: '使用之後可以選擇一隻寵物夥伴回復滿HP',
+    //       Img: "https://s31.postimg.org/bzmcux10b/red_potion.png"
+    //     },
+    //     2:{
+    //       name: '稀有卷軸',
+    //       description: '使用之後1小時內將會遇到比較稀有的怪..!?',
+    //       Img: "https://s31.postimg.org/e02slosa3/RARE_SCROLL.png"
+    //     },
+    //     3:{
+    //       name: '經驗卷軸',
+    //       description: '使用之後1小時內經驗加倍。',
+    //       Img: "https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png"
+    //     },
+    //     4:{
+    //       name: '掉落卷軸',
+    //       description: '使用之後1小時內擊敗的怪物將會比較容易加入你的隊伍。',
+    //       Img: "https://s31.postimg.org/81v0ggxsr/DROP_SCROLL.png"
+    //     },
+    //     5:{
+    //       name: '普通的錢袋',
+    //       description: '使用之後獲得1000G。',
+    //       Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
+    //     },
+    //     6:{
+    //       quantity: 4,
+    //       name: '水之寶石袋',
+    //       description: '使用之後獲得500點水之力經驗值。',
+    //       Img: "https://s32.postimg.org/qezeok5ed/WATER_bag.png"
+    //     },
+    //     7:{
+    //       quantity: 4,
+    //       name: '木之寶石袋',
+    //       description: '使用之後獲得500點木之力經驗值。',
+    //       Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
+    //     },
+    //     8:{
+    //       quantity: 4,
+    //       name: '火之寶石袋',
+    //       description: '使用之後獲得500點火之力經驗值。',
+    //       Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
+    //     }
+    //   }
+    // });
     this.items = [];
     return {
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
@@ -89,12 +88,25 @@ var AllStore = React.createClass({
     });
     
  },
-
+ _pressButton(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回NewMap
+                navigator.pop();
+            }
+ },
   render() {
     return (
     	<View style={styles.container}>
          <View style={{flex:1}}>
-           <Statusbar></Statusbar>
+            <View style={styles.Top_status}>
+              <View style={styles.Top_status_L}>
+                <Text style={styles.Top_welcome_L} onPress={this._pressButton}>返回</Text>
+              </View>
+              <View style={styles.Top_status_R}>
+                  <Text style={styles.Top_welcome_R}>超級商城</Text>
+              </View>
+            </View>
          </View>
          <View style={styles.main}>
             <LinearGradient colors={['#B3B1B1','#7C7A7F']} style={{flex: 1,}}>
@@ -196,6 +208,41 @@ var styles = StyleSheet.create({
   	backgroundColor: '#FFFFFF',
     flexDirection: 'column',
 	},
+  Top_status: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#8E8E8E',
+  },
+  Top_status_L: {
+    flex: 1,
+    backgroundColor: '#EA0000',
+    borderWidth: 5,
+    borderColor: '#FFD306',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderTopRightRadius: 0,
+
+  },
+  Top_welcome_L: {
+    fontSize: 27,
+    color: '#FFFFFF',
+  },
+  Top_status_R:{
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    borderWidth: 10,
+    borderColor: '#5B5B5B',
+    borderTopColor: '#A0A0A0',
+    borderLeftColor: '#8E8E8E',
+    borderRightColor: '#858585',
+  },
+  Top_welcome_R: {
+    fontSize: 30,
+    color: 'black',
+  },
   main:{
     flex: 7,
     flexDirection: 'row',

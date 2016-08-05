@@ -12,7 +12,7 @@ import {
 import * as Animatable from 'react-native-animatable'
 import * as Progress from 'react-native-progress';
 
-import MapExample from './MapExample';
+
 import LinearGradient from 'react-native-linear-gradient';
 import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
 

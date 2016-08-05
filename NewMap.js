@@ -43,6 +43,10 @@ Mapbox.addOfflinePack({
 
 import battle from './battle';
 import swiper from './swiper';
+import FireStore from './FireStore';
+import WaterStore from './WaterStore';
+import WoodStore from './WoodStore';
+import AllStore from './AllStore';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 var Statusbar = require('./Statusbar');
@@ -182,7 +186,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.035947914469467, 121.4315977692604],
         type: 'point',
-        title: '商店',
+        title: '火之商店',
         subtitle: '聖言樓',
         id: '聖言樓商店',
         annotationImage: {
@@ -194,7 +198,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.03552505976925, 121.43098086118697],
         type: 'point',
-        title: '商店',
+        title: '火之商店',
         subtitle: '理園',
         id: '理園',
         annotationImage: {
@@ -206,7 +210,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.034431463268053, 121.4339929819107],
         type: 'point',
-        title: '商店',
+        title: '火之商店',
         subtitle: '輔園',
         id: '輔園',
         annotationImage: {
@@ -218,7 +222,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.03708038022287, 121.43301397562027],
         type: 'point',
-        title: '商店',
+        title: '水之商店',
         subtitle: '文園',
         id: '文園',
         annotationImage: {
@@ -230,7 +234,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.036834932524275, 121.42987847328186],
         type: 'point',
-        title: '商店',
+        title: '木之商店',
         subtitle: '心園',
         id: '心園',
         annotationImage: {
@@ -242,7 +246,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.038159372201477, 121.43227636814116],
         type: 'point',
-        title: '商店',
+        title: '超級商城',
         subtitle: '中美堂',
         id: '中美堂商店',
         annotationImage: {
@@ -254,7 +258,7 @@ var NewMap = React.createClass({
       {
         coordinates: [ 25.034844600869846, 121.43378913402557],
         type: 'point',
-        title: '商店',
+        title: '火之商店',
         subtitle: '宜美學范',
         id: '宜美學范',
         annotationImage: {
@@ -470,6 +474,42 @@ var NewMap = React.createClass({
             navigator.push({
                 name: 'swiper',
                 component: swiper,
+            })
+        }
+    }
+    else if(annotation.title=='火之商店'){
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'FireStore',
+                component: FireStore,
+            })
+        }
+    }
+    else if(annotation.title=='木之商店'){
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'WoodStore',
+                component: WoodStore,
+            })
+        }
+    }
+    else if(annotation.title=='水之商店'){
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'WaterStore',
+                component: WaterStore,
+            })
+        }
+    }
+    else if(annotation.title=='超級商城'){
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'WaterStore',
+                component: WaterStore,
             })
         }
     }

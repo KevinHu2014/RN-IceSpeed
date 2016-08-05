@@ -10,7 +10,6 @@ import {
   View,
   ScrollView
 } from 'react-native';
-import Statusbar from './Statusbar';
 import Firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -76,12 +75,26 @@ var WaterStore = React.createClass({
     });
     
  },
+ _pressButton(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回NewMap
+                navigator.pop();
+            }
+ },
 
   render() {
     return (
     	<View style={styles.container}>
          <View style={{flex:1}}>
-           <Statusbar></Statusbar>
+            <View style={styles.Top_status}>
+              <View style={styles.Top_status_L}>
+                <Text style={styles.Top_welcome_L} onPress={this._pressButton}>返回</Text>
+              </View>
+              <View style={styles.Top_status_R}>
+                  <Text style={styles.Top_welcome_R}>水之商店</Text>
+              </View>
+            </View>
          </View>
          <View style={styles.main}>
             <LinearGradient colors={['#59BEFF','#2D63D5']} style={{flex: 1,}}>
@@ -183,6 +196,41 @@ var styles = StyleSheet.create({
   	backgroundColor: '#FFFFFF',
     flexDirection: 'column',
 	},
+  Top_status: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#8E8E8E',
+  },
+  Top_status_L: {
+    flex: 1,
+    backgroundColor: '#EA0000',
+    borderWidth: 5,
+    borderColor: '#FFD306',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderTopRightRadius: 0,
+
+  },
+  Top_welcome_L: {
+    fontSize: 27,
+    color: '#FFFFFF',
+  },
+  Top_status_R:{
+    flex: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#d0d0d0',
+    borderWidth: 10,
+    borderColor: '#5B5B5B',
+    borderTopColor: '#A0A0A0',
+    borderLeftColor: '#8E8E8E',
+    borderRightColor: '#858585',
+  },
+  Top_welcome_R: {
+    fontSize: 30,
+    color: 'black',
+  },
   main:{
     flex: 7,
     flexDirection: 'row',
