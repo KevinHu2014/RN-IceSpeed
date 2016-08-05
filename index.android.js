@@ -15,5 +15,5 @@ import {AppRegistry} from 'react-native';
 //var test = require('./swiper');
 //var test = require('./FireStore');
 //var test = require('./WaterStore');
-var test = require('./WoodStore');
+var test = require('./AllStore');
 AppRegistry.registerComponent('test', () => test);
