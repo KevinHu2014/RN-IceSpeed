@@ -141,6 +141,7 @@ var FireStore = React.createClass({
   },
   _pressRow(id: number,name: number) {
     var test ;
+    
     this.UserRef.on("child_added", function(snapshot) {
       console.log('id'+snapshot.key()+ ' 數量' + snapshot.val().quantity );
       if(snapshot.key()==id){
@@ -149,11 +150,23 @@ var FireStore = React.createClass({
       }
       
     });
-    this.setTimeout(
-          () => { console.log('I do not leak!'); },
-          1500 //延遲時間讓正確的值能夠運算完再傳給下一個alert,1500毫秒為延遲基本值
+    console.log(this.state.count);
+    // this.setTimeout(
+    //       () => { console.log('I do not leak!'); },
+    //       1500 //延遲時間讓正確的值能夠運算完再傳給下一個alert,1500毫秒為延遲基本值
+    //     );
+    if(this.state.count == 0){
+      this.state.count++;
+      Alert.alert(
+          '歡迎來到火之商店',
+          '很高興為您服務',
+          [
+            {text: 'OK', onPress: () =>  console.log('OK')},
+          ]
         );
-    Alert.alert(
+    }
+    else{
+      Alert.alert(
           '確定要購買'+name+' ?',
           '現有數量: '+test,
           [
@@ -161,6 +174,8 @@ var FireStore = React.createClass({
             {text: 'OK', onPress: () =>  this.Buy(id,test)},
           ]
         );
+    }
+    
     
   },
 
