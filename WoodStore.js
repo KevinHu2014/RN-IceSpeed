@@ -14,12 +14,12 @@ import Statusbar from './Statusbar';
 import Firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
 
-var FireStore = React.createClass({
+var WoodStore = React.createClass({
   getInitialState: function() {
     var FirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/");
-    //var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/store/Fire");
+    var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/store/Wood");
     this.UserRef = FirebaseRef.child('users/314282187/Item');
-    this.storeRef = FirebaseRef.child('store/Fire/Item');
+    this.storeRef = FirebaseRef.child('store/Wood/Item');
     
 
     //回覆資料庫
@@ -50,10 +50,10 @@ var FireStore = React.createClass({
     //       description: '使用之後獲得1000G。',
     //       Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
     //     },
-    //     8:{
-    //       name: '火之寶石袋',
-    //       description: '使用之後獲得500點火之力經驗值。',
-    //       Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
+    //     7:{
+    //       name: '木之寶石袋',
+    //       description: '使用之後獲得500點木之力經驗值。',
+    //       Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
     //     }
     //   }
     // });
@@ -84,7 +84,7 @@ var FireStore = React.createClass({
            <Statusbar></Statusbar>
          </View>
          <View style={styles.main}>
-            <LinearGradient colors={['#FF6123','#FA2716']} style={{flex: 1,}}>
+            <LinearGradient colors={['#40EA34','#37C031']} style={{flex: 1,}}>
                 <ListView contentContainerStyle={styles.list}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow}
@@ -152,7 +152,7 @@ var FireStore = React.createClass({
     if(this.state.count == 0){
       this.state.count++;
       Alert.alert(
-          '歡迎來到火之商店',
+          '歡迎來到木之商店',
           '很高興為您服務',
           [
             {text: 'OK', onPress: () =>  console.log('OK')},
@@ -244,5 +244,5 @@ var styles = StyleSheet.create({
     elevation:10 
   }
  });
-module.exports = FireStore;
+module.exports = WoodStore;
 
