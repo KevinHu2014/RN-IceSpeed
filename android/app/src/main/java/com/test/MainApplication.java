@@ -9,6 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
+import com.gantix.JailMonkey.JailMonkeyPackage;
 import com.robinpowered.react.ScreenBrightness.ScreenBrightnessPackage;
 import com.sensormanager.SensorManagerPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -35,7 +36,8 @@ public class MainApplication extends Application implements ReactApplication {
           new RNSoundPackage(),
           new ReactNativeMapboxGLPackage(),
           new LinearGradientPackage(),
-          new SensorManagerPackage()
+          new SensorManagerPackage(),
+          new JailMonkeyPackage()
           //new ScreenBrightnessPackage(this)//still some issue here
       );
     }

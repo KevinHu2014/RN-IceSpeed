@@ -129,4 +129,5 @@ dependencies {
     compile project(':react-native-linear-gradient')
     compile project(':react-native-sensor-manager')
     compile project(":react-native-screen-brightness")
+    compile project(':jail-monkey')
 }
