@@ -12,10 +12,12 @@ import  {
 
 } from 'react-native';
 import * as Progress from 'react-native-progress';
+import * as Animatable from 'react-native-animatable'
 var Power = React.createClass({
   getInitialState: function() {
     return {
       press_Back: false,
+      Img: 'http://s33.postimg.org/ie9umxvun/501.png',
       HP_progress: 0.7,
       ATK_progress: 0.5,
       SPD_progress: 0.6,
@@ -47,9 +49,11 @@ var Power = React.createClass({
             <View style={styles.top_R}></View>
           </View>
           <View style={styles.avatar}>
-            <Image
-            style={{width:180,height:180 }}
-            source={{uri: 'http://s33.postimg.org/ie9umxvun/501.png'}} />
+            <Animatable.Image 
+                animation="pulse" iterationCount="infinite"
+                source={{uri: this.state.Img}} 
+                style={{width:180,height:180 }}>
+            </Animatable.Image>
           </View>
           
           <Text style={{flex: 1 , marginTop:10,fontSize:30,fontWeight: "bold",textAlign: 'center',}}>
