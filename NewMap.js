@@ -49,6 +49,7 @@ import WoodStore from './WoodStore';
 import AllStore from './AllStore';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
+import JailMonkey from 'jail-monkey';
 var Statusbar = require('./Statusbar');
 var {height, width} = Dimensions.get('window');
 
@@ -707,7 +708,20 @@ var NewMap = React.createClass({
   },
   onOpenAnnotation(annotation) {
     console.log(annotation.title);
-    if(annotation.title=='寶貝中心'){
+
+    if(JailMonkey.canMockLocation()){
+      //JailMonkey.canMockLocation().toString()
+      //true 代表模擬位置功能已開啟
+      Alert.alert(
+        '請檢查行動裝置的設定',
+        '經作弊取得的定位資訊\n無法進行遊玩',
+        [
+          
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
+    else if(annotation.title=='寶貝中心'){
       Alert.alert(
         '歡迎來到寵物中心',
         '你的寵物都已回復～',
