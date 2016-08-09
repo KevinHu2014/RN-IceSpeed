@@ -707,13 +707,32 @@ var NewMap = React.createClass({
     this._offlineErrorSubscription.remove();
   },
 
-  calculateDistance(){
-    
+  onUpdateUserLocation(location){
+    console.log(location.latitude);
+    console.log(location.longitude);
+    this.setState({
+      UserLat: location.latitude,
+      UserLon: location.longitude
+    });
+  },
+
+  calculateDistance(Lat: number, Lon: number){
+    let xd = Lat - this.state.UserLat;
+    let yd = Lon - this.state.UserLon;
+    //經度一度大概是111公里
+    //緯度一度大概是110公里
+    //為了計算方便，統一當做110公里來做計算好了
+    let distance = Math.sqrt(Math.pow(xd, 2)+Math.pow(yd, 2))*110000;
+    //110*1000 = 110000公尺
+    //console.log(Math.sqrt(Math.pow(xd, 2)+Math.pow(yd, 2)));
+    return distance;
   },
   onOpenAnnotation(annotation) {
     console.log(annotation.title);
-    console.log(annotation.latitude);
-    console.log(annotation.longitude);
+    //console.log(annotation.latitude);
+    //console.log(annotation.longitude);
+    let distance=this.calculateDistance(annotation.latitude,annotation.longitude);
+    console.log(distance);//單位為公尺
     if(!(JailMonkey.canMockLocation())){
       //JailMonkey.canMockLocation().toString()
       //true 代表模擬位置功能已開啟
