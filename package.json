@@ -9,7 +9,7 @@
     "firebase": "^2.4.1",
     "jail-monkey": "0.0.6",
     "react": "^15.2.0",
-    "react-native": "^0.30",
+    "react-native": "^0.31.0",
     "react-native-admob": "^1.0.0",
     "react-native-animatable": "^0.6.1",
     "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
