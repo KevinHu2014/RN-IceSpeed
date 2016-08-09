@@ -12,7 +12,7 @@ import {
   ScrollView
 } from 'react-native';
 
-const accessToken = 'your-mapbox.com-access-token';
+const accessToken = 'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ';
 Mapbox.setAccessToken(accessToken);
 
 class MapExample extends Component {

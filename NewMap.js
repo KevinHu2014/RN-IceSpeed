@@ -61,7 +61,7 @@ var NewMap = React.createClass({
         longitude: 121.43289
       },
       zoom: 17,
-      userTrackingMode: Mapbox.userTrackingMode.none,
+      userTrackingMode: Mapbox.userTrackingMode.follow,
       press_explore: false,
       press_announcement: false,
       press_monster: false,
@@ -706,10 +706,15 @@ var NewMap = React.createClass({
     this._offlineMaxTilesSubscription.remove();
     this._offlineErrorSubscription.remove();
   },
+
+  calculateDistance(){
+    
+  },
   onOpenAnnotation(annotation) {
     console.log(annotation.title);
-
-    if(JailMonkey.canMockLocation()){
+    console.log(annotation.latitude);
+    console.log(annotation.longitude);
+    if(!(JailMonkey.canMockLocation())){
       //JailMonkey.canMockLocation().toString()
       //true 代表模擬位置功能已開啟
       Alert.alert(
@@ -954,7 +959,7 @@ var NewMap = React.createClass({
           rotateEnabled={true}
           scrollEnabled={true}
           zoomEnabled={true}
-          showsUserLocation={false}
+          showsUserLocation={true}
           styleURL={'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i'}
           userTrackingMode={this.state.userTrackingMode}
           annotations={this.state.annotations}
