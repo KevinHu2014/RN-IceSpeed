@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react';
 import Mapbox, { MapView } from 'react-native-mapbox-gl';
-var mapRef = 'map';
+
 import {
   Alert,
   StyleSheet,
@@ -61,7 +61,7 @@ var NewMap = React.createClass({
         longitude: 121.43289
       },
       zoom: 17,
-      userTrackingMode: Mapbox.userTrackingMode.follow,
+      userTrackingMode: Mapbox.userTrackingMode.followWithCourse,
       press_explore: false,
       press_announcement: false,
       press_monster: false,
@@ -710,6 +710,7 @@ var NewMap = React.createClass({
   onUpdateUserLocation(location){
     console.log(location.latitude);
     console.log(location.longitude);
+    this._map && this._map.setCenterCoordinate(location.latitude, location.longitude);
     this.setState({
       UserLat: location.latitude,
       UserLon: location.longitude
@@ -733,17 +734,29 @@ var NewMap = React.createClass({
     //console.log(annotation.longitude);
     let distance=this.calculateDistance(annotation.latitude,annotation.longitude);
     console.log(distance);//單位為公尺
-    if(!(JailMonkey.canMockLocation())){
-      //JailMonkey.canMockLocation().toString()
-      //true 代表模擬位置功能已開啟
+    // if(JailMonkey.canMockLocation()){
+    //   //JailMonkey.canMockLocation().toString()
+    //   //true 代表模擬位置功能已開啟
+    //   Alert.alert(
+    //     '請檢查行動裝置的設定',
+    //     '經作弊取得的定位資訊\n無法進行遊玩',
+    //     [
+          
+    //       {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //     ]
+    //   )
+    // }
+    if(distance > 50){
+      //如果距離大於50公尺，就不讓使用者使用建築物功能
       Alert.alert(
-        '請檢查行動裝置的設定',
-        '經作弊取得的定位資訊\n無法進行遊玩',
+        '離建築物太遠了',
+        '請靠近一點再點擊',
         [
           
           {text: 'OK', onPress: () => console.log('OK Pressed')},
         ]
       )
+
     }
     else if(annotation.title=='寶貝中心'){
       Alert.alert(
@@ -970,7 +983,7 @@ var NewMap = React.createClass({
           </View>
         </Collapsible>
         <MapView
-          ref={mapRef}
+          ref={map => { this._map = map; }}
           style={styles.map}
           initialCenterCoordinate={this.state.center}
           initialZoomLevel={this.state.zoom}
