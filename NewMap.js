@@ -746,19 +746,19 @@ var NewMap = React.createClass({
     //     ]
     //   )
     // }
-    if(distance > 50){
-      //如果距離大於50公尺，就不讓使用者使用建築物功能
-      Alert.alert(
-        '離建築物太遠了',
-        '請靠近一點再點擊',
-        [
+    // if(distance > 50){
+    //   //如果距離大於50公尺，就不讓使用者使用建築物功能
+    //   Alert.alert(
+    //     '離建築物太遠了',
+    //     '請靠近一點再點擊',
+    //     [
           
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ]
-      )
+    //       {text: 'OK', onPress: () => console.log('OK Pressed')},
+    //     ]
+    //   )
 
-    }
-    else if(annotation.title=='寶貝中心'){
+    // }
+    if(annotation.title=='寶貝中心'){
       Alert.alert(
         '歡迎來到寵物中心',
         '你的寵物都已回復～',

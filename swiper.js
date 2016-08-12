@@ -5,10 +5,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  Dimensions,
 } from 'react-native';
 
 import NewMap from './NewMap';
+var {height, width} = Dimensions.get('window');
 
 var swiper = React.createClass({
   getInitialState(){
@@ -29,99 +31,107 @@ var swiper = React.createClass({
   },
   render: function() {
     return (
-      <Swiper style={styles.wrapper} showsButtons={true}
-        loop={false} >
-        <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-          <View style={styles.top_1}>
-            <Text style={styles.textTitle}>
-              {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
-            </Text>
-          </View>
-          <View style={styles.bottom_1}> 
-            <Image
-              style={styles.avatar}
-              source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
-          </View>
-        </View>
-        <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-          <View style={{flex: 2,}}></View>
-          <View style={{flex: 1,}}>
-            <Text style={[styles.textTitle,{fontSize:35}]}>
-                {'輔大特色地標'}
-            </Text>
-            <Text style={styles.textTitle}>
-                {'真善美聖十字架介紹'}
-            </Text> 
-          </View>
-          <View style={{flex: 4,}}></View>
-          
-        </View>
-        <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-          <View style={styles.top_2}>
-            <Image
-              style={styles.school}
-              source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
-          </View>
-          <View style={styles.middle_2}>
-            <Text style={styles.textContent}>
-              {'\b\b'+this.state.schoolIntro}
-            </Text> 
-          </View>
-          <View style={styles.bottom_2}>
-            <View style={{flex: 4,}}></View>
-            <View style={{flex: 1,}}>
+      <View style={styles.container}>
+        <Swiper height={height-49} showsButtons={true}
+          loop={false} >
+          <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
+            <View style={styles.top_1}>
+              <Text style={styles.textTitle}>
+                {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
+              </Text>
+            </View>
+            <View style={styles.bottom_1}> 
               <Image
-                style={styles.avatar_small}
+                style={styles.avatar}
                 source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
             </View>
           </View>
-        </View>
-        <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-          <View style={{flex: 2,}}></View>
-          <View style={{flex: 1,}}>
-            <Text style={[styles.textTitle,{fontSize:35}]}>
-                {'新手教學'}
-            </Text>
-            <Text style={styles.textTitle}>
-                {'屬性相剋'}
-            </Text> 
-          </View>
-          <View style={{flex: 4,}}></View>
-          
-        </View>
-        <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-          <View style={styles.top_3}>
-            <Image
-              style={styles.game}
-              source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
-          </View>
-          <View style={styles.bottom_3}>
-            <Text style={[styles.textContent,{fontSize:23}]}>
-              {'\b\b'+this.state.gameIntro}
-            </Text> 
-          </View>
-          <View style={styles.last}>
-            <View style={{flex: 1,alignItems: 'flex-start',}}>
-              <Image
-                style={styles.avatar_small}
-                source={{uri: 'https://s10.postimg.org/dhhxzuq2h/avatar3_reverse.png'}} />
-            </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
             <View style={{flex: 2,}}></View>
             <View style={{flex: 1,}}>
-              <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                onPress={this.onPress}>
-                Done
+              <Text style={[styles.textTitle,{fontSize:35}]}>
+                  {'輔大特色地標'}
               </Text>
+              <Text style={styles.textTitle}>
+                  {'真善美聖十字架介紹'}
+              </Text> 
+            </View>
+            <View style={{flex: 4,}}></View>
+            
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <View style={styles.top_2}>
+              <Image
+                style={styles.school}
+                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
+            </View>
+            <View style={styles.middle_2}>
+              <Text style={styles.textContent}>
+                {'\b\b'+this.state.schoolIntro}
+              </Text> 
+            </View>
+            <View style={styles.bottom_2}>
+              <View style={{flex: 4,}}></View>
+              <View style={{flex: 1,}}>
+                <Image
+                  style={styles.avatar_small}
+                  source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
+              </View>
             </View>
           </View>
-        </View>
-      </Swiper>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
+            <View style={{flex: 2,}}></View>
+            <View style={{flex: 1,}}>
+              <Text style={[styles.textTitle,{fontSize:35}]}>
+                  {'新手教學'}
+              </Text>
+              <Text style={styles.textTitle}>
+                  {'屬性相剋'}
+              </Text> 
+            </View>
+            <View style={{flex: 4,}}></View>
+            
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+            <View style={styles.top_3}>
+              <Image
+                style={styles.game}
+                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+            </View>
+            <View style={styles.bottom_3}>
+              <Text style={[styles.textContent,{fontSize:20}]}>
+                {'\b\b'+this.state.gameIntro}
+              </Text> 
+            </View>
+            <View style={styles.last}>
+              <View style={{flex: 1,alignItems: 'flex-start',}}>
+                <Image
+                  style={styles.avatar_small}
+                  source={{uri: 'https://s10.postimg.org/dhhxzuq2h/avatar3_reverse.png'}} />
+              </View>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={{fontSize: 30,fontWeight: 'bold'}}
+                  onPress={this.onPress}>
+                  Done
+                </Text>
+              </View>
+            </View>
+          </View>
+        </Swiper>
+        
+      </View>
+      
     )
   }
 })
 
 const  styles = StyleSheet.create({
-  wrapper: {
+  container: {
+    flex: 1,
+  },
+  blank:{
+    flex: 1,
   },
   slide: {
     flex: 1,
@@ -141,8 +151,8 @@ const  styles = StyleSheet.create({
     textAlign: 'center'
   },
   avatar:{
-    width:350,
-    height:350,
+    width:300,
+    height:300,
     resizeMode: 'contain',
 
   },
@@ -190,7 +200,7 @@ const  styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottom_3:{
-    flex: 3,
+    flex: 2,
     justifyContent: 'flex-start',
     marginLeft: 25,
     marginRight: 25,
