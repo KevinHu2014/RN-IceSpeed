@@ -19,8 +19,10 @@ var Power = React.createClass({
       press_Back: false,
       Img: 'http://s33.postimg.org/ie9umxvun/501.png',
       HP_progress: 0.7,
-      ATK_progress: 0.5,
-      SPD_progress: 0.6,
+      current_HP: 30,
+      HP: 40,
+      ATK: 50,
+      SPD: 30,
       Wood_progress: 1,
       Fire_progress: 0.3,
       Water_progress: 1,
@@ -28,6 +30,12 @@ var Power = React.createClass({
       Fire_Powerable: false,
       Water_Powerable: true,
     }
+  },
+  componentdidmount(){
+    let temp = this.state.current_HP / this.state.HP;
+    this.setState({
+      HP_progress: temp, 
+    });
   },
   render(){
     return (
@@ -56,11 +64,8 @@ var Power = React.createClass({
             </Animatable.Image>
           </View>
           
-          <Text style={{flex: 1 , marginTop:10,fontSize:30,fontWeight: "bold",textAlign: 'center',}}>
+          <Text style={{flex: 1 , marginTop:20,fontSize:30,fontWeight: "bold",textAlign: 'center',}}>
               LV 6
-          </Text>
-          <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
-              Status
           </Text>
           <View style={styles.status}>
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
@@ -72,25 +77,41 @@ var Power = React.createClass({
                          unfilledColor={'#FFFFFF'} borderWidth={2}
                          borderColor={'#7B7B7B'} />
           </View>
-          <View style={styles.status}>
-            <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'ATK\b'} 
-            </Text>
-            <Progress.Bar progress={this.state.ATK_progress} 
-                         width={250} height={10}
-                         color={'#DF2727'} 
-                         unfilledColor={'#FFFFFF'} borderWidth={2}
-                         borderColor={'#7B7B7B'} />
-          </View>
-          <View style={styles.status}>
-            <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'SPD\b'} 
-            </Text>
-            <Progress.Bar progress={this.state.SPD_progress} 
-                         width={250} height={10}
-                         color={'#318DE4'} 
-                         unfilledColor={'#FFFFFF'} borderWidth={2}
-                         borderColor={'#7B7B7B'} />
+          <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
+              Status
+          </Text>
+          <View style={{flex: 3,flexDirection:'row'}}>
+            <View style={{flex: 0.7,}}></View>
+            <View style={{flex: 1,}}>
+              <View style={[styles.status,{justifyContent:'flex-start'}]}>
+                <Text style={[styles.welcome,{fontWeight: "bold",}]}>
+                  {'HP:\b\b\b\b'} 
+                </Text>
+                <Text style={[styles.status_welcome,{color:'red'}]}>
+                  {this.state.current_HP}
+                </Text>
+                <Text style={styles.status_welcome}>
+                  {"\b/\b"+ this.state.HP}
+                </Text>
+              </View>
+              <View style={[styles.status,{justifyContent:'flex-start'}]}>
+                <Text style={[styles.welcome,{fontWeight: "bold",}]}>
+                  {'ATK:\b\b\b'} 
+                </Text>
+                <Text style={styles.status_welcome}>
+                  {this.state.ATK}
+                </Text>
+              </View>
+              <View style={[styles.status,{justifyContent:'flex-start'}]}>
+                <Text style={[styles.welcome,{fontWeight: "bold",}]}>
+                  {'SPD:\b\b\b'} 
+                </Text>
+                <Text style={styles.status_welcome}>
+                  {this.state.SPD}
+                </Text>
+              </View>
+            </View>
+            <View style={{flex: 1,}}></View>  
           </View>
           <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
               Skill
@@ -254,6 +275,9 @@ var styles = StyleSheet.create({
     flexDirection:'row',
     alignItems:'center',
     justifyContent:'center',
+  },
+  status_welcome:{
+    fontSize: 30,
   },
   skill:{
     flex: 2,
