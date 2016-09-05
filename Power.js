@@ -28,6 +28,7 @@ var Power = React.createClass({
       SPD: 20,
       Type: "Wood",
       LV: 10,
+      evolvable: true,
       Wood_progress: 1,
       Fire_progress: 0.3,
       Water_progress: 1,
@@ -44,6 +45,12 @@ var Power = React.createClass({
     switch(this.state.Type){
       case "Wood":
         Type_Image = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
+        break;
+      case "Fire":
+        Type_Image = 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png';
+        break;
+      case "Water":
+        Type_Image = 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png';
         break;
 
     }
