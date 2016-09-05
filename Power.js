@@ -13,6 +13,7 @@ import  {
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 import * as Animatable from 'react-native-animatable'
+var Type_Image ;
 var Power = React.createClass({
   getInitialState: function() {
     return {
@@ -23,16 +24,27 @@ var Power = React.createClass({
       HP: 40,
       ATK: 50,
       SPD: 30,
+      Type: "Wood",
+      LV: 1,
       Wood_progress: 1,
       Fire_progress: 0.3,
       Water_progress: 1,
+      Wood_level: 1,
+      Fire_level: 1,
+      Water_level: 1,
       Wood_Powerable: true,
       Fire_Powerable: false,
       Water_Powerable: true,
     }
   },
-  componentdidmount(){
+  componentWillMount(){
     let temp = this.state.current_HP / this.state.HP;
+    switch(this.state.Type){
+      case "Wood":
+        Type_Image = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
+        break;
+
+    }
     this.setState({
       HP_progress: temp, 
     });
@@ -63,10 +75,16 @@ var Power = React.createClass({
                 style={{width:180,height:180 }}>
             </Animatable.Image>
           </View>
+          <View style={[styles.status,{marginTop:20}]}>
+            <Image
+              style={{width:30,height:30}}
+              source={{uri: Type_Image}} />
+            
+            <Text style={[styles.welcome,{fontWeight: "bold",fontSize:30,textAlign: 'center'}]}>
+              {'\b\bLV\b'+this.state.LV} 
+            </Text>
+          </View>
           
-          <Text style={{flex: 1 , marginTop:20,fontSize:30,fontWeight: "bold",textAlign: 'center',}}>
-              LV 6
-          </Text>
           <View style={styles.status}>
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
               {'HP\b\b'} 
@@ -151,7 +169,7 @@ var Power = React.createClass({
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png'}} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\bLv 1\b'} 
+              {'\bLv\b'+this.state.Wood_level+'\b'} 
             </Text>
             <Progress.Bar progress={this.state.Wood_progress} 
                          width={150} height={10}
@@ -177,7 +195,7 @@ var Power = React.createClass({
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png'}} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\bLv 1\b'} 
+              {'\bLv\b'+this.state.Fire_level+'\b'} 
             </Text>
             <Progress.Bar progress={this.state.Fire_progress} 
                          width={150} height={10}
@@ -203,7 +221,7 @@ var Power = React.createClass({
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png'}} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\bLv 1\b'} 
+              {'\bLv\b'+this.state.Water_level+'\b'} 
             </Text>
             <Progress.Bar progress={this.state.Water_progress} 
                          width={150} height={10}
