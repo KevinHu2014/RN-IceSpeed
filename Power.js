@@ -20,12 +20,14 @@ var Power = React.createClass({
       press_Back: false,
       Img: 'http://s33.postimg.org/ie9umxvun/501.png',
       HP_progress: 0.7,
+      id: 2,
+      name: '肥菇',
       current_HP: 30,
       HP: 40,
-      ATK: 50,
-      SPD: 30,
+      ATK: 18,
+      SPD: 20,
       Type: "Wood",
-      LV: 1,
+      LV: 10,
       Wood_progress: 1,
       Fire_progress: 0.3,
       Water_progress: 1,
@@ -66,7 +68,11 @@ var Power = React.createClass({
                 </View>
               </TouchableHighlight>
             </View>
-            <View style={styles.top_R}></View>
+            <View style={styles.top_R}>
+              <Text style={[styles.welcome,{fontSize:30,fontWeight:'bold'}]}>
+                {"No. "+this.state.id+"\b\b"+this.state.name}
+              </Text>
+            </View>
           </View>
           <View style={styles.avatar}>
             <Animatable.Image 
@@ -96,7 +102,7 @@ var Power = React.createClass({
                          borderColor={'#7B7B7B'} />
           </View>
           <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
-              Status
+              {"Status\n"}
           </Text>
           <View style={{flex: 3,flexDirection:'row'}}>
             <View style={{flex: 0.7,}}></View>
@@ -132,7 +138,7 @@ var Power = React.createClass({
             <View style={{flex: 1,}}></View>  
           </View>
           <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
-              Skill
+              {"\nSkill\n\n"}
           </Text>
           <View style={styles.skill}>
             <View style={styles.skill_top}>
@@ -159,12 +165,12 @@ var Power = React.createClass({
             </View>
           </View>
           <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
-              Exp
+              {"\nExp\n\n"}
           </Text>
           <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'center'}]}>
               {'離下一階進化還有'+ 6 +'等'}
           </Text>
-          <View style={styles.status}>
+          <View style={[styles.status,{flex: 2,}]}>
             <Image
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png'}} />
@@ -190,7 +196,7 @@ var Power = React.createClass({
                 </View>
               </TouchableHighlight>
           </View>
-          <View style={styles.status}>
+          <View style={[styles.status,{flex: 2,}]}>
             <Image
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png'}} />
@@ -216,7 +222,7 @@ var Power = React.createClass({
                 </View>
               </TouchableHighlight>
           </View>
-          <View style={styles.status}>
+          <View style={[styles.status,{flex: 2,}]}>
             <Image
               style={{width:30,height:30}}
               source={{uri: 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png'}} />
@@ -256,7 +262,7 @@ var styles = StyleSheet.create({
 
   },
   top:{
-    flex: 1,
+    flex: 2,
     flexDirection: 'row',
   },
   top_L:{
@@ -278,9 +284,11 @@ var styles = StyleSheet.create({
   },
   top_R:{
     flex: 4,
+    alignItems: 'flex-start',
+    marginTop:10
   },
   avatar:{
-    flex: 2,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 15
