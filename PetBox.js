@@ -17,11 +17,16 @@ import LinearGradient from 'react-native-linear-gradient';
 var PetBox = React.createClass({
 
   getInitialState: function() {
-    var myFirebaseRef = new Firebase("https://project-5810968585068392276.firebaseio.com/users/314282187");
+    var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/users/314282187");
     this.usersRef = myFirebaseRef.child('Pet');
     this.items = [];
     myFirebaseRef.set({
       Name:'冰櫃神速',
+      Stone: {
+        fire: 10,
+        wood: 5,
+        water: 7
+      },
       Pet: {
         1: {
           id: 16,
@@ -36,7 +41,7 @@ var PetBox = React.createClass({
         2: {
           id: 6,
           name: '獨眼怪',
-          Lv: 20,
+          Lv: 21,
           Hp: 26,
           Atk: 32,
           Spd: 20,
