@@ -8,6 +8,7 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.magus.fblogin.FacebookLoginPackage;
 
 import com.gantix.JailMonkey.JailMonkeyPackage;
 import com.robinpowered.react.ScreenBrightness.ScreenBrightnessPackage;
@@ -37,7 +38,8 @@ public class MainApplication extends Application implements ReactApplication {
           new ReactNativeMapboxGLPackage(),
           new LinearGradientPackage(),
           new SensorManagerPackage(),
-          new JailMonkeyPackage()
+          new JailMonkeyPackage(),
+          new FacebookLoginPackage()
           //new ScreenBrightnessPackage(this)//still some issue here
       );
     }
