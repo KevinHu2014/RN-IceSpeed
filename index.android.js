@@ -19,5 +19,6 @@ import {AppRegistry} from 'react-native';
 //var test = require('./AllStore');
 //var test = require('./Power');
 //var test = require('./RNmonkey');
-var test = require('./FacebookLogin');
+//var test = require('./FacebookLogin');
+var test = require('./AppInit');
 AppRegistry.registerComponent('test', () => test);
