@@ -8,8 +8,9 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
-import com.magus.fblogin.FacebookLoginPackage;
 
+import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
+import com.magus.fblogin.FacebookLoginPackage;
 import com.gantix.JailMonkey.JailMonkeyPackage;
 import com.robinpowered.react.ScreenBrightness.ScreenBrightnessPackage;
 import com.sensormanager.SensorManagerPackage;
@@ -39,7 +40,8 @@ public class MainApplication extends Application implements ReactApplication {
           new LinearGradientPackage(),
           new SensorManagerPackage(),
           new JailMonkeyPackage(),
-          new FacebookLoginPackage()
+          new FacebookLoginPackage(),
+          new SplashScreenPackage()
           //new ScreenBrightnessPackage(this)//still some issue here
       );
     }

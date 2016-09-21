@@ -9,12 +9,16 @@ import  {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
+import SplashScreen from "rn-splash-screen";
 
 var AppInit = React.createClass({
+  componentDidMount(){
+    SplashScreen.hide();
+  },
   render() {
     return (
     	<View style={styles.container}>
-        <LinearGradient colors={['#EB7F28','#E66627','#E34528']} style={{flex: 1,justifyContent: 'center',alignItems: 'center',}}>
+        <LinearGradient colors={['#EB8128','#E76128','#E34228']} style={{flex: 1,justifyContent: 'center',alignItems: 'center',}}>
           <View style={styles.blank}></View>
           <View style={styles.Logo}>
             <Animatable.Image 

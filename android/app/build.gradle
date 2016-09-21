@@ -131,4 +131,5 @@ dependencies {
     compile project(":react-native-screen-brightness")
     compile project(':jail-monkey')
     compile project(':react-native-facebook-login')
+    compile project(':rn-splash-screen')
 }
