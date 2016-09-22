@@ -659,7 +659,7 @@ var styles = StyleSheet.create({
     flex:1,
     margin:15,
     borderRadius:2,
-    elevation:10 
+    elevation:10
   },
   button_White: {
     flex: 1,
