@@ -7,14 +7,15 @@ import  {
   TouchableHighlight,
   Navigator,
 } from 'react-native';
-import Box from './Box';
 import SplashScreen from "rn-splash-screen";
 
-var NavBox = React.createClass({
+import AppInit from './AppInit';
+
+
+var NavInit = React.createClass({
   componentDidMount(){
     SplashScreen.hide();
   },
-
   renderScene: function(route, navigator) {
     var Component = route.component;
 
@@ -30,11 +31,11 @@ var NavBox = React.createClass({
         style={{ flex: 1 }}
         renderScene={this.renderScene}
         initialRoute={{
-          component: Box,
+          component: AppInit,
         }}
       />
     );
   }
 });
 
-module.exports =  NavBox;
+module.exports =  NavInit;

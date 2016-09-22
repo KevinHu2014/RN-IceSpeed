@@ -42,7 +42,7 @@ Mapbox.addOfflinePack({
 });
 
 import battle from './battle';
-import swiper from './swiper';
+import gym_01 from './gym_01';
 import FireStore from './FireStore';
 import WaterStore from './WaterStore';
 import WoodStore from './WoodStore';
@@ -773,8 +773,8 @@ var NewMap = React.createClass({
       const { navigator } = this.props;
         if(navigator) {
             navigator.push({
-                name: 'swiper',
-                component: swiper,
+                name: 'gym_01',
+                component: gym_01,
             })
         }
     }

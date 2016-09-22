@@ -9,11 +9,26 @@ import  {
 } from 'react-native';
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
-import SplashScreen from "rn-splash-screen";
+
+import NicknamePage from './NicknamePage';
+import tab from './tab';
 
 var AppInit = React.createClass({
-  componentDidMount(){
-    SplashScreen.hide();
+  onPress(){
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.push({
+    //             name: 'NicknamePage',
+    //             component: NicknamePage,
+    //         })
+    //     }
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'tab',
+                component: tab,
+            })
+        }    
   },
   render() {
     return (
@@ -30,7 +45,8 @@ var AppInit = React.createClass({
           <View style={styles.blank}></View>
           <View style={styles.start}>
             <Animatable.Text style={styles.welcome} delay={1000}
-                animation="tada" iterationCount="infinite">
+                animation="tada" iterationCount="infinite"
+                onPress={this.onPress}>
               {"START"}
             </Animatable.Text>
           </View>
