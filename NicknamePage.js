@@ -64,7 +64,7 @@ var NicknamePage = React.createClass({
     render(){
         return(
             <View style={styles.container}>
-                <LinearGradient colors={['#ffb347','#ffcc33']} style={{flex: 1,}}>
+                <LinearGradient colors={['#E5FCC2','#E5FCC2']} style={{flex: 1,}}>
                     <View style={styles.blank}></View>
                     <View style={styles.blank}></View>
                     <View style={styles.middle}>
@@ -76,6 +76,8 @@ var NicknamePage = React.createClass({
                         <TextInput
                             style={styles.welcome}
                             placeholder="請輸入暱稱"
+                            placeholderTextColor='#9DE0AD'
+                            //underlineColorAndroid='#FFFFFF'
                             onChangeText={(text) => this.setState({text})}
                         />
                     </View>
@@ -117,11 +119,13 @@ var styles = StyleSheet.create({
     },
     welcome:{
         fontSize: 30,
-        color: '#FFFFFF'
+        color: '#547980',
+        fontWeight: "bold",
+
     },
     Button: {
         flex: 1,
-        backgroundColor: '#2881F0',
+        backgroundColor: '#45ADA8',
         justifyContent: 'center',
         borderRadius:2,
     },
@@ -136,7 +140,7 @@ var styles = StyleSheet.create({
         flex:1,
         margin:15,
         borderRadius:2,
-        elevation:10 
+        elevation: 2
     },
  
 

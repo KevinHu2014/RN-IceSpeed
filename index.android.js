@@ -20,6 +20,6 @@ import {AppRegistry} from 'react-native';
 //var test = require('./Power');
 //var test = require('./RNmonkey');
 //var test = require('./FacebookLogin');
-var test = require('./NavInit');
-//var test = require('./NicknamePage');
+//var test = require('./NavInit');
+var test = require('./NicknamePage');
 AppRegistry.registerComponent('test', () => test);
