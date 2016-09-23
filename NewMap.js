@@ -20,26 +20,26 @@ import {
 const accessToken = 'pk.eyJ1IjoiaHNpYW5neXVodSIsImEiOiJjaWxjZmRvNnYyc2JldHZrbjl4NDI2ZHJ5In0.7-8mr_MQVflOmy0GjLOpeQ';
 Mapbox.setAccessToken(accessToken);
 
-Mapbox.addOfflinePackForRegion;
-Mapbox.addOfflinePack({
-    name: 'test', // required
-    type: 'bbox', // required, only type currently supported`
-    metadata: { // optional. You can put any information in here that may be useful to you
-        date: new Date(),
-        foo: 'bar'
-    },
-    bounds: [ // required. The corners of the bounded rectangle region being saved offline
-      25.032036, 121.426971, 25.041509, 121.437695
-    ],
-    minZoomLevel: 13, // required
-    maxZoomLevel: 17, // required
-    styleURL: 'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i' // required. Valid styleURL
-}).then(() => {
-  // Called after the pack has been added successfully
-  console.log('success')
-}).catch(err => {
-  console.error(err); // Handle error
-});
+// Mapbox.addOfflinePackForRegion;
+// Mapbox.addOfflinePack({
+//     name: 'test', // required
+//     type: 'bbox', // required, only type currently supported`
+//     metadata: { // optional. You can put any information in here that may be useful to you
+//         date: new Date(),
+//         foo: 'bar'
+//     },
+//     bounds: [ // required. The corners of the bounded rectangle region being saved offline
+//       25.032036, 121.426971, 25.041509, 121.437695
+//     ],
+//     minZoomLevel: 13, // required
+//     maxZoomLevel: 17, // required
+//     styleURL: 'mapbox://styles/hsiangyuhu/cio0zgf4s003petluquple91i' // required. Valid styleURL
+// }).then(() => {
+//   // Called after the pack has been added successfully
+//   console.log('success')
+// }).catch(err => {
+//   console.error(err); // Handle error
+// });
 
 import battle from './battle';
 import gym_01 from './gym_01';
@@ -689,23 +689,23 @@ var NewMap = React.createClass({
       
     }
   },
-  componentWillMount() {
-    this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
-      console.log('offline pack progress', progress);
-    });
-    this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
-      console.log('offline max allowed tiles', tiles);
-    });
-    this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
-      console.log('offline error', error);
-    });
-  },
+  // componentWillMount() {
+  //   this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
+  //     console.log('offline pack progress', progress);
+  //   });
+  //   this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
+  //     console.log('offline max allowed tiles', tiles);
+  //   });
+  //   this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
+  //     console.log('offline error', error);
+  //   });
+  // },
 
-  componentWillUnmount() {
-    this._offlineProgressSubscription.remove();
-    this._offlineMaxTilesSubscription.remove();
-    this._offlineErrorSubscription.remove();
-  },
+  // componentWillUnmount() {
+  //   this._offlineProgressSubscription.remove();
+  //   this._offlineMaxTilesSubscription.remove();
+  //   this._offlineErrorSubscription.remove();
+  // },
 
   onUpdateUserLocation(location){
     console.log(location.latitude);
