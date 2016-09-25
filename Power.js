@@ -19,14 +19,14 @@ var Power = React.createClass({
     return {
       press_Back: false,
       Img: 'http://s33.postimg.org/ie9umxvun/501.png',
-      HP_progress: 0.7,
+      HP_progress: null,
       id: 2,
       name: '肥菇',
       current_HP: 30,
       HP: 40,
       ATK: 18,
       SPD: 20,
-      Type: "Wood",
+      Type: 'Wood',
       LV: 10,
       evolvable: true,
      
@@ -44,10 +44,27 @@ var Power = React.createClass({
     }
   },
   componentWillMount(){
-    let temp = this.state.current_HP / this.state.HP;
-    this.setState({
-      HP_progress: temp, 
-    });
+    //從這裡拿到PetBox傳過來的參數
+     this.setState({
+            LV: this.props.Lv,
+            HP: this.props.Hp,
+            ATK: this.props.Atk,
+            SPD: this.props.Spd,
+            name: this.props.Name,
+            id: this.props.id,
+            Img: this.props.Img,
+            Type: this.props.Type,
+            evolvable: this.props.evolvable,
+            current_HP: this.props.current_HP,
+            Wood_level: this.props.Wood_level,
+            Fire_level: this.props.Fire_level,
+            Water_level: this.props.Water_level,
+        });
+
+    
+  },
+  componentDidMount(){
+    this.Check_Hp();
 
     switch(this.state.Type){
       case "Wood":
@@ -63,6 +80,12 @@ var Power = React.createClass({
     }
     
     this.Check_Stone();
+  },
+  Check_Hp(){
+    let temp = this.state.current_HP / this.state.HP;
+    this.setState({
+      HP_progress: temp, 
+    });
   },
   Check_Stone(){
     //檢查是否有足夠的石頭可以升級
@@ -130,6 +153,9 @@ var Power = React.createClass({
         this.state.SPD++;
         break;
     }
+    //升級後順便做檢查
+    this.Check_Hp();
+    this.Check_Stone();
   },
   onPress_Wood(){
     if(this.state.Wood_Powerable){
@@ -143,7 +169,7 @@ var Power = React.createClass({
               this.state.Wood_stone = this.state.Wood_stone - this.Stone_Calulator(this.state.Wood_level);
               this.state.Wood_level++;
               this.Level_Up();
-              this.Check_Stone();
+              
               //升級成功
               Alert.alert(
                 '升級成功',
@@ -179,7 +205,6 @@ var Power = React.createClass({
               this.state.Fire_stone = this.state.Fire_stone - this.Stone_Calulator(this.state.Fire_level);
               this.state.Fire_level++;
               this.Level_Up();
-              this.Check_Stone();
               //升級成功
               Alert.alert(
                 '升級成功',
@@ -214,7 +239,6 @@ var Power = React.createClass({
               this.state.Water_stone = this.state.Water_stone - this.Stone_Calulator(this.state.Water_level);
               this.state.Water_level++;
               this.Level_Up();
-              this.Check_Stone();
               //升級成功
               Alert.alert(
                 '升級成功',
@@ -237,6 +261,13 @@ var Power = React.createClass({
         );
     }
   },
+  onPress_Back(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回PetBox
+                navigator.pop();
+            }
+  },
   render(){
     return (
       <View style={styles.container}>
@@ -244,8 +275,7 @@ var Power = React.createClass({
           <View style={styles.top}>
             <View style={styles.top_L}>
               <TouchableHighlight
-              onPressIn={this.onPressIn}
-              onPressOut={this.onPressOut}
+              onPress={this.onPress_Back}
               style={{borderRadius: 100}}>
                 <View style={styles.back_button_S}>
                   <Text style={styles.back_welcome_S}>
@@ -453,6 +483,7 @@ var styles = StyleSheet.create({
   },
   top_L:{
     flex: 1,
+    alignItems: 'flex-start',
   },
   back_button_S: {
     backgroundColor: '#00DB00',

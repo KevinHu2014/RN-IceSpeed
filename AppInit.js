@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import NicknamePage from './NicknamePage';
 import tab from './tab';
-import Power from './Power';
+import NavPet from './NavPet';
 
 var AppInit = React.createClass({
   onPress(){
@@ -35,8 +35,8 @@ var AppInit = React.createClass({
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'Power',
-                component: Power,
+                name: 'NavPet',
+                component: NavPet,
             })
         }        
   },

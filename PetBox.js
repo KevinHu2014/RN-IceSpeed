@@ -11,7 +11,7 @@ import  {
 
 import Firebase from 'firebase';
 import Statusbar from './Statusbar';
-import Pet from './Pet';
+import Power from './Power';
 import LinearGradient from 'react-native-linear-gradient';
 
 var PetBox = React.createClass({
@@ -32,6 +32,12 @@ var PetBox = React.createClass({
           id: 16,
           name: '胡頭狼',
           Lv: 1,
+          Type: 'Water',
+          evolvable: true,
+          current_HP: 30,
+          Wood_level: 1,
+          Fire_level: 1,
+          Water_level: 1,
           Hp: 35,
           Atk: 20,
           Spd: 25,
@@ -42,6 +48,12 @@ var PetBox = React.createClass({
           id: 6,
           name: '獨眼怪',
           Lv: 21,
+          Type: 'Fire',
+          evolvable: false,
+          current_HP: 26,
+          Wood_level: 1,
+          Fire_level: 1,
+          Water_level: 1,
           Hp: 26,
           Atk: 32,
           Spd: 20,
@@ -52,6 +64,12 @@ var PetBox = React.createClass({
           id: 3,
           name:'群聚菇',
           Lv: 20,
+          Type: 'Wood',
+          evolvable: true,
+          current_HP: 40,
+          Wood_level: 1,
+          Fire_level: 1,
+          Water_level: 1,
           Hp: 50,
           Atk: 15,
           Spd: 20,
@@ -119,6 +137,12 @@ var PetBox = React.createClass({
       Spd: null,
       name: null,
       Img: null,
+      Type: null,
+      evolvable: null,
+      current_HP: null,
+      Wood_level: null,
+      Fire_level: null,
+      Water_level: null,
       dataSource: new ListView.DataSource({rowHasChanged: (row1, row2) => row1 !== row2}),
     };
   },
@@ -160,7 +184,9 @@ var PetBox = React.createClass({
       <TouchableHighlight onPress={() => this._pressRow(rowData.text.Lv,
         rowData.text.Hp,rowData.text.Atk,
         rowData.text.Spd,rowData.text.name,rowData.text.id,
-        rowData.text.Img)} underlayColor='rgba(0,0,0,0)'>
+        rowData.text.Img,rowData.text.Type,rowData.text.evolvable,
+        rowData.text.current_HP,rowData.text.Wood_level,rowData.text.Fire_level,
+        rowData.text.Water_level)} underlayColor='rgba(0,0,0,0)'>
         <View>
           <View style={styles.row}>
             <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
@@ -174,7 +200,9 @@ var PetBox = React.createClass({
   },
 
   _pressRow: function(Lv: number,Hp: number,Atk: number,
-    Spd: number,Name: string,id: number,Img: string) {
+    Spd: number,Name: string,id: number,Img: string,
+    Type: string,evolvable: bool,current_HP: number,
+    Wood_level: number,Fire_level: number,Water_level: number) {
     this.state.Lv = Lv;
     this.state.Hp = Hp;
     this.state.Atk = Atk;
@@ -182,11 +210,18 @@ var PetBox = React.createClass({
     this.state.Name = Name;
     this.state.id = id;
     this.state.Img = Img;
+    this.state.Type = Type;
+    this.state.evolvable = evolvable;
+    this.state.current_HP = current_HP;
+    this.state.Wood_level = Wood_level;
+    this.state.Fire_level = Fire_level;
+    this.state.Water_level = Water_level;
+    
     const { navigator } = this.props;
         if(navigator) {
             navigator.push({
-                name: 'Pet',
-                component: Pet,
+                name: 'Power',
+                component: Power,
                 params: {
                     Lv: this.state.Lv,
                     Hp: this.state.Hp,
@@ -195,6 +230,12 @@ var PetBox = React.createClass({
                     Name: this.state.Name,
                     id: this.state.id,
                     Img: this.state.Img,
+                    Type: this.state.Type,
+                    evolvable: this.state.evolvable,
+                    current_HP: this.state.current_HP,
+                    Wood_level: this.state.Wood_level,
+                    Fire_level: this.state.Fire_level,
+                    Water_level: this.state.Water_level,
                  }   
             })
         }
