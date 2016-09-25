@@ -29,12 +29,15 @@ var Power = React.createClass({
       Type: "Wood",
       LV: 10,
       evolvable: true,
-      Wood_progress: 1,
-      Fire_progress: 0.3,
-      Water_progress: 1,
+     
       Wood_level: 1,
       Fire_level: 1,
       Water_level: 1,
+
+      Wood_stone: 5,
+      Fire_stone: 7,
+      Water_stone: 10,
+
       Wood_Powerable: true,
       Fire_Powerable: false,
       Water_Powerable: true,
@@ -42,6 +45,10 @@ var Power = React.createClass({
   },
   componentWillMount(){
     let temp = this.state.current_HP / this.state.HP;
+    this.setState({
+      HP_progress: temp, 
+    });
+
     switch(this.state.Type){
       case "Wood":
         Type_Image = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
@@ -54,9 +61,181 @@ var Power = React.createClass({
         break;
 
     }
-    this.setState({
-      HP_progress: temp, 
-    });
+    
+    this.Check_Stone();
+  },
+  Check_Stone(){
+    //檢查是否有足夠的石頭可以升級
+    if(this.state.Wood_stone >= this.Stone_Calulator(this.state.Wood_level)) {
+      this.setState({
+        Wood_Powerable: true 
+      });
+    }
+    else{
+      this.setState({
+        Wood_Powerable: false 
+      });
+    }
+
+    if(this.state.Fire_stone >= this.Stone_Calulator(this.state.Fire_level)) {
+      this.setState({
+        Fire_Powerable: true
+      });
+    }
+    else{
+      this.setState({
+        Fire_Powerable: false
+      });
+    }
+
+    if (this.state.Water_stone >= this.Stone_Calulator(this.state.Water_level)) {
+      this.setState({
+        Water_Powerable: true 
+      });
+    }
+    else{
+      this.setState({
+        Water_Powerable: false 
+      });
+    }
+  },
+  Stone_Calulator(stone_level: number){
+    //等比級數， 2的倍數成長
+    //return Math.pow(2, stone_level);
+
+    //等差成長 a_n = a_1 + (n-1)*d
+    //a_1 = 1 , d = 3
+    return (1 + (stone_level - 1)*3);
+  },
+  Level_Up(){
+    /*
+    每次升級三圍都增加1
+    然後依怪物的屬性再加成
+    木屬怪HP再加1
+    火屬怪ATK再加1
+    水屬怪SPD再加1
+    */
+    this.state.LV++;
+    this.state.HP++;
+    this.state.ATK++;
+    this.state.SPD++;
+    switch(this.state.Type){
+      case "Wood":
+        this.state.HP++;
+        break;
+      case "Fire":
+        this.state.ATK++;
+        break;
+      case "Water":
+        this.state.SPD++;
+        break;
+    }
+  },
+  onPress_Wood(){
+    if(this.state.Wood_Powerable){
+      Alert.alert(
+          '確定要升級嗎',
+          ' ',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () =>  {
+              //升級動作
+              this.state.Wood_stone = this.state.Wood_stone - this.Stone_Calulator(this.state.Wood_level);
+              this.state.Wood_level++;
+              this.Level_Up();
+              this.Check_Stone();
+              //升級成功
+              Alert.alert(
+                '升級成功',
+                ' ',
+                [
+                  {text: 'OK', onPress: () =>  console.log('OK')},
+                ]
+              );
+            }},
+          ]
+        );
+    }
+    else{
+      Alert.alert(
+          '無法升級',
+          '木屬之石不足',
+          [
+            {text: 'OK', onPress: () =>  console.log('OK')},
+          ]
+        );
+    }
+    
+  },
+  onPress_Fire(){
+    if(this.state.Fire_Powerable){
+      Alert.alert(
+          '確定要升級嗎',
+          ' ',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () =>  {
+              //升級動作
+              this.state.Fire_stone = this.state.Fire_stone - this.Stone_Calulator(this.state.Fire_level);
+              this.state.Fire_level++;
+              this.Level_Up();
+              this.Check_Stone();
+              //升級成功
+              Alert.alert(
+                '升級成功',
+                ' ',
+                [
+                  {text: 'OK', onPress: () =>  console.log('OK')},
+                ]
+              );
+            }},
+          ]
+        );
+    }
+    else{
+      Alert.alert(
+          '無法升級',
+          '火屬之石不足',
+          [
+            {text: 'OK', onPress: () =>  console.log('OK')},
+          ]
+        );
+    }
+  },
+  onPress_Water(){
+    if(this.state.Water_Powerable){
+      Alert.alert(
+          '確定要升級嗎',
+          ' ',
+          [
+            {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () =>  {
+              //升級動作
+              this.state.Water_stone = this.state.Water_stone - this.Stone_Calulator(this.state.Water_level);
+              this.state.Water_level++;
+              this.Level_Up();
+              this.Check_Stone();
+              //升級成功
+              Alert.alert(
+                '升級成功',
+                ' ',
+                [
+                  {text: 'OK', onPress: () =>  console.log('OK')},
+                ]
+              );
+            }},
+          ]
+        );
+    }
+    else{
+      Alert.alert(
+          '無法升級',
+          '水屬之石不足',
+          [
+            {text: 'OK', onPress: () =>  console.log('OK')},
+          ]
+        );
+    }
   },
   render(){
     return (
@@ -184,21 +363,21 @@ var Power = React.createClass({
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
               {'\bLv\b'+this.state.Wood_level+'\b'} 
             </Text>
-            <Progress.Bar progress={this.state.Wood_progress} 
-                         width={150} height={10}
+            <Progress.Bar progress={this.state.Wood_Powerable? 1 : 0} 
+                         width={100} height={10}
                          color={'#7EBA19'} 
                          unfilledColor={'#FFFFFF'} borderWidth={2}
                          borderColor={'#7B7B7B'} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\b5/1\b'} 
+              {'\b'+this.Stone_Calulator(this.state.Wood_level)+'/'+
+                this.state.Wood_stone+'\b'} 
             </Text>
             <TouchableHighlight
-              onPressIn={this.onPressIn}
-              onPressOut={this.onPressOut}
+              onPress={this.onPress_Wood}
               style={{borderRadius: 100}}>
                 <View style={[styles.back_button_S,{backgroundColor: '#8F8F8F'}]}>
-                  <Text style={[styles.back_welcome_S,{color: '#7EBA19',fontSize: 40,}]}>
-                    {this.state.Wood_Powerable ? '▲' : 'X'}
+                  <Text style={[styles.back_welcome_S,{color: '#7EBA19',fontSize: 30,}]}>
+                    {this.state.Wood_Powerable ? '+' : 'X'}
                   </Text>
                 </View>
               </TouchableHighlight>
@@ -210,21 +389,21 @@ var Power = React.createClass({
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
               {'\bLv\b'+this.state.Fire_level+'\b'} 
             </Text>
-            <Progress.Bar progress={this.state.Fire_progress} 
-                         width={150} height={10}
+            <Progress.Bar progress={this.state.Fire_Powerable? 1 : 0} 
+                         width={100} height={10}
                          color={'#AD3629'} 
                          unfilledColor={'#FFFFFF'} borderWidth={2}
                          borderColor={'#7B7B7B'} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\b5/1\b'} 
+              {'\b'+this.Stone_Calulator(this.state.Fire_level)+'/'+
+                this.state.Fire_stone+'\b'} 
             </Text>
             <TouchableHighlight
-              onPressIn={this.onPressIn}
-              onPressOut={this.onPressOut}
+              onPress={this.onPress_Fire}
               style={{borderRadius: 100}}>
                 <View style={[styles.back_button_S,{backgroundColor: '#8F8F8F'}]}>
-                  <Text style={[styles.back_welcome_S,{color: '#C62323',fontSize: 40,}]}>
-                    {this.state.Fire_Powerable ? 'O' : 'X'}
+                  <Text style={[styles.back_welcome_S,{color: '#C62323',fontSize: 30,}]}>
+                    {this.state.Fire_Powerable ? '+' : 'X'}
                   </Text>
                 </View>
               </TouchableHighlight>
@@ -236,21 +415,21 @@ var Power = React.createClass({
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
               {'\bLv\b'+this.state.Water_level+'\b'} 
             </Text>
-            <Progress.Bar progress={this.state.Water_progress} 
-                         width={150} height={10}
+            <Progress.Bar progress={this.state.Water_Powerable? 1 : 0} 
+                         width={100} height={10}
                          color={'#3376A5'} 
                          unfilledColor={'#FFFFFF'} borderWidth={2}
                          borderColor={'#7B7B7B'} />
             <Text style={[styles.welcome,{fontWeight: "bold",textAlign: 'left'}]}>
-              {'\b5/1\b'} 
+              {'\b'+this.Stone_Calulator(this.state.Water_level)+'/'+
+                this.state.Water_stone+'\b'} 
             </Text>
             <TouchableHighlight
-              onPressIn={this.onPressIn}
-              onPressOut={this.onPressOut}
+              onPress={this.onPress_Water}
               style={{borderRadius: 100}}>
                 <View style={[styles.back_button_S,{backgroundColor: '#8F8F8F'}]}>
-                  <Text style={[styles.back_welcome_S,{color: '#132DA5',fontSize: 40,}]}>
-                    {this.state.Water_Powerable ? '⇧' : 'X'}
+                  <Text style={[styles.back_welcome_S,{color: '#132DA5',fontSize: 30,}]}>
+                    {this.state.Water_Powerable ? '＋' : 'X'}
                   </Text>
                 </View>
               </TouchableHighlight>
