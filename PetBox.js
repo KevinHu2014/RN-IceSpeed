@@ -178,8 +178,6 @@ var PetBox = React.createClass({
   },
 
   _renderRow: function(rowData: string,rowID:number) {
-    console.log(rowData.text.Img);
-
     return (
       <TouchableHighlight onPress={() => this._pressRow(rowData.text.Lv,
         rowData.text.Hp,rowData.text.Atk,

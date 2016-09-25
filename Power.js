@@ -13,13 +13,22 @@ import  {
 } from 'react-native';
 import * as Progress from 'react-native-progress';
 import * as Animatable from 'react-native-animatable'
+import Firebase from 'firebase';
+
 var Type_Image ;
 var Power = React.createClass({
+
   getInitialState: function() {
+    var FirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/");
+    
+    this.StoneRef = FirebaseRef.child('users/314282187/Stone');
+    this.PetRef = FirebaseRef.child('users/314282187/Pet');
+
     return {
       press_Back: false,
-      Img: 'http://s33.postimg.org/ie9umxvun/501.png',
+      Img: null,
       HP_progress: null,
+      key_id: null,
       id: 2,
       name: '肥菇',
       current_HP: 30,
@@ -34,9 +43,9 @@ var Power = React.createClass({
       Fire_level: 1,
       Water_level: 1,
 
-      Wood_stone: 5,
-      Fire_stone: 7,
-      Water_stone: 10,
+      Wood_stone: null,
+      Fire_stone: null,
+      Water_stone: null,
 
       Wood_Powerable: true,
       Fire_Powerable: false,
@@ -46,6 +55,7 @@ var Power = React.createClass({
   componentWillMount(){
     //從這裡拿到PetBox傳過來的參數
      this.setState({
+            key_id: this.props.key_id,
             LV: this.props.Lv,
             HP: this.props.Hp,
             ATK: this.props.Atk,
@@ -63,9 +73,9 @@ var Power = React.createClass({
 
     
   },
-  componentDidMount(){
+  async componentDidMount(){
     this.Check_Hp();
-
+    console.log(this.state.key_id);
     switch(this.state.Type){
       case "Wood":
         Type_Image = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
@@ -78,7 +88,36 @@ var Power = React.createClass({
         break;
 
     }
+    let wood = null;
+    let fire = null;
+    let water = null;
+
+    await this.StoneRef.child('wood').on("value", function(snapshot) {
+      //console.log(snapshot.val());
+      wood = snapshot.val();
+    });
+    await this.StoneRef.child('fire').on("value", function(snapshot) {
+      //console.log(snapshot.val());
+      fire = snapshot.val();
+    });
+    await this.StoneRef.child('water').on("value", function(snapshot) {
+      //console.log(snapshot.val());
+      water = snapshot.val();
+    });
     
+
+    let wood_lv = null;
+    let fire_lv = null;
+    let water_lv = null;
+
+
+
+    this.setState({
+      Wood_stone: wood,
+      Fire_stone: fire,
+      Water_stone: water 
+    });
+
     this.Check_Stone();
   },
   Check_Hp(){
@@ -88,6 +127,8 @@ var Power = React.createClass({
     });
   },
   Check_Stone(){
+
+
     //檢查是否有足夠的石頭可以升級
     if(this.state.Wood_stone >= this.Stone_Calulator(this.state.Wood_level)) {
       this.setState({
@@ -99,7 +140,7 @@ var Power = React.createClass({
         Wood_Powerable: false 
       });
     }
-
+    
     if(this.state.Fire_stone >= this.Stone_Calulator(this.state.Fire_level)) {
       this.setState({
         Fire_Powerable: true
@@ -121,6 +162,10 @@ var Power = React.createClass({
         Water_Powerable: false 
       });
     }
+    //把更新的值寫回資料庫
+    this.StoneRef.update({wood: this.state.Wood_stone});
+    this.StoneRef.update({fire: this.state.Fire_stone});
+    this.StoneRef.update({water: this.state.Water_stone});
   },
   Stone_Calulator(stone_level: number){
     //等比級數， 2的倍數成長
