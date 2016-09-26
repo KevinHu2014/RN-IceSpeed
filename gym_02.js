@@ -43,7 +43,7 @@ var swiper = React.createClass({
             <View style={styles.bottom_1}> 
               <Image
                 style={styles.avatar}
-                source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
+                source={{uri: 'https://files.slack.com/files-pri/T0J0K43R7-F1X8ZPUM6/avatar1.png'}} />
             </View>
           </View>
           <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
@@ -63,7 +63,7 @@ var swiper = React.createClass({
             <View style={styles.top_2}>
               <Image
                 style={styles.school}
-                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
+                source={{uri: 'http://www.secretariat.fju.edu.tw/showImg/image/image334.jpg'}} />
             </View>
             <View style={styles.middle_2}>
               <Text style={styles.textContent}>
@@ -75,7 +75,7 @@ var swiper = React.createClass({
               <View style={{flex: 1,}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
+                  source={{uri: 'https://files.slack.com/files-pri/T0J0K43R7-F1X8ZPUM6/avatar1.png'}} />
               </View>
             </View>
           </View>
