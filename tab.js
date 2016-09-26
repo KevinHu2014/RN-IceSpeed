@@ -10,7 +10,6 @@ var ScrollableTabView = require('react-native-scrollable-tab-view');
 //var  Item = require('./Item');
 var  Item = require('./object');
 var  Pet = require('./NavPet');
-//var  Library = require('./Library');
 var  Library = require('./NavBox');
 var  Setting = require('./Setting');
 var  SampleComponent = require('./SampleComponent');
@@ -20,6 +19,7 @@ var tab = React.createClass({
     return (
 
       <ScrollableTabView tabBarPosition="bottom"
+      prerenderingSiblingsNumber={2}
       tabBarTextStyle={{fontFamily: 'AvenirNext-Medium', fontSize: 25}}
       tabBarBackgroundColor="white"
       tabBarActiveTextColor="#146EFF"

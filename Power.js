@@ -91,7 +91,7 @@ var Power = React.createClass({
     let fire = null;
     let water = null;
 
-    await this.StoneRef.on("value", function(snapshot) {
+    await this.StoneRef.once("value", function(snapshot) {
       //console.log(snapshot.val());
       wood = snapshot.val().wood;
       fire = snapshot.val().fire;
