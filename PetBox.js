@@ -130,6 +130,7 @@ var PetBox = React.createClass({
     });
     
     return {
+      key_id: null,
       id: null,
       Lv: null,
       Hp: null,
@@ -179,8 +180,8 @@ var PetBox = React.createClass({
 
   _renderRow: function(rowData: string,rowID:number) {
     return (
-      <TouchableHighlight onPress={() => this._pressRow(rowData.text.Lv,
-        rowData.text.Hp,rowData.text.Atk,
+      <TouchableHighlight onPress={() => this._pressRow(rowData.id,
+        rowData.text.Lv,rowData.text.Hp,rowData.text.Atk,
         rowData.text.Spd,rowData.text.name,rowData.text.id,
         rowData.text.Img,rowData.text.Type,rowData.text.evolvable,
         rowData.text.current_HP,rowData.text.Wood_level,rowData.text.Fire_level,
@@ -197,10 +198,11 @@ var PetBox = React.createClass({
     );
   },
 
-  _pressRow: function(Lv: number,Hp: number,Atk: number,
+  _pressRow: function(key_id: number,Lv: number,Hp: number,Atk: number,
     Spd: number,Name: string,id: number,Img: string,
     Type: string,evolvable: bool,current_HP: number,
     Wood_level: number,Fire_level: number,Water_level: number) {
+    this.state.key_id = key_id;
     this.state.Lv = Lv;
     this.state.Hp = Hp;
     this.state.Atk = Atk;
@@ -221,6 +223,7 @@ var PetBox = React.createClass({
                 name: 'Power',
                 component: Power,
                 params: {
+                    key_id: this.state.key_id,
                     Lv: this.state.Lv,
                     Hp: this.state.Hp,
                     Atk: this.state.Atk,

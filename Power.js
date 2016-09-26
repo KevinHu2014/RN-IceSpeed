@@ -75,7 +75,6 @@ var Power = React.createClass({
   },
   async componentDidMount(){
     this.Check_Hp();
-    console.log(this.state.key_id);
     switch(this.state.Type){
       case "Wood":
         Type_Image = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
