@@ -43,7 +43,7 @@ var swiper = React.createClass({
             <View style={styles.bottom_1}> 
               <Image
                 style={styles.avatar}
-                source={{uri: 'https://files.slack.com/files-pri/T0J0K43R7-F1X8ZPUM6/avatar1.png'}} />
+                source={{uri: 'http://s14.postimg.org/a5gpi1ah9/avatar02.png'}} />
             </View>
           </View>
           <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
@@ -75,7 +75,7 @@ var swiper = React.createClass({
               <View style={{flex: 1,}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://files.slack.com/files-pri/T0J0K43R7-F1X8ZPUM6/avatar1.png'}} />
+                  source={{uri: 'http://s14.postimg.org/a5gpi1ah9/avatar02.png'}} />
               </View>
             </View>
           </View>
@@ -96,7 +96,7 @@ var swiper = React.createClass({
             <View style={styles.top_3}>
               <Image
                 style={styles.game}
-                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+                source={{uri: 'https://files.slack.com/files-pri/T0J0K43R7-F1XQBJXEH/red_potion.png'}} />
             </View>
             <View style={styles.bottom_3}>
               <Text style={[styles.textContent,{fontSize:20}]}>
@@ -107,7 +107,7 @@ var swiper = React.createClass({
               <View style={{flex: 1,alignItems: 'flex-start',}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s10.postimg.org/dhhxzuq2h/avatar3_reverse.png'}} />
+                  source={{uri: 'http://s14.postimg.org/wiog4ubf1/avatar02_reverse.png'}} />
               </View>
               <View style={{flex: 2,}}></View>
               <View style={{flex: 1,}}>
