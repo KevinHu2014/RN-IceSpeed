@@ -35,7 +35,7 @@ var PetBox = React.createClass({
           Type: 'Water',
           evolvable: true,
           current_HP: 30,
-          Wood_level: 1,
+          Wood_level: 3,
           Fire_level: 1,
           Water_level: 1,
           Hp: 35,

@@ -91,33 +91,22 @@ var Power = React.createClass({
     let fire = null;
     let water = null;
 
-    await this.StoneRef.child('wood').on("value", function(snapshot) {
+    await this.StoneRef.on("value", function(snapshot) {
       //console.log(snapshot.val());
-      wood = snapshot.val();
-    });
-    await this.StoneRef.child('fire').on("value", function(snapshot) {
-      //console.log(snapshot.val());
-      fire = snapshot.val();
-    });
-    await this.StoneRef.child('water').on("value", function(snapshot) {
-      //console.log(snapshot.val());
-      water = snapshot.val();
+      wood = snapshot.val().wood;
+      fire = snapshot.val().fire;
+      water = snapshot.val().water;
     });
     
-
-    let wood_lv = null;
-    let fire_lv = null;
-    let water_lv = null;
-
-
-
+    
     this.setState({
       Wood_stone: wood,
       Fire_stone: fire,
-      Water_stone: water 
+      Water_stone: water,
+
     });
 
-    this.Check_Stone();
+    await this.Check_Data();
   },
   Check_Hp(){
     let temp = this.state.current_HP / this.state.HP;
@@ -125,8 +114,39 @@ var Power = React.createClass({
       HP_progress: temp, 
     });
   },
-  Check_Stone(){
+  async Check_Data(){
 
+    let wood_lv = null;
+    let fire_lv = null;
+    let water_lv = null;
+    let level = null;
+    c_hp = null;
+    hp = null;
+    atk = null;
+    spd = null;
+    await this.PetRef.child(this.state.key_id).on("value", function(snapshot) {
+      //console.log(snapshot.val().Type);
+      wood_lv = snapshot.val().Wood_level;
+      fire_lv = snapshot.val().Fire_level;
+      water_lv = snapshot.val().Water_level;
+      level = snapshot.val().Lv;
+      c_hp = snapshot.val().current_HP;
+      hp = snapshot.val().Hp;
+      atk = snapshot.val().Atk;
+      spd = snapshot.val().Spd;
+    });
+    
+
+    this.setState({
+      Wood_level: wood_lv,
+      Fire_level: fire_lv,
+      Water_level: water_lv,
+      LV: level,
+      current_HP: c_hp,
+      HP: hp,
+      ATK: atk,
+      SPD: spd
+    });
 
     //檢查是否有足夠的石頭可以升級
     if(this.state.Wood_stone >= this.Stone_Calulator(this.state.Wood_level)) {
@@ -161,10 +181,15 @@ var Power = React.createClass({
         Water_Powerable: false 
       });
     }
+
     //把更新的值寫回資料庫
-    this.StoneRef.update({wood: this.state.Wood_stone});
-    this.StoneRef.update({fire: this.state.Fire_stone});
-    this.StoneRef.update({water: this.state.Water_stone});
+    this.StoneRef.update({
+      wood: this.state.Wood_stone,
+      fire: this.state.Fire_stone,
+      water: this.state.Water_stone
+    });
+    //this.StoneRef.update({fire: this.state.Fire_stone});
+    //this.StoneRef.update({water: this.state.Water_stone});
   },
   Stone_Calulator(stone_level: number){
     //等比級數， 2的倍數成長
@@ -174,7 +199,7 @@ var Power = React.createClass({
     //a_1 = 1 , d = 3
     return (1 + (stone_level - 1)*3);
   },
-  Level_Up(){
+  async Level_Up(){
     /*
     每次升級三圍都增加1
     然後依怪物的屬性再加成
@@ -183,12 +208,15 @@ var Power = React.createClass({
     水屬怪SPD再加1
     */
     this.state.LV++;
+
     this.state.HP++;
+    this.state.current_HP++;
     this.state.ATK++;
     this.state.SPD++;
     switch(this.state.Type){
       case "Wood":
         this.state.HP++;
+        this.state.current_HP++;
         break;
       case "Fire":
         this.state.ATK++;
@@ -197,9 +225,19 @@ var Power = React.createClass({
         this.state.SPD++;
         break;
     }
+
+    //更新資料庫的資料
+    this.PetRef.child(this.state.key_id).update({
+      Lv: this.state.LV,
+      current_HP: this.state.current_HP,
+      Hp: this.state.HP,
+      Atk: this.state.ATK,
+      Spd: this.state.SPD
+    });
+
     //升級後順便做檢查
     this.Check_Hp();
-    this.Check_Stone();
+    await this.Check_Data();
   },
   onPress_Wood(){
     if(this.state.Wood_Powerable){
@@ -212,8 +250,12 @@ var Power = React.createClass({
               //升級動作
               this.state.Wood_stone = this.state.Wood_stone - this.Stone_Calulator(this.state.Wood_level);
               this.state.Wood_level++;
-              this.Level_Up();
+
+              //更新資料庫的資料
+              this.PetRef.child(this.state.key_id).update({Wood_level: this.state.Wood_level});
               
+              this.Level_Up();
+
               //升級成功
               Alert.alert(
                 '升級成功',
@@ -248,7 +290,12 @@ var Power = React.createClass({
               //升級動作
               this.state.Fire_stone = this.state.Fire_stone - this.Stone_Calulator(this.state.Fire_level);
               this.state.Fire_level++;
+
+              //更新資料庫的資料
+              this.PetRef.child(this.state.key_id).update({Fire_level: this.state.Fire_level});
+              
               this.Level_Up();
+
               //升級成功
               Alert.alert(
                 '升級成功',
@@ -282,7 +329,12 @@ var Power = React.createClass({
               //升級動作
               this.state.Water_stone = this.state.Water_stone - this.Stone_Calulator(this.state.Water_level);
               this.state.Water_level++;
+
+              //更新資料庫的資料
+              this.PetRef.child(this.state.key_id).update({Water_level: this.state.Water_level});
+
               this.Level_Up();
+
               //升級成功
               Alert.alert(
                 '升級成功',
