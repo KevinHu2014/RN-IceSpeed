@@ -15,10 +15,10 @@ var {height, width} = Dimensions.get('window');
 var swiper = React.createClass({
   getInitialState(){
     return{
-      gymName: '耕莘樓',
-      gymLeader: '莉莉亞',
-      schoolIntro: '嘿嘿~這可是理工學院重要的辦公及教學大樓哦！理學院的建築形式是採取中國圖騰設計，從理外民行政大樓、教學大樓、圖書館到女生宿舍（宜真學苑原A棟）是呈現「龍」「鳳」拱珠配對圖案呢！其設計意義主要希望輔仁學子們能成龍成鳳而耕莘樓即為龍首，龍身則是指數學、物理、生物、化學所相連的教學大樓，二者合併稱龍形大樓，其興建完成相繼在民國58年。說的莉莉亞不禁驕傲了起來呢~(｡◕∀◕｡)',
-      gameIntro: '遊戲內的道具基本上有分經驗加倍、寵物回血、稀有度加倍、掉落率加倍這幾種類型，另外在所屬陣營的特殊商店還可以買到只屬於你們陣營的特殊道具喔！善用道具的輔助可以讓寵物等級的提升更為迅速喏~這些就當作你好好聽我講話的獎勵吧~要成為優秀的冒險家喔！ *\(^v^)/* bye~ bye~',
+      gymName: '真善美聖十字架',
+      gymLeader: 'Adam Lee',
+      schoolIntro: '知道嗎？這是個全輔最重要的精神指標之一喔！因為上面刻畫的四個大字：真、善、美、聖即為輔大的校訓之一真善美聖為人生追求之道，藉著對知識真理的追求，修德行善的用心，欣賞宇宙萬物之美，以體會人生至聖之境。而十字架彎曲的樣貌則象徵著上帝「擁抱世人」的意象。這樣一個特別又富有博愛精神的建築是否讓你有深刻印象呢？',
+      gameIntro: '在這世界中的怪物精靈分為水、火、木三種屬性其中，水會克制火、火會克制木、木會克制水這三種屬性產生的影響很單純，強屬性攻擊弱屬性時，可以獲得1.25倍的傷害加乘。相對的，如果是弱屬性攻擊強屬性時攻擊傷害則會變為0.75倍所以選擇好相對應的屬性是非常重要的喔！',
 
     }
   },
@@ -37,7 +37,7 @@ var swiper = React.createClass({
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
             <View style={styles.top_1}>
               <Text style={styles.textTitle}>
-                {'地標道館：'+this.state.gymName+'\n\n大家好~'+'\n\n我是史上最年輕也最可愛的魔導士~\b'+this.state.gymLeader+'\n\n現在開始要好好聽莉莉亞講話哦~ 啾咪 (^.<)'}
+                {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
               </Text>
             </View>
             <View style={styles.bottom_1}> 
@@ -53,7 +53,7 @@ var swiper = React.createClass({
                   {'輔大特色地標'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'耕莘樓介紹'}
+                  {'真善美聖十字架介紹'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
@@ -86,7 +86,7 @@ var swiper = React.createClass({
                   {'新手教學'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'道具介紹'}
+                  {'屬性相剋'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
