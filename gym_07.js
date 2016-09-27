@@ -12,13 +12,13 @@ import {
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
 
-var swiper = React.createClass({
+var gym_07 = React.createClass({
   getInitialState(){
     return{
-      gymName: '真善美聖十字架',
-      gymLeader: 'Adam Lee',
-      schoolIntro: '知道嗎？這是個全輔最重要的精神指標之一喔！因為上面刻畫的四個大字：真、善、美、聖即為輔大的校訓之一真善美聖為人生追求之道，藉著對知識真理的追求，修德行善的用心，欣賞宇宙萬物之美，以體會人生至聖之境。而十字架彎曲的樣貌則象徵著上帝「擁抱世人」的意象。這樣一個特別又富有博愛精神的建築是否讓你有深刻印象呢？',
-      gameIntro: '在這世界中的怪物精靈分為水、火、木三種屬性其中，水會克制火、火會克制木、木會克制水這三種屬性產生的影響很單純，強屬性攻擊弱屬性時，可以獲得1.25倍的傷害加乘。相對的，如果是弱屬性攻擊強屬性時攻擊傷害則會變為0.75倍所以選擇好相對應的屬性是非常重要的喔！',
+      gymName: '中美堂',
+      gymLeader: '艾力克斯',
+      schoolIntro: '這裡是學校的體育館。承襲古羅馬城形式之建築物。據說是依據一位義大利神父依羅馬城的軌跡設計出圓形的建築藍圖而建築，象徵著古羅馬競技精神。另外，中美堂共有七十枝弧形樑柱支撐著，每枝樑柱重約四噸，樑上再加瓦片，整個中美堂上覆蓋約四百噸重的重量平均分散到圓形建築各處，為當時世界上僅有之第三、第四座無直樑支撐的建築物，造價昂貴。',
+      gameIntro: '在遊戲中若要強化自身的寵物怪物便要想辦法獲得能量礦石，透過礦石內的神祕力量加以強化！那麼！要在哪裡才能取的這些能提升寵物等級的能量礦石呢？玩家可以透過 1.打敗道館館主 2.擊敗野生怪物 3.特殊的商店購買 三種方式來取得強化寵物怪物的經驗值礦石 加油！努力地去收集礦石吧！！！',
 
     }
   },
@@ -36,8 +36,8 @@ var swiper = React.createClass({
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
             <View style={styles.top_1}>
-              <Text style={styles.textTitle}>
-                {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
+              <Text style={[styles.textTitle,{fontSize: 20}]}>
+                {'地標道館：'+this.state.gymName+'\n\n「君子以文會友，以友輔仁」\n唯有堅毅的靈魂才能駕馭強大的力量\n因此我們不斷的鍛鍊自己.......'+'\n\n我是館主\b'+this.state.gymLeader}
               </Text>
             </View>
             <View style={styles.bottom_1}> 
@@ -53,7 +53,7 @@ var swiper = React.createClass({
                   {'輔大特色地標'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'真善美聖十字架介紹'}
+                  {'中美堂介紹'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
@@ -63,7 +63,7 @@ var swiper = React.createClass({
             <View style={styles.top_2}>
               <Image
                 style={styles.school}
-                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
+                source={{uri: 'http://farm8.staticflickr.com/7157/6645835887_3eeea317a0_b.jpg'}} />
             </View>
             <View style={styles.middle_2}>
               <Text style={styles.textContent}>
@@ -75,7 +75,7 @@ var swiper = React.createClass({
               <View style={{flex: 1,}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
+                  source={{uri: 'http://s12.postimg.org/jaw6ikmqx/avatar07.png'}} />
               </View>
             </View>
           </View>
@@ -86,7 +86,7 @@ var swiper = React.createClass({
                   {'新手教學'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'屬性相剋'}
+                  {'經驗值的取得'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
@@ -96,7 +96,7 @@ var swiper = React.createClass({
             <View style={styles.top_3}>
               <Image
                 style={styles.game}
-                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+                source={{uri: 'https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png'}} />
             </View>
             <View style={styles.bottom_3}>
               <Text style={[styles.textContent,{fontSize:20}]}>
@@ -107,7 +107,7 @@ var swiper = React.createClass({
               <View style={{flex: 1,alignItems: 'flex-start',}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s10.postimg.org/dhhxzuq2h/avatar3_reverse.png'}} />
+                  source={{uri: 'http://s12.postimg.org/ve1i64xt5/avatar07_reverse.png'}} />
               </View>
               <View style={{flex: 2,}}></View>
               <View style={{flex: 1,}}>
@@ -218,4 +218,4 @@ const  styles = StyleSheet.create({
 })
 
 
-module.exports = swiper;
+module.exports = gym_07;
