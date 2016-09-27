@@ -20,114 +20,114 @@ var PetBox = React.createClass({
     var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/users/314282187");
     this.usersRef = myFirebaseRef.child('Pet');
     this.items = [];
-    myFirebaseRef.set({
-      Name:'冰櫃神速',
-      Stone: {
-        fire: 10,
-        wood: 5,
-        water: 7
-      },
-      Pet: {
-        1: {
-          id: 16,
-          name: '胡頭狼',
-          Lv: 1,
-          Type: 'Water',
-          evolvable: true,
-          current_HP: 30,
-          Wood_level: 3,
-          Fire_level: 1,
-          Water_level: 1,
-          Hp: 35,
-          Atk: 20,
-          Spd: 25,
-          Rare: 'A',
-          Img: "http://s33.postimg.org/puos6zvy7/image.png"
-        },
-        2: {
-          id: 6,
-          name: '獨眼怪',
-          Lv: 21,
-          Type: 'Fire',
-          evolvable: false,
-          current_HP: 26,
-          Wood_level: 1,
-          Fire_level: 1,
-          Water_level: 1,
-          Hp: 26,
-          Atk: 32,
-          Spd: 20,
-          Rare: 'B',
-          Img: "http://s33.postimg.org/em1erq3cv/image.png",
-        },
-        3: {
-          id: 3,
-          name:'群聚菇',
-          Lv: 20,
-          Type: 'Wood',
-          evolvable: true,
-          current_HP: 40,
-          Wood_level: 1,
-          Fire_level: 1,
-          Water_level: 1,
-          Hp: 50,
-          Atk: 15,
-          Spd: 20,
-          Rare: 'C',
-          Img: "http://s33.postimg.org/wlhmbzvy7/502.png"
-        }
-      },
-      Item: {
-        1:{
-          quantity: 10,
-          name: '回復藥水',
-          description: '使用之後可以選擇一隻寵物夥伴回復滿HP',
-          Img: "https://s31.postimg.org/bzmcux10b/red_potion.png"
-        },
-        2:{
-          quantity: 12,
-          name: '稀有卷軸',
-          description: '使用之後1小時內將會遇到比較稀有的怪..!?',
-          Img: "https://s31.postimg.org/e02slosa3/RARE_SCROLL.png"
-        },
-        3:{
-          quantity: 4,
-          name: '經驗卷軸',
-          description: '使用之後1小時內經驗加倍。',
-          Img: "https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png"
-        },
-        4:{
-          quantity: 1,
-          name: '掉落卷軸',
-          description: '使用之後1小時內擊敗的怪物將會比較容易加入你的隊伍。',
-          Img: "https://s31.postimg.org/81v0ggxsr/DROP_SCROLL.png"
-        },
-        5:{
-          quantity: 4,
-          name: '普通的錢袋',
-          description: '使用之後獲得1000G。',
-          Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
-        },
-        6:{
-          quantity: 4,
-          name: '水之寶石袋',
-          description: '使用之後獲得500點水之力經驗值。',
-          Img: "https://s32.postimg.org/qezeok5ed/WATER_bag.png"
-        },
-        7:{
-          quantity: 4,
-          name: '木之寶石袋',
-          description: '使用之後獲得500點木之力經驗值。',
-          Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
-        },
-        8:{
-          quantity: 4,
-          name: '火之寶石袋',
-          description: '使用之後獲得500點火之力經驗值。',
-          Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
-        }
-      }
-    });
+    // myFirebaseRef.set({
+    //   Name:'冰櫃神速',
+    //   Stone: {
+    //     fire: 10,
+    //     wood: 5,
+    //     water: 7
+    //   },
+    //   Pet: {
+    //     1: {
+    //       id: 16,
+    //       name: '胡頭狼',
+    //       Lv: 1,
+    //       Type: 'Water',
+    //       evolvable: true,
+    //       current_HP: 30,
+    //       Wood_level: 3,
+    //       Fire_level: 1,
+    //       Water_level: 1,
+    //       Hp: 35,
+    //       Atk: 20,
+    //       Spd: 25,
+    //       Rare: 'A',
+    //       Img: "http://s33.postimg.org/puos6zvy7/image.png"
+    //     },
+    //     2: {
+    //       id: 6,
+    //       name: '獨眼怪',
+    //       Lv: 21,
+    //       Type: 'Fire',
+    //       evolvable: false,
+    //       current_HP: 26,
+    //       Wood_level: 1,
+    //       Fire_level: 1,
+    //       Water_level: 1,
+    //       Hp: 26,
+    //       Atk: 32,
+    //       Spd: 20,
+    //       Rare: 'B',
+    //       Img: "http://s33.postimg.org/em1erq3cv/image.png",
+    //     },
+    //     3: {
+    //       id: 3,
+    //       name:'群聚菇',
+    //       Lv: 20,
+    //       Type: 'Wood',
+    //       evolvable: true,
+    //       current_HP: 40,
+    //       Wood_level: 1,
+    //       Fire_level: 1,
+    //       Water_level: 1,
+    //       Hp: 50,
+    //       Atk: 15,
+    //       Spd: 20,
+    //       Rare: 'C',
+    //       Img: "http://s33.postimg.org/wlhmbzvy7/502.png"
+    //     }
+    //   },
+    //   Item: {
+    //     1:{
+    //       quantity: 10,
+    //       name: '回復藥水',
+    //       description: '使用之後可以選擇一隻寵物夥伴回復滿HP',
+    //       Img: "https://s31.postimg.org/bzmcux10b/red_potion.png"
+    //     },
+    //     2:{
+    //       quantity: 12,
+    //       name: '稀有卷軸',
+    //       description: '使用之後1小時內將會遇到比較稀有的怪..!?',
+    //       Img: "https://s31.postimg.org/e02slosa3/RARE_SCROLL.png"
+    //     },
+    //     3:{
+    //       quantity: 4,
+    //       name: '經驗卷軸',
+    //       description: '使用之後1小時內經驗加倍。',
+    //       Img: "https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png"
+    //     },
+    //     4:{
+    //       quantity: 1,
+    //       name: '掉落卷軸',
+    //       description: '使用之後1小時內擊敗的怪物將會比較容易加入你的隊伍。',
+    //       Img: "https://s31.postimg.org/81v0ggxsr/DROP_SCROLL.png"
+    //     },
+    //     5:{
+    //       quantity: 4,
+    //       name: '普通的錢袋',
+    //       description: '使用之後獲得1000G。',
+    //       Img: "https://s31.postimg.org/j4ucshjt7/money_bag.png"
+    //     },
+    //     6:{
+    //       quantity: 4,
+    //       name: '水之寶石袋',
+    //       description: '使用之後獲得500點水之力經驗值。',
+    //       Img: "https://s32.postimg.org/qezeok5ed/WATER_bag.png"
+    //     },
+    //     7:{
+    //       quantity: 4,
+    //       name: '木之寶石袋',
+    //       description: '使用之後獲得500點木之力經驗值。',
+    //       Img: "https://s32.postimg.org/sxn5yw951/LEAF_bag.png"
+    //     },
+    //     8:{
+    //       quantity: 4,
+    //       name: '火之寶石袋',
+    //       description: '使用之後獲得500點火之力經驗值。',
+    //       Img: "https://s31.postimg.org/y1im4z2ln/FIRE_bag.png"
+    //     }
+    //   }
+    // });
     
     return {
       key_id: null,

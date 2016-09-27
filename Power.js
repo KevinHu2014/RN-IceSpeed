@@ -14,6 +14,7 @@ import  {
 import * as Progress from 'react-native-progress';
 import * as Animatable from 'react-native-animatable'
 import Firebase from 'firebase';
+import NavPet from './NavPet';
 
 var Type_Image ;
 var Power = React.createClass({
@@ -358,11 +359,18 @@ var Power = React.createClass({
     }
   },
   onPress_Back(){
+    // const { navigator } = this.props;
+    //         if(navigator) {
+    //             //返回PetBox
+    //             navigator.pop();
+    //         }
     const { navigator } = this.props;
-            if(navigator) {
-                //返回PetBox
-                navigator.pop();
-            }
+        if(navigator) {
+            navigator.replace({
+                name: 'NavPet',
+                component: NavPet,
+            })
+        }  
   },
   render(){
     return (
