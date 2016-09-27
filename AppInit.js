@@ -25,21 +25,21 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'tab',
-    //             component: tab,
-    //         })
-    //     }
-
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'NavPet',
-                component: NavPet,
+                name: 'tab',
+                component: tab,
             })
-        }        
+        }
+
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavPet',
+    //             component: NavPet,
+    //         })
+    //     }        
 
     // const { navigator } = this.props;
     //     if(navigator) {
