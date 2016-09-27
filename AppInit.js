@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NicknamePage from './NicknamePage';
 import tab from './tab';
 import NavPet from './NavPet';
-import gym_07 from './gym_07';
+import gym_01 from './gym_01';
 
 var AppInit = React.createClass({
   onPress(){
@@ -44,8 +44,8 @@ var AppInit = React.createClass({
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'gym_07',
-                component: gym_07,
+                name: 'gym_01',
+                component: gym_01,
             })
         } 
   },

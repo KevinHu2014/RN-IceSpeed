@@ -172,7 +172,7 @@ const  styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
   top_2: {
-    flex: 2,
+    flex: 1.5,
     justifyContent: 'center',
     alignItems: 'center',
   },
