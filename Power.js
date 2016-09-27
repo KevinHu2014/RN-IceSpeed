@@ -99,7 +99,9 @@ var Power = React.createClass({
       water = snapshot.val().water;
     });
     
-    
+
+    await this.Check_Data();
+
     this.setState({
       Wood_stone: wood,
       Fire_stone: fire,
@@ -107,7 +109,8 @@ var Power = React.createClass({
 
     });
 
-    await this.Check_Data();
+    this.Check_Stone();
+
   },
   Check_Hp(){
     let temp = this.state.current_HP / this.state.HP;
@@ -149,6 +152,9 @@ var Power = React.createClass({
       SPD: spd
     });
 
+    
+  },
+  Check_Stone(){
     //檢查是否有足夠的石頭可以升級
     if(this.state.Wood_stone >= this.Stone_Calulator(this.state.Wood_level)) {
       this.setState({
@@ -182,15 +188,6 @@ var Power = React.createClass({
         Water_Powerable: false 
       });
     }
-
-    //把更新的值寫回資料庫
-    this.StoneRef.update({
-      wood: this.state.Wood_stone,
-      fire: this.state.Fire_stone,
-      water: this.state.Water_stone
-    });
-    //this.StoneRef.update({fire: this.state.Fire_stone});
-    //this.StoneRef.update({water: this.state.Water_stone});
   },
   Stone_Calulator(stone_level: number){
     //等比級數， 2的倍數成長
@@ -236,9 +233,15 @@ var Power = React.createClass({
       Spd: this.state.SPD
     });
 
+    this.StoneRef.update({
+      wood: this.state.Wood_stone,
+      fire: this.state.Fire_stone,
+      water: this.state.Water_stone
+    });
+
     //升級後順便做檢查
     this.Check_Hp();
-    await this.Check_Data();
+    this.Check_Stone();
   },
   onPress_Wood(){
     if(this.state.Wood_Powerable){

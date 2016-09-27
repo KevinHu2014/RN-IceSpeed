@@ -23,7 +23,7 @@ var PetBox = React.createClass({
     // myFirebaseRef.set({
     //   Name:'冰櫃神速',
     //   Stone: {
-    //     fire: 10,
+    //     fire: 100,
     //     wood: 5,
     //     water: 7
     //   },
