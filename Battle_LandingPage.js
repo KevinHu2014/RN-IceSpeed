@@ -14,7 +14,8 @@ import LinearGradient from 'react-native-linear-gradient';
 var Battle_LandingPage = React.createClass({
   getInitialState: function() {
     return {
-      effect: "lightSpeedIn"
+      effect: "lightSpeedIn",
+      Img: 'http://s33.postimg.org/em1erq3cv/image.png',
     }
   },
   componentWillMount(){
@@ -73,7 +74,7 @@ var Battle_LandingPage = React.createClass({
           <View style={styles.Logo}>
             <Animatable.Image 
                 animation={this.state.effect} iterationCount={1}
-                source={{uri:'http://s33.postimg.org/em1erq3cv/image.png'}} 
+                source={{uri: this.state.Img}} 
                 style={{width:320,height:320 }}>
             </Animatable.Image>
           </View>
