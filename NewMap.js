@@ -841,7 +841,6 @@ var NewMap = React.createClass({
     }
 
       const { navigator } = this.props;
-      console.log(this.state.Monster_name);
         if(navigator) {
             navigator.push({
                 name: 'Battle_LandingPage',

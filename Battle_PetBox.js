@@ -133,6 +133,8 @@ var Battle_PetBox = React.createClass({
     // });
     
     return {
+      Monster_Img: null,
+      enemy: null,
       key_id: null,
       id: null,
       Lv: null,
@@ -154,6 +156,13 @@ var Battle_PetBox = React.createClass({
   
 
   componentWillMount: function() {
+    //從這裡拿到Battle_PetBoxt傳過來的參數
+     this.setState({
+            Monster_Img: this.props.Monster_Img,
+            enemy: this.props.enemy,
+            
+        });
+
     this.usersRef.on('child_added', (dataSnapshot) => {
       this.items.push({id: dataSnapshot.key(), text: dataSnapshot.val()});
       //id是指第幾個,text是指文字
@@ -238,6 +247,8 @@ var Battle_PetBox = React.createClass({
                 name: 'battle',
                 component: battle,
                 params: {
+                    Monster_Img: this.state.Monster_Img,
+                    enemy: this.state.enemy,
                     Lv: this.state.Lv,
                     Hp: this.state.Hp,
                     Atk: this.state.Atk,

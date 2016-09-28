@@ -10,6 +10,7 @@ import  {
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
 
+import Battle_PetBox from './Battle_PetBox';
 
 var Battle_LandingPage = React.createClass({
   getInitialState: function() {
@@ -75,8 +76,14 @@ var Battle_LandingPage = React.createClass({
   onPress(){
     const { navigator } = this.props;
         if(navigator) {
-          //返回NewMap
-          navigator.pop();
+            navigator.push({
+                name: 'Battle_PetBox',
+                component: Battle_PetBox,
+                params: {
+                    Monster_Img: this.state.Monster_Img,
+                    enemy: this.state.enemy
+                 }   
+            })
         }
   },
   render() {

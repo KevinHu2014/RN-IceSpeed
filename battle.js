@@ -59,8 +59,8 @@ var battle = React.createClass({
   componentWillMount() {
     //從這裡拿到Battle_PetBoxt傳過來的參數
      this.setState({
-            //Monster_Img: this.props.Monster_Img,
-            //enemy: this.props.Monster_name,
+            Monster_Img: this.props.Monster_Img,
+            enemy: this.props.enemy,
             id: this.props.id,
             Lv: this.props.Lv,
             current_HP: this.props.current_HP,
@@ -282,7 +282,7 @@ var battle = React.createClass({
         const { navigator } = this.props;
         if(navigator) {
           //返回mapexample
-          navigator.pop();
+          navigator.popN(3);
         }
         temp4 = 13;
         break;  
@@ -320,7 +320,7 @@ var battle = React.createClass({
             const { navigator } = this.props;
             if(navigator) {
                 //返回NewMap
-                navigator.pop();
+                navigator.popN(3);
             }
             this.setState({
               Box: temp5,
