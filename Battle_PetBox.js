@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react';
 import  {
+  Alert,
   Image,
   ListView,
   TouchableHighlight,
@@ -230,30 +231,36 @@ var Battle_PetBox = React.createClass({
     this.state.Wood_level = Wood_level;
     this.state.Fire_level = Fire_level;
     this.state.Water_level = Water_level;
+    if(this.state.current_HP > 0){
+      const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'battle',
+                component: battle,
+                params: {
+                    Lv: this.state.Lv,
+                    Hp: this.state.Hp,
+                    Atk: this.state.Atk,
+                    Spd: this.state.Spd,
+                    Name: this.state.Name,
+                    id: this.state.id,
+                    Img: this.state.Img,
+                    Type: this.state.Type,
+                    current_HP: this.state.current_HP,
+                 }   
+            })
+        }
+    }
+    else{
+      Alert.alert(
+        this.state.Name+'血量不足',
+        '無法戰鬥',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
     
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.push({
-    //             name: 'battle',
-    //             component: battle,
-    //             params: {
-    //                 key_id: this.state.key_id,
-    //                 Lv: this.state.Lv,
-    //                 Hp: this.state.Hp,
-    //                 Atk: this.state.Atk,
-    //                 Spd: this.state.Spd,
-    //                 Name: this.state.Name,
-    //                 id: this.state.id,
-    //                 Img: this.state.Img,
-    //                 Type: this.state.Type,
-    //                 evolvable: this.state.evolvable,
-    //                 current_HP: this.state.current_HP,
-    //                 Wood_level: this.state.Wood_level,
-    //                 Fire_level: this.state.Fire_level,
-    //                 Water_level: this.state.Water_level,
-    //              }   
-    //         })
-    //     }
   },
 });
 

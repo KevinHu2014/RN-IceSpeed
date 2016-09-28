@@ -26,8 +26,6 @@ var battle = React.createClass({
       press_Mp: false,
       press_skill_1: false,
       press_skill_2: false,
-      you: '胡頭犬',
-      enemy: '獨眼怪',
       Box: ' ',
       Now: 0,
       skill_1_name: '衝撞',
@@ -36,7 +34,7 @@ var battle = React.createClass({
       enemy_skill_2_name: '衝撞',
       mp: '🌑🌑🌑🌑🌑',
       mp_value: 0,
-      top_progress: 0.9,
+      top_progress: 1,
       top_color: '#00DB00',
       bottom_progress: 0.6,
       bottom_color: '#00DB00',
@@ -45,20 +43,44 @@ var battle = React.createClass({
       skill_2: -0.3,//如果是回復技，則數值是負的
       enemy_skill_1: 0.3,
       enemy_skill_2: 0.1,
-      HP: 100,
-      Monster_Img: null,
+      enemy: '小葉麻糬',
+      Monster_Img: 'https://s19.postimg.org/6x3lekc83/000.png',
+      you: null,
+      id: null,
+      Lv: null,
+      Hp: null,
+      Atk: null,
+      Spd: null,
+      Type: null,
+      current_HP: null,
+      Img: null,
     }
   },
-  componentDidMount() {
-    //從這裡拿到MapExample膗過來的參數
+  componentWillMount() {
+    //從這裡拿到Battle_PetBoxt傳過來的參數
      this.setState({
-            Monster_Img: this.props.Monster_Img,
-            enemy: this.props.Monster_name
+            //Monster_Img: this.props.Monster_Img,
+            //enemy: this.props.Monster_name,
+            id: this.props.id,
+            Lv: this.props.Lv,
+            current_HP: this.props.current_HP,
+            Hp: this.props.Hp,
+            Atk: this.props.Atk,
+            Spd: this.props.Spd,
+            you: this.props.Name,
+            Img: this.props.Img,
+            Type: this.props.Type,
         });
+    
     let temp = '野生的' + this.state.enemy + '跳了出來！';
     this.setState({
             Box: temp
         });
+  },
+  componentDidMount(){
+    this.setState({
+      bottom_progress: this.state.current_HP/this.state.Hp, 
+    });
   },
   handleChangeTabs(value){
     this.setState({
@@ -464,7 +486,7 @@ var battle = React.createClass({
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
                     <Text style={styles.welcome_4}>{this.state.you}</Text>
-                    <Text style={styles.welcome_3}>Lv 10</Text>
+                    <Text style={styles.welcome_3}>Lv {this.state.Lv}</Text>
                   </View>
                   <View style={{flex: 2,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginTop:10,}}>
@@ -478,7 +500,7 @@ var battle = React.createClass({
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'flex-end'}}>
                     <Text style={{color: '#FFFFFF',fontSize:15,fontWeight: "bold",
-                        marginRight:10}}>{Math.ceil((this.state.bottom_progress)*(this.state.HP))}/{this.state.HP}</Text>
+                        marginRight:10}}>{Math.ceil((this.state.bottom_progress)*(this.state.Hp))}/{this.state.Hp}</Text>
                   </View>
                   <View style={{flex: 1,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10}}>
@@ -489,7 +511,7 @@ var battle = React.createClass({
                 <View style={{flex: 0.25,}}></View>
               </View>
               <View style={{flex: 1,}}> 
-                <Animatable.Image   ref="bottom" source={require('./Img/TEST.png')}
+                <Animatable.Image   ref="bottom" source={{uri: this.state.Img}}
                   style={{marginTop: 30,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_M ? '✨' : ''}
