@@ -72,6 +72,7 @@ var Battle_LandingPage = React.createClass({
             enemy: this.props.Monster_name
         });
 
+
   },
   onPress(){
     const { navigator } = this.props;

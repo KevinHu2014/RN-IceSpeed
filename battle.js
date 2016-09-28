@@ -72,14 +72,15 @@ var battle = React.createClass({
             Type: this.props.Type,
         });
     
-    let temp = '野生的' + this.state.enemy + '跳了出來！';
-    this.setState({
-            Box: temp
-        });
+    
   },
   componentDidMount(){
+
+    let temp = '野生的' + this.state.enemy + '跳了出來！';
+    
     this.setState({
-      bottom_progress: this.state.current_HP/this.state.Hp, 
+      bottom_progress: this.state.current_HP/this.state.Hp,
+       Box: temp 
     });
   },
   handleChangeTabs(value){

@@ -240,6 +240,7 @@ var Battle_PetBox = React.createClass({
     this.state.Wood_level = Wood_level;
     this.state.Fire_level = Fire_level;
     this.state.Water_level = Water_level;
+
     if(this.state.current_HP > 0){
       const { navigator } = this.props;
         if(navigator) {
