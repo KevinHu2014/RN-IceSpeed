@@ -40,7 +40,7 @@ Mapbox.setAccessToken(accessToken);
 //   console.error(err); // Handle error
 // });
 
-import battle from './battle';
+import Battle_LandingPage from './Battle_LandingPage';
 import gym_01 from './gym_01';
 import FireStore from './FireStore';
 import WaterStore from './WaterStore';
@@ -817,7 +817,7 @@ var NewMap = React.createClass({
     else{
       //野怪random
       //產生亂數0~3
-      let x = Math.floor(Math.random() * 3);//Math.random()值範圍0 ~ 0.99999
+      let x = Math.floor(Math.random() * 4);//Math.random()值範圍0 ~ 0.99999
       let Img = '';
       let Name = '';
       console.log('x = '+x);
@@ -844,8 +844,8 @@ var NewMap = React.createClass({
       console.log(this.state.Monster_name);
         if(navigator) {
             navigator.push({
-                name: 'battle',
-                component: battle,
+                name: 'Battle_LandingPage',
+                component: Battle_LandingPage,
                 params: {
                     Monster_Img: Img,
                     Monster_name: Name,

@@ -15,7 +15,8 @@ var Battle_LandingPage = React.createClass({
   getInitialState: function() {
     return {
       effect: "lightSpeedIn",
-      Img: 'http://s33.postimg.org/em1erq3cv/image.png',
+      Monster_Img: 'http://s33.postimg.org/em1erq3cv/image.png',
+      enemy: '獨眼怪',
     }
   },
   componentWillMount(){
@@ -63,8 +64,20 @@ var Battle_LandingPage = React.createClass({
     });
 
   },
+  componentDidMount() {
+    //從這裡拿到MapExample膗過來的參數
+     this.setState({
+            Monster_Img: this.props.Monster_Img,
+            enemy: this.props.Monster_name
+        });
+
+  },
   onPress(){
-    
+    const { navigator } = this.props;
+        if(navigator) {
+          //返回NewMap
+          navigator.pop();
+        }
   },
   render() {
     return (
@@ -74,7 +87,7 @@ var Battle_LandingPage = React.createClass({
           <View style={styles.Logo}>
             <Animatable.Image 
                 animation={this.state.effect} iterationCount={1}
-                source={{uri: this.state.Img}} 
+                source={{uri: this.state.Monster_Img}} 
                 style={{width:320,height:320 }}>
             </Animatable.Image>
           </View>
@@ -86,7 +99,7 @@ var Battle_LandingPage = React.createClass({
                 animation="pulse" iterationCount={3} delay={1000}>
                   <TouchableHighlight
                       style={styles.touchable}
-                      onPress={this._onPress}>
+                      onPress={this.onPress}>
                         <View style={styles.Button}>
                             <Text style={styles.welcome_Button}>
                                 戰鬥
