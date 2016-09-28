@@ -1,5 +1,4 @@
 'use strict';
-/* eslint no-console: 0 */
 
 import React, { Component } from 'react';
 import Mapbox, { MapView } from 'react-native-mapbox-gl';
@@ -67,7 +66,8 @@ var NewMap = React.createClass({
       press_monster: false,
       press_mission: false,
       collapsed: true,
-      test: '測試用的XDDDD',
+      Monster_Img: 'https://s19.postimg.org/6x3lekc83/000.png',
+      Monster_name:'小葉麻糬',
       result: '冰櫃神速',
       i: 5,
       UserLat: 25.035770510088796,
@@ -815,13 +815,40 @@ var NewMap = React.createClass({
         }
     }
     else{
+      //野怪random
+      //產生亂數0~3
+      let x = Math.floor(Math.random() * 3);//Math.random()值範圍0 ~ 0.99999
+      let Img = '';
+      let Name = '';
+      console.log('x = '+x);
+      switch(x){
+        case 1: 
+          Name = '小煤礦';
+          Img = 'https://s19.postimg.org/t2np4v277/006.png';
+          break;
+        case 2:
+          Name = '小野菇';
+          Img = 'https://s19.postimg.org/4r9ak28rn/500.png';
+          break;  
+        case 3:
+          Name = '小葉麻糬';
+          Img = 'https://s19.postimg.org/6x3lekc83/000.png';
+          break;
+        default:
+          Name = '小魔眼';
+          Img = 'https://s19.postimg.org/hpacl56g3/image.png';
+          break;
+    }
+
       const { navigator } = this.props;
+      console.log(this.state.Monster_name);
         if(navigator) {
             navigator.push({
                 name: 'battle',
                 component: battle,
                 params: {
-                    test: this.state.test,
+                    Monster_Img: Img,
+                    Monster_name: Name,
                     getResult:(result) => {
                         this.setState({result: result})
                     }
@@ -829,6 +856,9 @@ var NewMap = React.createClass({
             })
         }
     }
+    
+  },
+  Random_Monster(){
     
   },
   onPressOut_explore() {
@@ -842,10 +872,10 @@ var NewMap = React.createClass({
       let y = Math.floor(Math.random() * 20 - 10);//-10~10
       this.state.newLat = this.state.UserLat + x*distance;
       this.state.newLon = this.state.UserLon + y*distance;
-      console.log(x);
-      console.log(y);
-      console.log(this.state.newLat);
-      console.log(this.state.newLon);
+      //console.log(x);
+      //console.log(y);
+      //console.log(this.state.newLat);
+      //console.log(this.state.newLon);
       MonsterLat[this.state.i] = this.state.newLat;
       MonsterLon[this.state.i] = this.state.newLon;
       
@@ -905,6 +935,7 @@ var NewMap = React.createClass({
 
       ]
     });
+
     /*this.setState({
       collapsed: !this.state.collapsed
     });*/

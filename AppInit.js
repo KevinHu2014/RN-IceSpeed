@@ -27,13 +27,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'tab',
-    //             component: tab,
-    //         })
-    //     }
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'tab',
+                component: tab,
+            })
+        }
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -59,13 +59,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'Battle_LandingPage',
-                component: Battle_LandingPage,
-            })
-        }   
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'Battle_LandingPage',
+    //             component: Battle_LandingPage,
+    //         })
+    //     }   
   },
   render() {
     return (

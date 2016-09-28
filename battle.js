@@ -46,13 +46,14 @@ var battle = React.createClass({
       enemy_skill_1: 0.3,
       enemy_skill_2: 0.1,
       HP: 100,
-      test: null,
+      Monster_Img: null,
     }
   },
   componentDidMount() {
     //從這裡拿到MapExample膗過來的參數
      this.setState({
-            test: this.props.test
+            Monster_Img: this.props.Monster_Img,
+            enemy: this.props.Monster_name
         });
     let temp = '野生的' + this.state.enemy + '跳了出來！';
     this.setState({
@@ -427,7 +428,7 @@ var battle = React.createClass({
 
             <View style={styles.main_top}>
               <View style={{flex: 1,}}>
-                <Animatable.Image ref="top" source={require('./Img/TEST2.png')}
+                <Animatable.Image ref="top" source={{uri: this.state.Monster_Img}}
                   style={{marginTop:50,width:140,height:140 }}>
                   <Text style={styles.welcome_2}>
                         {this.state.press_L ? '👊' : ''}
