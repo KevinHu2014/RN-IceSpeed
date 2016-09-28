@@ -34,13 +34,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'NavPet',
-    //             component: NavPet,
-    //         })
-    //     }        
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'NavPet',
+                component: NavPet,
+            })
+        }        
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -50,13 +50,13 @@ var AppInit = React.createClass({
     //         })
     //     } 
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'Battle_PetBox',
-                component: Battle_PetBox,
-            })
-        }
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'Battle_PetBox',
+    //             component: Battle_PetBox,
+    //         })
+    //     }
   },
   render() {
     return (

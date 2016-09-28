@@ -10,9 +10,11 @@ import  {
 } from 'react-native';
 
 import Firebase from 'firebase';
+import * as Progress from 'react-native-progress';
+import LinearGradient from 'react-native-linear-gradient';
+
 import Statusbar from './Statusbar';
 import Power from './Power';
-import LinearGradient from 'react-native-linear-gradient';
 
 var PetBox = React.createClass({
 
@@ -189,9 +191,21 @@ var PetBox = React.createClass({
         <View>
           <View style={styles.row}>
             <Image style={styles.thumb}  source={{uri:rowData.text.Img}} />
-            <Text style={styles.text}>
-              {'Lv '+rowData.text.Lv}
-            </Text>
+            <View style={styles.row_data}>
+              <View style={{flex: 1,}}>
+                <Text style={styles.text}>
+                  {'Lv '+rowData.text.Lv}
+                </Text>
+              </View>
+              <View style={{flex: 2,justifyContent: 'center',alignItems:'center'}}>
+                <Progress.Bar progress={rowData.text.current_HP/rowData.text.Hp} 
+                         width={70} height={5}
+                         color={'#7EBA19'}
+                         style={{marginTop: 8}} 
+                         unfilledColor={'#FFFFFF'} borderWidth={2}
+                         borderColor={'#7B7B7B'} />
+              </View>
+            </View>
           </View>
         </View>
       </TouchableHighlight>
@@ -270,6 +284,11 @@ var styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     borderColor: '#CCC'
+  },
+  row_data: {
+    flex: 1,
+    flexDirection: 'row',
+    
   },
   thumb: {
     width: 96,

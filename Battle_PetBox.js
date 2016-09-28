@@ -206,8 +206,6 @@ var Battle_PetBox = React.createClass({
                          borderColor={'#7B7B7B'} />
               </View>
             </View>
-            
-            
           </View>
         </View>
       </TouchableHighlight>
