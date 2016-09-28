@@ -14,6 +14,7 @@ import NicknamePage from './NicknamePage';
 import tab from './tab';
 import NavPet from './NavPet';
 import gym_07 from './gym_07';
+import Battle_PetBox from './Battle_PetBox';
 
 var AppInit = React.createClass({
   onPress(){
@@ -25,13 +26,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'tab',
-                component: tab,
-            })
-        }
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'tab',
+    //             component: tab,
+    //         })
+    //     }
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -48,6 +49,14 @@ var AppInit = React.createClass({
     //             component: gym_07,
     //         })
     //     } 
+
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'Battle_PetBox',
+                component: Battle_PetBox,
+            })
+        }
   },
   render() {
     return (
