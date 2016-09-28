@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import NicknamePage from './NicknamePage';
 import tab from './tab';
-import NavTest from './NavTest';
+import NavPet from './NavPet';
 import gym_07 from './gym_07';
 import Battle_PetBox from './Battle_PetBox';
 import Battle_LandingPage from './Battle_LandingPage';
@@ -38,8 +38,8 @@ var AppInit = React.createClass({
     // const { navigator } = this.props;
     //     if(navigator) {
     //         navigator.replace({
-    //             name: 'NavTest',
-    //             component: NavTest,
+    //             name: 'NavPet',
+    //             component: NavPet,
     //         })
     //     }        
 
