@@ -12,6 +12,56 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 var Battle_LandingPage = React.createClass({
+  getInitialState: function() {
+    return {
+      effect: "lightSpeedIn"
+    }
+  },
+  componentWillMount(){
+    //產生亂數1~10
+    let x = Math.floor(Math.random() * 10);//Math.random()值範圍0 ~ 0.99999
+    let y = "";
+
+    switch(x){
+      case 1: 
+        y = "bounceIn";
+        break;
+      case 2:
+        y = "bounceInDown";
+        break;  
+      case 3:
+        y = "bounceInUp";
+        break;
+      case 4:
+        y = "bounceInLeft";
+        break;
+      case 5:
+        y = "bounceInRight";
+        break;
+      case 6:
+        y = "zoomIn";
+        break;
+      case 7:
+        y = "zoomInDown";
+        break;
+      case 8:
+        y = "zoomInUp";
+        break;
+      case 9:
+        y = "zoomInLeft";
+        break;
+      case 10:
+        y = "zoomInRight";
+        break;
+      default:
+        y = "lightSpeedIn";
+        break;
+    }
+    this.setState({
+      effect: y, 
+    });
+
+  },
   onPress(){
     
   },
@@ -22,7 +72,7 @@ var Battle_LandingPage = React.createClass({
           <View style={[styles.blank,{flex: 0.5,}]}></View>
           <View style={styles.Logo}>
             <Animatable.Image 
-                animation="bounceInDown" iterationCount={1}
+                animation={this.state.effect} iterationCount={1}
                 source={{uri:'http://s33.postimg.org/em1erq3cv/image.png'}} 
                 style={{width:320,height:320 }}>
             </Animatable.Image>
@@ -32,7 +82,7 @@ var Battle_LandingPage = React.createClass({
           <View style={[styles.blank,{flexDirection: 'row'}]}>
               <View style={styles.blank}></View>
               <Animatable.View style={styles.blank}
-                animation="pulse" iterationCount={1} delay={1000}>
+                animation="pulse" iterationCount={3} delay={1000}>
                   <TouchableHighlight
                       style={styles.touchable}
                       onPress={this._onPress}>
