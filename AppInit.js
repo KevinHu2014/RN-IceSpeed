@@ -15,6 +15,7 @@ import tab from './tab';
 import NavPet from './NavPet';
 import gym_07 from './gym_07';
 import Battle_PetBox from './Battle_PetBox';
+import Battle_LandingPage from './Battle_LandingPage';
 
 var AppInit = React.createClass({
   onPress(){
@@ -34,13 +35,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'NavPet',
-                component: NavPet,
-            })
-        }        
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavPet',
+    //             component: NavPet,
+    //         })
+    //     }        
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -57,6 +58,14 @@ var AppInit = React.createClass({
     //             component: Battle_PetBox,
     //         })
     //     }
+
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'Battle_LandingPage',
+                component: Battle_LandingPage,
+            })
+        }   
   },
   render() {
     return (
