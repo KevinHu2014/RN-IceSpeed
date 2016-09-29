@@ -12,13 +12,13 @@ import {
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
 
-var gym_01 = React.createClass({
+var gym_04 = React.createClass({
   getInitialState(){
     return{
-      gymName: '真善美聖十字架',
-      gymLeader: '克雷斯',
-      schoolIntro: '知道嗎？這是個全輔最重要的精神指標之一喔！因為上面刻畫的四個大字：真、善、美、聖即為輔大的校訓之一真善美聖為人生追求之道，藉著對知識真理的追求，修德行善的用心，欣賞宇宙萬物之美，以體會人生至聖之境。而十字架彎曲的樣貌則象徵著上帝「擁抱世人」的意象。這樣一個特別又富有博愛精神的建築是否讓你有深刻印象呢？',
-      gameIntro: '在這世界中的怪物精靈分為水、火、木三種屬性其中，水會克制火、火會克制木、木會克制水這三種屬性產生的影響很單純，強屬性攻擊弱屬性時，可以獲得1.25倍的傷害加乘。相對的，如果是弱屬性攻擊強屬性時攻擊傷害則會變為0.75倍所以選擇好相對應的屬性是非常重要的喔！',
+      gymName: '聖言樓',
+      gymLeader: '艾芙拉',
+      schoolIntro: '仔細看~聖言樓是由林柏年建築師統籌設計，承襲理外學院各建築物既有之石板外牆特色，計樓高將近四十米、九米寬的石板牆；大樓內部分教室、辦公室、會議室掛有由知名公教畫家劉河北設計，育仁啟智中心兒童陶捏而成的首批由國人自行設計及製作的十字架，個個造型殊異，更顯意義不凡呢！1999年3月聖言國際會議展演中心––百鍊聽落成，專供戲劇表演、國際會議和學術研討會使用，是很棒的場地喔！！！',
+      gameIntro: '還不太熟悉遊戲環境嗎？沒關係讓我們一起來了解一下吧~初始介面下方五個功能分別是\n地圖：顯示目前所在位置以及地標 \n道具：顯示身上所擁有之道具\n寵物：檢視寵物精靈之狀況\n圖鑑：目前為止所收集的寵物資訊\n設定：螢幕亮度、音效等調節設定\n只要了解這些基本功能就能輕鬆上手喔！開開心心的去冒險吧~有空要回來跟艾芙拉聊天喔！',
 
     }
   },
@@ -37,13 +37,13 @@ var gym_01 = React.createClass({
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
             <View style={styles.top_1}>
               <Text style={[styles.textTitle,{fontSize: 25}]}>
-                {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
+                {'地標道館：'+this.state.gymName+'\n\n啦啦啦~'+this.state.gymLeader+'跟小熊貓最喜歡交朋友囉~'+'\n嗨~！一起當好朋友吧~ ^ ^'}
               </Text>
             </View>
             <View style={styles.bottom_1}> 
               <Image
                 style={styles.avatar}
-                source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+                source={{uri: 'https://s19.postimg.org/tzqg2qm77/image.png'}} />
             </View>
           </View>
           <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
@@ -53,7 +53,7 @@ var gym_01 = React.createClass({
                   {'輔大特色地標'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'真善美聖十字架介紹'}
+                  {this.state.gymName+'介紹'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
@@ -63,10 +63,10 @@ var gym_01 = React.createClass({
             <View style={styles.top_2}>
               <Image
                 style={styles.school}
-                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
+                source={{uri: 'https://s19.postimg.org/o413t2w9v/image.jpg'}} />
             </View>
             <View style={styles.middle_2}>
-              <Text style={styles.textContent}>
+              <Text style={[styles.textContent,{fontSize: 18}]}>
                 {'\b\b'+this.state.schoolIntro}
               </Text> 
             </View>
@@ -75,7 +75,7 @@ var gym_01 = React.createClass({
               <View style={{flex: 1,}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+                  source={{uri: 'https://s19.postimg.org/tzqg2qm77/image.png'}} />
               </View>
             </View>
           </View>
@@ -86,7 +86,7 @@ var gym_01 = React.createClass({
                   {'新手教學'}
               </Text>
               <Text style={styles.textTitle}>
-                  {'屬性相剋'}
+                  {'介面介紹'}
               </Text> 
             </View>
             <View style={{flex: 4,}}></View>
@@ -96,10 +96,10 @@ var gym_01 = React.createClass({
             <View style={styles.top_3}>
               <Image
                 style={styles.game}
-                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+                source={{uri: 'https://s19.postimg.org/egt05mdwj/tabbar.png'}} />
             </View>
             <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:20}]}>
+              <Text style={[styles.textContent,{fontSize:20,textAlign:'left'}]}>
                 {'\b\b'+this.state.gameIntro}
               </Text> 
             </View>
@@ -107,7 +107,7 @@ var gym_01 = React.createClass({
               <View style={{flex: 1,alignItems: 'flex-start',}}>
                 <Image
                   style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+                  source={{uri: 'https://s19.postimg.org/udrs2c6ar/reverse.png'}} />
               </View>
               <View style={{flex: 2,}}></View>
               <View style={{flex: 1,}}>
@@ -190,12 +190,12 @@ const  styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   school: {
-    width:250,
-    height:250,
+    width:200,
+    height:200,
     resizeMode: 'contain',
   },
   top_3: {
-    flex: 2,
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -211,11 +211,11 @@ const  styles = StyleSheet.create({
     flexDirection:'row',
   },
   game: {
-    width:180,
-    height:180,
+    width:300,
+    height:300,
     resizeMode: 'contain',
   },
 })
 
 
-module.exports = gym_01;
+module.exports = gym_04;
