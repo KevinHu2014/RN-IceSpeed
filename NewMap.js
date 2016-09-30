@@ -42,6 +42,14 @@ Mapbox.setAccessToken(accessToken);
 
 import Battle_LandingPage from './Battle_LandingPage';
 import gym_01 from './gym_01';
+import gym_02 from './gym_02';
+import gym_03 from './gym_03';
+import gym_04 from './gym_04';
+import gym_05 from './gym_05';
+import gym_06 from './gym_06';
+import gym_07 from './gym_07';
+import gym_08 from './gym_08';
+import gym_12 from './gym_12';
 import FireStore from './FireStore';
 import WaterStore from './WaterStore';
 import WoodStore from './WoodStore';
@@ -305,18 +313,6 @@ var NewMap = React.createClass({
           },
       },
       {
-        coordinates: [ 25.033335426771128, 121.43384546041487],
-        type: 'point',
-        title: '道館',
-        subtitle: '真善美聖',
-        id: '真善美聖道館',
-        annotationImage: {
-            source: { uri: 'gym' },
-            height: 30,
-            width: 30
-          },
-      },
-      {
         coordinates: [ 25.037836161636058, 121.4320108294487],
         type: 'point',
         title: '道館',
@@ -394,18 +390,6 @@ var NewMap = React.createClass({
         title: '道館',
         subtitle: '積健樓',
         id: '積健樓道館',
-        annotationImage: {
-            source: { uri: 'gym' },
-            height: 30,
-            width: 30
-          },
-      },
-      {
-        coordinates: [ 25.03784102195161, 121.43238097429276],
-        type: 'point',
-        title: '道館',
-        subtitle: '進修部大樓',
-        id: '進修部大樓道館',
         annotationImage: {
             source: { uri: 'gym' },
             height: 30,
@@ -768,15 +752,94 @@ var NewMap = React.createClass({
         ]
       )
     }
-    else if(annotation.id=='真善美聖道館'){
-      
+    else if(annotation.title=='道館'){
       const { navigator } = this.props;
-        if(navigator) {
-            navigator.push({
-                name: 'gym_01',
-                component: gym_01,
-            })
-        }
+      switch(annotation.subtitle){
+        case '真善美聖':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_01',
+                  component: gym_01,
+              })
+          }
+          break;
+        case '耕莘樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_02',
+                  component: gym_02,
+              })
+          }
+          break;
+        case '淨心堂':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_03',
+                  component: gym_03,
+              })
+          }
+          break;
+        case '聖言樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_04',
+                  component: gym_04,
+              })
+          }
+          break;
+        case '濟時樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_05',
+                  component: gym_05,
+              })
+          }
+          break;
+        case '進修部大樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_06',
+                  component: gym_06,
+              })
+          }
+          break;
+        case '進修部大樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_06',
+                  component: gym_06,
+              })
+          }
+          break;
+        case '中美堂':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_07',
+                  component: gym_07,
+              })
+          }
+          break;
+        case '積健樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_08',
+                  component: gym_08,
+              })
+          }
+          break;
+        case '野聲樓和焯炤館':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_12',
+                  component: gym_12,
+              })
+          }
+          break;
+        default:
+          break;
+
+      }
+      
     }
     else if(annotation.title=='火之商店'){
       const { navigator } = this.props;

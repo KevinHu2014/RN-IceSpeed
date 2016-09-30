@@ -15,7 +15,7 @@ var {height, width} = Dimensions.get('window');
 var gym_12 = React.createClass({
   getInitialState(){
     return{
-      gymName: '野聲樓+焯炤館',
+      gymName: '野聲樓和焯炤館',
       gymLeader: '安琪拉',
       schoolIntro: '首先，位於進校門右側，這棟4層樓高的建築就是野生樓，是學校集合所有行政單位的行政大樓，方便校內外人士洽公。至於野聲樓的命名是經前董事長蔣夫人指示，為紀念本校復校後第一任校長于斌樞機主教，對學校有奠基之功。于樞機字「野聲」，故取名為野聲樓，由羅光校長親筆題字。另外，旁邊的這棟建築物–––焯炤館，是學生活動中心。提供學生社團活動空間，由林柏年建築師設計建築，落成之後取羅光校長號「焯炤」為其命名，並由臺靜農先生親筆題字。學校內各個性質的社團都可以在這裡找的到哦~有服務、學習、舞蹈、運動、音樂、文藝等等，豐富的社團選擇總是讓剛入學的小大一們難以抉擇呢！',
       gameIntro: '在遊戲中的任務會有 1.每日任務 2.成就任務 兩種喔~隨著任務的難度不同，能獲得的獎勵也會越來越豐厚，記得養成每天接取任務的好習慣就能快速累積道具以及金錢喔！',
@@ -66,7 +66,7 @@ var gym_12 = React.createClass({
                 source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/3/33/FJU_YP02.jpg'}} />
             </View>
             <View style={styles.middle_2}>
-              <Text style={[styles.textContent,{fontSize:16}]}>
+              <Text style={[styles.textContent,{fontSize:15}]}>
                 {'\b\b'+this.state.schoolIntro}
               </Text> 
             </View>
