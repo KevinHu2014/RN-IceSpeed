@@ -28,13 +28,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'tab',
-    //             component: tab,
-    //         })
-    //     }
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'tab',
+                component: tab,
+            })
+        }
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -44,13 +44,13 @@ var AppInit = React.createClass({
     //         })
     //     }        
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'gym_11',
-                component: gym_11,
-            })
-        } 
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'gym_11',
+    //             component: gym_11,
+    //         })
+    //     } 
 
     // const { navigator } = this.props;
     //     if(navigator) {

@@ -49,6 +49,9 @@ import gym_05 from './gym_05';
 import gym_06 from './gym_06';
 import gym_07 from './gym_07';
 import gym_08 from './gym_08';
+import gym_09 from './gym_09';
+import gym_10 from './gym_10';
+import gym_11 from './gym_11';
 import gym_12 from './gym_12';
 import FireStore from './FireStore';
 import WaterStore from './WaterStore';
@@ -328,8 +331,8 @@ var NewMap = React.createClass({
         coordinates: [ 25.03671099340075, 121.43473863601686],
         type: 'point',
         title: '道館',
-        subtitle: '于斌的墓',
-        id: '于斌的墓道館',
+        subtitle: '于樞機墓園',
+        id: '于樞機墓園道館',
         annotationImage: {
             source: { uri: 'gym' },
             height: 30,
@@ -364,8 +367,8 @@ var NewMap = React.createClass({
         coordinates: [ 25.03418844049941, 121.43413782119751],
         type: 'point',
         title: '道館',
-        subtitle: '輔園',
-        id: '輔園道館',
+        subtitle: '輔園餐廳',
+        id: '輔園餐廳道館',
         annotationImage: {
             source: { uri: 'gym' },
             height: 30,
@@ -673,24 +676,6 @@ var NewMap = React.createClass({
       
     }
   },
-  // componentWillMount() {
-  //   this._offlineProgressSubscription = Mapbox.addOfflinePackProgressListener(progress => {
-  //     console.log('offline pack progress', progress);
-  //   });
-  //   this._offlineMaxTilesSubscription = Mapbox.addOfflineMaxAllowedTilesListener(tiles => {
-  //     console.log('offline max allowed tiles', tiles);
-  //   });
-  //   this._offlineErrorSubscription = Mapbox.addOfflineErrorListener(error => {
-  //     console.log('offline error', error);
-  //   });
-  // },
-
-  // componentWillUnmount() {
-  //   this._offlineProgressSubscription.remove();
-  //   this._offlineMaxTilesSubscription.remove();
-  //   this._offlineErrorSubscription.remove();
-  // },
-
   onUpdateUserLocation(location){
     console.log(location.latitude);
     console.log(location.longitude);
@@ -824,6 +809,30 @@ var NewMap = React.createClass({
               navigator.push({
                   name: 'gym_08',
                   component: gym_08,
+              })
+          }
+          break;
+        case '文華樓':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_09',
+                  component: gym_09,
+              })
+          }
+          break;
+        case '于樞機墓園':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_10',
+                  component: gym_10,
+              })
+          }
+          break;
+        case '輔園餐廳':
+          if(navigator) {
+              navigator.push({
+                  name: 'gym_11',
+                  component: gym_11,
               })
           }
           break;
