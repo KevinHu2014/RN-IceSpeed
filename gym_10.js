@@ -63,7 +63,7 @@ var gym_10 = React.createClass({
             <View style={styles.top_2}>
               <Image
                 style={styles.school}
-                source={{uri: 'https://s19.postimg.org/y41263dur/image.jpg'}} />
+                source={{uri: 'https://s19.postimg.org/u1ydpuhgj/image.jpg'}} />
             </View>
             <View style={styles.middle_2}>
               <Text style={styles.textContent}>
@@ -175,8 +175,8 @@ const  styles = StyleSheet.create({
     alignItems: 'flex-start',
   },
   school: {
-    width:200,
-    height:200,
+    width:150,
+    height:150,
     resizeMode: 'contain',
   },
   top_3: {

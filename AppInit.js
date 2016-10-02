@@ -13,7 +13,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NicknamePage from './NicknamePage';
 import tab from './tab';
 import NavPet from './NavPet';
-import gym_11 from './gym_11';
+import gym_10 from './gym_10';
 import Battle_PetBox from './Battle_PetBox';
 import Battle_LandingPage from './Battle_LandingPage';
 import monster from './src/monster.json';
@@ -28,13 +28,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'tab',
-                component: tab,
-            })
-        }
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'tab',
+    //             component: tab,
+    //         })
+    //     }
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -44,13 +44,13 @@ var AppInit = React.createClass({
     //         })
     //     }        
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'gym_11',
-    //             component: gym_11,
-    //         })
-    //     } 
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'gym_10',
+                component: gym_10,
+            })
+        } 
 
     // const { navigator } = this.props;
     //     if(navigator) {
