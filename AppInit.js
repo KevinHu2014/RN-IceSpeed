@@ -16,6 +16,7 @@ import NavPet from './NavPet';
 import gym_11 from './gym_11';
 import Battle_PetBox from './Battle_PetBox';
 import Battle_LandingPage from './Battle_LandingPage';
+import monster from './src/monster.json';
 
 var AppInit = React.createClass({
   onPress(){
@@ -87,7 +88,13 @@ var AppInit = React.createClass({
               {"START"}
             </Animatable.Text>
           </View>
-          <View style={styles.blank}></View>
+          <View style={styles.blank}>
+            <Text style={styles.welcome}>
+              {
+                //monster.contents[0].name
+              }
+            </Text>
+          </View>
         </LinearGradient>
     	</View>
     );
@@ -110,8 +117,6 @@ var styles = StyleSheet.create({
   },
  	container: {
     flex: 1,
-    
-    
 	},
  });
 module.exports = AppInit;
