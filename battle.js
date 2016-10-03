@@ -28,8 +28,12 @@ var battle = React.createClass({
       press_skill_2: false,
       Box: ' ',
       Now: 0,
-      skill_1_name: '衝撞',
-      skill_2_name: '回復',
+      skill_1_name: '孢子球',
+      skill_1_check_4: false,
+      skill_1_check_3: false,
+      skill_2_name: '超級回復',
+      skill_2_check_4: false,
+      skill_2_check_3: false,
       enemy_skill_1_name: '揮擊',
       enemy_skill_2_name: '衝撞',
       mp: '🌑🌑🌑🌑🌑',
@@ -57,6 +61,28 @@ var battle = React.createClass({
     }
   },
   componentWillMount() {
+    //檢查招式一的名稱字數是三個還是四個
+    if(this.state.skill_1_name.length == 4){
+      this.setState({
+        skill_1_check_4: true, 
+      });
+    }
+    else if(this.state.skill_1_name.length == 3){
+      this.setState({
+        skill_1_check_3: true, 
+      });
+    }
+    //檢查招式二的名稱字數是三個還是四個
+    if(this.state.skill_2_name.length == 4){
+      this.setState({
+        skill_2_check_4: true, 
+      });
+    }
+    else if(this.state.skill_1_name.length == 3){
+      this.setState({
+        skill_2_check_3: true, 
+      });
+    }
     //從這裡拿到Battle_PetBoxt傳過來的參數
      this.setState({
             Monster_Img: this.props.Monster_Img,
@@ -588,7 +614,8 @@ var battle = React.createClass({
                 //onPressOut={this.onPressOut_skill_1 }
                 onPress={this.onPress_skill_1}>
                   <View style={styles.button_Blue}>
-                      <Text style={styles.welcome}>
+                      <Text style={[styles.welcome,this.state.skill_1_check_3 && styles.welcome_s_1,
+                         this.state.skill_1_check_4 && styles.welcome_s_2 ]}>
                         {this.state.skill_1_name}
                       </Text>
                   </View>
@@ -600,7 +627,8 @@ var battle = React.createClass({
                 //onPressOut={this.onPressOut_skill_2}
                 onPress={this.onPress_skill_2}>
                   <View style={styles.button_Blue}>
-                      <Text style={styles.welcome}>
+                      <Text style={[styles.welcome,this.state.skill_2_check_3 && styles.welcome_s_1,
+                         this.state.skill_2_check_4 && styles.welcome_s_2 ]}>
                         {this.state.skill_2_name}
                       </Text>
                   </View>
@@ -702,6 +730,24 @@ var styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: 'center',
     margin: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    color: '#FFFFFF'
+  },
+  welcome_s_1: {
+    fontSize: 23,
+    fontWeight: "bold",
+    textAlign: 'center',
+    margin: 5,
+    marginLeft: 10,
+    marginRight: 10,
+    color: '#FFFFFF'
+  },
+  welcome_s_2: {
+    fontSize: 22.5,
+    fontWeight: "bold",
+    textAlign: 'center',
+    margin: 5,
     marginLeft: 15,
     marginRight: 15,
     color: '#FFFFFF'
