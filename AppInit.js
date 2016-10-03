@@ -16,7 +16,7 @@ import NavPet from './NavPet';
 import gym_10 from './gym_10';
 import Battle_PetBox from './Battle_PetBox';
 import Battle_LandingPage from './Battle_LandingPage';
-import monster from './src/monster.json';
+import data from './src/data.json';
 
 var AppInit = React.createClass({
   onPress(){
@@ -28,13 +28,13 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'tab',
-    //             component: tab,
-    //         })
-    //     }
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.replace({
+                name: 'tab',
+                component: tab,
+            })
+        }
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -44,13 +44,13 @@ var AppInit = React.createClass({
     //         })
     //     }        
 
-    const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'gym_10',
-                component: gym_10,
-            })
-        } 
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'gym_10',
+    //             component: gym_10,
+    //         })
+    //     } 
 
     // const { navigator } = this.props;
     //     if(navigator) {
@@ -91,7 +91,7 @@ var AppInit = React.createClass({
           <View style={styles.blank}>
             <Text style={styles.welcome}>
               {
-                //monster.contents[0].name
+                //data.monster[0].name
               }
             </Text>
           </View>
