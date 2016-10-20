@@ -1,5 +1,19 @@
 {
-     "contents":[
+     "monster":[
+          {
+               "id": 0,
+               "name": "測試",
+               "Type": "Wood",
+               "evolvable": true,
+               "HP": 20,
+               "ATK": 5,
+               "SPD": 10,
+               "Skill_1": 3,
+               "Skill_2": 9,
+               "Rare": 'S',
+               "Img": "https://s19.postimg.org/hi1x3iqxv/001.png",
+               "Img_R": "https://s19.postimg.org/4rxoqfizn/001_r.png" 
+          },
           {
                "id": 1,
                "name": "小野菇",

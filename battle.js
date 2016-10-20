@@ -15,6 +15,7 @@ import * as Progress from 'react-native-progress';
 
 import LinearGradient from 'react-native-linear-gradient';
 import SwipeableViews from 'react-swipeable-views/lib/index.native.animated';
+import data from './src/data.json';
 
 var battle = React.createClass({
   
@@ -50,6 +51,11 @@ var battle = React.createClass({
       enemy: '小葉麻糬',
       enemy_Lv: null,
       enemy_id: null,
+      enemy_Hp: null,
+      enemy_Atk: null,
+      enemy_Spd: null,
+      enemy_hit: null,
+      enemy_Type: null,
       Monster_Img: 'https://s19.postimg.org/6x3lekc83/000.png',
       you: null,
       id: null,
@@ -85,12 +91,14 @@ var battle = React.createClass({
         skill_2_check_3: true, 
       });
     }
+    
     //從這裡拿到Battle_PetBox傳過來的參數
      this.setState({
             Monster_Img: this.props.Monster_Img,
             enemy: this.props.enemy,
             enemy_Lv: this.props.enemy_Lv,
             enemy_id: this.props.enemy_id,
+            enemy_Type: data.monster[this.props.enemy_id].Type,
             id: this.props.id,
             Lv: this.props.Lv,
             current_HP: this.props.current_HP,
@@ -101,17 +109,52 @@ var battle = React.createClass({
             Img: this.props.Img,
             Type: this.props.Type,
         });
-    
+     
+    if(data.monster[this.props.enemy_id].Type == 'Fire'){
+      this.setState({
+        enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv,
+        enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv*2,
+        enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv,
+      });
+    }
+    else if(data.monster[this.props.enemy_id].Type == 'Wood'){
+      this.setState({
+        enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv*2,
+        enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv,
+        enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv,
+      });
+    }
+    else{
+      this.setState({
+        enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv,
+        enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv,
+        enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv*2,
+      });
+    }
     
   },
   componentDidMount(){
 
     let temp = '野生的' + this.state.enemy + '跳了出來！';
-    
+    /*
+
+    Hit 的算法
+
+    hit -> 假設enemy的血量是100%(1) ->  HP/HP(100/100) 
+    you.Atk = 58 => you.hit = you.Atk/enemy.HP
+    到時候是
+    1 - hit = 100/100 - 58/100
+    同理
+    enemy.hit = enemy.Atk/you.HP
+
+    */
     this.setState({
       bottom_progress: this.state.current_HP/this.state.Hp,
-       Box: temp 
+      enemy_hit: this.state.enemy_Atk/this.state.Hp,
+      hit: this.state.Atk/this.state.enemy_Hp,
+      Box: temp, 
     });
+    
   },
   handleChangeTabs(value){
     this.setState({
@@ -252,7 +295,7 @@ var battle = React.createClass({
       case 7:
         //野怪第一招
         temp1 = '效果拔群！';
-        temp3 = this.state.bottom_progress - this.state.enemy_skill_1;
+        temp3 = this.state.bottom_progress - this.state.enemy_hit;
         this.refs.bottom.swing(2000);
         if (temp3 < 0) {
           temp3 = 0;
@@ -274,7 +317,7 @@ var battle = React.createClass({
       case 9:
         //野怪第二招
         temp1 = '效果拔群！';
-        temp3 = this.state.bottom_progress - this.state.enemy_skill_2;
+        temp3 = this.state.bottom_progress - this.state.enemy_hit;
         this.refs.bottom.swing(2000);
         if (temp3 < 0) {
           temp3 = 0;
