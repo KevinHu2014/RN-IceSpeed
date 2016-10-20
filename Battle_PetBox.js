@@ -135,6 +135,8 @@ var Battle_PetBox = React.createClass({
     return {
       Monster_Img: null,
       enemy: null,
+      enemy_Lv: null,
+      enemy_id: null,
       key_id: null,
       id: null,
       Lv: null,
@@ -160,6 +162,8 @@ var Battle_PetBox = React.createClass({
      this.setState({
             Monster_Img: this.props.Monster_Img,
             enemy: this.props.enemy,
+            enemy_Lv: this.props.enemy_Lv,
+            enemy_id: this.props.enemy_id,
             
         });
 
@@ -250,6 +254,8 @@ var Battle_PetBox = React.createClass({
                 params: {
                     Monster_Img: this.state.Monster_Img,
                     enemy: this.state.enemy,
+                    enemy_Lv: this.state.enemy_Lv,
+                    enemy_id: this.state.enemy_id,
                     Lv: this.state.Lv,
                     Hp: this.state.Hp,
                     Atk: this.state.Atk,

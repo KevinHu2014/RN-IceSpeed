@@ -48,6 +48,8 @@ var battle = React.createClass({
       enemy_skill_1: 0.3,
       enemy_skill_2: 0.1,
       enemy: '小葉麻糬',
+      enemy_Lv: null,
+      enemy_id: null,
       Monster_Img: 'https://s19.postimg.org/6x3lekc83/000.png',
       you: null,
       id: null,
@@ -83,10 +85,12 @@ var battle = React.createClass({
         skill_2_check_3: true, 
       });
     }
-    //從這裡拿到Battle_PetBoxt傳過來的參數
+    //從這裡拿到Battle_PetBox傳過來的參數
      this.setState({
             Monster_Img: this.props.Monster_Img,
             enemy: this.props.enemy,
+            enemy_Lv: this.props.enemy_Lv,
+            enemy_id: this.props.enemy_id,
             id: this.props.id,
             Lv: this.props.Lv,
             current_HP: this.props.current_HP,
@@ -490,7 +494,7 @@ var battle = React.createClass({
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
                     <Text style={styles.welcome_4}>{this.state.enemy}</Text>
-                    <Text style={styles.welcome_3}>Lv 10</Text>
+                    <Text style={styles.welcome_3}>{'Lv '+this.state.enemy_Lv}</Text>
                   </View>
                   <View style={{flex: 2,flexDirection:'row',alignItems:'center',
                     justifyContent:'center',marginBottom:10,marginTop:10,}}>

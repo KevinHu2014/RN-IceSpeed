@@ -18,6 +18,8 @@ var Battle_LandingPage = React.createClass({
       effect: "lightSpeedIn",
       Monster_Img: 'http://s33.postimg.org/em1erq3cv/image.png',
       enemy: '獨眼怪',
+      enemy_Lv: 0,
+      enemy_id: 0,
     }
   },
   componentWillMount(){
@@ -69,7 +71,9 @@ var Battle_LandingPage = React.createClass({
     //從這裡拿到NewMap拿過來的參數
      this.setState({
             Monster_Img: this.props.Monster_Img,
-            enemy: this.props.Monster_name
+            enemy: this.props.Monster_name,
+            enemy_Lv: this.props.Monster_Lv,
+            enemy_id: this.props.Monster_id,
         });
 
 
@@ -82,7 +86,9 @@ var Battle_LandingPage = React.createClass({
                 component: Battle_PetBox,
                 params: {
                     Monster_Img: this.state.Monster_Img,
-                    enemy: this.state.enemy
+                    enemy: this.state.enemy,
+                    enemy_Lv: this.state.enemy_Lv,
+                    enemy_id: this.state.enemy_id
                  }   
             })
         }
