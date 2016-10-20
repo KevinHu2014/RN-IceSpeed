@@ -66,7 +66,7 @@ var Battle_LandingPage = React.createClass({
 
   },
   componentDidMount() {
-    //從這裡拿到MapExample膗過來的參數
+    //從這裡拿到NewMap拿過來的參數
      this.setState({
             Monster_Img: this.props.Monster_Img,
             enemy: this.props.Monster_name
