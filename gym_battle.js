@@ -159,7 +159,7 @@ var gym_battle = React.createClass({
               <TouchableHighlight
                 style={styles.touchable}
                 onPress={this.onPress_select}>
-                  <View style={styles.button_White}>
+                  <View style={[styles.button_color,{backgroundColor: '#D1E9EA'}]}>
                       <Text style={styles.button_welcome}>
                         {'初級 \b\b\b\bx 0'}
                       </Text>
@@ -168,8 +168,8 @@ var gym_battle = React.createClass({
               <TouchableHighlight
                 style={styles.touchable}
                 onPress={this.onPress_select}>
-                  <View style={styles.button_White}>
-                      <Text style={styles.button_welcome}>
+                  <View style={[styles.button_color,{backgroundColor:'#415F77'}]}>
+                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
                         {'中級 \b\bx 50'}
                       </Text>
                   </View>
@@ -177,8 +177,8 @@ var gym_battle = React.createClass({
               <TouchableHighlight
                 style={styles.touchable}
                 onPress={this.onPress_select}>
-                  <View style={styles.button_White}>
-                      <Text style={styles.button_welcome}>
+                  <View style={[styles.button_color,{backgroundColor:'#FFD00C'}]}>
+                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
                         {'上級\b\b x 70'}
                       </Text>
                   </View>
@@ -186,8 +186,8 @@ var gym_battle = React.createClass({
               <TouchableHighlight
                 style={styles.touchable}
                 onPress={this.onPress_select}>
-                  <View style={styles.button_White}>
-                      <Text style={styles.button_welcome}>
+                  <View style={[styles.button_color,{backgroundColor:'#FC5050'}]}>
+                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
                         {'究級 x 100'}
                       </Text>
                   </View>
@@ -263,7 +263,7 @@ const  styles = StyleSheet.create({
     borderRadius:2,
     elevation:10
   },
-  button_White: {
+  button_color: {
     flex: 1,
     backgroundColor: '#FFFFFF',
     justifyContent: 'center',
