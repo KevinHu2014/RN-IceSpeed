@@ -12,7 +12,7 @@ var  Item = require('./object');
 var  Pet = require('./NavPet');
 var  Library = require('./NavBox');
 var  Setting = require('./Setting');
-var  SampleComponent = require('./SampleComponent');
+var  NavMap = require('./NavMap');
 
 var tab = React.createClass({
   render() {
@@ -26,7 +26,7 @@ var tab = React.createClass({
       tabBarUnderlineColor="#146EFF"
       locked={true}
       >
-        <SampleComponent tabLabel="地圖" />
+        <NavMap tabLabel="地圖" />
       	<Item tabLabel="道具" />
         <Pet tabLabel="寵物" />
         <Library tabLabel="圖鑑" />

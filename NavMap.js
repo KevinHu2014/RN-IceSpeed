@@ -5,14 +5,14 @@ import {
     Navigator
 } from 'react-native';
 var Mapbox = require('react-native-mapbox-gl');
-//import FirstPageComponent from './FirstPageComponent';
 import NewMap from './NewMap';
+import MultiMap from './MultiMap';
 //初始頁的Component
 
-export default class SampleComponent extends React.Component {
+export default class NavMap extends React.Component {
     render() {
-        let defaultName = 'NewMap';
-        let defaultComponent = NewMap;
+        let defaultName = 'MultiMap';
+        let defaultComponent = MultiMap;
         return (
         <Navigator
           initialRoute={{ name: defaultName, component: defaultComponent }}
@@ -29,4 +29,4 @@ export default class SampleComponent extends React.Component {
     }
 } 
 
-module.exports = SampleComponent;
+module.exports = NavMap;

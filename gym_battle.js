@@ -31,37 +31,16 @@ import {
   TouchableHighlight
 } from 'react-native';
 
-import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
-// var Stone_Img = 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png';
-// var BigThree_Img = 'https://s19.postimg.org/jht4w2rc3/waffle.png';
-// var BigThree = '鬆餅';
-var Cancelbar = React.createClass({
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={{flex: 1,}}>
-          <Text style={{fontSize: 30,fontWeight: 'bold',marginLeft:10}}
-            onPress={this.onPress}>
-            取消
-          </Text>
-        </View>
-        <View style={{flex: 3,}}></View>
-      </View>
-      
-    );
-  },
-  
-});
 
 
 var gym_battle = React.createClass({
   getInitialState(){
     return{
-      Type:'Fire',
-      gymName: '于斌的墓',
-      gymLeader: '克雷斯',
-      gymAvatar: 'https://s19.postimg.org/hor0bw2jn/avatar2.png',
+      Type: null,
+      gymName: null,
+      gymLeader: null,
+      gymAvatar: null,
       gymWelcome: '勇敢的冒險者阿！讓我看看你經過磨練後綻放的光芒吧！',
       Monster_name: '小煤礦',
       Monster_Img: 'https://s19.postimg.org/ok4g3gjxf/010_r.png',
@@ -69,15 +48,17 @@ var gym_battle = React.createClass({
       BigThree_Img : 'https://s19.postimg.org/jht4w2rc3/waffle.png',
       BigThree : '鬆餅', 
     }
-  },
-  componentWillMount(){
     
+  },
+  componentDidMount(){
+    this.setState({
+      gymName : this.props.gymName,
+      Type : this.props.gymType
+        });
 
-
-    switch(this.state.gymName){
+    switch(this.props.gymName){
       case "真善美聖":
         this.setState({
-          Type: 'Fire',
           gymLeader: '克雷斯',
           gymWelcome: '勇敢的冒險者阿！讓我看看你經過磨練後綻放的光芒吧！',
           gymAvatar: 'https://s19.postimg.org/hor0bw2jn/avatar2.png',
@@ -87,7 +68,6 @@ var gym_battle = React.createClass({
         break;
       case "耕莘樓":
         this.setState({
-          Type: 'Fire',
           gymLeader: '莉莉亞',
           gymWelcome: '來吧~! 太小看莉莉亞的話可是會吃大虧的哦~ 全力以赴的決鬥吧！',
           gymAvatar: 'https://s19.postimg.org/ryyh88yqr/avatar1.png',
@@ -97,7 +77,6 @@ var gym_battle = React.createClass({
         break;
       case "淨心堂":
         this.setState({
-          Type: 'Fire',
           gymLeader: '約瑟夫',
           gymWelcome: '呵~呵呵，年輕真好！總是充滿著熱情與想法，但是在這方面老夫也是不會輸給任何人的！',
           gymAvatar: 'https://s19.postimg.org/uvrivxl9f/2.png',
@@ -107,7 +86,6 @@ var gym_battle = React.createClass({
         break;
       case "聖言樓":
         this.setState({
-          Type: 'Fire',
           gymLeader: '艾芙拉',
           gymWelcome: '叮叮噹~小心點！艾芙拉的寵物可是超~~~~級~~~~~強的哦！！！',
           gymAvatar: 'https://s19.postimg.org/tzqg2qm77/艾芙拉.png',
@@ -117,7 +95,6 @@ var gym_battle = React.createClass({
         break;
       case "濟時樓":
         this.setState({
-          Type: 'Wood',
           gymLeader: '巴澤爾',
           gymWelcome: '知識就是力量，在全知的我面前，你毫無勝算。',
           gymAvatar: 'https://s19.postimg.org/vk5fbzqar/巴澤爾.png',
@@ -127,7 +104,6 @@ var gym_battle = React.createClass({
         break;
       case "進修部大樓":
         this.setState({
-          Type: 'Wood',
           gymLeader: '漢娜',
           gymWelcome: '哎呀呀~來了個可愛的孩子呢~讓姊姊來好好疼愛你吧~！ <3',
           gymAvatar: 'https://s19.postimg.org/ylr5otx43/漢娜.png',
@@ -137,7 +113,6 @@ var gym_battle = React.createClass({
         break;
       case "進修部大樓":
         this.setState({
-          Type: 'Wood',
           gymLeader: '漢娜',
           gymWelcome: '哎呀呀~來了個可愛的孩子呢~讓姊姊來好好疼愛你吧~！ <3',
           gymAvatar: 'https://s19.postimg.org/ylr5otx43/漢娜.png',
@@ -147,7 +122,6 @@ var gym_battle = React.createClass({
         break;
       case "中美堂":
         this.setState({
-          Type: 'Wood',
           gymLeader: '艾力克斯',
           gymWelcome: '貫徹你的信念，你將會獲得無可限量的力量，解放你赤誠的心吧！！！',
           gymAvatar: 'https://s19.postimg.org/6o04zuk83/avatar3.png',
@@ -157,7 +131,6 @@ var gym_battle = React.createClass({
         break;
       case "積健樓":
         this.setState({
-          Type: 'Water',
           gymLeader: '狄倫',
           gymWelcome: '在這世界中，力量就是一切，弱小的人是無法守護自己最珍視的東西的',
           gymAvatar: 'https://s19.postimg.org/ygrzswf6r/狄倫.png',
@@ -165,9 +138,8 @@ var gym_battle = React.createClass({
           Monster_Img: 'https://s19.postimg.org/xk91nng0z/014_r.png',   
         });
         break;
-      case "文華":
+      case "文華樓":
         this.setState({
-          Type: 'Water',
           gymLeader: '卡洛琳',
           gymWelcome: '嗨嗨~精靈怪物真的是很神奇的生物呢~想要來比試一下嗎？',
           gymAvatar: 'https://s19.postimg.org/jkcgogp2b/卡洛琳.png',
@@ -175,9 +147,8 @@ var gym_battle = React.createClass({
           Monster_Img: 'https://s19.postimg.org/qu27p2okj/017_r.png',   
         });
         break;
-      case "于斌的墓":
+      case "于樞機墓園":
         this.setState({
-          Type: 'Water',
           gymLeader: '艾爾文',
           gymWelcome: '靜下心來，你將會感受到自然之力的湧現，追求心境上的平靜之人，願愛與勇氣與你同行',
           gymAvatar: 'https://s19.postimg.org/otqboohyb/艾爾文.png',
@@ -185,9 +156,8 @@ var gym_battle = React.createClass({
           Monster_Img: 'https://s19.postimg.org/jpkeg1hb7/016_r.png',   
         });
         break;
-      case "輔園":
+      case "輔園餐廳":
         this.setState({
-          Type: 'Water',
           gymLeader: '艾咪',
           gymWelcome: '嗚咪~我細心照顧的寵物可是很強的哦！！！看招吧！',
           gymAvatar: 'https://s19.postimg.org/eyz6ige03/艾咪.png',
@@ -195,9 +165,8 @@ var gym_battle = React.createClass({
           Monster_Img: 'https://s19.postimg.org/de0yb0uzn/005_r.png',   
         });
         break;
-      case "野生樓+焯炤館":
+      case "野聲樓和焯炤館":
         this.setState({
-          Type: 'Water',
           gymLeader: '安琪拉',
           gymWelcome: '看來您已經對遊戲有了基本的認識了呢~那接下來就由在下來做您的對手吧！',
           gymAvatar: 'https://s19.postimg.org/wv6pdoo9v/1.png',
@@ -208,7 +177,8 @@ var gym_battle = React.createClass({
 
     }
 
-    switch(this.state.Type){
+
+    switch(this.props.gymType){
       case 'Wood':
         this.setState({
           Stone_Img : 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png',
@@ -234,10 +204,10 @@ var gym_battle = React.createClass({
     }
     
   },
-  onPress(){
+  onPress_cancel(){
     const { navigator } = this.props;
             if(navigator) {
-                //返回NewMap
+                //返回MultiMap
                 navigator.pop();
             }
   },
@@ -261,7 +231,13 @@ var gym_battle = React.createClass({
               </View>
             </View>
             <View style={styles.Cancel}>              
-              <Cancelbar/>
+              <View style={{flex: 1,}}>
+                <Text style={{fontSize: 30,fontWeight: 'bold',marginLeft:10}}
+                  onPress={this.onPress_cancel}>
+                  取消
+                </Text>
+              </View>
+              <View style={{flex: 3,}}></View>
             </View>
           </View>
           {/* 第二頁 */}
@@ -279,7 +255,13 @@ var gym_battle = React.createClass({
               </View>
             </View>
             <View style={styles.Cancel}>              
-              <Cancelbar/>
+              <View style={{flex: 1,}}>
+                <Text style={{fontSize: 30,fontWeight: 'bold',marginLeft:10}}
+                  onPress={this.onPress_cancel}>
+                  取消
+                </Text>
+              </View>
+              <View style={{flex: 3,}}></View>
             </View>
           </View>
           {/* 第三頁 */}
@@ -297,7 +279,13 @@ var gym_battle = React.createClass({
               </View>
             </View>
             <View style={styles.Cancel}>              
-              <Cancelbar/>
+              <View style={{flex: 1,}}>
+                <Text style={{fontSize: 30,fontWeight: 'bold',marginLeft:10}}
+                  onPress={this.onPress_cancel}>
+                  取消
+                </Text>
+              </View>
+              <View style={{flex: 3,}}></View>
             </View>
           </View>
         {/* 第四頁 */}
@@ -341,7 +329,13 @@ var gym_battle = React.createClass({
               </TouchableHighlight>
             </View>
             <View style={styles.Cancel}>              
-              <Cancelbar/>
+              <View style={{flex: 1,}}>
+                <Text style={{fontSize: 30,fontWeight: 'bold',marginLeft:10}}
+                  onPress={this.onPress_cancel}>
+                  取消
+                </Text>
+              </View>
+              <View style={{flex: 3,}}></View>
             </View>
           </View>
           
