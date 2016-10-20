@@ -28,6 +28,7 @@ import {
   View,
   Image,
   Dimensions,
+  TouchableHighlight
 } from 'react-native';
 
 import NewMap from './NewMap';
@@ -151,67 +152,52 @@ var gym_battle = React.createClass({
             <View style={styles.Cancel}>              
               <Cancelbar/>
             </View>
-            
           </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={styles.top_2}>
-              <Image
-                style={styles.school}
-                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={styles.textContent}>
-                {'\b\b'+this.state.schoolIntro}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'新手教學'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'屬性相剋'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
+        {/* 第四頁 */}
           <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-            <View style={styles.top_3}>
-              <Image
-                style={styles.game}
-                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+            <View style={styles.Content}>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_select}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.button_welcome}>
+                        {'初級 \b\b\b\bx 0'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_select}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.button_welcome}>
+                        {'中級 \b\bx 50'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_select}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.button_welcome}>
+                        {'上級\b\b x 70'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                style={styles.touchable}
+                onPress={this.onPress_select}>
+                  <View style={styles.button_White}>
+                      <Text style={styles.button_welcome}>
+                        {'究級 x 100'}
+                      </Text>
+                  </View>
+              </TouchableHighlight>
             </View>
-            <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:20}]}>
-                {'\b\b'+this.state.gameIntro}
-              </Text> 
-            </View>
-            <View style={styles.last}>
-              <View style={{flex: 1,alignItems: 'flex-start',}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
-              </View>
-              <View style={{flex: 2,}}></View>
-              <View style={{flex: 1,}}>
-                <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                  onPress={this.onPress}>
-                  Done
-                </Text>
-              </View>
+            <View style={styles.Cancel}>              
+              <Cancelbar/>
             </View>
           </View>
+          
         </Swiper>
         
       </View>
@@ -270,6 +256,25 @@ const  styles = StyleSheet.create({
     height:80,
     resizeMode: 'contain',
 
+  },
+  touchable:{
+    flex:1,
+    margin:15,
+    borderRadius:2,
+    elevation:10
+  },
+  button_White: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    borderRadius:2,
+  },
+  button_welcome: {
+    fontSize: 25,
+    fontWeight: "bold",
+    textAlign: 'center',
+    margin: 10,
+    color: '#000000'
   },
   top_0: {
     flex: 1,
