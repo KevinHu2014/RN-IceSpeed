@@ -645,23 +645,33 @@ var NewMap = React.createClass({
       let x = Math.floor(Math.random() * 4);//Math.random()值範圍0 ~ 0.99999
       let Img = '';
       let Name = '';
+      let Lv = 5;
+      let id = 0;
       console.log('x = '+x);
       switch(x){
-        case 1: 
+        case 1:
+          id = 10; 
           Name = '小煤礦';
           Img = 'https://s19.postimg.org/t2np4v277/006.png';
+          Lv = 10;
           break;
         case 2:
+          id = 1;
           Name = '小野菇';
           Img = 'https://s19.postimg.org/4r9ak28rn/500.png';
+          Lv = 20;
           break;  
         case 3:
+          id = 7;
           Name = '小葉麻糬';
           Img = 'https://s19.postimg.org/6x3lekc83/000.png';
+          Lv = 30;
           break;
         default:
+          id = 4;
           Name = '小魔眼';
           Img = 'https://s19.postimg.org/hpacl56g3/image.png';
+          Lv = 40;
           break;
     }
 
@@ -673,6 +683,8 @@ var NewMap = React.createClass({
                 params: {
                     Monster_Img: Img,
                     Monster_name: Name,
+                    Monster_Lv: Lv,
+                    Monster_id: id,
                     getResult:(result) => {
                         this.setState({result: result})
                     }
