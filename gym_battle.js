@@ -34,7 +34,7 @@ import {
 
 var {height, width} = Dimensions.get('window');
 import Battle_LandingPage from './Battle_LandingPage';
-
+var Background_Img = require('./Img/background_Water.png');
 var gym_battle = React.createClass({
   getInitialState(){
     return{
@@ -198,23 +198,25 @@ var gym_battle = React.createClass({
         this.setState({
           Stone_Img : 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png',
           BigThree_Img : 'https://s19.postimg.org/jht4w2rc3/waffle.png',
-          BigThree : '鬆餅', 
+          BigThree : '鬆餅',
         });
-        
+        Background_Img = require('./Img/background_Wood.png');
         break;
       case 'Fire':
         this.setState({
           Stone_Img : 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png',
           BigThree_Img : 'https://s19.postimg.org/ifo0aneub/icecream.png',
-          BigThree : '冰淇淋', 
+          BigThree : '冰淇淋',
         });
+        Background_Img = require('./Img/background_Fire.png');
         break;
       case 'Water':
         this.setState({
           Stone_Img : 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png',
           BigThree_Img : 'https://s19.postimg.org/8vm7cad43/melonpan.png',
-          BigThree : '菠蘿', 
+          BigThree : '菠蘿',
         });
+        Background_Img = require('./Img/background_Water.png');
         break;
     }
     
@@ -335,7 +337,7 @@ var gym_battle = React.createClass({
           </View>
         {/* 第四頁 */}
           <View style={[styles.slide,{backgroundColor: '#969AA1'}]}>
-          <Image source={require('./Img/background.png')} style={{width:width,height:height-49,resizeMode: 'cover'}}>
+          <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <TouchableOpacity
                 style={{flex: 1,justifyContent: 'center'}}
