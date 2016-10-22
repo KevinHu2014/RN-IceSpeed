@@ -28,7 +28,8 @@ import {
   View,
   Image,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableOpacity
 } from 'react-native';
 
 var {height, width} = Dimensions.get('window');
@@ -333,44 +334,34 @@ var gym_battle = React.createClass({
             </View>
           </View>
         {/* 第四頁 */}
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+          <View style={[styles.slide,{backgroundColor: '#969AA1'}]}>
+          <Image source={require('./Img/background.png')} style={{width:width,height:height-49,resizeMode: 'cover'}}>
             <View style={styles.Content}>
-              <TouchableHighlight
-                style={styles.touchable}
+              <TouchableOpacity
+                style={{flex: 1,justifyContent: 'center'}}
                 onPress={this.onPress_select_1}>
-                  <View style={[styles.button_color,{backgroundColor: '#D1E9EA'}]}>
-                      <Text style={styles.button_welcome}>
-                        {'初級 \b\b\b\bx 0'}
-                      </Text>
-                  </View>
-              </TouchableHighlight>
-              <TouchableHighlight
-                style={styles.touchable}
+                  <Image source={require('./Img/level_0.png')} 
+                         style={{width:268,height:65,resizeMode: 'contain',}}/>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{flex: 1,justifyContent: 'center'}}
                 onPress={this.onPress_select_2}>
-                  <View style={[styles.button_color,{backgroundColor:'#415F77'}]}>
-                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
-                        {'中級 \b\bx 50'}
-                      </Text>
-                  </View>
-              </TouchableHighlight>
-              <TouchableHighlight
-                style={styles.touchable}
+                  <Image source={require('./Img/level_1.png')} 
+                         style={{width:268,height:65,resizeMode: 'contain',}}/>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{flex: 1,justifyContent: 'center'}}
                 onPress={this.onPress_select_3}>
-                  <View style={[styles.button_color,{backgroundColor:'#FFD00C'}]}>
-                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
-                        {'上級\b\b x 70'}
-                      </Text>
-                  </View>
-              </TouchableHighlight>
-              <TouchableHighlight
-                style={styles.touchable}
+                  <Image source={require('./Img/level_2.png')} 
+                         style={{width:268,height:65,resizeMode: 'contain',}}/>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={{flex: 1,justifyContent: 'center'}}
                 onPress={this.onPress_select_4}>
-                  <View style={[styles.button_color,{backgroundColor:'#FC5050'}]}>
-                      <Text style={[styles.button_welcome,{color: '#FFFFFF'}]}>
-                        {'究級 x 100'}
-                      </Text>
-                  </View>
-              </TouchableHighlight>
+                  <Image source={require('./Img/level_3.png')} 
+                         style={{width:268,height:65,resizeMode: 'contain',}}/>
+              </TouchableOpacity>
+            
             </View>
             <View style={styles.Cancel}>              
               <View style={{flex: 1,}}>
@@ -381,6 +372,7 @@ var gym_battle = React.createClass({
               </View>
               <View style={{flex: 3,}}></View>
             </View>
+          </Image>
           </View>
           
         </Swiper>
@@ -420,6 +412,7 @@ const  styles = StyleSheet.create({
   Content: {
     flex: 5,
     alignItems: 'center',
+
   },
   Cancel: {
     flex: 1,
@@ -444,9 +437,10 @@ const  styles = StyleSheet.create({
   },
   touchable:{
     flex:1,
-    margin:15,
+    //margin:15,
+    justifyContent: 'center',
     borderRadius:2,
-    elevation:10
+    //elevation:10
   },
   button_color: {
     flex: 1,
