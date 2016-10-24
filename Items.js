@@ -14,7 +14,7 @@ import Statusbar from './Statusbar';
 import Firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
 
-var object = React.createClass({
+var Items = React.createClass({
   getInitialState: function() {
     var myFirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/users/314282187");
     this.usersRef = myFirebaseRef.child('Item');
@@ -294,5 +294,5 @@ var styles = StyleSheet.create({
     elevation:10 
   }
  });
-module.exports = object;
+module.exports = Items;
 

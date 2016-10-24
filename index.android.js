@@ -6,7 +6,6 @@ import {AppRegistry} from 'react-native';
 //var test = require('./MapExample');
 //var test = require('./SensorTest');
 //var test = require('./NavPet');
-//var test = require('./object');
 //var test = require('./PetBox');
 //var test = require('./SpeechbubbleTest');
 //var test = require('./FetchTest');
