@@ -31,6 +31,10 @@ import AllStore from './AllStore';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 import JailMonkey from 'jail-monkey';
+var  Item = require('./Items');
+var  Pet = require('./NavPet');
+var  Library = require('./NavBox');
+var  Setting = require('./Setting');
 var Statusbar = require('./Statusbar');
 var {height, width} = Dimensions.get('window');
 
@@ -1010,16 +1014,48 @@ var MultiMap = React.createClass({
                          style={{width:130,height:130}}/>
         </TouchableOpacity>
         <ActionButton buttonColor="rgba(231,76,60,1)">
-          <ActionButton.Item buttonColor='#9b59b6' title="設定" onPress={() => console.log("notes tapped!")}>
+          <ActionButton.Item buttonColor='#9b59b6' title="設定" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Setting',
+                        component: Setting,
+                    })
+                }
+          }}>
             <Icon name="settings" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#3498db' title="圖鑑" onPress={() => {}}>
+          <ActionButton.Item buttonColor='#3498db' title="圖鑑" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Library',
+                        component: Library,
+                    })
+                }
+          }}>
             <Icon1 name="book" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#1abc9c' title="道具" onPress={() => {}}>
+          <ActionButton.Item buttonColor='#1abc9c' title="道具" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Item',
+                        component: Item,
+                    })
+                }
+          }}>
             <Icon1 name="beaker" style={styles.actionButtonIcon} />
           </ActionButton.Item>
-          <ActionButton.Item buttonColor='#EFC02F' title="寵物" onPress={() => {}}>
+          <ActionButton.Item buttonColor='#EFC02F' title="寵物" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Pet',
+                        component: Pet,
+                    })
+                }
+          }}>
             <Icon1 name="squirrel" style={styles.actionButtonIcon} />
           </ActionButton.Item>
         </ActionButton>  
