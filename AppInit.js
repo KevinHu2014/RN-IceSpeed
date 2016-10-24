@@ -10,6 +10,7 @@ import  {
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
 
+import testAction from './testAction';
 import NicknamePage from './NicknamePage';
 import tab from './tab';
 import NavPet from './NavPet';
@@ -53,14 +54,22 @@ var AppInit = React.createClass({
     //         })
     //     }
 
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavMap',
+    //             component: NavMap,
+    //         })
+    //     }
+
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'NavMap',
-                component: NavMap,
+                name: 'testAction',
+                component: testAction,
             })
         }
-
+        
 
     // const { navigator } = this.props;
     //     if(navigator) {

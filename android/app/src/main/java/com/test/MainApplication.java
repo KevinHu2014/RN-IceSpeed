@@ -9,6 +9,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.gantix.JailMonkey.JailMonkeyPackage;
@@ -41,7 +42,8 @@ public class MainApplication extends Application implements ReactApplication {
           new SensorManagerPackage(),
           new JailMonkeyPackage(),
           new FacebookLoginPackage(),
-          new SplashScreenPackage()
+          new SplashScreenPackage(),
+          new VectorIconsPackage()
           //new ScreenBrightnessPackage(this)//still some issue here
       );
     }
