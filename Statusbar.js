@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  TouchableHighlight,
-  TouchableOpacity
+  View
 } from 'react-native';
 
 
@@ -18,9 +16,7 @@ var Statusbar = React.createClass({
               <Text style={styles.Top_welcome_L}>火</Text>
             </View>
             <View style={styles.Top_status_R}>
-                <TouchableOpacity onPress={this._pressButton}>
-                  <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
-                </TouchableOpacity>
+              <Text style={styles.Top_welcome_R}>冰櫃神速</Text>
             </View>
           </View>
     	</View>
@@ -41,13 +37,9 @@ var styles = StyleSheet.create({
   },
   Top_status_L: {
     flex: 1,
-    backgroundColor: '#EA0000',
-    borderWidth: 5,
-    borderColor: '#FFD306',
+    backgroundColor: '#8E8E8E',
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100,
-    borderTopRightRadius: 0,
 
   },
   Top_welcome_L: {

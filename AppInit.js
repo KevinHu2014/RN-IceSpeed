@@ -10,6 +10,7 @@ import  {
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
 
+import Items from './Items';
 import FetchTest from './FetchTest';
 import testAction from './testAction';
 import NicknamePage from './NicknamePage';
@@ -62,6 +63,14 @@ var AppInit = React.createClass({
                 component: NavMap,
             })
         }
+
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'Items',
+    //             component: Items,
+    //         })
+    //     }
 
     // const { navigator } = this.props;
     //     if(navigator) {
