@@ -18,9 +18,9 @@ var FetchTest = React.createClass({
       Team: '',
       Rank: '',
       Money: '',
-      FireExp: '',
-      WaterExp: '',
-      WoodExp: '',
+      FireStone: '',
+      WaterStone: '',
+      WoodStone: '',
       progress: 100,
       indeterminate: true
     }
@@ -76,9 +76,9 @@ var FetchTest = React.createClass({
               Name: responseJSON.resource[0].Name,
               Team: responseJSON.resource[0].Team,
               Money: responseJSON.resource[0].Money,
-              FireExp: responseJSON.resource[0].FireExp,
-              WaterExp: responseJSON.resource[0].WaterExp,
-              WoodExp: responseJSON.resource[0].WoodExp,
+              FireStone: responseJSON.resource[0].FireStone,
+              WaterStone: responseJSON.resource[0].WaterStone,
+              WoodStone: responseJSON.resource[0].WoodStone,
               indeterminate: false
             });
           })
@@ -103,9 +103,9 @@ var FetchTest = React.createClass({
           <Text>{'Name:'+this.state.Name}</Text>
           <Text>{'Team:'+this.state.Team}</Text>
           <Text>{'Money:'+this.state.Money}</Text>
-          <Text>{'FireExp:'+this.state.FireExp}</Text>
-          <Text>{'WaterExp:'+this.state.WaterExp}</Text>
-          <Text>{'WoodExp:'+this.state.WoodExp}</Text>
+          <Text>{'FireStone:'+this.state.FireStone}</Text>
+          <Text>{'WaterStone:'+this.state.WaterStone}</Text>
+          <Text>{'WoodStone:'+this.state.WoodStone}</Text>
           <Progress.Bar 
             progress={this.state.progress}
             indeterminate={this.state.indeterminate}
