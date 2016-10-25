@@ -16,7 +16,6 @@ var FetchTest = React.createClass({
       UID: '',
       Name: '',
       Team: '',
-      Rank: '',
       Money: '',
       FireStone: '',
       WaterStone: '',
@@ -53,7 +52,7 @@ var FetchTest = React.createClass({
 
   },
   async getData(Token: string){
-    fetch("https://ft-kevinhu831208.vz2.dreamfactory.com/api/v2/icespeed/_table/user", {
+    fetch("https://ft-kevinhu831208.vz2.dreamfactory.com/api/v2/icespeed/_table/userdata", {
               method: "GET",
               headers: {
                 'X-DreamFactory-Api-Key': '5d1f504bc9e636508f26c6841287096ae6a1a3e7c5e3a4e78bc1769571a8f5d4',
@@ -96,7 +95,20 @@ var FetchTest = React.createClass({
             }
   },
   render(){
-    return (
+    if(this.state.indeterminate){
+      return(
+        <View style={{flex: 1,justifyContent: 'center',alignItems: 'center',}}>
+          <Progress.Bar 
+              progress={this.state.progress}
+              indeterminate={this.state.indeterminate}
+              direction="counter-clockwise"
+            />
+        </View>
+      );
+
+    }
+    else{
+      return (
       <View style={{flex: 1,justifyContent: 'center',alignItems: 'center',}}>
           <Text>{'Token:'+this.state.Token}</Text>
           <Text>{'UID:'+this.state.UID}</Text>
@@ -106,14 +118,11 @@ var FetchTest = React.createClass({
           <Text>{'FireStone:'+this.state.FireStone}</Text>
           <Text>{'WaterStone:'+this.state.WaterStone}</Text>
           <Text>{'WoodStone:'+this.state.WoodStone}</Text>
-          <Progress.Bar 
-            progress={this.state.progress}
-            indeterminate={this.state.indeterminate}
-            direction="counter-clockwise"
-          />
           <Text onPress={this._pressButton}>返回</Text>
       </View>
     );
+    }
+    
   }
 });
 
