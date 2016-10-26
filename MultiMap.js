@@ -31,8 +31,8 @@ import AllStore from './AllStore';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 import JailMonkey from 'jail-monkey';
-var  Item = require('./Items');
-var  Pet = require('./NavPet');
+var  Items = require('./Items');
+import Pet from './PetBox';
 var  Library = require('./NavBox');
 var  Setting = require('./Setting');
 var Statusbar = require('./Statusbar');
@@ -1040,8 +1040,8 @@ var MultiMap = React.createClass({
             const { navigator } = this.props;
             if(navigator) {
                     navigator.push({
-                        name: 'Item',
-                        component: Item,
+                        name: 'Items',
+                        component: Items,
                     })
                 }
           }}>

@@ -8,11 +8,14 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from 'react-native';
 import Statusbar from './Statusbar';
 import Firebase from 'firebase';
 import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/Ionicons';
+var {height, width} = Dimensions.get('window');
 
 var Items = React.createClass({
   getInitialState: function() {
@@ -128,7 +131,13 @@ var Items = React.createClass({
     });
     
  },
-
+ onPress_Back(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回Map
+                navigator.pop();
+            }
+  },
   render() {
     return (
     	<View style={styles.container}>
@@ -142,6 +151,11 @@ var Items = React.createClass({
                     renderRow={this._renderRow}
                 />
             </LinearGradient>
+         </View>
+         {/*Back Button*/}
+         <View style={{flex: 1,margin: 5,position: 'absolute',left:0,top:0}}>
+          <Icon.Button name="md-arrow-round-back" backgroundColor="#8E8E8E"
+           onPress={this.onPress_Back} size={50}></Icon.Button>
          </View>
     	</View>
     );

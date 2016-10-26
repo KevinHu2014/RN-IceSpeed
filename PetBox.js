@@ -7,12 +7,15 @@ import  {
   StyleSheet,
   Text,
   View,
+  Dimensions
 } from 'react-native';
 
 import Firebase from 'firebase';
 import * as Progress from 'react-native-progress';
 import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/Ionicons';
 
+var {height, width} = Dimensions.get('window');
 import Statusbar from './Statusbar';
 import Power from './Power';
 
@@ -161,7 +164,13 @@ var PetBox = React.createClass({
       });
     });
   },
-  
+  onPress_Back(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回Map
+                navigator.pop();
+            }
+  },
   render: function() {
     return (
       <View style={styles.container}>
@@ -176,6 +185,11 @@ var PetBox = React.createClass({
             />
           </View>
         </LinearGradient>
+        {/*Back Button*/}
+         <View style={{flex: 1,margin: 5,position: 'absolute',left:0,top:0}}>
+          <Icon.Button name="md-arrow-round-back" backgroundColor="#8E8E8E"
+           onPress={this.onPress_Back} size={50}></Icon.Button>
+         </View>
       </View>
     );
   },

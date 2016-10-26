@@ -362,18 +362,18 @@ var Power = React.createClass({
     }
   },
   onPress_Back(){
-    // const { navigator } = this.props;
-    //         if(navigator) {
-    //             //返回PetBox
-    //             navigator.pop();
-    //         }
     const { navigator } = this.props;
-        if(navigator) {
-            navigator.replace({
-                name: 'NavPet',
-                component: NavPet,
-            })
-        }  
+            if(navigator) {
+                //返回PetBox
+                navigator.pop();
+            }
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavPet',
+    //             component: NavPet,
+    //         })
+    //     }  
   },
   render(){
     return (
