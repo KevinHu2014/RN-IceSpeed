@@ -67,7 +67,7 @@ var battle = React.createClass({
       current_HP: null,
       Img: null,
       enemy_stone: null,
-      you_stone: null
+      you_stone: null,
     }
   },
   componentWillMount() {
@@ -94,9 +94,12 @@ var battle = React.createClass({
       });
     }
     
+    var your_power = this.check_Power(this.props.Type,data.monster[this.props.enemy_id].Type);
+    var enemy_power = this.check_Power(data.monster[this.props.enemy_id].Type,this.props.Type);
+    
     //從這裡拿到Battle_PetBox傳過來的參數
      this.setState({
-            Monster_Img: this.props.Monster_Img,
+            Monster_Img: data.monster[this.props.enemy_id].Img_R,
             enemy: this.props.enemy,
             enemy_Lv: this.props.enemy_Lv,
             enemy_id: this.props.enemy_id,
@@ -108,8 +111,13 @@ var battle = React.createClass({
             Atk: this.props.Atk,
             Spd: this.props.Spd,
             you: this.props.Name,
-            Img: this.props.Img,
+            Img: data.monster[this.props.id].Img,
             Type: this.props.Type,
+            skill_1_name: data.skill[data.monster[this.props.id].Skill_1].name,
+            skill_2_name: data.skill[data.monster[this.props.id].Skill_2].name,
+            enemy_skill_1_name: data.skill[data.monster[this.props.enemy_id].Skill_1].name,
+            enemy_skill_2_name: data.skill[data.monster[this.props.enemy_id].Skill_2].name,
+            
         });
      
     if(data.monster[this.props.enemy_id].Type == 'Fire'){
@@ -155,7 +163,7 @@ var battle = React.createClass({
     
   },
   componentDidMount(){
-
+    
     let temp = '野生的' + this.state.enemy + '跳了出來！';
     /*
 
@@ -186,6 +194,36 @@ var battle = React.createClass({
     this.setState({
       index_value: index,
     });
+  },
+  //A -> B
+  check_Power(A: string,B: string ){
+    if (A=='火'&& B=='火'){
+      return 1;
+    }
+    else if(A=='火'&& B=='水'){
+      return 0.75;
+    }
+    else if(A=='火'&& B=='木'){
+      return 1.25;
+    }
+    else if(A=='水'&& B=='火'){
+      return 0.75;
+    }
+    else if(A=='水'&& B=='水'){
+      return 1;
+    }
+    else if(A=='水'&& B=='木'){
+      return 0.75;
+    }
+    else if(A=='木'&& B=='火'){
+      return 0.75;
+    }
+    else if(A=='木'&& B=='水'){
+      return 0.75;
+    }
+    else if(A=='木'&& B=='木'){
+      return 1;
+    }
   },
   check_mp(){
     switch (this.state.mp_value){
