@@ -8,8 +8,9 @@ import  {
   Text,
   View,
 } from 'react-native';
-
+import Statusbar from './Statusbar';
 var Firebase = require('firebase');
+import Icon from 'react-native-vector-icons/Ionicons';
 
 var Box = React.createClass({
 
@@ -32,16 +33,32 @@ var Box = React.createClass({
     });
   });
   },
-  
+  onPress_Back(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回Map
+                navigator.pop();
+            }
+  },
   render: function() {
     return (
       // ListView wraps ScrollView and so takes on its properties. 
       // With that in mind you can use the ScrollView's contentContainerStyle prop to style the items.
-      <View style={{flexDirection:'row',flex: 1,}}>
-      <ListView contentContainerStyle={styles.list}
-        dataSource={this.state.todoSource}
-        renderRow={this._renderRow}
-      />
+      <View style={{flex: 1,}}>
+        <View style={{flex: 1,}}>
+          <Statusbar></Statusbar>
+        </View>
+        {/*Back Button*/}
+         <View style={{flex: 1,margin: 5,position: 'absolute',left:0,top:0}}>
+          <Icon.Button name="md-arrow-round-back" backgroundColor="#8E8E8E"
+           onPress={this.onPress_Back} size={50}></Icon.Button>
+         </View>
+        <View style={{flex: 7,}}>
+          <ListView contentContainerStyle={styles.list}
+            dataSource={this.state.todoSource}
+            renderRow={this._renderRow}
+          />
+        </View>
       </View>
     );
   },

@@ -33,7 +33,7 @@ import Collapsible from 'react-native-collapsible';
 import JailMonkey from 'jail-monkey';
 var  Items = require('./Items');
 import Pet from './PetBox';
-var  Library = require('./NavBox');
+import Library from './Box';
 var  Setting = require('./Setting');
 var Statusbar = require('./Statusbar');
 var {height, width} = Dimensions.get('window');

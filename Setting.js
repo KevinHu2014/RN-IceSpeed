@@ -17,6 +17,9 @@ import  {
 var mSensorManager = require('NativeModules').SensorManager;
 //var {ScreenBrightness} = NativeModules;//there is some issues on ScreenBrightness package, in the meantime it will be disabled
 var Sound = require('react-native-sound');
+import Icon from 'react-native-vector-icons/Ionicons';
+import Statusbar from './Statusbar';
+
 var s = new Sound('demo.mp3', Sound.MAIN_BUNDLE, (e) => {
       
         s.play();
@@ -74,27 +77,45 @@ var Setting = React.createClass({
       s.play();
     }
   },
+  onPress_Back(){
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回Map
+                navigator.pop();
+            }
+  },
   render() {
     return (
-      <View>
-        <Text style={styles.text}>
-          音量
-          {this.state.value && +this.state.value.toFixed(2)}
+      <View style={{flex: 1,}}>
+        <View style={{flex: 1,}}>
+          <Statusbar/>
+        </View>
+        {/*Back Button*/}
+         <View style={{flex: 1,margin: 5,position: 'absolute',left:0,top:0}}>
+          <Icon.Button name="md-arrow-round-back" backgroundColor="#8E8E8E"
+           onPress={this.onPress_Back} size={50}></Icon.Button>
+         </View>
+        <View style={{flex: 7,}}>
+          <Text style={styles.text}>
+            音量
+            {this.state.value && +this.state.value.toFixed(2)}
           
-        </Text>
-        <Slider
-          {...this.props}
-          onValueChange={(value) => this._onValueChange(value)} />
-        <View style={styles.the_switch}>
-          <Text style={styles.welcome}>{this.state.light}</Text>
-        	<Switch
-          		onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
-          		style={{marginBottom: 10,}}
-          		value={this.state.falseSwitchIsOn} />
-        	<Switch
-          		onValueChange={(value) => this.setState({trueSwitchIsOn: value})}
-          		value={this.state.trueSwitchIsOn} />
-        </View>  
+          </Text>
+          <Slider
+            {...this.props}
+            onValueChange={(value) => this._onValueChange(value)} />
+          <View style={styles.the_switch}>
+            <Text style={styles.welcome}>{this.state.light}</Text>
+            <Switch
+                onValueChange={(value) => this.setState({falseSwitchIsOn: value})}
+                style={{marginBottom: 10,}}
+                value={this.state.falseSwitchIsOn} />
+            <Switch
+                onValueChange={(value) => this.setState({trueSwitchIsOn: value})}
+                value={this.state.trueSwitchIsOn} />
+          </View>  
+        </View>
+        
           
       </View>
 
