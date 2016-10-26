@@ -261,11 +261,11 @@ var gym_battle = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Swiper height={height-49} showsButtons={true}
+        <Swiper height={height} showsButtons={true}
           loop={false} >
           {/* 第一頁 */}
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_0}>
                   <Image
@@ -291,7 +291,7 @@ var gym_battle = React.createClass({
           </View>
           {/* 第二頁 */}
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_1}>
                 <Text style={[styles.textTitle,{fontSize: 25}]}>
@@ -317,7 +317,7 @@ var gym_battle = React.createClass({
           </View>
           {/* 第三頁 */}
           <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-          <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
+          <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_1}>
                 <Text style={[styles.textTitle,{fontSize: 25}]}>
@@ -343,7 +343,7 @@ var gym_battle = React.createClass({
           </View>
         {/* 第四頁 */}
           <View style={[styles.slide,{backgroundColor: '#969AA1'}]}>
-          <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
+          <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <TouchableOpacity
                 style={{flex: 1,justifyContent: 'center'}}

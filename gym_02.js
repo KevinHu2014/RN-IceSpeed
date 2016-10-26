@@ -32,7 +32,7 @@ var gym_02 = React.createClass({
   render: function() {
     return (
       <View style={styles.container}>
-        <Swiper height={height-49} showsButtons={true}
+        <Swiper height={height} showsButtons={true}
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
             <View style={styles.top_1}>
