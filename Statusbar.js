@@ -13,7 +13,6 @@ var Statusbar = React.createClass({
     	<View style={styles.container}>
     		 <View style={styles.Top_status}>
             <View style={styles.Top_status_L}>
-              <Text style={styles.Top_welcome_L}>火</Text>
             </View>
             <View style={styles.Top_status_R}>
               <Text style={styles.Top_welcome_R}>冰櫃神速</Text>

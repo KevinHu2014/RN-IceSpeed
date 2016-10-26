@@ -265,6 +265,7 @@ var gym_battle = React.createClass({
           loop={false} >
           {/* 第一頁 */}
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
+            <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_0}>
                   <Image
@@ -286,9 +287,11 @@ var gym_battle = React.createClass({
               </View>
               <View style={{flex: 3,}}></View>
             </View>
+            </Image>
           </View>
           {/* 第二頁 */}
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
+            <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_1}>
                 <Text style={[styles.textTitle,{fontSize: 25}]}>
@@ -310,13 +313,15 @@ var gym_battle = React.createClass({
               </View>
               <View style={{flex: 3,}}></View>
             </View>
+            </Image>
           </View>
           {/* 第三頁 */}
           <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
+          <Image source={Background_Img} style={{width:width,height:height-49,resizeMode: 'cover'}}>
             <View style={styles.Content}>
               <View style={styles.top_1}>
                 <Text style={[styles.textTitle,{fontSize: 25}]}>
-                  {'你所花費的\n'+this.state.BigThree+'\b個數\n將會決定此關的難度'}
+                  {'使用越多的'+this.state.BigThree+'道具\n就能挑戰難度越高的關卡\n相對的獎勵也就越豐厚哦！'}
                 </Text>
               </View>
               <View style={styles.bottom_1}> 
@@ -334,6 +339,7 @@ var gym_battle = React.createClass({
               </View>
               <View style={{flex: 3,}}></View>
             </View>
+            </Image>
           </View>
         {/* 第四頁 */}
           <View style={[styles.slide,{backgroundColor: '#969AA1'}]}>

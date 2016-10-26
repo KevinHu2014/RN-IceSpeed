@@ -66,6 +66,8 @@ var battle = React.createClass({
       Type: null,
       current_HP: null,
       Img: null,
+      enemy_stone: null,
+      you_stone: null
     }
   },
   componentWillMount() {
@@ -115,6 +117,7 @@ var battle = React.createClass({
         enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv,
         enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv*2,
         enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv,
+        enemy_stone: 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png'
       });
     }
     else if(data.monster[this.props.enemy_id].Type == 'Wood'){
@@ -122,6 +125,7 @@ var battle = React.createClass({
         enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv*2,
         enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv,
         enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv,
+        enemy_stone: 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png'
       });
     }
     else{
@@ -129,6 +133,23 @@ var battle = React.createClass({
         enemy_Hp: data.monster[this.props.enemy_id].HP + this.props.enemy_Lv,
         enemy_Atk: data.monster[this.props.enemy_id].ATK + this.props.enemy_Lv,
         enemy_Spd: data.monster[this.props.enemy_id].SPD + this.props.enemy_Lv*2,
+        enemy_stone: 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png'
+      });
+    }
+
+    if(data.monster[this.props.id].Type == 'Fire'){
+      this.setState({
+        you_stone: 'https://s10.postimg.org/9v5yvaf7d/Attributes_Fire.png'
+      });
+    }
+    else if(data.monster[this.props.id].Type == 'Wood'){
+      this.setState({
+        you_stone: 'https://s10.postimg.org/3nf56l03t/Attributes_Leaf.png'
+      });
+    }
+    else{
+      this.setState({
+        you_stone: 'https://s10.postimg.org/i2wsjzisp/Attributes_Water.png' 
       });
     }
     
@@ -536,6 +557,9 @@ var battle = React.createClass({
                     borderTopLeftRadius: 10,borderBottomLeftRadius: 10,}}>
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
+                    <Image
+                    style={styles.Stone}
+                    source={{uri: this.state.enemy_stone}} />
                     <Text style={styles.welcome_4}>{this.state.enemy}</Text>
                     <Text style={styles.welcome_3}>{'Lv '+this.state.enemy_Lv}</Text>
                   </View>
@@ -559,6 +583,9 @@ var battle = React.createClass({
                     borderTopRightRadius: 10,borderBottomRightRadius: 10,}}>
                   <View style={{flex: 2,flexDirection: 'row',alignItems:'center',
                     justifyContent:'space-around'}}>
+                    <Image
+                    style={styles.Stone}
+                    source={{uri: this.state.you_stone}} />
                     <Text style={styles.welcome_4}>{this.state.you}</Text>
                     <Text style={styles.welcome_3}>Lv {this.state.Lv}</Text>
                   </View>
@@ -828,6 +855,13 @@ var styles = StyleSheet.create({
     color: '#000000',
     fontSize:30,
     //fontWeight: "bold",
+  },
+  Stone: {
+    width:25,
+    height:25,
+    marginTop:10,
+    resizeMode: 'contain',
+
   },
  });
 module.exports = battle;
