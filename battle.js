@@ -94,9 +94,7 @@ var battle = React.createClass({
       });
     }
     
-    var your_power = this.check_Power(this.props.Type,data.monster[this.props.enemy_id].Type);
-    var enemy_power = this.check_Power(data.monster[this.props.enemy_id].Type,this.props.Type);
-    
+
     //從這裡拿到Battle_PetBox傳過來的參數
      this.setState({
             Monster_Img: data.monster[this.props.enemy_id].Img_R,
@@ -117,6 +115,10 @@ var battle = React.createClass({
             skill_2_name: data.skill[data.monster[this.props.id].Skill_2].name,
             enemy_skill_1_name: data.skill[data.monster[this.props.enemy_id].Skill_1].name,
             enemy_skill_2_name: data.skill[data.monster[this.props.enemy_id].Skill_2].name,
+            skill_1: data.skill[data.monster[this.props.id].Skill_1].power,
+            skill_2: data.skill[data.monster[this.props.id].Skill_2].power,
+            enemy_skill_1: data.skill[data.monster[this.props.id].Skill_1].power,
+            enemy_skill_2: data.skill[data.monster[this.props.id].Skill_2].power,
             
         });
      
@@ -165,8 +167,9 @@ var battle = React.createClass({
   componentDidMount(){
     
     let temp = '野生的' + this.state.enemy + '跳了出來！';
+    let EHit = this.state.enemy_Atk/this.state.Hp;
+    let Hit = this.state.Atk/this.state.enemy_Hp;
     /*
-
     Hit 的算法
 
     hit -> 假設enemy的血量是100%(1) ->  HP/HP(100/100) 
@@ -175,12 +178,15 @@ var battle = React.createClass({
     1 - hit = 100/100 - 58/100
     同理
     enemy.hit = enemy.Atk/you.HP
-
     */
     this.setState({
       bottom_progress: this.state.current_HP/this.state.Hp,
-      enemy_hit: this.state.enemy_Atk/this.state.Hp,
-      hit: this.state.Atk/this.state.enemy_Hp,
+      enemy_hit: EHit,
+      hit: Hit,
+      skill_1: this.state.skill_1*Hit,
+      skill_2: this.state.skill_2*Hit,
+      enemy_skill_1: this.state.enemy_skill_1*EHit,
+      enemy_skill_2: this.state.enemy_skill_2*EHit,
       Box: temp, 
     });
     

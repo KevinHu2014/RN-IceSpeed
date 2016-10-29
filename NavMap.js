@@ -11,8 +11,8 @@ import MultiMap from './MultiMap';
 
 export default class NavMap extends React.Component {
     render() {
-        let defaultName = 'NewMap';
-        let defaultComponent = NewMap;
+        let defaultName = 'MultiMap';
+        let defaultComponent = MultiMap;
         return (
         <Navigator
           initialRoute={{ name: defaultName, component: defaultComponent }}
