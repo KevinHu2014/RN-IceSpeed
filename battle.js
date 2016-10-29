@@ -46,6 +46,8 @@ var battle = React.createClass({
       hit: 0.1,
       skill_1: 0.5,
       skill_2: -0.3,//如果是回復技，則數值是負的
+      skill_1_mp: 1,
+      skill_2_mp: 1,
       enemy_skill_1: 0.3,
       enemy_skill_2: 0.1,
       enemy: '小葉麻糬',
@@ -119,6 +121,8 @@ var battle = React.createClass({
             skill_2: data.skill[data.monster[this.props.id].Skill_2].power,
             enemy_skill_1: data.skill[data.monster[this.props.id].Skill_1].power,
             enemy_skill_2: data.skill[data.monster[this.props.id].Skill_2].power,
+            skill_1_mp: data.skill[data.monster[this.props.id].Skill_1].mp,
+            skill_2_mp: data.skill[data.monster[this.props.id].Skill_2].mp,
             
         });
      
@@ -285,8 +289,8 @@ var battle = React.createClass({
         }
         break;
       case 3:
-        temp1 = this.state.you+'\n增加一個 mp';
-        this.state.mp_value++;
+        temp1 = this.state.you+'\n增加2個 mp';
+        this.state.mp_value=this.state.mp_value+2;
         this.check_mp();
         temp4 = 1;
         break;  
@@ -509,75 +513,64 @@ var battle = React.createClass({
     this.handleChangeTabs(2);
   },
   onPress_skill_1(){
-    let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
-    this.state.mp_value--;
-    this.check_mp();
-    this.setState({
-      Box: temp2,
-      Now: 4,
-      Unclickable: true,
-    });
-    if (this.state.skill_1 > 0) {
-      this.refs.bottom.wobble(2000);
-    } 
-    else {
-      this.refs.bottom.pulse(2000);
+    if(this.state.mp_value >= this.state.skill_1_mp){
+      let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
+      this.state.mp_value=this.state.mp_value-this.state.skill_1_mp;
+      this.check_mp();
+      this.setState({
+        Box: temp2,
+        Now: 4,
+        Unclickable: true,
+      });
+      if (this.state.skill_1 > 0) {
+        this.refs.bottom.wobble(2000);
+      } 
+      else {
+        this.refs.bottom.pulse(2000);
+      }
+      this.handleChangeTabs(0);
     }
-    this.handleChangeTabs(0);
-  },
-  onPressIn_skill_1(){
-    let temp2 = this.state.you+'使用\n'+this.state.skill_1_name+'！';
-    this.setState({
-      Box: temp2,
-      Now: 4,
-    });
-    this.setState({press_skill_1: true});
-  },
-  onPressOut_skill_1(){
-    this.setState({press_skill_1: false});
-    if (this.state.skill_1 > 0) {
-      this.refs.bottom.wobble(2000);
-    } 
-    else {
-      this.refs.bottom.pulse(2000);
+    else{
+      Alert.alert(
+        'mp不足',
+        '招式無法使用',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
     }
-    this.handleChangeTabs(0);
   },
+  
   onPress_skill_2(){
-    let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
-    this.state.mp_value--;
-    this.check_mp();
-    this.setState({
-      Box: temp2,
-      Now: 5,
-      Unclickable: true,
-    });
-    if (this.state.skill_2 > 0) {
-      this.refs.bottom.wobble(2000);
-    } 
-    else {
-      this.refs.bottom.flash(2000);
+    if(this.state.mp_value >= this.state.skill_2_mp){
+      let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
+      this.state.mp_value--;
+      this.check_mp();
+      this.setState({
+        Box: temp2,
+        Now: 5,
+        Unclickable: true,
+      });
+      if (this.state.skill_2 > 0) {
+        this.refs.bottom.wobble(2000);
+      } 
+      else {
+        this.refs.bottom.flash(2000);
+      }
+      this.handleChangeTabs(0);
     }
-    this.handleChangeTabs(0);
-  },
-  onPressIn_skill_2(){
-    let temp2 = this.state.you+'使用\n'+this.state.skill_2_name+'！';
-    this.setState({
-      Box: temp2,
-      Now: 5,
-    });
-    this.setState({press_skill_2: true});
-  },
-  onPressOut_skill_2(){
-    this.setState({press_skill_2: false});
-    if (this.state.skill_2 > 0) {
-      this.refs.bottom.wobble(2000);
-    } 
-    else {
-      this.refs.bottom.flash(2000);
+    else{
+      Alert.alert(
+        'mp不足',
+        '招式無法使用',
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
     }
-    this.handleChangeTabs(0);
+    
   },
+ 
   onPress_Back(){
     this.handleChangeTabs(1);
   },
@@ -728,8 +721,6 @@ var battle = React.createClass({
               <TouchableHighlight
                 disabled={this.state.Unclickable}
                 style={styles.touchable}
-                //onPressIn={this.onPressIn_skill_1 }
-                //onPressOut={this.onPressOut_skill_1 }
                 onPress={this.onPress_skill_1}>
                   <View style={styles.button_Blue}>
                       <Text style={[styles.welcome,this.state.skill_1_check_3 && styles.welcome_s_1,
@@ -741,8 +732,6 @@ var battle = React.createClass({
               <TouchableHighlight
                 disabled={this.state.Unclickable}
                 style={styles.touchable}
-                //onPressIn={this.onPressIn_skill_2}
-                //onPressOut={this.onPressOut_skill_2}
                 onPress={this.onPress_skill_2}>
                   <View style={styles.button_Blue}>
                       <Text style={[styles.welcome,this.state.skill_2_check_3 && styles.welcome_s_1,
