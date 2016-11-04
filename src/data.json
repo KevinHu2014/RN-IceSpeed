@@ -11,8 +11,8 @@
                "Skill_1": 3,
                "Skill_2": 9,
                "Rare": 'S',
-               "Img": "https://s19.postimg.org/hi1x3iqxv/001.png",
-               "Img_R": "https://s19.postimg.org/4rxoqfizn/001_r.png" 
+               "Img": "http://i.imgur.com/EGoaNGP.png",
+               "Img_R": "http://i.imgur.com/8W7xgT7.png" 
           },
           {
                "id": 1,
@@ -25,8 +25,8 @@
                "Skill_1": 3,
                "Skill_2": 9,
                "Rare": 'D',
-               "Img": "https://s19.postimg.org/hi1x3iqxv/001.png",
-               "Img_R": "https://s19.postimg.org/4rxoqfizn/001_r.png" 
+               "Img": "http://i.imgur.com/EGoaNGP.png",
+               "Img_R": "http://i.imgur.com/8W7xgT7.png" 
           },
           {
                "id": 2,
@@ -39,8 +39,8 @@
                "Skill_1": 3,
                "Skill_2": 9,
                "Rare": 'C',
-               "Img": "https://s19.postimg.org/4zuief8pv/002.png",
-               "Img_R": "https://s19.postimg.org/ww9ufkd0j/002_r.png" 
+               "Img": "http://i.imgur.com/MrwMoOm.png",
+               "Img_R": "http://i.imgur.com/1dG4fyC.png" 
           },
           {
                "id": 3,
@@ -53,8 +53,8 @@
                "Skill_1": 6,
                "Skill_2": 9,
                "Rare": 'C',
-               "Img": "https://s19.postimg.org/z5swt7fmr/003.png",
-               "Img_R": "https://s19.postimg.org/5vht2e3mr/003_r.png" 
+               "Img": "http://i.imgur.com/jsNsdnX.png",
+               "Img_R": "http://i.imgur.com/3XaMhpO.png" 
           },
           {
                "id": 4,
@@ -67,8 +67,8 @@
                "Skill_1": 1,
                "Skill_2": 14,
                "Rare": 'D',
-               "Img": "https://s19.postimg.org/4047iptk3/004.png",
-               "Img_R": "https://s19.postimg.org/li92frher/004_r.png" 
+               "Img": "http://i.imgur.com/BeTEFFx.png",
+               "Img_R": "http://i.imgur.com/IKhYF5Q.png" 
           },
           {
                "id": 5,
@@ -81,8 +81,8 @@
                "Skill_1": 4,
                "Skill_2": 14,
                "Rare": 'C',
-               "Img": "https://s19.postimg.org/ikladjoir/005.png",
-               "Img_R": "https://s19.postimg.org/de0yb0uzn/005_r.png" 
+               "Img": "http://i.imgur.com/qjd5YX1.png",
+               "Img_R": "http://i.imgur.com/f1DrlYT.png" 
           },
           {
                "id": 6,
@@ -95,8 +95,8 @@
                "Skill_1": 4,
                "Skill_2": 13,
                "Rare": 'B',
-               "Img": "https://s19.postimg.org/b5vyl62n7/006.png",
-               "Img_R": "https://s19.postimg.org/7r4ldjsgz/006_r.png",
+               "Img": "http://i.imgur.com/PAdVlCD.png",
+               "Img_R": "http://i.imgur.com/TMHxjIi.png",
           },
           {
                "id": 7,
@@ -109,8 +109,8 @@
                "Skill_1": 3,
                "Skill_2": 9,
                "Rare": 'D',
-               "Img": "https://s19.postimg.org/9fcxjol43/007.png",
-               "Img_R": "https://s19.postimg.org/h06rno1cz/007_r.png",
+               "Img": "http://i.imgur.com/kYXB58X.png",
+               "Img_R": "http://i.imgur.com/ZtbgdF5.png",
           },
           {
                "id": 8,
@@ -123,8 +123,8 @@
                "Skill_1": 3,
                "Skill_2": 9,
                "Rare": 'B',
-               "Img": "https://s19.postimg.org/opcsqvgmb/008.png",
-               "Img_R": "https://s19.postimg.org/laq0wzvtv/008_r.png",
+               "Img": "http://i.imgur.com/YpgdML5.png",
+               "Img_R": "http://i.imgur.com/es4cWzQ.png",
           },
           {
                "id": 9,
@@ -137,8 +137,8 @@
                "Skill_1": 6,
                "Skill_2": 9,
                "Rare": 'A',
-               "Img": "https://s19.postimg.org/dea52i9r7/009.png",
-               "Img_R": "https://s19.postimg.org/gq3ui2c4j/009_r.png",
+               "Img": "http://i.imgur.com/WfeBblX.png",
+               "Img_R": "http://i.imgur.com/Stt95Sb.png",
           },
           {
                "id": 10,
@@ -151,8 +151,8 @@
                "Skill_1": 1,
                "Skill_2": 7,
                "Rare": 'D',
-               "Img": "https://s19.postimg.org/n03pit0wz/010.png",
-               "Img_R": "https://s19.postimg.org/ok4g3gjxf/010_r.png",
+               "Img": "http://i.imgur.com/2w16nKg.png",
+               "Img_R": "http://i.imgur.com/02fv6hu.png",
           },
           {
                "id": 11,
@@ -165,8 +165,8 @@
                "Skill_1": 4,
                "Skill_2": 7,
                "Rare": 'C',
-               "Img": "https://s19.postimg.org/kwtab5143/011.png",
-               "Img_R": "https://s19.postimg.org/jmqvichyb/011_r.png",
+               "Img": "http://i.imgur.com/2lhopoR.png",
+               "Img_R": "http://i.imgur.com/mzKt5t4.png",
           },
           {
                "id": 12,
@@ -179,8 +179,8 @@
                "Skill_1": 4,
                "Skill_2": 10,
                "Rare": 'B',
-               "Img": "https://s19.postimg.org/7g1dpdx43/012.png",
-               "Img_R": "https://s19.postimg.org/q1pwf0oo3/012_r.png",
+               "Img": "http://i.imgur.com/sDmmXMH.png",
+               "Img_R": "http://i.imgur.com/blYNyWC.png",
           },
           {
                "id": 13,
@@ -193,8 +193,8 @@
                "Skill_1": 2,
                "Skill_2": 5,
                "Rare": 'C',
-               "Img": "https://s19.postimg.org/5picnwfkz/013.png",
-               "Img_R": "https://s19.postimg.org/m6micg5ib/013_r.png",
+               "Img": "http://i.imgur.com/0wRrQcQ.png",
+               "Img_R": "http://i.imgur.com/ygT2fwp.png",
           },
           {
                "id": 14,
@@ -207,8 +207,8 @@
                "Skill_1": 5,
                "Skill_2": 11,
                "Rare": 'A',
-               "Img": "https://s19.postimg.org/75tv61ihv/014.png",
-               "Img_R": "https://s19.postimg.org/xk91nng0z/014_r.png",
+               "Img": "http://i.imgur.com/sg8zZqa.png",
+               "Img_R": "http://i.imgur.com/nS2p25D.png",
           },
           {
                "id": 15,
@@ -220,9 +220,9 @@
                "SPD": 15,
                "Skill_1": 9,
                "Skill_2": 8,
-               "Rare": 'B',
-               "Img": "https://s19.postimg.org/vnlytxl2b/015.png",
-               "Img_R": "https://s19.postimg.org/3tlx1vv1f/015_r.png",
+               "Rare": "B",
+               "Img": "http://i.imgur.com/UK0VbUG.png",
+               "Img_R": "http://i.imgur.com/AKDmYNr.png",
           },
           {
                "id": 16,
@@ -235,8 +235,8 @@
                "Skill_1": 2,
                "Skill_2": 12,
                "Rare": 'A',
-               "Img": "https://s19.postimg.org/b4r2ov74z/016.png",
-               "Img_R": "https://s19.postimg.org/jpkeg1hb7/016_r.png",
+               "Img": "http://i.imgur.com/Fo4Xkce.png",
+               "Img_R": "http://i.imgur.com/muGGbo3.png",
           },
           {
                "id": 17,
@@ -249,8 +249,8 @@
                "Skill_1": 5,
                "Skill_2": 12,
                "Rare": 'A',
-               "Img": "https://s19.postimg.org/6wwag45pf/017.png",
-               "Img_R": "https://s19.postimg.org/qu27p2okj/017_r.png",
+               "Img": "http://i.imgur.com/CDUnnGj.png",
+               "Img_R": "http://i.imgur.com/QdfAzJl.png",
           },
      ],
      "skill":[
