@@ -40,6 +40,9 @@ Mapbox.setAccessToken(accessToken);
 //   console.error(err); // Handle error
 // });
 
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/Octicons';
 import Battle_LandingPage from './Battle_LandingPage';
 import gym_01 from './gym_01';
 import gym_02 from './gym_02';
@@ -60,6 +63,10 @@ import AllStore from './AllStore';
 import FetchTest from './FetchTest';
 import Collapsible from 'react-native-collapsible';
 import JailMonkey from 'jail-monkey';
+var  Items = require('./Items');
+import Pet from './PetBox';
+import Library from './Box';
+var  Setting = require('./Setting');
 var Statusbar = require('./Statusbar');
 var {height, width} = Dimensions.get('window');
 
@@ -875,10 +882,56 @@ var NewMap = React.createClass({
         <TouchableOpacity
                 onPressIn={this.onPressIn_explore}
                 onPressOut={this.onPressOut_explore}
-                style={{borderRadius: 100,position: 'absolute',left: width-93,top: height-173}}>
+                style={{borderRadius: 100,position: 'absolute',left: (width-130)/2,top: height-170}}>
                     <Image source={require('./Img/explore.png')} 
-                         style={{width:83,height:83}}/>
-              </TouchableOpacity>
+                          style={{width:130,height:130}}/>
+        </TouchableOpacity>
+        <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton.Item buttonColor='#9b59b6' title="設定" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Setting',
+                        component: Setting,
+                    })
+                }
+          }}>
+            <Icon name="settings" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#3498db' title="圖鑑" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Library',
+                        component: Library,
+                    })
+                }
+          }}>
+            <Icon1 name="book" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#1abc9c' title="道具" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Items',
+                        component: Items,
+                    })
+                }
+          }}>
+            <Icon1 name="beaker" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#EFC02F' title="寵物" onPress={() => {
+            const { navigator } = this.props;
+            if(navigator) {
+                    navigator.push({
+                        name: 'Pet',
+                        component: Pet,
+                    })
+                }
+          }}>
+            <Icon1 name="squirrel" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+        </ActionButton>
           
       </View>
         
@@ -1046,6 +1099,11 @@ const styles = StyleSheet.create({
   text: {
     color: '#fff',
     fontSize: 16,
+  },
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
   },
 });
 
