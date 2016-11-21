@@ -3348,6 +3348,10 @@ react-native-linear-gradient@^1.5.7:
   version "1.5.13"
   resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-1.5.13.tgz#98db6d4f0cd54b9f725df98142e0bdbd5e4a0991"
 
+react-native-LoopAnimation:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-LoopAnimation/-/react-native-LoopAnimation-0.1.0.tgz#fe52cd62f0f0bebf50f3cc191f5f3219518cbb06"
+
 react-native-mapbox-gl@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-native-mapbox-gl/-/react-native-mapbox-gl-5.0.0.tgz#1f75a39da9d29e5e2a56d0dea8bfef92bda2ce35"

@@ -10,8 +10,9 @@ import  {
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
 
+import Center from './Center';
 import Items from './Items';
-import FetchTest from './FetchTest';
+import RNModel from './RNModel';
 import testAction from './testAction';
 import NicknamePage from './NicknamePage';
 import tab from './tab';
@@ -56,11 +57,19 @@ var AppInit = React.createClass({
     //         })
     //     }
 
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavMap',
+    //             component: NavMap,
+    //         })
+    //     }
+
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'NavMap',
-                component: NavMap,
+                name: 'Center',
+                component: Center,
             })
         }
 
@@ -75,8 +84,8 @@ var AppInit = React.createClass({
     // const { navigator } = this.props;
     //     if(navigator) {
     //         navigator.replace({
-    //             name: 'FetchTest',
-    //             component: FetchTest,
+    //             name: 'RNModel',
+    //             component: RNModel,
     //         })
     //     }
         
