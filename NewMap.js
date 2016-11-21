@@ -883,7 +883,7 @@ var NewMap = React.createClass({
                 onPressIn={this.onPressIn_explore}
                 onPressOut={this.onPressOut_explore}
                 style={{borderRadius: 100,position: 'absolute',left: (width-130)/2,top: height-170}}>
-                    <Image source={require('./Img/explore.png')} 
+                    <Image source={require('./Img/explore_new.png')} 
                           style={{width:130,height:130}}/>
         </TouchableOpacity>
         <ActionButton buttonColor="rgba(231,76,60,1)">
