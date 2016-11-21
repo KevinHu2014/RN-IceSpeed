@@ -11,7 +11,7 @@ import {
 
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
-
+var Background_Img = require('./Img/background_Null.png');
 var gym_01 = React.createClass({
   getInitialState(){
     return{
@@ -35,88 +35,96 @@ var gym_01 = React.createClass({
         <Swiper height={height} showsButtons={true}
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <View style={styles.top_1}>
-              <Text style={[styles.textTitle,{fontSize: 25}]}>
-                {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
-              </Text>
-            </View>
-            <View style={styles.bottom_1}> 
-              <Image
-                style={styles.avatar}
-                source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'輔大特色地標'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'真善美聖十字架介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={styles.top_2}>
-              <Image
-                style={styles.school}
-                source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={styles.textContent}>
-                {'\b\b'+this.state.schoolIntro}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'新手教學'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'屬性相剋'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-            <View style={styles.top_3}>
-              <Image
-                style={styles.game}
-                source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
-            </View>
-            <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:20}]}>
-                {'\b\b'+this.state.gameIntro}
-              </Text> 
-            </View>
-            <View style={styles.last}>
-              <View style={{flex: 1,alignItems: 'flex-start',}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
-              </View>
-              <View style={{flex: 2,}}></View>
-              <View style={{flex: 1,}}>
-                <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                  onPress={this.onPress}>
-                  Done
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_1}>
+                <Text style={[styles.textTitle,{fontSize: 25}]}>
+                  {'地標道館：'+this.state.gymName+'\n\nHi ~ 歡迎你來到輔大'+'\n\n我是館主\b'+this.state.gymLeader}
                 </Text>
               </View>
-            </View>
+              <View style={styles.bottom_1}> 
+                <Image
+                  style={styles.avatar}
+                  source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+              </View>
+            </Image>  
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'輔大特色地標'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'真善美聖十字架介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_2}>
+                <Image
+                  style={styles.school}
+                  source={{uri: 'https://s32.postimg.org/cv1dpcvmd/image4.jpg'}} />
+              </View>
+              <View style={styles.middle_2}>
+                <Text style={styles.textContent}>
+                  {'\b\b'+this.state.schoolIntro}
+                </Text> 
+              </View>
+              <View style={styles.bottom_2}>
+                <View style={{flex: 4,}}></View>
+                <View style={{flex: 1,}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+                </View>
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'新手教學'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'屬性相剋'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_3}>
+                <Image
+                  style={styles.game}
+                  source={{uri: 'https://s31.postimg.org/lgh6be1wr/arrow.png'}} />
+              </View>
+              <View style={styles.bottom_3}>
+                <Text style={[styles.textContent,{fontSize:20}]}>
+                  {'\b\b'+this.state.gameIntro}
+                </Text> 
+              </View>
+              <View style={styles.last}>
+                <View style={{flex: 1,alignItems: 'flex-start',}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'https://s19.postimg.org/hor0bw2jn/avatar2.png'}} />
+                </View>
+                <View style={{flex: 2,}}></View>
+                <View style={{flex: 1,}}>
+                  <Text style={{fontSize: 30,fontWeight: 'bold'}}
+                    onPress={this.onPress}>
+                    Done
+                  </Text>
+                </View>
+              </View>
+            </Image>
           </View>
         </Swiper>
         

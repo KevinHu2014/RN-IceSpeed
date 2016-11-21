@@ -11,7 +11,7 @@ import {
 
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
-
+var Background_Img = require('./Img/background_Null.png');
 var gym_07 = React.createClass({
   getInitialState(){
     return{
@@ -35,88 +35,96 @@ var gym_07 = React.createClass({
         <Swiper height={height} showsButtons={true}
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <View style={styles.top_1}>
-              <Text style={[styles.textTitle,{fontSize: 20}]}>
-                {'地標道館：'+this.state.gymName+'\n\n「君子以文會友，以友輔仁」\n唯有堅毅的靈魂才能駕馭強大的力量\n因此我們不斷的鍛鍊自己.......'+'\n\n我是館主\b'+this.state.gymLeader}
-              </Text>
-            </View>
-            <View style={styles.bottom_1}> 
-              <Image
-                style={styles.avatar}
-                source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'輔大特色地標'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'中美堂介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={styles.top_2}>
-              <Image
-                style={styles.school}
-                source={{uri: 'http://farm8.staticflickr.com/7157/6645835887_3eeea317a0_b.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={styles.textContent}>
-                {'\b\b'+this.state.schoolIntro}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'http://s12.postimg.org/jaw6ikmqx/avatar07.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'新手教學'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'經驗值的取得'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-            <View style={styles.top_3}>
-              <Image
-                style={styles.game}
-                source={{uri: 'https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png'}} />
-            </View>
-            <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:20}]}>
-                {'\b\b'+this.state.gameIntro}
-              </Text> 
-            </View>
-            <View style={styles.last}>
-              <View style={{flex: 1,alignItems: 'flex-start',}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'http://s12.postimg.org/ve1i64xt5/avatar07_reverse.png'}} />
-              </View>
-              <View style={{flex: 2,}}></View>
-              <View style={{flex: 1,}}>
-                <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                  onPress={this.onPress}>
-                  Done
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_1}>
+                <Text style={[styles.textTitle,{fontSize: 20}]}>
+                  {'地標道館：'+this.state.gymName+'\n\n「君子以文會友，以友輔仁」\n唯有堅毅的靈魂才能駕馭強大的力量\n因此我們不斷的鍛鍊自己.......'+'\n\n我是館主\b'+this.state.gymLeader}
                 </Text>
               </View>
-            </View>
+              <View style={styles.bottom_1}> 
+                <Image
+                  style={styles.avatar}
+                  source={{uri: 'https://s32.postimg.org/evc65gmlx/avatar3.png'}} />
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'輔大特色地標'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'中美堂介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_2}>
+                <Image
+                  style={styles.school}
+                  source={{uri: 'http://farm8.staticflickr.com/7157/6645835887_3eeea317a0_b.jpg'}} />
+              </View>
+              <View style={styles.middle_2}>
+                <Text style={styles.textContent}>
+                  {'\b\b'+this.state.schoolIntro}
+                </Text> 
+              </View>
+              <View style={styles.bottom_2}>
+                <View style={{flex: 4,}}></View>
+                <View style={{flex: 1,}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'http://s12.postimg.org/jaw6ikmqx/avatar07.png'}} />
+                </View>
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'新手教學'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'經驗值的取得'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_3}>
+                <Image
+                  style={styles.game}
+                  source={{uri: 'https://s31.postimg.org/etkhykz0b/EXP_SCROLL.png'}} />
+              </View>
+              <View style={styles.bottom_3}>
+                <Text style={[styles.textContent,{fontSize:20}]}>
+                  {'\b\b'+this.state.gameIntro}
+                </Text> 
+              </View>
+              <View style={styles.last}>
+                <View style={{flex: 1,alignItems: 'flex-start',}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'http://s12.postimg.org/ve1i64xt5/avatar07_reverse.png'}} />
+                </View>
+                <View style={{flex: 2,}}></View>
+                <View style={{flex: 1,}}>
+                  <Text style={{fontSize: 30,fontWeight: 'bold'}}
+                    onPress={this.onPress}>
+                    Done
+                  </Text>
+                </View>
+              </View>
+            </Image>
           </View>
         </Swiper>
         

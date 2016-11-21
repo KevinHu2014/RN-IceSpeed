@@ -11,7 +11,7 @@ import {
 
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
-
+var Background_Img = require('./Img/background_Null.png');
 var gym_11 = React.createClass({
   getInitialState(){
     return{
@@ -36,108 +36,118 @@ var gym_11 = React.createClass({
         <Swiper height={height} showsButtons={true}
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <View style={styles.top_1}>
-              <Text style={[styles.textTitle,{fontSize: 25}]}>
-                {'地標道館：'+this.state.gymName+'\n\n嗚~~~艾咪最喜歡吃美食了！！！'+'\n你還在這邊幹嘛~快跟'+this.state.gymLeader+'一起發現輔大的校園美食吧！'}
-              </Text>
-            </View>
-            <View style={styles.bottom_1}> 
-              <Image
-                style={styles.avatar}
-                source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'輔大特色地標'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {this.state.gymName+'介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={styles.top_2}>
-              <Image
-                style={styles.school}
-                source={{uri: 'https://s19.postimg.org/sotpr9143/image.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={[styles.textContent,{fontSize: 17}]}>
-                {'\b\b'+this.state.schoolIntro}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={[styles.top_2,{flex: 2,}]}>
-              <Image
-                style={styles.school}
-                source={{uri: 'https://s19.postimg.org/ke7wjf5k3/image.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={[styles.textContent,{fontSize: 20}]}>
-                {'\b\b'+this.state.schoolIntro2}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'新手教學'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'回血中心+三寶功能介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-            <View style={styles.top_3}>
-              <Image
-                style={styles.game}
-                source={{uri: 'https://s19.postimg.org/8vm7cad43/melonpan.png'}} />
-            </View>
-            <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:19}]}>
-                {'\b\b'+this.state.gameIntro}
-              </Text> 
-            </View>
-            <View style={styles.last}>
-              <View style={{flex: 1,alignItems: 'flex-start',}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'https://s19.postimg.org/6ur2dprkz/reverse.png'}} />
-              </View>
-              <View style={{flex: 2,}}></View>
-              <View style={{flex: 1,}}>
-                <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                  onPress={this.onPress}>
-                  Done
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_1}>
+                <Text style={[styles.textTitle,{fontSize: 25}]}>
+                  {'地標道館：'+this.state.gymName+'\n\n嗚~~~艾咪最喜歡吃美食了！！！'+'\n你還在這邊幹嘛~快跟'+this.state.gymLeader+'一起發現輔大的校園美食吧！'}
                 </Text>
               </View>
-            </View>
+              <View style={styles.bottom_1}> 
+                <Image
+                  style={styles.avatar}
+                  source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'輔大特色地標'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {this.state.gymName+'介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_2}>
+                <Image
+                  style={styles.school}
+                  source={{uri: 'https://s19.postimg.org/sotpr9143/image.jpg'}} />
+              </View>
+              <View style={styles.middle_2}>
+                <Text style={[styles.textContent,{fontSize: 17}]}>
+                  {'\b\b'+this.state.schoolIntro}
+                </Text> 
+              </View>
+              <View style={styles.bottom_2}>
+                <View style={{flex: 4,}}></View>
+                <View style={{flex: 1,}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
+                </View>
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={[styles.top_2,{flex: 2,}]}>
+                <Image
+                  style={styles.school}
+                  source={{uri: 'https://s19.postimg.org/ke7wjf5k3/image.jpg'}} />
+              </View>
+              <View style={styles.middle_2}>
+                <Text style={[styles.textContent,{fontSize: 20}]}>
+                  {'\b\b'+this.state.schoolIntro2}
+                </Text> 
+              </View>
+              <View style={styles.bottom_2}>
+                <View style={{flex: 4,}}></View>
+                <View style={{flex: 1,}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'https://s19.postimg.org/eyz6ige03/image.png'}} />
+                </View>
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'新手教學'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'回血中心+三寶功能介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_3}>
+                <Image
+                  style={styles.game}
+                  source={{uri: 'https://s19.postimg.org/8vm7cad43/melonpan.png'}} />
+              </View>
+              <View style={styles.bottom_3}>
+                <Text style={[styles.textContent,{fontSize:19}]}>
+                  {'\b\b'+this.state.gameIntro}
+                </Text> 
+              </View>
+              <View style={styles.last}>
+                <View style={{flex: 1,alignItems: 'flex-start',}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'https://s19.postimg.org/6ur2dprkz/reverse.png'}} />
+                </View>
+                <View style={{flex: 2,}}></View>
+                <View style={{flex: 1,}}>
+                  <Text style={{fontSize: 30,fontWeight: 'bold'}}
+                    onPress={this.onPress}>
+                    Done
+                  </Text>
+                </View>
+              </View>
+            </Image>
           </View>
         </Swiper>
         

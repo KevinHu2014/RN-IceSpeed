@@ -11,7 +11,7 @@ import {
 
 import NewMap from './NewMap';
 var {height, width} = Dimensions.get('window');
-
+var Background_Img = require('./Img/background_Null.png');
 var gym_12 = React.createClass({
   getInitialState(){
     return{
@@ -35,88 +35,96 @@ var gym_12 = React.createClass({
         <Swiper height={height} showsButtons={true}
           loop={false} >
           <View style={[styles.slide,{backgroundColor: '#9DD6EB',}]}>
-            <View style={styles.top_1}>
-              <Text style={[styles.textTitle,{fontSize:25}]}>
-                {'地標道館：'+this.state.gymName+'\n'+'\n我是館主\b'+this.state.gymLeader+'\n吶吶~知道嗎？安琪拉的名字就是Angela，有天使的意思哦~'}
-              </Text>
-            </View>
-            <View style={styles.bottom_1}> 
-              <Image
-                style={styles.avatar}
-                source={{uri: 'https://s19.postimg.org/wv6pdoo9v/image.png'}} />
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'輔大特色地標'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'野聲樓+焯炤館介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
-            <View style={styles.top_2}>
-              <Image
-                style={styles.school}
-                source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/3/33/FJU_YP02.jpg'}} />
-            </View>
-            <View style={styles.middle_2}>
-              <Text style={[styles.textContent,{fontSize:15}]}>
-                {'\b\b'+this.state.schoolIntro}
-              </Text> 
-            </View>
-            <View style={styles.bottom_2}>
-              <View style={{flex: 4,}}></View>
-              <View style={{flex: 1,}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'http://s12.postimg.org/n9te1ebe1/avatar12.png'}} />
-              </View>
-            </View>
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
-            <View style={{flex: 2,}}></View>
-            <View style={{flex: 1,}}>
-              <Text style={[styles.textTitle,{fontSize:35}]}>
-                  {'新手教學'}
-              </Text>
-              <Text style={styles.textTitle}>
-                  {'任務介紹'}
-              </Text> 
-            </View>
-            <View style={{flex: 4,}}></View>
-            
-          </View>
-          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
-            <View style={styles.top_3}>
-              <Image
-                style={styles.game}
-                source={{uri: 'http://static1.squarespace.com/static/52781efee4b0c3d269fc7f59/t/52c5df35e4b0c9d8b3899f23/1388699446296/Mission.jpg'}} />
-            </View>
-            <View style={styles.bottom_3}>
-              <Text style={[styles.textContent,{fontSize:20}]}>
-                {'\b\b'+this.state.gameIntro}
-              </Text> 
-            </View>
-            <View style={styles.last}>
-              <View style={{flex: 1,alignItems: 'flex-start',}}>
-                <Image
-                  style={styles.avatar_small}
-                  source={{uri: 'http://s12.postimg.org/zcypoymg9/avatar12_reverse.png'}} />
-              </View>
-              <View style={{flex: 2,}}></View>
-              <View style={{flex: 1,}}>
-                <Text style={{fontSize: 30,fontWeight: 'bold'}}
-                  onPress={this.onPress}>
-                  Done
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_1}>
+                <Text style={[styles.textTitle,{fontSize:25}]}>
+                  {'地標道館：'+this.state.gymName+'\n'+'\n我是館主\b'+this.state.gymLeader+'\n吶吶~知道嗎？安琪拉的名字就是Angela，有天使的意思哦~'}
                 </Text>
               </View>
-            </View>
+              <View style={styles.bottom_1}> 
+                <Image
+                  style={styles.avatar}
+                  source={{uri: 'https://s19.postimg.org/wv6pdoo9v/image.png'}} />
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'輔大特色地標'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'野聲樓+焯炤館介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_2}>
+                <Image
+                  style={styles.school}
+                  source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/3/33/FJU_YP02.jpg'}} />
+              </View>
+              <View style={styles.middle_2}>
+                <Text style={[styles.textContent,{fontSize:15}]}>
+                  {'\b\b'+this.state.schoolIntro}
+                </Text> 
+              </View>
+              <View style={styles.bottom_2}>
+                <View style={{flex: 4,}}></View>
+                <View style={{flex: 1,}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'http://s12.postimg.org/n9te1ebe1/avatar12.png'}} />
+                </View>
+              </View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',justifyContent: 'center',alignItems: 'center',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={{flex: 2,}}></View>
+              <View style={{flex: 1,}}>
+                <Text style={[styles.textTitle,{fontSize:35}]}>
+                    {'新手教學'}
+                </Text>
+                <Text style={styles.textTitle}>
+                    {'任務介紹'}
+                </Text> 
+              </View>
+              <View style={{flex: 4,}}></View>
+            </Image>
+          </View>
+          <View style={[styles.slide,{backgroundColor: '#92BBD9',}]}>
+            <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
+              <View style={styles.top_3}>
+                <Image
+                  style={styles.game}
+                  source={{uri: 'http://static1.squarespace.com/static/52781efee4b0c3d269fc7f59/t/52c5df35e4b0c9d8b3899f23/1388699446296/Mission.jpg'}} />
+              </View>
+              <View style={styles.bottom_3}>
+                <Text style={[styles.textContent,{fontSize:20}]}>
+                  {'\b\b'+this.state.gameIntro}
+                </Text> 
+              </View>
+              <View style={styles.last}>
+                <View style={{flex: 1,alignItems: 'flex-start',}}>
+                  <Image
+                    style={styles.avatar_small}
+                    source={{uri: 'http://s12.postimg.org/zcypoymg9/avatar12_reverse.png'}} />
+                </View>
+                <View style={{flex: 2,}}></View>
+                <View style={{flex: 1,}}>
+                  <Text style={{fontSize: 30,fontWeight: 'bold'}}
+                    onPress={this.onPress}>
+                    Done
+                  </Text>
+                </View>
+              </View>
+            </Image>
           </View>
         </Swiper>
         
