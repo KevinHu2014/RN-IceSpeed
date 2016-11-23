@@ -57,21 +57,21 @@ var AppInit = React.createClass({
     //         })
     //     }
 
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'NavMap',
-    //             component: NavMap,
-    //         })
-    //     }
-
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'Center',
-                component: Center,
+                name: 'NavMap',
+                component: NavMap,
             })
         }
+
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'Center',
+    //             component: Center,
+    //         })
+    //     }
 
     // const { navigator } = this.props;
     //     if(navigator) {
