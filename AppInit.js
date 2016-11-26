@@ -18,7 +18,7 @@ import testAction from './testAction';
 import NicknamePage from './NicknamePage';
 import tab from './tab';
 import NavPet from './NavPet';
-import gym_battle from './gym_battle';
+import gym_04 from './gym_04';
 import Battle_PetBox from './Battle_PetBox';
 import Battle_LandingPage from './Battle_LandingPage';
 import NavMap from './NavMap';
@@ -53,26 +53,26 @@ var AppInit = React.createClass({
     // const { navigator } = this.props;
     //     if(navigator) {
     //         navigator.replace({
-    //             name: 'gym_battle',
-    //             component: gym_battle,
-    //         })
-    //     }
-
-    // const { navigator } = this.props;
-    //     if(navigator) {
-    //         navigator.replace({
-    //             name: 'NavMap',
-    //             component: NavMap,
+    //             name: 'gym_04',
+    //             component: gym_04,
     //         })
     //     }
 
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'VRPanorama',
-                component: VRPanorama,
+                name: 'NavMap',
+                component: NavMap,
             })
         }
+
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'VRPanorama',
+    //             component: VRPanorama,
+    //         })
+    //     }
 
     // const { navigator } = this.props;
     //     if(navigator) {

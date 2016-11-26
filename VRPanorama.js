@@ -30,7 +30,11 @@ var VRPanorama = React.createClass({
     });
   },
   onPressIn(){
-
+    const { navigator } = this.props;
+            if(navigator) {
+                //返回道館
+                navigator.pop();
+            }
   },
   render() {
 
@@ -56,8 +60,7 @@ var VRPanorama = React.createClass({
           <PanoramaView style={{borderWidth:1,height:height}} imageUrl={imageUrl} inputType={inputType} 
           onImageLoaded={this.onImageLoaded}/>
           <TouchableOpacity
-                onPressIn={this.onPressIn_explore}
-                onPressOut={this.onPressOut_explore}
+                onPressIn={this.onPressIn}
                 style={{borderRadius: 100,position: 'absolute',left: (width-130)/2,top: height-170}}>
                     <Image source={require('./Img/explore.png')} 
                          style={{width:130,height:130}}/>

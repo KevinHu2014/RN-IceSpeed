@@ -7,11 +7,15 @@ import {
   View,
   Image,
   Dimensions,
+  TouchableOpacity
 } from 'react-native';
 
 import NewMap from './NewMap';
+import VRPanorama from './VRPanorama';
 var {height, width} = Dimensions.get('window');
 var Background_Img = require('./Img/background_Null.png');
+
+
 var gym_04 = React.createClass({
   getInitialState(){
     return{
@@ -28,6 +32,15 @@ var gym_04 = React.createClass({
                 //返回NewMap
                 navigator.pop();
             }
+  },
+  onPressIn_explore(){
+    const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: 'VRPanorama',
+                component: VRPanorama,
+            })
+        }
   },
   render: function() {
     return (
@@ -65,9 +78,13 @@ var gym_04 = React.createClass({
           <View style={[styles.slide,{backgroundColor: '#97CAE5',}]}>
             <Image source={Background_Img} style={{width:width,height:height,resizeMode: 'cover'}}>
               <View style={styles.top_2}>
-                <Image
-                  style={styles.school}
-                  source={{uri: 'https://s19.postimg.org/o413t2w9v/image.jpg'}} />
+                <TouchableOpacity
+                  onPressIn={this.onPressIn_explore}
+                  >
+                  <Image
+                    style={styles.school}
+                    source={{uri: 'https://s19.postimg.org/o413t2w9v/image.jpg'}} />
+                </TouchableOpacity>
               </View>
               <View style={styles.middle_2}>
                 <Text style={[styles.textContent,{fontSize: 18}]}>
