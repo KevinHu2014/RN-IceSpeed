@@ -82,7 +82,7 @@ android {
 
     defaultConfig {
         applicationId "com.test"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -118,7 +118,11 @@ android {
         }
     }
 }
-
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
@@ -133,4 +137,8 @@ dependencies {
     compile project(':react-native-facebook-login')
     compile project(':rn-splash-screen')
     compile project(':react-native-vector-icons')
+    compile(name: 'common', ext: 'aar')
+    compile(name: 'commonwidget', ext: 'aar')
+    compile(name: 'panowidget', ext: 'aar')
+    compile project(':react-native-google-vr-panorama')
 }

@@ -10,6 +10,7 @@ import  {
 import * as Animatable from 'react-native-animatable'
 import LinearGradient from 'react-native-linear-gradient';
 
+import VRPanorama from './VRPanorama';
 import Center from './Center';
 import Items from './Items';
 import RNModel from './RNModel';
@@ -57,11 +58,19 @@ var AppInit = React.createClass({
     //         })
     //     }
 
+    // const { navigator } = this.props;
+    //     if(navigator) {
+    //         navigator.replace({
+    //             name: 'NavMap',
+    //             component: NavMap,
+    //         })
+    //     }
+
     const { navigator } = this.props;
         if(navigator) {
             navigator.replace({
-                name: 'NavMap',
-                component: NavMap,
+                name: 'VRPanorama',
+                component: VRPanorama,
             })
         }
 
