@@ -33,17 +33,23 @@ class Center extends Component {
 	          visible={this.state.modalVisible}
 	          onRequestClose={() => {alert("Modal has been closed.")}}
           >
-          	<View style={{ flex: 1,backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
-	          <View>
-	            <Text>Hello World!</Text>
-
-	            <TouchableHighlight onPress={() => {
-	              this.setModalVisible(!this.state.modalVisible)
-	            }}>
-	              <Text>Hide Modal</Text>
-	            </TouchableHighlight>
+          	<View style={{ flex: 1,flexDirection: 'column',justifyContent: 'center',backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+	          <View style={{flex: 1,}}></View>
+	          <View style={styles.middle}>
+	            <View style={{flex: 2,justifyContent: 'center',}}>
+	            	<Text style={styles.welcome_1}>{"讓您久等了！！\n您的寵物精靈們都已回復完成囉～"}</Text>
+	            </View>
+	            <View style={{flex: 1,justifyContent: 'center',}}>
+		            <Text style={styles.welcome_2} onPress={() => {
+		              this.setModalVisible(!this.state.modalVisible)
+		            }}>
+		              確定
+		            </Text>
+	            </View>
+	            
 
 	          </View>
+	          <View style={{flex: 1,}}></View>
 	         </View>
           </Modal>
 	      {/*this is the background animation */}
@@ -73,6 +79,25 @@ const styles = StyleSheet.create({
 	    fontWeight: "bold",
 	    color:'#000000'
 	  },
+	welcome_1:{
+	    fontSize: 20,
+	    textAlign: 'center',
+	    color:'#000000'
+	  },
+	welcome_2:{
+	    fontSize: 25,
+	    fontWeight: "bold",
+	    color:'#238FF5'
+	  },
+	middle:{
+		flex: 1,
+		backgroundColor: '#FFFFFF',
+		marginLeft: 20,
+		marginRight: 20,
+	    borderRadius: 15,
+	    justifyContent: 'center',
+	    alignItems: 'center',
+	}
 });
 
 
