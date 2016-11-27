@@ -56,6 +56,7 @@ import gym_09 from './gym_09';
 import gym_10 from './gym_10';
 import gym_11 from './gym_11';
 import gym_12 from './gym_12';
+import TheCenter from './Center';
 import FireStore from './FireStore';
 import WaterStore from './WaterStore';
 import WoodStore from './WoodStore';
@@ -488,14 +489,13 @@ var NewMap = React.createClass({
 
     // }
     if(annotation.title=='寶貝中心'){
-      Alert.alert(
-        '歡迎來到寵物中心',
-        '你的寵物都已回復～',
-        [
-          
-          {text: 'OK', onPress: () => console.log('OK Pressed')},
-        ]
-      )
+      const { navigator } = this.props;
+      if(navigator) {
+              navigator.push({
+                  name: 'TheCenter',
+                  component: TheCenter,
+              })
+          }
     }
     else if(annotation.title=='道館'){
       const { navigator } = this.props;

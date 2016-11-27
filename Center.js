@@ -37,11 +37,7 @@ var Center = React.createClass({
   	await this.PetRef.child(3).update({current_HP: 58});
   	console.log('end');
   	this.setModalVisible(!this.state.modalVisible);
-  	const { navigator } = this.props;
-            if(navigator) {
-                //返回NewMap
-                navigator.pop();
-            }
+  	
   },
   setModalVisible(visible) {
     this.setState({modalVisible: visible,sign: '完成'});
@@ -64,7 +60,11 @@ var Center = React.createClass({
 	            </View>
 	            <View style={{flex: 1,justifyContent: 'center',}}>
 		            <Text style={styles.welcome_2} onPress={() => {
-		              this.setModalVisible(!this.state.modalVisible)
+		              const { navigator } = this.props;
+			            if(navigator) {
+			                //返回NewMap
+			                navigator.pop();
+			            }
 		            }}>
 		              確定
 		            </Text>
