@@ -12,17 +12,40 @@ import {
 } from 'react-native';
 import LoopAnimation from 'react-native-LoopAnimation';
 import * as Animatable from 'react-native-animatable';
+import Firebase from 'firebase';
 var {height, width} = Dimensions.get('window');
 
-class Center extends Component {
-   constructor(props) {
-    super(props);
-    this.state = {modalVisible: false};
-  }
+var Center = React.createClass({
+  getInitialState: function() {
+    var FirebaseRef = new Firebase("https://icespeed-f6471.firebaseio.com/");
+    this.PetRef = FirebaseRef.child('users/314282187/Pet');
 
+    return {
+      modalVisible: false,
+      sign: '回復中',
+    };
+
+},
+  
+  componentDidMount() {
+  	this.start();
+  },
+  async start(){
+  	console.log('start');
+  	await this.PetRef.child(1).update({current_HP: 39});
+  	await this.PetRef.child(2).update({current_HP: 31});
+  	await this.PetRef.child(3).update({current_HP: 58});
+  	console.log('end');
+  	this.setModalVisible(!this.state.modalVisible);
+  	const { navigator } = this.props;
+            if(navigator) {
+                //返回NewMap
+                navigator.pop();
+            }
+  },
   setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
+    this.setState({modalVisible: visible,sign: '完成'});
+  },
 
   render() {
     return (
@@ -62,16 +85,15 @@ class Center extends Component {
 	      }}>
 	        {/*Content goes here*/}
 	        <View style={{flex: 1,}}>
-	        	<Animatable.Text style={styles.welcome} animation="pulse" iterationCount="infinite" 
-	        		onPress={()=>{this.setModalVisible(true)}}>
-	        	  回復中
+	        	<Animatable.Text style={styles.welcome} animation="pulse" iterationCount="infinite" >
+	        	  {this.state.sign}
 	        	</Animatable.Text>
 	        </View>
 	      </View>
 	    </View>
     );
   }
-}
+});
 
 const styles = StyleSheet.create({
 	welcome:{
