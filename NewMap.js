@@ -464,31 +464,31 @@ var NewMap = React.createClass({
     //console.log(annotation.longitude);
     let distance=this.calculateDistance(annotation.latitude,annotation.longitude);
     console.log(distance);//單位為公尺
-    // if(JailMonkey.canMockLocation()){
-    //   //JailMonkey.canMockLocation().toString()
-    //   //true 代表模擬位置功能已開啟
-    //   Alert.alert(
-    //     '請檢查行動裝置的設定',
-    //     '經作弊取得的定位資訊\n無法進行遊玩',
-    //     [
+    if(JailMonkey.canMockLocation()){
+      //JailMonkey.canMockLocation().toString()
+      //true 代表模擬位置功能已開啟
+      Alert.alert(
+        '請檢查行動裝置的設定',
+        '經作弊取得的定位資訊\n無法進行遊玩',
+        [
           
-    //       {text: 'OK', onPress: () => console.log('OK Pressed')},
-    //     ]
-    //   )
-    // }
-    // if(distance > 50){
-    //   //如果距離大於50公尺，就不讓使用者使用建築物功能
-    //   Alert.alert(
-    //     '離建築物太遠了',
-    //     '請靠近一點再點擊',
-    //     [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
+    }
+    else if(distance > 50){
+      //如果距離大於50公尺，就不讓使用者使用建築物功能
+      Alert.alert(
+        '離建築物太遠了',
+        '請靠近一點再點擊',
+        [
           
-    //       {text: 'OK', onPress: () => console.log('OK Pressed')},
-    //     ]
-    //   )
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      )
 
-    // }
-    if(annotation.title=='寶貝中心'){
+    }
+    else if(annotation.title=='寶貝中心'){
       const { navigator } = this.props;
       if(navigator) {
               navigator.push({

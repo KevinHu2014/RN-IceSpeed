@@ -36,3 +36,6 @@ npm-debug.log
 
 #yarn
 yarn.lock
+
+#Key
+android/app/my-release-key.keystore
