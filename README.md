@@ -1,7 +1,7 @@
 #怪物探索 - 適地性寵物養成遊戲APP
 
 ##遊戲啟發
-在2015九月時，在"Pokemon GO"概念影片的啟發下，我們決定以同時能夠適用於Android與iOS系統的適地性寵物養成遊戲作為乘載輔大深厚內容的容器，
+2015九月時，在"Pokemon GO"概念影片的啟發下，我們決定以同時能夠適用於Android與iOS系統的適地性寵物養成遊戲作為乘載輔大深厚內容的容器，
 透過GPS定位的方式探索整個輔大校園，可以一邊了解輔大的故事與文化，同時也可以抓取可愛且具特色的寵物，藉由養成寵物的方式可增加與他人交流的機會。
 
 
@@ -20,6 +20,11 @@
 
 ![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/校園地圖.png "校園地圖")
 
+
+##遊戲概念影片
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/CL-RnqUOTXY/0.jpg)](http://www.youtube.com/watch?v=CL-RnqUOTXY)
+
 ##遊戲主介面
 遊戲主介面為地圖的形式，地圖下方有個探索鍵
 >Floating Action Button為參照Google Material design所設計的
@@ -31,7 +36,7 @@
 點擊探索鍵後，會先抓取使用者的所在位置，並在周圍出現怪物點
 不同顏色的怪物點代表不同的稀有度
 
-gif圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/探索.gif "探索")
 
 
 ##戰鬥介面
@@ -41,39 +46,51 @@ gif圖
 >寵物圖均為原創設計
 >按鈕設計參照Google提出的material design
 
-gif圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/戰鬥.gif "戰鬥介面")
 
 
 
-##單人道館
+##單人世界的道館
 在單人模式下的道館內容為校園介紹及遊戲的tips，
 走訪完所有的道館即可進入多人模式
 
-gif圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/單人.gif "單人世界的道館")
 
 在特定道館會有360度VR全景圖可以體驗
 
-gif圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/VR.gif "VR")
 
-##多人道館
+##多人世界的道館
 在多人模式下的道館可以對道館館主進行戰鬥，
 透過貢獻不同數量的輔大三寶來決定關卡的難易度。
 
-gif圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/多人.png "多人世界的道館")
 
 ##寵物中心
 在寵物中心可以將玩家背包裡的寵物回滿血
 
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/寶貝中心.gif "寵物中心")
+
 ##寵物背包
 
-
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/背包.png "寵物背包")
 
 ##強化頁面
 使用經驗石可以強化寵物
 
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/強化.gif "強化")
 
 ##商店
-販賣回血道具及經驗石
+購買道具的地方
+
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/商店.png "商店")
+
+
+##完整DEMO影片
+
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+
+
 
 ##遊戲架構
 資料庫同時採用SQL和NoSQL
