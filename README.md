@@ -44,7 +44,7 @@
 技能發動需使用MP，每回合會獲得兩個MP
 有逃走鍵可以使用
 >寵物圖均為原創設計
->按鈕設計參照Google提出的material design
+>按鈕為參照Google Material design所設計的
 
 ![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/戰鬥.gif "戰鬥介面")
 
