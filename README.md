@@ -41,7 +41,9 @@
 
 ##戰鬥介面
 規則採用一對一的回合制戰鬥
+
 技能發動需使用MP，每回合會獲得兩個MP
+
 有逃走鍵可以使用
 >寵物圖均為原創設計
 >按鈕為參照Google Material design所設計的
@@ -52,6 +54,7 @@
 
 ##單人世界的道館
 在單人模式下的道館內容為校園介紹及遊戲的tips，
+
 走訪完所有的道館即可進入多人模式
 
 ![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/單人.gif "單人世界的道館")
@@ -62,6 +65,7 @@
 
 ##多人世界的道館
 在多人模式下的道館可以對道館館主進行戰鬥，
+
 透過貢獻不同數量的輔大三寶來決定關卡的難易度。
 
 ![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/多人.png "多人世界的道館")
@@ -95,6 +99,7 @@
 ##遊戲架構
 
 資料庫同時採用SQL和NoSQL
+
 地圖採用能高度客製化的Mapbox
 
 
