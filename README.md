@@ -10,7 +10,7 @@
 希望陣營則發展出了木之力，自由陣營一直都是水之力的代表，而輔大地區也設定成古代的文明遺跡--奧斯蘭，這裡擁有大量充滿力量的納特斯礦石，
 孕育出了這裡獨特的生命，稱之為怪物精靈。
 
-三寶圖片
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/御三家.png "御三家")
 
 幾百年來，祖先們在這塊土地上建立了文明，與精靈們共存共榮並堅持著善與愛的信仰，世世代代的傳承下去，但是過多的力量卻招致這裡的毀滅，
 貪心的人們不斷地尋找著納特斯礦脈，不計一切代價挖取純度高的礦石，終於在城邦的中心發現了納特斯礦石的核心，正當欣喜若狂的愚人們準備大量開採時，
@@ -18,13 +18,14 @@
 三大陣營對此都各自展開了研究，而玩家便是扮演冒險者的腳色，投身自己所喜好的陣營盡情的探索輔大地區與精靈怪物們一起生活，
 一同歡笑、一同成長，寫下屬於自己的故事。
 
-校園地圖
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/校園地圖.png "校園地圖")
 
 ##遊戲主介面
 遊戲主介面為地圖的形式，地圖下方有個探索鍵
 >Floating Action Button為參照Google Material design所設計的
 
-遊戲主介面的圖片
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/主畫面.gif "遊戲主介面")
+
 
 ##探索
 點擊探索鍵後，會先抓取使用者的所在位置，並在周圍出現怪物點
@@ -68,6 +69,8 @@ gif圖
 ##商店
 
 ##遊戲架構
+
+![alt text](https://github.com/KevinHu2014/RN-IceSpeed/blob/master/Screenshots/架構圖.png "架構圖")
 
 
 ##安裝教學
