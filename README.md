@@ -88,11 +88,12 @@
 
 ##完整DEMO影片
 
-[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/An_2t2BB9z8/0.jpg)](http://www.youtube.com/watch?v=An_2t2BB9z8)
 
 
 
 ##遊戲架構
+
 資料庫同時採用SQL和NoSQL
 地圖採用能高度客製化的Mapbox
 
@@ -108,6 +109,7 @@
 
 
 ##未完成的部份
+
 + 新增新手教學
 + 新增任務系統
 + 多人共鬥機制
